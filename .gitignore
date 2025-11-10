@@ -1,0 +1,42 @@
+# Dependency directories
+node_modules/
+.cache/
+.pnp
+.pnp.js
+
+# Build output
+build/
+dist/
+dist-ssr/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# IDE and editor files
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Testing
+coverage/
+
+# Optional: Ignore specific files within folders
+# Example: Ignore config.dev.ts and config.prod.ts but keep index.ts
+config/config.dev.ts
+config/config.prod.ts   
