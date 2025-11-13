@@ -5,9 +5,8 @@ import Imge3 from "../../asset/img/Home/Hero-Banner-three.png";
 // import Imge4 from "../../asset/img/Home/Hero-Banner-one.png";
 import Imgeeres1 from "../../asset/img/Home/Hero-Banner-Ghee-mobile.png";
 import Imgeeres2 from "../../asset/img/Responsive/Mobile_screen-two.png";
-import Imgeeres3 from "../../asset/img/Responsive/Mobile_screen-three.png";
+import Imgeeres3 from "../../asset/img/Responsive/Mobile  Gauswran Screen Banner 1.jpg";
 // import Imgeeres4 from "../../asset/img/Responsive/Mobile_screen-one.png";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 const Home = () => {
@@ -26,33 +25,43 @@ const Home = () => {
         <div className="row">
           <div
             id="carouselExampleControls"
-  className="carousel slide carousel-fade header-carousel"
+            className="carousel slide carousel-fade header-carousel"
             data-bs-ride="carousel"
             // data-bs-interval="3000"
             data-bs-pause="false" // Set this to false to avoid pausing
-
-
           >
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <picture>
                   <source media="(max-width: 768px)" srcSet={Imgeeres1} />
                   <source media="(max-width: 1024px)" srcSet={Imgeeres1} />
-                  <img  src={Imge1} className="d-block w-100 fade-in-img" alt="Slide 1" />
+                  <img
+                    src={Imge1}
+                    className="d-block w-100 fade-in-img"
+                    alt="Slide 1"
+                  />
                 </picture>
               </div>
               <div className="carousel-item">
                 <picture>
                   <source media="(max-width: 768px)" srcSet={Imgeeres2} />
                   <source media="(max-width: 1024px)" srcSet={Imgeeres2} />
-                  <img  src={Imge2} className="d-block w-100 fade-in-img" alt="Slide 1" />
+                  <img
+                    src={Imge2}
+                    className="d-block w-100 fade-in-img"
+                    alt="Slide 1"
+                  />
                 </picture>
               </div>
               <div className="carousel-item">
                 <picture>
                   <source media="(max-width: 768px)" srcSet={Imgeeres3} />
                   <source media="(max-width: 1024px)" srcSet={Imgeeres3} />
-                  <img  src={Imge3} className="d-block w-100 fade-in-img" alt="Slide 1" />
+                  <img
+                    src={Imge3}
+                    className="d-block w-100 fade-in-img"
+                    alt="Slide 1"
+                  />
                 </picture>
               </div>
               {/* <div className="carousel-item">

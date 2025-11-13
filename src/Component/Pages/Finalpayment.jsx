@@ -82,7 +82,7 @@ const Finalpayment = () => {
         );
         //  Razorpay Checkout Setup
         const options = {
-          key: "rzp_test_qcl3EzwXvpMnwS", // Replace with your Razorpay Key
+          key: "rzp_live_woFUpWK35AZbcn", // Replace with your Razorpay Key
           amount, // in paise
           currency,
           name: name || "Gauswarn",
