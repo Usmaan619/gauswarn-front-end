@@ -10,6 +10,7 @@ import TopBanner from "./TopBanner";
 import Header from "./Header";
 import Home from "../../Pages/Home";
 import Certified from "../../Pages/Certified";
+import AboutUsHero from "./About/About-us-hero";
 
 const CustomNavbar = () => {
   const { cart } = useCartContext();
@@ -40,6 +41,7 @@ const CustomNavbar = () => {
       <Header />
       <Home />
       <Certified />
+      <AboutUsHero />
     </>
 
     // <Navbar
