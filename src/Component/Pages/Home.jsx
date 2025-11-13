@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Imge1 from "../../asset/img/Home/Hero-Banner-Ghee.png";
 import Imge2 from "../../asset/img/Home/Hero Banner-two.png";
 import Imge3 from "../../asset/img/Home/Hero-Banner-three.png";
+import Imge from "../../asset/img/Home/Hero.png";
 // import Imge4 from "../../asset/img/Home/Hero-Banner-one.png";
 import Imgeeres1 from "../../asset/img/Home/Hero-Banner-Ghee-mobile.png";
 import Imgeeres2 from "../../asset/img/Responsive/Mobile_screen-two.png";
@@ -33,10 +34,10 @@ const Home = () => {
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <picture>
-                  <source media="(max-width: 768px)" srcSet={Imgeeres1} />
-                  <source media="(max-width: 1024px)" srcSet={Imgeeres1} />
+                  <source media="(max-width: 768px)" srcSet={Imge} />
+                  <source media="(max-width: 1024px)" srcSet={Imge} />
                   <img
-                    src={Imge1}
+                    src={Imge}
                     className="d-block w-100 fade-in-img"
                     alt="Slide 1"
                   />
@@ -44,10 +45,10 @@ const Home = () => {
               </div>
               <div className="carousel-item">
                 <picture>
-                  <source media="(max-width: 768px)" srcSet={Imgeeres2} />
-                  <source media="(max-width: 1024px)" srcSet={Imgeeres2} />
+                  <source media="(max-width: 768px)" srcSet={Imge} />
+                  <source media="(max-width: 1024px)" srcSet={Imge} />
                   <img
-                    src={Imge2}
+                    src={Imge}
                     className="d-block w-100 fade-in-img"
                     alt="Slide 1"
                   />
@@ -55,10 +56,10 @@ const Home = () => {
               </div>
               <div className="carousel-item">
                 <picture>
-                  <source media="(max-width: 768px)" srcSet={Imgeeres3} />
-                  <source media="(max-width: 1024px)" srcSet={Imgeeres3} />
+                  <source media="(max-width: 768px)" srcSet={Imge} />
+                  <source media="(max-width: 1024px)" srcSet={Imge} />
                   <img
-                    src={Imge3}
+                    src={Imge}
                     className="d-block w-100 fade-in-img"
                     alt="Slide 1"
                   />

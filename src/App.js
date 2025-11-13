@@ -1,5 +1,3 @@
-
-
 import "./App.css";
 import Main from "./Component/Pages/Main";
 import { Routes, Route } from "react-router-dom";
@@ -42,12 +40,12 @@ function App() {
     });
   }, []);
 
-    const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-      const timer = setTimeout(() => setIsLoading(false), 3000);
-      return () => clearTimeout(timer);
-    }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     try {
@@ -63,41 +61,8 @@ function App() {
 
   return (
     <>
-      {isLoading ? (
-        <Routes>
-          <Route path="/" element={<Loader />} />
-        </Routes>
-      ) : (
-        <>
-          {hideNavbar !== "/gauswarn-admin" && (
-            <>
-              <ScrollToTop />
-              <CustomNavbar />
-            </>
-          )}
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/singleproduct" element={<SingleProcess />} />
-            <Route path="/finalpayment" element={<Finalpayment />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/gallery" element={<Gallery/>} />
-            <Route path="/about" element={<About/>} />
-            <Route path="/refund" element={<Refund />} />
-            <Route path="/cancel" element={<Cancel />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/shipping" element={<Shipping />} />
-            <Route path="/lab" element={<Lab />} />
-            <Route path="/faq" element={<Faq />} />
-            <Route path="/track" element={<TrackingOrder />} />
-            <Route path="/feedback" element={<FeedbackForm />} />
-            <Route path="/terms" element={<TermsConditions />} />
-            <Route path="/payment-success" element={<PaymentDone />} />
-            <Route path="/payment-failed" element={<PaymentFail />} />
-            <Route path="/gauswarn-admin" element={<Admin />} />
-            <Route path="*" element={<NotFound />} /> {/* 404 Route */}
-          </Routes>
-        </>
-      )}
+      <ScrollToTop />
+      <CustomNavbar />
     </>
   );
 }
