@@ -1,0 +1,91 @@
+.health-product-showcase {
+  padding: 2rem;
+  height: 90dvh;
+  width: 100%;
+  background: linear-gradient(135deg, #faf8f3 0%, #f5f1eb 100%);
+  background-image: url("../../asset/new-img/product-health/Rectangle-14.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.health-showcase-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.health-product-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.health-product-image-wrapper {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.health-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.health-benefits-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .health-product-image-wrapper {
+    display: none;
+  }
+  .health-showcase-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .health-product-image-wrapper {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .health-product-image-wrapper {
+    display: none;
+  }
+
+  .health-product-showcase {
+    padding: 1rem;
+  }
+
+  .health-showcase-container {
+    gap: 1.5rem;
+  }
+
+  .health-product-image-wrapper {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .health-showcase-container {
+    gap: 1rem;
+  }
+
+  .health-product-image-wrapper {
+    max-width: 250px;
+  }
+}

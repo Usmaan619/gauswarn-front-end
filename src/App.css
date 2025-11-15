@@ -1455,8 +1455,7 @@ body {
   color: #555;
   line-height: 1.7;
   margin: 0 0 0 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: "Montserrat";
 }
 
 /* Subtitle */
@@ -1465,8 +1464,7 @@ body {
   font-weight: 700;
   color: #2d2d2d;
   margin: 28px 0 18px 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: "Montserrat";
 }
 
 /* Mission List */
@@ -1490,18 +1488,29 @@ body {
 .check-svg {
   width: 24px;
   height: 24px;
-  color: #4caf50;
+  color: #ffffff;
   flex-shrink: 0;
   stroke-width: 2.5;
   margin-top: 2px;
+  background: #29a44f;
+}
+
+.cup-leaves-svg {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+  flex-shrink: 0;
+  stroke-width: 2.5;
+  margin-top: 2px;
+  /* background: #29a44f; */
 }
 
 .mission-list-item span {
   font-size: 16px;
   color: #2d2d2d;
   line-height: 1.6;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  font-family: "Montserrat";
 }
 
 /* Divider */
@@ -1527,8 +1536,7 @@ body {
   gap: 12px;
   width: fit-content;
   transition: all 0.3s ease;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: "Montserrat";
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
@@ -1651,6 +1659,11 @@ body {
     height: 20px;
   }
 
+  .cup-leaves-svg {
+    width: 20px;
+    height: 20px;
+  }
+
   .about-images-section {
     min-height: 280px;
   }
@@ -1723,6 +1736,12 @@ body {
   }
 
   .check-svg {
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+  }
+
+  .cup-leaves-svg {
     width: 18px;
     height: 18px;
     margin-top: 1px;
@@ -1804,3 +1823,424 @@ body {
     font-size: 12px;
   }
 }
+
+/* Main Container */
+.product-showcase {
+  width: 100%;
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+.showcase-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.showcase-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #4b3109;
+  margin-bottom: 50px;
+  letter-spacing: 0.5px;
+}
+
+/* Main Content Layout */
+.showcase-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Featured Product */
+.featured-product {
+  flex: 0 0 350px;
+  /* background: linear-gradient(135deg, #fff9e6 0%, #fffbf0 100%); */
+  border-radius: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.product-image-container {
+  width: 100%;
+  height: 280px;
+  background-color: #f5ede0;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.product-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #999;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.star-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.rating-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.product-pricing {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.price-current {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2ecc71;
+}
+
+.price-original {
+  font-size: 18px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.product-quantity {
+  position: relative;
+  margin-top: 10px;
+}
+
+.quantity-select {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fed525;
+  cursor: pointer;
+  appearance: none;
+  padding-right: 40px;
+  border-color: #fed525;
+  border-top-color: #fed525;
+}
+
+.quantity-select:hover {
+  background-color: #c9a42c;
+  color: #ffffff;
+}
+
+.chevron-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #1a1a1a;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #4b3109;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #4d4d4d;
+}
+
+/* Carousel Section */
+.carousel-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.products-carousel {
+  width: 100%;
+}
+
+.carousel-card-wrapper {
+  padding: 0 15px;
+}
+
+.carousel-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 590px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.carousel-card:hover {
+  transform: scale(1.02);
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.carousel-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-subtitle {
+  font-size: 18px;
+  color: #d4af37;
+  margin: 0;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Custom Arrows */
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(212, 175, 55, 0.9);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #1a1a1a;
+}
+
+.custom-arrow:hover {
+  background-color: #d4af37;
+}
+
+.prev-arrow {
+  left: -60px;
+}
+
+.next-arrow {
+  right: -60px;
+}
+
+/* Custom Dots */
+.slick-dots {
+  display: flex !important;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px !important;
+}
+
+.slick-dots li button {
+  display: none;
+}
+
+.slick-dots .custom-dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(212, 175, 55, 0.4);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.slick-dots .slick-active .custom-dot {
+  background-color: #29a44f;
+}
+
+/* Slick Carousel Overrides */
+.slick-list {
+  margin: 0 -15px;
+}
+
+.slick-track {
+  display: flex;
+}
+
+.slick-slide {
+  padding: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .showcase-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .featured-product {
+    flex: 0 0 auto;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .carousel-section {
+    width: 100%;
+  }
+
+  .prev-arrow {
+    left: -40px;
+  }
+
+  .next-arrow {
+    right: -40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .showcase-title {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  .showcase-content {
+    gap: 30px;
+  }
+
+  .featured-product {
+    padding: 20px;
+  }
+
+  .product-image-container {
+    height: 250px;
+  }
+
+  .carousel-title {
+    font-size: 24px;
+  }
+
+  .carousel-subtitle {
+    font-size: 14px;
+  }
+
+  .carousel-card {
+    height: 300px;
+  }
+
+  .prev-arrow,
+  .next-arrow {
+    width: 36px;
+    height: 36px;
+    left: -35px;
+    right: -35px;
+  }
+
+  .prev-arrow {
+    left: -35px;
+  }
+
+  .next-arrow {
+    right: -35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .showcase-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .showcase-container {
+    padding: 40px 15px;
+  }
+
+  .featured-product {
+    border-radius: 16px;
+    padding: 15px;
+  }
+
+  .product-name {
+    font-size: 20px;
+  }
+
+  .price-current {
+    font-size: 24px;
+  }
+
+  .carousel-card {
+    height: 250px;
+  }
+
+  .carousel-title {
+    font-size: 18px;
+  }
+
+  .custom-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .products-carousel {
+    margin: 0 -20px;
+  }
+
+  .carousel-card-wrapper {
+    padding: 0 20px;
+  }
+}
+
+/* ============================
+   END OF Product Showcase CSS
+   ============================ */

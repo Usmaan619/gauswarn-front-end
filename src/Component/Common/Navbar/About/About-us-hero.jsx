@@ -1,5 +1,7 @@
 import about1 from "../../../../asset/img/about1.png";
 import about2 from "../../../../asset/img/about2.png";
+import cupicon from "../../../../asset/cup.png";
+import leavesicon from "../../../../asset/leaves-icon.png";
 
 export default function AboutUsHero() {
   return (
@@ -122,6 +124,7 @@ export default function AboutUsHero() {
                 >
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
+
                 <span>
                   Deliver pure, chemical-free ghee that families can trust.
                 </span>
@@ -134,25 +137,13 @@ export default function AboutUsHero() {
             {/* Additional Points */}
             <ul className="mission-list">
               <li className="mission-list-item">
-                <svg
-                  className="check-svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
+                <img src={cupicon} className="cup-leaves-svg" />
+
                 <span>Driven by Tradition, Guided by Purity</span>
               </li>
               <li className="mission-list-item">
-                <svg
-                  className="check-svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
+                <img src={leavesicon} className="cup-leaves-svg" />
+
                 <span>Committed to Natural & Ethical Farming</span>
               </li>
             </ul>

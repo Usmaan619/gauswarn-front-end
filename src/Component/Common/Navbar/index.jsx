@@ -11,6 +11,11 @@ import Header from "./Header";
 import Home from "../../Pages/Home";
 import Certified from "../../Pages/Certified";
 import AboutUsHero from "./About/About-us-hero";
+import ProductShowcase from "../../Carousel/product-showcase";
+import VideoSection from "../../Video/Video-hero";
+import PromotionalBanner from "../../PromotionalBanner/promotional-banner";
+import PromotionalCards from "../../PromotionalBanner/promotional-cards";
+import HealthProductShowcase from "../../Banefit/health-product-showcase";
 
 const CustomNavbar = () => {
   const { cart } = useCartContext();
@@ -42,6 +47,11 @@ const CustomNavbar = () => {
       <Home />
       <Certified />
       <AboutUsHero />
+      <ProductShowcase />
+      <VideoSection />
+      <PromotionalCards />
+
+      <HealthProductShowcase />
     </>
 
     // <Navbar
