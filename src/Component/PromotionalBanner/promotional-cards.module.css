@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
-  max-width: 1200px;
+  max-width: 1350px;
   margin: 0 auto;
 }
 

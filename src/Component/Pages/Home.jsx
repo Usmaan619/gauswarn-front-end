@@ -1,110 +1,79 @@
-import React, { useEffect } from "react";
-import Imge1 from "../../asset/img/Home/Hero-Banner-Ghee.png";
-import Imge2 from "../../asset/img/Home/Hero Banner-two.png";
-import Imge3 from "../../asset/img/Home/Hero-Banner-three.png";
-import Imge from "../../asset/img/Home/Hero.png";
-// import Imge4 from "../../asset/img/Home/Hero-Banner-one.png";
-import Imgeeres1 from "../../asset/img/Home/Hero-Banner-Ghee-mobile.png";
-import Imgeeres2 from "../../asset/img/Responsive/Mobile_screen-two.png";
-import Imgeeres3 from "../../asset/img/Responsive/Mobile  Gauswran Screen Banner 1.jpg";
-// import Imgeeres4 from "../../asset/img/Responsive/Mobile_screen-one.png";
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import BannerImg1 from "../../asset/new-img/banner-main-page/banner1.png";
+import BannerImg2 from "../../asset/new-img/banner-main-page/banner2.png";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
-const Home = () => {
-  useEffect(() => {
-    const carousel = document.querySelector("#carouselExampleControls");
-    if (carousel) {
-      new window.bootstrap.Carousel(carousel, {
-        interval: 3500, // Adjust the interval if needed
-        ride: "carousel",
-      });
-    }
-  }, []);
-  return (
-    <>
-      <div className="home">
-        <div className="row">
-          <div
-            id="carouselExampleControls"
-            className="carousel slide carousel-fade header-carousel"
-            data-bs-ride="carousel"
-            // data-bs-interval="3000"
-            data-bs-pause="false" // Set this to false to avoid pausing
-          >
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <picture>
-                  <source media="(max-width: 768px)" srcSet={Imge} />
-                  <source media="(max-width: 1024px)" srcSet={Imge} />
-                  <img
-                    src={Imge}
-                    className="d-block w-100 fade-in-img"
-                    alt="Slide 1"
-                  />
-                </picture>
-              </div>
-              <div className="carousel-item">
-                <picture>
-                  <source media="(max-width: 768px)" srcSet={Imge} />
-                  <source media="(max-width: 1024px)" srcSet={Imge} />
-                  <img
-                    src={Imge}
-                    className="d-block w-100 fade-in-img"
-                    alt="Slide 1"
-                  />
-                </picture>
-              </div>
-              <div className="carousel-item">
-                <picture>
-                  <source media="(max-width: 768px)" srcSet={Imge} />
-                  <source media="(max-width: 1024px)" srcSet={Imge} />
-                  <img
-                    src={Imge}
-                    className="d-block w-100 fade-in-img"
-                    alt="Slide 1"
-                  />
-                </picture>
-              </div>
-              {/* <div className="carousel-item">
-                <picture>
-                  <source media="(max-width: 768px)" srcSet={Imgeeres4} />
-                  <source media="(max-width: 1024px)" srcSet={Imgeeres4} />
-                  <img  src={Imge4} className="d-block w-100 fade-in-img" alt="Slide 1" />
-                </picture>
-              </div> */}
-            </div>
+const slides = [
+  { desktop: BannerImg1, mobile: BannerImg1, alt: "Banner 1" },
+  { desktop: BannerImg2, mobile: BannerImg2, alt: "Banner 2" },
+];
 
-            <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleControls"
-              data-bs-slide="prev"
-            >
-              {/* <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              >
-              </span> */}
-              <BsChevronLeft className="text-dark fs-1" />
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleControls"
-              data-bs-slide="next"
-            >
-              {/* <span
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span> */}
-              <BsChevronRight className="text-dark fs-1" />
-              <span className="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div>
+const Home = () => {
+  // Custom arrow components
+  const CustomPrevArrow = (onClickHandler, hasPrev, label) =>
+    hasPrev && (
+      <button
+        type="button"
+        onClick={onClickHandler}
+        title={label}
+        className="custom-arrow custom-arrow-prev"
+        aria-label="Previous"
+      >
+        <BsChevronLeft className="carousel-icon" />
+      </button>
+    );
+
+  const CustomNextArrow = (onClickHandler, hasNext, label) =>
+    hasNext && (
+      <button
+        type="button"
+        onClick={onClickHandler}
+        title={label}
+        className="custom-arrow custom-arrow-next"
+        aria-label="Next"
+      >
+        <BsChevronRight className="carousel-icon" />
+      </button>
+    );
+
+  return (
+    <div className="home">
+      <div className="carousel-container">
+        <Carousel
+          showArrows={true}
+          showStatus={false}
+          showThumbs={false}
+          infiniteLoop={true}
+          autoPlay={true}
+          interval={6500}
+          transitionTime={600}
+          swipeable={true}
+          emulateTouch={true}
+          dynamicHeight={false}
+          stopOnHover={false}
+          // renderArrowPrev={CustomPrevArrow}
+          // renderArrowNext={CustomNextArrow}
+          className="main-carousel"
+          width={"100%"}
+        >
+          {slides.map((item, index) => (
+            <div key={index} className="carousel-slide">
+              <picture>
+                <source media="(max-width: 768px)" srcSet={item.mobile} />
+                <img
+                  src={item.desktop}
+                  alt={item.alt}
+                  className="carousel-full-image"
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              </picture>
+            </div>
+          ))}
+        </Carousel>
       </div>
-    </>
+    </div>
   );
 };
 

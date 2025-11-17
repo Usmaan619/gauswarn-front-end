@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../../../asset/img/Logo/RAJLAXMI JAVIK PNG.png";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
 import { GiShoppingBag } from "react-icons/gi";
 import FooterTopImg from "../../../asset/img/Background/footer-img-top.png";
 import { MdOutlineMail } from "react-icons/md";
@@ -36,36 +31,8 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="shopnow-fixed rounded-circle">
-        <Link to="/singleproduct">
-          <GiShoppingBag className="fs-2 text-white" title="Shop Now"/>
-        </Link>
-      </div>
-      <div className="fixed-whatsapp">
-        <ReactWhatsapp
-          number="+918769215905" // Replace with your number
-          message="Hello! I have an inquiry."
-          style={{
-            display: "inline-block",
-            backgroundColor: "transparent",
-            border: "none",
-          }}
-        >
-          <FaWhatsapp
-            style={{
-              fontSize: "40px",
-              color: "#ffffff",
-              cursor: "pointer",
-              transition: "transform 0.3s ease",
-            }}
-            title="Chat with us on WhatsApp"
-          />
-        </ReactWhatsapp>
-      </div>
-      <div className="mt-5">
-        <img className="img-fluid w-100" src={FooterTopImg} alt="Background" />
-      </div>
-      <div className="background-color-pullman-green py-2">
+
+      <div className="background-color-pullman-green ">
         <div className="container">
           <div className="row">
             {/* Logo */}
@@ -79,83 +46,6 @@ const Footer = () => {
             </div>
 
             {/* Social Icons */}
-            {/* <div className="col-md-6 d-flex justify-content-md-end justify-content-center align-items-center">
-              {[
-                { Icon: FaFacebook, alt: "Facebook", link: "https://www.facebook.com/ramdev.sweets/" },
-                { Icon: FaInstagram, alt: "Instagram" },
-                { Icon: FaYoutube, alt: "YouTube", link:"https://www.youtube.com/@rajendrarajpurohit8787" },
-                { Icon: FaWhatsapp, alt: "WhatsApp" },
-              ].map((icon, index) => (
-                <NavLink key={index} to={icon.link} className="mx-2" target="_blank">
-                  <icon.Icon
-                    className="icon-size rounded-circle text-color-eggshell"
-                    style={{ width: "35px", height: "35px", padding: "4px" }}
-                    title={icon.alt}
-                  />
-                </NavLink>
-              ))}
-            </div> */}
-
-            <div className="col-md-6 d-flex justify-content-md-end justify-content-center align-items-center">
-              {[
-                {
-                  Icon: FaFacebook,
-                  alt: "Facebook",
-                  type: "icon",
-                  link: "https://www.facebook.com/ramdev.sweets/",
-                },
-                {
-                  Icon: FaInstagram,
-                  alt: "Instagram",
-                  type: "icon",
-                  link: "https://www.instagram.com/rajlaxmiorganic_/",
-                },
-                {
-                  Icon: FaYoutube,
-                  alt: "YouTube",
-                  type: "icon",
-                  link: "https://www.youtube.com/@rajendrarajpurohit8787",
-                },
-                {
-                  Icon: FaLinkedin,
-                  alt: "LinkeDin",
-                  type: "icon",
-                },
-              ].map((item, index) =>
-                item.type === "icon" ? (
-                  <NavLink
-                    key={index}
-                    to={item.link}
-                    target="_blank"
-                    className="mx-2"
-                  >
-                    <item.Icon
-                      className="icon-size text-color-eggshell"
-                      style={{ width: "35px", height: "35px", padding: "4px" }}
-                      title={item.alt}
-                    />
-                  </NavLink>
-                ) : (
-                  <ReactWhatsapp
-                    key={index}
-                    number={item.phoneNumber}
-                    message={item.message}
-                    className="mx-2"
-                    style={{
-                      display: "inline-block",
-                      backgroundColor: "transparent",
-                      border: "none",
-                    }}
-                  >
-                    <FaWhatsapp
-                      className="icon-size rounded-circle text-color-eggshell"
-                      style={{ width: "35px", height: "35px", padding: "4px" }}
-                      title={item.alt}
-                    />
-                  </ReactWhatsapp>
-                )
-              )}
-            </div>
 
             <div className="col-12">
               <hr className="hr-line-background" />
@@ -230,12 +120,7 @@ const Footer = () => {
                 >
                   Refund Policy
                 </a>
-                {/* <a
-                  href="/cancel"
-                  className="footer-general w-100 text-decoration-none mb-2"
-                >
-                  Terms and Condition
-                </a> */}
+
                 <a
                   href="/privacy"
                   className="footer-general w-100 text-decoration-none mb-lg-2"
@@ -300,28 +185,17 @@ const Footer = () => {
           <div className="row">
             <div className="col-md-12 col-lg-12 d-sm-flex justify-content-around text-center text-md-start mb-2 mb-md-0">
               <div className="text-color-pullman-green text-center py-1">
-                Copyright &copy; 2024 Rajlakshmi Jaiviks International. <br />
-                <b>All Rights Reserved</b>
+                {/* Copyright &copy; 2024 Rajlakshmi Jaiviks International. <br />
+                <b>All Rights Reserved</b> */}
+                <b>Copyright © 2025 Gauswarn. All Rights Reserved.</b>
               </div>
               <div className="text-color-pullman-green text-center py-1">
-                Powered by <br />{" "}
-                <strong>Intelligence Fusion Technologies</strong>
+                <br /> <strong></strong>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Scroll to Top Button */}
-      {isVisible && (
-        <button
-          onClick={scrollToTop}
-          className="back-to-top fs-3 fw-bold"
-          aria-label="Scroll to top"
-        >
-          ↑
-        </button>
-      )}
     </footer>
   );
 };

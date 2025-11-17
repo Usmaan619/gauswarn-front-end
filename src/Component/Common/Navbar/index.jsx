@@ -16,6 +16,9 @@ import VideoSection from "../../Video/Video-hero";
 import PromotionalBanner from "../../PromotionalBanner/promotional-banner";
 import PromotionalCards from "../../PromotionalBanner/promotional-cards";
 import HealthProductShowcase from "../../Banefit/health-product-showcase";
+import DiscoverHeroSection from "../../Discover/discover-hero-section";
+import Footer from "../Footer";
+import NewFooter from "../Footer/Footer";
 
 const CustomNavbar = () => {
   const { cart } = useCartContext();
@@ -52,6 +55,8 @@ const CustomNavbar = () => {
       <PromotionalCards />
 
       <HealthProductShowcase />
+      <DiscoverHeroSection />
+      <NewFooter />
     </>
 
     // <Navbar

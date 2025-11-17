@@ -10,10 +10,10 @@ const CarouselCard = ({ product }) => {
           alt={product.title}
           className="carousel-image"
         />
-        <div className="carousel-overlay">
+        {/* <div className="carousel-overlay">
           <h3 className="carousel-title">{product.title}</h3>
           <p className="carousel-subtitle">{product.subtitle}</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
