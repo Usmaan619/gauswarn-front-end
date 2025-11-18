@@ -37,6 +37,7 @@ import HealthProductShowcase from "./Component/Banefit/health-product-showcase.j
 import DiscoverHeroSection from "./Component/Discover/discover-hero-section.jsx";
 import NewFooter from "./Component/Common/Footer/Footer.jsx";
 import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
+import ProductPage from "./Component/Products/product-page.jsx";
 
 function App() {
   const { setCart } = useCartContext();
@@ -74,14 +75,9 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      {/* <CustomNavbar /> */}
-      {/* <div className="sticky-navbar-wrapper">
-        <TopBanner />
-        <Header />
-      </div> */}
 
       <NavbarWrapper />
-      <Home />
+      {/* <Home />
       <Certified />
       <AboutUsHero />
       <ProductShowcase />
@@ -89,7 +85,9 @@ function App() {
       <PromotionalCards />
 
       <HealthProductShowcase />
-      <DiscoverHeroSection />
+      <DiscoverHeroSection /> */}
+
+      <ProductPage />
       <NewFooter />
     </>
   );
