@@ -11,9 +11,9 @@ const Certified = () => {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-12 py-5">
+          <div className="col-md-12 ">
             {/* Certified Logos */}
-            <div className="row justify-content-around align-items-center">
+            <div className="d-flex justify-content-between my-4  my-sm-3 my-md-4 my-xl-4 flex-wrap gap-4">
               {[
                 { src: FssaiLogo, alt: "FSSAI Certification" },
                 { src: IndiaOrganicLogo, alt: "India Organic Certification" },
@@ -22,7 +22,7 @@ const Certified = () => {
               ].map((logo, index) => (
                 <div
                   key={index}
-                  className="col-md-2 col-sm-4 col-6 d-flex justify-content-center mb-4"
+                  className=" d-flex justify-content-center mb-4"
                 >
                   <img
                     className="img-fluid"

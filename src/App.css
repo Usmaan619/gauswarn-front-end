@@ -1378,6 +1378,13 @@ body {
   position: relative;
 }
 
+.about-images-section-mobile {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .images-container {
   position: relative;
   width: 100%;
@@ -1559,6 +1566,9 @@ body {
     font-size: 36px;
   }
 
+  .about-images-section-mobile {
+    display: flex;
+  }
   .images-container {
     height: 400px;
   }
@@ -1594,6 +1604,10 @@ body {
 
   .about-images-section {
     min-height: 350px;
+  }
+
+  .about-images-section-mobile {
+    display: flex;
   }
 
   .images-container {
@@ -1665,6 +1679,10 @@ body {
 
   .images-container {
     height: 280px;
+  }
+
+  .images-container-mobile {
+    height: 180px;
   }
 
   .main-img {
@@ -1744,10 +1762,20 @@ body {
 
   .about-images-section {
     min-height: 450px;
+    display: none;
+  }
+
+  .about-images-section-mobile {
+    min-height: 250px;
+    display: flex;
   }
 
   .images-container {
     height: 270px;
+  }
+
+  .images-container-mobile {
+    height: 180px;
   }
 
   .main-img {
@@ -1803,6 +1831,9 @@ body {
   .images-container {
     height: 200px;
   }
+  .images-container-mobile {
+    height: 180px;
+  }
 
   .main-img {
     width: 60%;
@@ -1816,6 +1847,11 @@ body {
   .cta-button {
     padding: 8px 16px;
     font-size: 12px;
+  }
+
+  .about-images-section-mobile {
+    min-height: 250px;
+    display: flex;
   }
 }
 
@@ -1984,7 +2020,7 @@ body {
 
 /* Carousel Section */
 .carousel-section {
-  flex: 1;
+  /* flex: 1; */
   min-width: 0;
 }
 
@@ -1994,6 +2030,12 @@ body {
 
 .carousel-card-wrapper {
   padding: 0 15px;
+}
+
+@media (max-width: 480px) {
+  .carousel-card-wrapper {
+    padding: 0 15px;
+  }
 }
 
 .carousel-card {
@@ -2171,7 +2213,7 @@ body {
   }
 
   .carousel-card {
-    height: 300px;
+    height: auto;
   }
 
   .prev-arrow,
@@ -2215,7 +2257,7 @@ body {
   }
 
   .carousel-card {
-    height: 250px;
+    height: auto;
   }
 
   .carousel-title {
@@ -2228,7 +2270,7 @@ body {
   }
 
   .products-carousel {
-    margin: 0 -20px;
+    margin: 0 0px;
   }
 
   .carousel-card-wrapper {

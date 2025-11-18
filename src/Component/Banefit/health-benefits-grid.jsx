@@ -9,8 +9,6 @@ import image4 from "../../asset/new-img/banefit/heart.png";
 import image5 from "../../asset/new-img/banefit/bad.png";
 import image6 from "../../asset/new-img/banefit/hand-eye.png";
 
-// src/asset/new-img/banefit/bad.png src/asset/new-img/banefit/brain.png src/asset/new-img/banefit/hand-eye.png src/asset/new-img/banefit/heart.png src/asset/new-img/banefit/lowers.png src/asset/new-img/banefit/muscel.png
-
 const benefits = [
   {
     id: 1,

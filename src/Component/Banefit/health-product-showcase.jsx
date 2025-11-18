@@ -17,9 +17,9 @@ export default function HealthProductShowcase() {
         </div>
 
         {/* Right side - Health Benefits Grid */}
-        <div className="health-benefits-section">
+        {/* <div className="health-benefits-section">
           <HealthBenefitsGrid />
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -24,48 +24,20 @@ export default function AboutUsHero() {
               />
             </div>
           </div>
+          <div className="about-images-section-mobile">
+            <div className="images-container-mobile">
+              <img
+                src={about1}
+                alt="Gauswarn Ghee Jar"
+                className="w-100 about-img
+              "
+              />
+            </div>
+          </div>
 
           {/* Right - Content */}
           <div className="about-content-section">
             {/* Badge */}
-            {/* <div className="about-badge">
-              <svg
-                className="badge-svg"
-                viewBox="0 0 100 100"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="45"
-                  fill="none"
-                  stroke="#4caf50"
-                  strokeWidth="2"
-                  strokeDasharray="5,5"
-                />
-                <circle cx="50" cy="50" r="20" fill="#4caf50" />
-                <text
-                  x="50"
-                  y="56"
-                  textAnchor="middle"
-                  fontSize="8"
-                  fill="white"
-                  fontWeight="bold"
-                >
-                  ✓
-                </text>
-                <text
-                  x="50"
-                  y="70"
-                  textAnchor="middle"
-                  fontSize="6"
-                  fill="#4caf50"
-                  fontWeight="600"
-                >
-                  About Us
-                </text>
-              </svg>
-            </div> */}
 
             {/* Main Heading */}
             <h1 className="about-main-heading">
