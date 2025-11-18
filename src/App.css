@@ -2324,3 +2324,72 @@ body {
   }
 }
 /* ========================================================== */
+
+/* MAIN NAVBAR WRAPPER (TopBanner + Header) */
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #fff;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* HIDE ONLY TOPBANNER ON SCROLL */
+.navbar-wrapper.banner-hide {
+  transform: translateY(-50px); /* Default: Desktop TopBanner Height */
+}
+
+/* -----------------------------------
+   RESPONSIVE TOPBANNER + HEADER SPACE
+----------------------------------- */
+
+/* Base body padding – Desktop */
+body {
+  padding-top: 100px; /* TopBanner + Header */
+}
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  body {
+    padding-top: 150px; /* Bigger header on tablet */
+  }
+
+  .navbar-wrapper.banner-hide {
+    transform: translateY(-45px); /* Slightly smaller banner */
+  }
+}
+
+/* Mobile (480px - 768px) */
+@media (max-width: 768px) {
+  body {
+    padding-top: 165px; /* TopBanner + larger mobile header */
+  }
+
+  .navbar-wrapper.banner-hide {
+    transform: translateY(-40px); /* Mobile banner height */
+  }
+}
+
+/* Small Mobile (Below 480px) */
+@media (max-width: 480px) {
+  body {
+    padding-top: 109px;
+  }
+
+  .navbar-wrapper.banner-hide {
+    transform: translateY(-35px);
+  }
+}
+
+/* Extra small screens (Below 360px) */
+@media (max-width: 360px) {
+  body {
+    padding-top: 109px;
+  }
+
+  .navbar-wrapper.banner-hide {
+    transform: translateY(-32px);
+  }
+}

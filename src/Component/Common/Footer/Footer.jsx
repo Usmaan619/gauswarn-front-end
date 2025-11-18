@@ -75,7 +75,11 @@ export default function NewFooter() {
 
                 <div className="footer-social-icon">
                   <span>Also available on</span>
-                  <a href="#">
+                  <a
+                    href="https://amzn.in/d/h5EBdP1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img
                       src={amazonlogo}
                       className="fab fa-facebook-f footer-facebook-bg-img"
@@ -83,7 +87,11 @@ export default function NewFooter() {
                       srcset=""
                     />
                   </a>
-                  <a href="#">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.flipkart.com/gau-swarn-a2-gir-cow-ghee-glass-bottle/p/itm48ba9c417cecd?pid=GHEHEB58QTQYDCPN&lid=LSTGHEHEB58QTQYDCPNN7EVS1&marketplace=FLIPKART&fm=factBasedRecommendation%2FrecentlyViewed&iid=R%3Arv%3Bpt%3App%3Buid%3A0286c346-c471-11f0-be4a-472d57e0f270%3B.GHEHEB58QTQYDCPN&ppt=pp&ppn=pp&ssid=du7fmefosg0000001763464984878&otracker=pp_reco_Recently%2BViewed_2_40.productCard.RECENTLY_VIEWED_gau%2Bswarn%2BA2%2BGIR%2BCOW%2BGHEE%2BGlass%2BBottle_GHEHEB58QTQYDCPN_factBasedRecommendation%2FrecentlyViewed_1&otracker1=pp_reco_PINNED_factBasedRecommendation%2FrecentlyViewed_Recently%2BViewed_DESKTOP_HORIZONTAL_productCard_cc_2_NA_view-all&cid=GHEHEB58QTQYDCPN"
+                  >
                     <img
                       src={flipkartlogo}
                       className="fab fa-facebook-f footer-facebook-bg-img"
@@ -177,23 +185,29 @@ export default function NewFooter() {
             {/* Right Section - Social Icons */}
             <div className="social-section">
               <a
-                href="#facebook"
+                href="https://www.facebook.com/profile.php?id=61577996747357"
                 className="social-icon facebook"
                 aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <i className="fab fa-facebook-f"></i>
               </a>
               <a
-                href="#instagram"
+                href="https://www.instagram.com/gauswarn/"
                 className="social-icon instagram"
                 aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <i className="fab fa-instagram"></i>
               </a>
               <a
-                href="#youtube"
+                href="https://www.youtube.com/@gauswarngircowghee-2"
                 className="social-icon youtube"
                 aria-label="YouTube"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <i className="fab fa-youtube"></i>
               </a>

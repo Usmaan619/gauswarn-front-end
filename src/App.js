@@ -25,6 +25,18 @@ import Admin from "./Component/Pages/Admin.jsx";
 import NotFound from "./Component/Pages/NotFound.jsx"; // Import 404 Page
 import Gallery from "./Component/Pages/Gallery.jsx";
 import About from "./Component/Pages/About.jsx";
+import TopBanner from "./Component/Common/Navbar/TopBanner.jsx";
+import Header from "./Component/Common/Navbar/Header.jsx";
+import Home from "./Component/Pages/Home.jsx";
+import Certified from "./Component/Pages/Certified.jsx";
+import AboutUsHero from "./Component/Common/Navbar/About/About-us-hero.jsx";
+import ProductShowcase from "./Component/Carousel/product-showcase.jsx";
+import VideoSection from "./Component/Video/Video-hero.jsx";
+import PromotionalCards from "./Component/PromotionalBanner/promotional-cards.jsx";
+import HealthProductShowcase from "./Component/Banefit/health-product-showcase.jsx";
+import DiscoverHeroSection from "./Component/Discover/discover-hero-section.jsx";
+import NewFooter from "./Component/Common/Footer/Footer.jsx";
+import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
 
 function App() {
   const { setCart } = useCartContext();
@@ -62,7 +74,23 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <CustomNavbar />
+      {/* <CustomNavbar /> */}
+      {/* <div className="sticky-navbar-wrapper">
+        <TopBanner />
+        <Header />
+      </div> */}
+
+      <NavbarWrapper />
+      <Home />
+      <Certified />
+      <AboutUsHero />
+      <ProductShowcase />
+      <VideoSection />
+      <PromotionalCards />
+
+      <HealthProductShowcase />
+      <DiscoverHeroSection />
+      <NewFooter />
     </>
   );
 }

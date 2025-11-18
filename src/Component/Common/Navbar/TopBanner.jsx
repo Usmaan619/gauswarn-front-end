@@ -31,23 +31,29 @@ export default function TopBanner() {
           {/* Right Section - Social Icons */}
           <div className="social-section">
             <a
-              href="#facebook"
+              href="https://www.facebook.com/profile.php?id=61577996747357"
               className="social-icon facebook"
               aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="fab fa-facebook-f"></i>
             </a>
             <a
-              href="#instagram"
+              href="https://www.instagram.com/gauswarn/"
               className="social-icon instagram"
               aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="fab fa-instagram"></i>
             </a>
             <a
-              href="#youtube"
+              href="https://www.youtube.com/@gauswarngircowghee-2"
               className="social-icon youtube"
               aria-label="YouTube"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="fab fa-youtube"></i>
             </a>

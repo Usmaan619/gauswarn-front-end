@@ -166,7 +166,7 @@
 /* MOBILE - BEST FIXES */
 @media (max-width: 768px) {
   .health-product-showcase {
-    height: 220px; /* No crop */
+    height: 190px; /* No crop */
     padding: 2.5rem 1rem;
 
     background-position: top center; /* Best for mobile */
