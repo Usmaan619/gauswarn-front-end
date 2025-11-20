@@ -1,0 +1,140 @@
+.product-hero-section {
+  position: relative;
+  /* min-height: 80dvh; */
+  background-image: url("../../asset/new-img/product-hero-section-img/product-hero-section.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 50dvh;
+}
+
+.product-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.product-hero-content {
+  padding: 2rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+.product-hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.product-hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #ffffff;
+  text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-cta {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+  color: #000000;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+}
+
+.btn-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+}
+
+.btn-cta:active {
+  transform: translateY(-1px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 991px) {
+  .product-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .product-hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .btn-cta {
+    font-size: 1.1rem;
+    padding: 0.9rem 2.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .product-hero-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-cta {
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+  }
+
+  .product-hero-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-hero-title {
+    font-size: 1.5rem;
+  }
+
+  .product-hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .btn-cta {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.75rem;
+  }
+}
+
+/* ghee */

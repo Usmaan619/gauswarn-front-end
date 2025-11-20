@@ -30,7 +30,7 @@ body {
   overflow-x: hidden;
   position: unset;
   top: 0 !important;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Montserrat" !important;
 }
 :root {
   --color-drab: #6d5b23;

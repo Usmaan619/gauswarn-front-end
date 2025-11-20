@@ -77,7 +77,7 @@ function App() {
       <ScrollToTop />
 
       <NavbarWrapper />
-      {/* <Home />
+      <Home />
       <Certified />
       <AboutUsHero />
       <ProductShowcase />
@@ -85,10 +85,10 @@ function App() {
       <PromotionalCards />
 
       <HealthProductShowcase />
-      <DiscoverHeroSection /> */}
+      <DiscoverHeroSection />
 
-      <ProductPage />
       <NewFooter />
+      <ProductPage />
     </>
   );
 }

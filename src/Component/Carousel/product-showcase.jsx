@@ -12,7 +12,7 @@ import Rectangle1 from "../../asset/new-img/mini-slider-img/Rectangle1.png";
 import Rectangle2 from "../../asset/new-img/mini-slider-img/Rectangle2.png";
 import Rectangle3 from "../../asset/new-img/mini-slider-img/Rectangle3.png";
 
-const ProductShowcase = () => {
+const ProductShowcase = ({ showProduct = true }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -74,7 +74,8 @@ const ProductShowcase = () => {
 
         <div className="showcase-content">
           {/* Featured Product */}
-          <ProductCard />
+
+          {showProduct && <ProductCard />}
 
           {/* Carousel */}
           <div className="carousel-section">

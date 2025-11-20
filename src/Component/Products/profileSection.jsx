@@ -1,0 +1,68 @@
+import { useState } from "react";
+import "./profileSection.css";
+import tab1 from "../../asset/new-img/tabs/tabs1.jpg";
+
+const data = [
+  {
+    key: "description",
+    label: "DESCRIPTION",
+    content: `Discover the golden essence of purity with Premium A2 Desi Cow Ghee — your all-natural source of nourishment, energy, and wellness.
+Handcrafted using the traditional Bilona method from grass-fed Gir cow’s milk, each spoonful is rich in aroma, taste, and nutrition — just like homemade ghee.
+This pure A2 Ghee is packed with essential fatty acids, antioxidants, and vitamins that support digestion, enhance immunity, and boost overall vitality — without any preservatives or chemicals.
+Whether you’re cooking, meditating, or caring for your family’s health, our ghee adds a touch of tradition and purity to every meal, every day.
+✅ 100% Natural | A2 Milk | Chemical-Free | Gluten-Free | Traditionally Made`,
+    image: tab1,
+  },
+  {
+    key: "WhyChooseUs",
+    label: "WHY CHOOSE US",
+    content: `✓ Improves digestion  
+✓ Supports immunity  
+✓ Increases stamina  
+✓ Boosts brain health  
+✓ Pure A2 nutrients`,
+    image: tab1,
+  },
+  {
+    key: "KeyBenefits",
+    label: "KEY BENEFITS",
+    content: `Use for:  
+• Cooking  
+• Morning empty stomach  
+• Kids nutrition  
+• Meditation  
+• Ayurvedic healing`,
+    image: tab1,
+  },
+];
+
+export default function TabsSection() {
+  const [activeTab, setActiveTab] = useState(data[0].key);
+
+  const active = data.find((item) => item.key === activeTab);
+
+  return (
+    <>
+      {/* Tabs */}
+      <div className="tabs mt-5">
+        {data.map((item) => (
+          <button
+            key={item.key}
+            className={`tab-btn ${activeTab === item.key ? "active" : ""}`}
+            onClick={() => setActiveTab(item.key)}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      {/* ANIMATED CONTENT */}
+      <div className="content-wrapper fade-slide mx-4">
+        <div className="image-box">
+          <img src={active.image} alt="" />
+        </div>
+        <div className="text-content">{active.content}</div>
+      </div>
+    </>
+  );
+}
