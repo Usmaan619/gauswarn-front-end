@@ -28,7 +28,7 @@ import ProductShowcase from "../Carousel/product-showcase";
 import GheeFeatureProductPage from "./ghee-product";
 import PromotionalCards from "../PromotionalBanner/promotional-cards";
 
-const ProductPage = () => {
+const ProductPageMain = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("500ML");
   const [isFavorite, setIsFavorite] = useState(false);
@@ -528,4 +528,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default ProductPageMain;

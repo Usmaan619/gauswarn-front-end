@@ -1,32 +1,8 @@
 import "./App.css";
-import Main from "./Component/Pages/Main";
 import { Routes, Route } from "react-router-dom";
-import SingleProcess from "./Component/Pages/SingleProcessed.jsx";
-import Finalpayment from "./Component/Pages/Finalpayment.jsx";
-import CustomNavbar from "./Component/Common/Navbar/index.jsx";
 import ScrollToTop from "./Component/Common/Scroll-to-Top/index.jsx";
-import Contact from "./Component/Pages/Contact.jsx";
-import Refund from "./Component/Pages/Refund.jsx";
-import Cancel from "./Component/Pages/Cancel.jsx";
-import Privacy from "./Component/Pages/Privacy.jsx";
-import Shipping from "./Component/Pages/Shipping.jsx";
-import Lab from "./Component/Pages/Lab.jsx";
-import Faq from "./Component/Pages/Faq.jsx";
-import Loader from "./Component/Common/Loader/loader.jsx";
-import TrackingOrder from "./Component/Pages/TrackOrder.jsx";
-import FeedbackForm from "./Component/Pages/Feedback.jsx";
-import AOS from "aos";
 import { useEffect, useState } from "react";
-import TermsConditions from "./Component/Pages/Terms&Conditions.jsx";
-import PaymentDone from "./Component/Pages/PaymentSuccess.jsx";
-import PaymentFail from "./Component/Pages/PaymentFailed.jsx";
 import { useCartContext } from "./Component/Context/UserContext.jsx";
-import Admin from "./Component/Pages/Admin.jsx";
-import NotFound from "./Component/Pages/NotFound.jsx"; // Import 404 Page
-import Gallery from "./Component/Pages/Gallery.jsx";
-import About from "./Component/Pages/About.jsx";
-import TopBanner from "./Component/Common/Navbar/TopBanner.jsx";
-import Header from "./Component/Common/Navbar/Header.jsx";
 import Home from "./Component/Pages/Home.jsx";
 import Certified from "./Component/Pages/Certified.jsx";
 import AboutUsHero from "./Component/Common/Navbar/About/About-us-hero.jsx";
@@ -37,13 +13,14 @@ import HealthProductShowcase from "./Component/Banefit/health-product-showcase.j
 import DiscoverHeroSection from "./Component/Discover/discover-hero-section.jsx";
 import NewFooter from "./Component/Common/Footer/Footer.jsx";
 import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
-import ProductPage from "./Component/Products/product-page.jsx";
+import ProductPageMain from "./Component/Products/product-page-main.jsx";
+import Aos from "aos";
 
 function App() {
   const { setCart } = useCartContext();
 
   useEffect(() => {
-    AOS.init({
+    Aos.init({
       offset: 100,
       duration: 1000,
       easing: "ease-in-out",
@@ -88,7 +65,7 @@ function App() {
       <DiscoverHeroSection />
 
       <NewFooter />
-      <ProductPage />
+      <ProductPageMain />
     </>
   );
 }
