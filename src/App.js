@@ -15,6 +15,8 @@ import NewFooter from "./Component/Common/Footer/Footer.jsx";
 import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
 import ProductPageMain from "./Component/Products/product-page-main.jsx";
 import Aos from "aos";
+import AboutUsHeroMain from "./Component/AboutUs-new/about-us-new-main-page.jsx";
+import BlogMainPageNew from "./Component/Blog/blog-new-main.jsx";
 
 function App() {
   const { setCart } = useCartContext();
@@ -54,7 +56,7 @@ function App() {
       <ScrollToTop />
 
       <NavbarWrapper />
-      <Home />
+      {/* <Home />
       <Certified />
       <AboutUsHero />
       <ProductShowcase />
@@ -64,8 +66,14 @@ function App() {
       <HealthProductShowcase />
       <DiscoverHeroSection />
 
+      <ProductPageMain /> */}
+
+      {/* aboutus */}
+
+      {/* <AboutUsHeroMain /> */}
+
+      <BlogMainPageNew />
       <NewFooter />
-      <ProductPageMain />
     </>
   );
 }

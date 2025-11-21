@@ -1,0 +1,153 @@
+.filter-newsletter-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.filter-card,
+.newsletter-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
+  padding: 22px 22px;
+  margin: 0 auto;
+  max-width: 400px;
+  border: 1px solid #ececec #FED525;
+}
+
+.filter-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+.filter-icon svg {
+  vertical-align: middle;
+}
+.filter-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+}
+.filter-label {
+  font-size: 19px;
+  font-weight: 700;
+  color: #61420b;
+  margin-bottom: 10px;
+  display: block;
+}
+.filter-section {
+  margin-bottom: 22px;
+}
+.filter-select {
+  width: 100%;
+  padding: 13px;
+  font-size: 17px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 2px;
+  background: #f8f8f8;
+  font-weight: 500;
+  color: #222;
+}
+.filter-select:focus {
+  outline: none;
+  border-color: #fabb12;
+}
+
+.date-range-fields {
+  display: flex;
+  align-items: center;
+}
+.date-input {
+  flex: 1;
+  padding: 13px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-right: 6px;
+  background: #f8f8f8;
+}
+.date-separator {
+  color: #249629;
+  font-weight: 700;
+  margin: 0 7px;
+}
+.calendar-icon svg {
+  margin-left: 3px;
+  vertical-align: middle;
+}
+
+/* Main yellow button */
+.main-btn {
+  width: 100%;
+  padding: 10px;
+  background: #ffd324;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #6b480c;
+  margin-top: 7px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(255, 218, 36, 0.08);
+  transition: background 0.15s;
+}
+.main-btn:hover {
+  background: #fcc201;
+}
+
+/* NEWSLETTER CARD */
+.newsletter-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.newsletter-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #7b490b;
+}
+.newsletter-icon svg {
+  vertical-align: middle;
+}
+.newsletter-desc {
+  font-size: 16px;
+  color: #6b480c;
+  margin-bottom: 19px;
+}
+.newsletter-email {
+  width: 100%;
+  padding: 13px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin-bottom: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 520px) {
+  .filter-card,
+  .newsletter-card {
+    padding: 10px 8px;
+    max-width: 98vw;
+    border-radius: 12px;
+  }
+  .main-btn {
+    font-size: 18px;
+    padding: 11px;
+  }
+  .filter-card-title,
+  .newsletter-title {
+    font-size: 19px;
+  }
+  .filter-label {
+    font-size: 16px;
+  }
+  .newsletter-desc {
+    font-size: 14px;
+  }
+}
