@@ -24,14 +24,16 @@ export default function DiscoverHeroSection() {
         <div className="discover-hero-right">
           {/* Heading */}
           <h1 className="discover-hero-heading">
-            Discover the purity behind every drop of Gauswarn Ghee
+            Discover the Purity Behind Every Drop of Gauswarn Ghee
           </h1>
 
           {/* Subheading */}
           <p className="discover-hero-subheading">
-            Our ghee isn't just food — it's a legacy of Indian tradition. From
-            hand-churned Bilona butter to golden aromatic ghee, every step
-            reflects love, patience, and purity.
+            At Gauswarn, ghee isn’t just a product — it’s a legacy of Indian
+            tradition. From hand-churned Bilona butter to rich, golden ghee,
+            every step reflects love, patience, and pure Vedic craftsmanship. We
+            follow time-tested methods to deliver authentic Desi Gir Cow Ghee
+            your family can trust.
           </p>
 
           {/* Divider */}
@@ -39,9 +41,18 @@ export default function DiscoverHeroSection() {
 
           {/* Stats Section */}
           <div className="discover-stats-grid">
-            <StatsCard number="100k+" label="Kilogram Gir Ghee" />
-            <StatsCard number="50k+" label="Happy Families Served" />
-            <StatsCard number="99%" label="Reusable Packaging" />
+            <StatsCard
+              number="35,000+"
+              label="Kilograms of Gir Cow Ghee Produced"
+            />
+            <StatsCard
+              number="22,000+"
+              label="Happy Families Served Across India"
+            />
+            <StatsCard
+              number="99%"
+              label="Reusable & Eco-Friendly Packaging Used"
+            />
           </div>
 
           {/* Divider */}
@@ -49,10 +60,24 @@ export default function DiscoverHeroSection() {
 
           {/* Checklist Section */}
           <div className="discover-checklist-grid">
-            <ChecklistItem text="Hand-Churned. Never Machine-Made." />
-            <ChecklistItem text="Packed Fresh, Straight from Gaushala." />
-            <ChecklistItem text="Slow-Cooked for Perfect Aroma." />
-            <ChecklistItem text="0% Preservatives. 100% Love." />
+            <ChecklistItem
+              text="Traditional Taste, Modern Efficiency
+
+Although the process is machine-assisted, we follow traditional guidelines to preserve authentic gir cow ghee flavour and nutrition."
+            />
+            <ChecklistItem
+              text="Packed Fresh, Straight From Our Gaushala.
+Farm-fresh ghee crafted from grass-fed, healthy Gir cows."
+            />
+            <ChecklistItem
+              text=" Slow-Cooked for the Perfect Aroma & Texture.
+Low-flame traditional heating preserves natural flavor and aroma.
+"
+            />
+            <ChecklistItem
+              text="0% Preservatives. 100% Love.
+No chemicals, no additives — only pure, trustworthy Desi ghee."
+            />
           </div>
 
           {/* CTA Button */}

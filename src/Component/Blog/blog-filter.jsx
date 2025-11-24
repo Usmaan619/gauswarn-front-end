@@ -85,7 +85,7 @@ const FilterNewsletterCard = () => {
         </div>
         <button className="main-btn">Apply Filters</button>
       </div>
-      <div className="newsletter-card mt-4">
+      <div className="newsletter-card my-5">
         <div className="newsletter-header">
           <span className="newsletter-icon">
             {/* SVG or Emoji */}{" "}

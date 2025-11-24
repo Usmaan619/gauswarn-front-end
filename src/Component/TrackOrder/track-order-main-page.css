@@ -1,0 +1,506 @@
+/* =========================================================
+   PAGE WRAPPER
+========================================================= */
+.order-tracking-container {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 20px;
+}
+
+/* =========================================================
+   ORDER STATUS SECTION
+========================================================= */
+.order-tracking-status-section {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.order-tracking-section-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #4b3109;
+  margin-bottom: 8px;
+}
+
+.order-tracking-order-number {
+  font-size: 24px;
+  color: #4b3109;
+  margin-bottom: 40px;
+}
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+.order-tracking-progress-wrapper {
+  margin-bottom: 50px;
+}
+
+.order-tracking-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.order-tracking-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50 0%, #e8b931 100%);
+  border-radius: 10px;
+  transition: width 0.6s ease;
+  position: relative;
+}
+
+.order-tracking-progress-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* =========================================================
+   TIMELINE (DESKTOP HORIZONTAL)
+========================================================= */
+.order-tracking-timeline-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.order-tracking-timeline-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.order-tracking-timeline-step {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* =========================================================
+   TIMELINE ICON
+========================================================= */
+.order-tracking-step-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.order-tracking-step-icon.completed {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  animation: pulse 0.6s ease;
+}
+
+.order-tracking-step-icon.active {
+  background: linear-gradient(135deg, #e8b931, #d4a72c);
+  animation: bounce 1s infinite;
+}
+
+.order-tracking-step-icon.pending {
+  background: #fff8e1;
+  border: 3px solid #e8b931;
+}
+
+.order-tracking-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+.order-tracking-step-icon.pending .order-tracking-icon-wrapper {
+  color: #e8b931;
+}
+
+.order-tracking-icon-wrapper svg {
+  width: 100%;
+  height: 100%;
+}
+
+.order-tracking-check-icon {
+  width: 45px;
+  height: 45px;
+}
+
+/* ICON ANIMATIONS */
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* =========================================================
+   TIMELINE CONNECTING LINE
+========================================================= */
+.order-tracking-step-line {
+  position: absolute;
+  top: 45px;
+  left: calc(50% + 45px);
+  width: calc(100% - 45px);
+  height: 4px;
+  background: #e0e0e0;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.order-tracking-step-line.completed {
+  background: #4caf50;
+}
+
+.order-tracking-step-line.active {
+  background: linear-gradient(to right, #e8b931 40%, #e0e0e0 40%);
+}
+
+.order-tracking-timeline-item:last-child .order-tracking-step-line {
+  display: none;
+}
+
+/* =========================================================
+   TIMELINE TEXT
+========================================================= */
+.order-tracking-step-content {
+  text-align: center;
+  max-width: 200px;
+}
+
+.order-tracking-step-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #4b3109;
+}
+
+.order-tracking-step-title.active,
+.order-tracking-step-title.pending {
+  color: #e8b931;
+}
+
+.order-tracking-step-description {
+  font-size: 15px;
+  color: #4b3109;
+  line-height: 1.4;
+}
+
+.order-tracking-step-description.active,
+.order-tracking-step-description.pending {
+  color: #e8b931;
+}
+
+.order-tracking-step-date {
+  font-size: 14px;
+  color: #8b7d6f;
+}
+
+/* =========================================================
+   SUPPORT SECTION
+========================================================= */
+.order-tracking-support-section {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+  border-radius: 20px;
+  padding: 50px 40px;
+  text-align: center;
+}
+
+.order-tracking-support-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #4b3109;
+  margin-bottom: 12px;
+}
+
+.order-tracking-support-subtitle {
+  font-size: 20px;
+  color: #4b3109;
+  margin-bottom: 50px;
+}
+
+.order-tracking-support-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.order-tracking-support-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.order-tracking-support-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.order-tracking-support-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #fff8f0;
+  color: #e8b931;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.order-tracking-support-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.order-tracking-support-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4b3109;
+  margin-bottom: 10px;
+}
+
+.order-tracking-support-card-description {
+  font-size: 16px;
+  color: #4b3109;
+}
+
+/* =========================================================
+   CTA BUTTON
+========================================================= */
+.order-tracking-btn-cta {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+  color: #000;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.order-tracking-btn-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+}
+
+/* =========================================================
+   DEMO BUTTONS
+========================================================= */
+.order-tracking-demo-controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px dashed #e0e0e0;
+}
+
+.order-tracking-demo-btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #e8b931 0%, #d4a72c 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.order-tracking-demo-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.order-tracking-demo-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1024px) {
+  .order-tracking-section-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .order-tracking-timeline-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .order-tracking-timeline-item {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .order-tracking-timeline-step {
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .order-tracking-step-line {
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 40px;
+  }
+
+  .order-tracking-step-content {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-tracking-step-icon {
+    width: 65px;
+    height: 65px;
+  }
+
+  .order-tracking-icon-wrapper {
+    width: 28px;
+    height: 28px;
+  }
+
+  .order-tracking-step-line {
+    top: 65px;
+  }
+
+  .order-tracking-step-title {
+    font-size: 16px;
+  }
+  .order-tracking-step-description {
+    font-size: 13px;
+  }
+}
+
+/* Support cards grid – full responsive fix */
+.order-tracking-support-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tablet (768px – 1024px) */
+@media (max-width: 1024px) {
+  .order-tracking-support-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .order-tracking-support-section {
+    padding: 40px 25px;
+  }
+}
+
+/* Mobile (less than 768px) */
+@media (max-width: 768px) {
+  .order-tracking-support-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .order-tracking-support-card {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .order-tracking-support-title {
+    font-size: 30px;
+  }
+
+  .order-tracking-support-subtitle {
+    font-size: 18px;
+  }
+}
+
+/* Small Phones (less than 480px) */
+@media (max-width: 480px) {
+  .order-tracking-support-section {
+    padding: 35px 20px;
+  }
+
+  .order-tracking-support-card {
+    padding: 28px 20px;
+  }
+
+  .order-tracking-support-title {
+    font-size: 26px;
+  }
+
+  .order-tracking-support-subtitle {
+    font-size: 15px;
+  }
+
+  .order-tracking-support-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .order-tracking-support-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+}

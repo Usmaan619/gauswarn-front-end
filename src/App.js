@@ -17,6 +17,9 @@ import ProductPageMain from "./Component/Products/product-page-main.jsx";
 import Aos from "aos";
 import AboutUsHeroMain from "./Component/AboutUs-new/about-us-new-main-page.jsx";
 import BlogMainPageNew from "./Component/Blog/blog-new-main.jsx";
+import GheeGallery from "./Component/Gallery/gallery-main.jsx";
+import ContactMainPage from "./Component/Contact/contact-main-page.jsx";
+import OrderTracking from "./Component/TrackOrder/track-order-main-page.jsx";
 
 function App() {
   const { setCart } = useCartContext();
@@ -56,7 +59,7 @@ function App() {
       <ScrollToTop />
 
       <NavbarWrapper />
-      {/* <Home />
+      <Home />
       <Certified />
       <AboutUsHero />
       <ProductShowcase />
@@ -66,13 +69,22 @@ function App() {
       <HealthProductShowcase />
       <DiscoverHeroSection />
 
-      <ProductPageMain /> */}
+      <ProductPageMain />
 
       {/* aboutus */}
 
-      {/* <AboutUsHeroMain /> */}
+      <AboutUsHeroMain />
 
       <BlogMainPageNew />
+
+      {/* ghee gallery */}
+      <GheeGallery />
+
+      <ContactMainPage />
+
+      {/* track order */}
+
+      <OrderTracking />
       <NewFooter />
     </>
   );

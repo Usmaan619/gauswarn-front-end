@@ -4,15 +4,26 @@
   gap: 32px;
 }
 
-.filter-card,
-.newsletter-card {
+.filter-card {
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
-  padding: 22px 22px;
+  padding: 22px 35px;
   margin: 0 auto;
   max-width: 400px;
-  border: 1px solid #ececec #FED525;
+  border: 1px solid #ececec #fed525;
+}
+
+.newsletter-card {
+  /* background: #fff; */
+  box-shadow: 0 12px 28px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(135deg, #fff 0%, #ffd700 100%);
+  border-radius: 18px;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
+  padding: 22px 35px;
+  margin: 0 auto;
+  max-width: 400px;
+  /* border: 1px solid #ececec #FED525; */
 }
 
 .filter-card-header {

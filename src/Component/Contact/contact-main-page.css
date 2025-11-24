@@ -1,0 +1,125 @@
+/* Layout */
+.ghee-new-contact-section {
+  /* margin-top: 20px; */
+  background: #fef4db;
+}
+
+.ghee-new-contact-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* FORM */
+.ghee-new-contact-form form {
+  width: 100%;
+}
+
+.ghee-new-form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.ghee-new-form-row.full {
+  flex-direction: column;
+}
+
+/* Inputs */
+.ghee-new-form-row input,
+.ghee-new-form-row textarea {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: #555555;
+}
+
+.ghee-new-error-text {
+  color: red;
+  font-size: 13px;
+  margin-top: -12px;
+  display: block;
+}
+
+/* Details Box */
+.ghee-new-contact-details-box {
+  background: #fbfbfb;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.ghee-new-details-item {
+  margin-bottom: 25px;
+  padding-left: 35px;
+  position: relative;
+}
+
+.ghee-new-details-item i {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  color: #29a44f;
+  font-size: 20px;
+}
+
+.ghee-new-btn-cta {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+  color: #000000;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+}
+
+.ghee-new-btn-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+}
+
+.ghee-new-btn-cta:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ghee-new-form-row {
+    flex-direction: column;
+  }
+
+  .ghee-new-details-item {
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .ghee-new-btn-cta {
+    font-size: 1.1rem;
+    padding: 0.9rem 2.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .ghee-new-btn-cta {
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ghee-new-btn-cta {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.75rem;
+  }
+}
