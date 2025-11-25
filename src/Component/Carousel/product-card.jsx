@@ -4,7 +4,7 @@ import { TiStarFullOutline } from "react-icons/ti";
 
 const ProductCard = () => {
   const [quantity, setQuantity] = useState("1000ml");
-  // #FFF9E0
+
   return (
     <div className="featured-product">
       <div className="product-image-container">
@@ -44,7 +44,7 @@ const ProductCard = () => {
 
         <button className="add-to-cart-btn mt-3">
           <ShoppingCart size={18} />
-          Add to Cart
+          Buy Now
         </button>
       </div>
     </div>

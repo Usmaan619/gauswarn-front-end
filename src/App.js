@@ -56,40 +56,102 @@ function App() {
   const hideNavbar = window.location.pathname;
 
   return (
-    <>
+    // <>
+    //   <ScrollToTop />
+
+    //   <NavbarWrapper />
+
+    //   {/* main page */}
+    //   <Home />
+    //   <Certified />
+    //   <AboutUsHero />
+    //   <ProductShowcase />
+    //   <VideoSection />
+    //   <PromotionalCards />
+
+    //   <HealthProductShowcase />
+    //   <DiscoverHeroSection />
+
+    //   <ProductPageMain />
+
+    //   {/* main page end */}
+
+    //   {/* aboutus */}
+
+    //   <AboutUsHeroMain />
+
+    //   {/* blog page */}
+    //   <BlogMainPageNew />
+
+    //   {/* ghee gallery */}
+    //   <GheeGallery />
+
+    //   {/* contact page */}
+    //   <ContactMainPage />
+
+    //   {/* track order */}
+
+    //   <OrderTracking />
+
+    //   {/* b2b */}
+
+    //   <B2BLandingPage />
+
+    //   <NewFooter />
+    // </>
+
+
+ <>
       <ScrollToTop />
 
       <NavbarWrapper />
-      <Home />
-      <Certified />
-      <AboutUsHero />
-      <ProductShowcase />
-      <VideoSection />
-      <PromotionalCards />
 
-      <HealthProductShowcase />
-      <DiscoverHeroSection />
+      <Routes>
+        {/* Home (landing page) */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+              <Certified />
+              <AboutUsHero />
+              <ProductShowcase />
+              <VideoSection />
+              <PromotionalCards />
+              <HealthProductShowcase />
+              <DiscoverHeroSection />
+            </>
+          }
+        />
 
-      <ProductPageMain />
+        {/* About us page */}
+        <Route path="/about" element={<AboutUsHeroMain />} />
 
-      {/* aboutus */}
+        {/* Blog page */}
+        <Route path="/blog" element={<BlogMainPageNew />} />
 
-      <AboutUsHeroMain />
+        {/* Gallery page */}
+        <Route path="/gallery" element={<GheeGallery />} />
 
-      <BlogMainPageNew />
+        {/* Contact page */}
+        <Route path="/contact" element={<ContactMainPage />} />
 
-      {/* ghee gallery */}
-      <GheeGallery />
+        {/* Track order */}
+        <Route path="/track-order" element={<OrderTracking />} />
 
-      <ContactMainPage />
+        {/* B2B */}
+        <Route path="/b2b" element={<B2BLandingPage />} />
 
-      {/* track order */}
+        {/* Products separate route (optional) */}
+        <Route path="/products" element={<ProductPageMain />} />
 
-      <OrderTracking />
+        {/* 404 fallback */}
+        <Route
+          path="*"
+          element={<h2 style={{ textAlign: "center" }}>Page not found</h2>}
+        />
+      </Routes>
 
-      {/* b2b */}
-
-      <B2BLandingPage />
       <NewFooter />
     </>
   );

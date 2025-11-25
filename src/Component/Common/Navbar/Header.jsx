@@ -1,51 +1,134 @@
-"use client";
-
 import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import mainLogo from "../../../asset/new-img/logo/gauswarn-main-logo.png";
 
 export default function Header() {
   const [cartCount] = useState(1);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFixed, setIsFixed] = useState(false);
+  const navigate = useNavigate();
 
-  const [isSticky, setIsSticky] = useState(false);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsMenuOpen(false); // Close navbar after clicking
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 20);
+      setIsFixed(window.scrollY >= 50);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (path) => {
+    navigate(path);
+    scrollToTop();
+  };
+
   return (
-    <header className={`navbar-header ${isSticky ? "sticky" : ""}`}>
+    <header className={`navbar-header ${isFixed ? "fixed" : ""}`}>
       <div className="container-fluid px-4 px-md-3">
         <div className="d-flex align-items-center justify-content-between py-3 py-md-2 header-content">
-          <div className="logo-wrapper">
+          {/* Logo */}
+          <div
+            className="logo-wrapper"
+            onClick={() => handleNavClick("/")}
+            style={{ cursor: "pointer" }}
+          >
             <img src={mainLogo} alt="Gauswarn Logo" className="logo-image" />
           </div>
 
+          {/* Navigation - All Routes */}
           <nav className={`navbar-navs ${isMenuOpen ? "mobile-open" : ""}`}>
-            <a className="nav-link active" onClick={() => setIsMenuOpen(false)}>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `nav-link mx-2 text-center ${isActive ? "active" : ""}`
+              }
+              onClick={() => handleNavClick("/")}
+            >
               Home
-            </a>
-            <a className="nav-link" onClick={() => setIsMenuOpen(false)}>
-              About Us
-            </a>
-            <a className="nav-link" onClick={() => setIsMenuOpen(false)}>
+            </NavLink>
+
+            <NavLink
+              to="/products"
+              className={({ isActive }) =>
+                `nav-link mx-2 text-center ${isActive ? "active" : ""}`
+              }
+              onClick={() => handleNavClick("/products")}
+            >
+              Shop Now
+            </NavLink>
+
+            <NavLink
+              to="/track-order"
+              className={({ isActive }) =>
+                `nav-link mx-2 text-center ${isActive ? "active" : ""}`
+              }
+              onClick={() => handleNavClick("/track-order")}
+            >
               Track Order
-            </a>
-            <a className="nav-link" onClick={() => setIsMenuOpen(false)}>
+            </NavLink>
+
+            <NavLink
+              to="/gallery"
+              className={({ isActive }) =>
+                `nav-link mx-2 text-center ${isActive ? "active" : ""}`
+              }
+              onClick={() => handleNavClick("/gallery")}
+            >
+              Gallery
+            </NavLink>
+
+            <NavLink
+              to="/b2b"
+              className={({ isActive }) =>
+                `nav-link mx-2 text-center ${isActive ? "active" : ""}`
+              }
+              onClick={() => handleNavClick("/b2b")}
+            >
               B2B
-            </a>
-            <a className="nav-link" onClick={() => setIsMenuOpen(false)}>
+            </NavLink>
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                `nav-link mx-2 text-center ${isActive ? "active" : ""}`
+              }
+              onClick={() => handleNavClick("/blog")}
+            >
+              Blog
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `nav-link mx-2 text-center ${isActive ? "active" : ""}`
+              }
+              onClick={() => handleNavClick("/about")}
+            >
+              About Us
+            </NavLink>
+
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `nav-link mx-2 text-center ${isActive ? "active" : ""}`
+              }
+              onClick={() => handleNavClick("/contact")}
+            >
               Contact Us
-            </a>
+            </NavLink>
           </nav>
 
+          {/* Icons Section */}
           <div className="icons-section">
             {/* Cart Button */}
-            <div className="cart-button">
+            <button
+              className="cart-button"
+              onClick={() => handleNavClick("/cart")}
+              aria-label="Shopping Cart"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -60,10 +143,14 @@ export default function Header() {
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
               </svg>
               <span className="cart-label">Cart ({cartCount})</span>
-            </div>
+            </button>
 
             {/* Wishlist Icon */}
-            <button className="icon-btn wishlist-btn" aria-label="Wishlist">
+            <button
+              className="icon-btn wishlist-btn"
+              aria-label="Wishlist"
+              onClick={() => handleNavClick("/wishlist")}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -77,7 +164,7 @@ export default function Header() {
               </svg>
             </button>
 
-            {/* User Profile Icon */}
+            {/* Mobile Menu Toggle */}
             <button
               className="menu-toggle"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -93,9 +180,18 @@ export default function Header() {
                 stroke="currentColor"
                 strokeWidth="2"
               >
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
+                {isMenuOpen ? (
+                  <>
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </>
+                ) : (
+                  <>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                  </>
+                )}
               </svg>
             </button>
           </div>
