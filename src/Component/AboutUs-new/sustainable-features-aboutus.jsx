@@ -37,11 +37,11 @@ const SustainableFeaturesAboutus = () => {
 
   return (
     <div className="sustainable-features">
-      <div className="features-container">
+      <div className="sustainable-features-container">
         {features.map((feature) => (
-          <div key={feature?.id} className="feature-item">
-            <img src={feature?.icon} className="icon-wrapper" />
-            <h3 className="feature-title">{feature?.title}</h3>
+          <div key={feature?.id} className="sustainable-feature-item">
+            <img src={feature?.icon} className="sustainable-icon-wrapper" />
+            <h3 className="sustainable-feature-title">{feature?.title}</h3>
           </div>
         ))}
       </div>

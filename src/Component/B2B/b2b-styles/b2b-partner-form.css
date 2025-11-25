@@ -1,0 +1,196 @@
+.b2b-form-container {
+  min-height: 70vh;
+  /* background-color: #f5e6d3; */
+  background: #fef4db;
+
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.b2b-form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.b2b-form-header h1 {
+  font-size: 2.5rem;
+  color: #3d2817;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.b2b-form-header p {
+  font-size: 1rem;
+  color: #6b5545;
+}
+
+.b2b-inquiry-form {
+  background-color: #ffffff;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 980px;
+}
+
+.b2b-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.b2b-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.b2b-form-group.b2b-full-width {
+  margin-bottom: 30px;
+}
+
+.b2b-form-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3d2817;
+  margin-bottom: 10px;
+}
+
+.b2b-form-group input,
+.b2b-form-group select,
+.b2b-form-group textarea {
+  padding: 15px 18px;
+  font-size: 0.95rem;
+  border: 2px solid #d4c4b0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #3d2817;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.b2b-form-group input::placeholder,
+.b2b-form-group textarea::placeholder {
+  color: #9b8b7a;
+}
+
+.b2b-form-group input:focus,
+.b2b-form-group select:focus,
+.b2b-form-group textarea:focus {
+  outline: none;
+  border-color: #8b7355;
+  box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+}
+
+.b2b-form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%233d2817' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 45px;
+  cursor: pointer;
+}
+
+.b2b-form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.b2b-submit-btn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+  color: #3d2817;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+}
+
+.b2b-submit-btn:hover {
+  background-color: #f59e0b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(251, 191, 36, 0.4);
+}
+
+.b2b-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Tablet Responsive */
+@media (max-width: 768px) {
+  .b2b-form-header h1 {
+    font-size: 2rem;
+  }
+
+  .b2b-inquiry-form {
+    padding: 35px 25px;
+  }
+
+  .b2b-form-row {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+  }
+
+  .b2b-form-group.full-width {
+    margin-bottom: 25px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .b2b-form-container {
+    padding: 30px 15px;
+  }
+
+  .b2b-form-header {
+    margin-bottom: 30px;
+  }
+
+  .b2b-form-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .b2b-form-header p {
+    font-size: 0.9rem;
+  }
+
+  .b2b-inquiry-form {
+    padding: 25px 20px;
+    border-radius: 15px;
+  }
+
+  .b2b-form-group label {
+    font-size: 0.9rem;
+  }
+
+  .b2b-form-group input,
+  .b2b-form-group select,
+  .b2b-form-group textarea {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+
+  .b2b-submit-btn {
+    padding: 15px;
+    font-size: 1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .b2b-form-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .b2b-inquiry-form {
+    padding: 20px 15px;
+  }
+}

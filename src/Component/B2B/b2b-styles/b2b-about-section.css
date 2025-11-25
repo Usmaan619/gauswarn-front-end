@@ -1,0 +1,111 @@
+.b2b-aboutSection {
+  background: #fcf5e3;
+  padding: 60px 0;
+}
+
+.b2b-aboutGrid {
+  display: flex;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* Stats Card Modern */
+.b2b-statsCardModern {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  padding: 34px 40px;
+  min-width: 604px;
+  position: relative;
+}
+
+.b2b-statsList {
+  margin-top: 48px;
+}
+
+.b2b-statsRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid #f2e8d3;
+  color: #7a6942;
+  font-size: 18px;
+}
+
+.b2b-statsRow:last-child {
+  border-bottom: none;
+}
+
+.b2b-statsLabel {
+  font-weight: 400;
+}
+
+.b2b-statsValue {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Text Section */
+.b2b-aboutTextModern {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.b2b-sectionTitleModern {
+  font-size: 38px;
+  font-weight: 700;
+  color: #735c2e;
+}
+
+.b2b-aboutDescriptionModern {
+  font-size: 18px;
+  color: #6e6542;
+  line-height: 1.7;
+}
+
+.b2b-featuresModern {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.b2b-featureModern {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: #534725;
+}
+
+.b2b-ctaButtonModern {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+  color: #000000;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+  width: 250px;
+}
+
+.b2b-ctaButtonModern:hover {
+  background: #ffe577;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .b2b-aboutGrid {
+    flex-direction: column;
+    gap: 36px;
+  }
+  .b2b-statsCardModern {
+    min-width: 100%;
+  }
+}

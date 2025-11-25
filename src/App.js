@@ -20,6 +20,7 @@ import BlogMainPageNew from "./Component/Blog/blog-new-main.jsx";
 import GheeGallery from "./Component/Gallery/gallery-main.jsx";
 import ContactMainPage from "./Component/Contact/contact-main-page.jsx";
 import OrderTracking from "./Component/TrackOrder/track-order-main-page.jsx";
+import B2BLandingPage from "./Component/B2B/b2b-main-page.jsx";
 
 function App() {
   const { setCart } = useCartContext();
@@ -85,6 +86,10 @@ function App() {
       {/* track order */}
 
       <OrderTracking />
+
+      {/* b2b */}
+
+      <B2BLandingPage />
       <NewFooter />
     </>
   );

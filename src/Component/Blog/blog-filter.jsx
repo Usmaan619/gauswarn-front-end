@@ -32,55 +32,26 @@ const FilterNewsletterCard = () => {
           </span>
           <span className="filter-card-title">Filter by</span>
         </div>
+
         <div className="filter-section">
-          <label className="filter-label">Market Tags</label>
-          <select className="filter-select">
-            <option>All Market</option>
-            {/* more options as needed */}
-          </select>
-        </div>
-        <div className="filter-section">
-          <label className="filter-label">Submarket Tags</label>
-          <select className="filter-select">
-            <option>All Submarket</option>
-            {/* more options as needed */}
-          </select>
-        </div>
-        <div className="filter-section">
-          <label className="filter-label">Date Range</label>
+          <label className="filter-label">Start Date Range</label>
           <div className="row">
             <input
-              type="text"
+              type="date"
               className="date-input"
               placeholder="mm/dd/yyyy"
             />
-            <span className="date-separator">to</span>
+          </div>
+        </div>
+
+        <div className="filter-section">
+          <label className="filter-label">End Date Range</label>
+          <div className="row">
             <input
-              type="text"
+              type="date"
               className="date-input"
               placeholder="mm/dd/yyyy"
             />
-            <span className="calendar-icon">
-              {/* SVG calendar icon */}{" "}
-              <svg height="22" width="22" viewBox="0 0 24 24">
-                <rect
-                  x="4"
-                  y="7"
-                  width="16"
-                  height="13"
-                  rx="3"
-                  fill="none"
-                  stroke="#666"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M16 3v4M8 3v4M4 11h16"
-                  stroke="#666"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
           </div>
         </div>
         <button className="main-btn">Apply Filters</button>
