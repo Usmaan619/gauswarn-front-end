@@ -1,5 +1,6 @@
 import React from "react";
 import "./gallery-main.css";
+import ProductHeroSection from "../Products/product-hero-section";
 const GheeShowcase = () => {
   const images = [
     {
@@ -72,6 +73,7 @@ const GheeShowcase = () => {
 
   return (
     <>
+      <ProductHeroSection />
       <div className="gallery-showcase-container">
         <div className="gallery-grid-container">
           {images.map((image) => (

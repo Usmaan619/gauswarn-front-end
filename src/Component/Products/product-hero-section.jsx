@@ -1,7 +1,11 @@
 import React from "react";
 
 import "./product-hero-section.css";
+import { useNavigate } from "react-router-dom";
 const ProductHeroSection = () => {
+  const navigate = useNavigate();
+
+  const goToBuyNow = () => navigate("/products");
   return (
     <section className="product-hero-section">
       <div className="product-hero-overlay"></div>
@@ -14,7 +18,9 @@ const ProductHeroSection = () => {
             <p className="product-hero-subtitle">
               Begin your GAUSWARN GHEE Wellness Journey Today!
             </p>
-            <button className="btn-cta">Buy now</button>
+            <button className="btn-cta" onClick={goToBuyNow}>
+              Buy now
+            </button>
           </div>
         </div>
       </div>
