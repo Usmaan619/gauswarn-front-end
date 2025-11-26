@@ -1,8 +1,10 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import ScrollToTop from "./Component/Common/Scroll-to-Top/index.jsx";
+import ScrollToTop from "./Component/Common/Scroll-to-Top/scroll-to-top.jsx";
 import { useEffect, useState } from "react";
 import { useCartContext } from "./Component/Context/UserContext.jsx";
+
+// MAIN HOME PAGE COMPONENTS
 import Home from "./Component/Pages/Home.jsx";
 import Certified from "./Component/Pages/Certified.jsx";
 import AboutUsHero from "./Component/Common/Navbar/About/About-us-hero.jsx";
@@ -11,20 +13,31 @@ import VideoSection from "./Component/Video/Video-hero.jsx";
 import PromotionalCards from "./Component/PromotionalBanner/promotional-cards.jsx";
 import HealthProductShowcase from "./Component/Banefit/health-product-showcase.jsx";
 import DiscoverHeroSection from "./Component/Discover/discover-hero-section.jsx";
-import NewFooter from "./Component/Common/Footer/Footer.jsx";
-import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
-import ProductPageMain from "./Component/Products/product-page-main.jsx";
-import Aos from "aos";
+
+// OTHER PAGES
 import AboutUsHeroMain from "./Component/AboutUs-new/about-us-new-main-page.jsx";
 import BlogMainPageNew from "./Component/Blog/blog-new-main.jsx";
 import GheeGallery from "./Component/Gallery/gallery-main.jsx";
 import ContactMainPage from "./Component/Contact/contact-main-page.jsx";
 import OrderTracking from "./Component/TrackOrder/track-order-main-page.jsx";
 import B2BLandingPage from "./Component/B2B/b2b-main-page.jsx";
+import ProductPageMain from "./Component/Products/product-page-main.jsx";
+import RefundMainPage from "./Component/Refund/refund-main.page.jsx";
+import ShippingPolicy from "./Component/Shipping-policy/shipping-policy-main-page.jsx";
+import PrivacyPolicy from "./Component/Privacy-Policy/privacy-policy-main-page.jsx";
+import FAQMainPage from "./Component/FAQ/faq-main-page.jsx";
+import TermsConditions from "./Component/Terms-And-Conditions/terms-and-condition.jsx";
+import LabReportMain from "./Component/Lab/lab-report-main.jsx";
+
+// FOOTER + NAVBAR
+import NewFooter from "./Component/Common/Footer/Footer.jsx";
+import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
+import Aos from "aos";
 
 function App() {
   const { setCart } = useCartContext();
 
+  // AOS INIT
   useEffect(() => {
     Aos.init({
       offset: 100,
@@ -36,78 +49,24 @@ function App() {
     });
   }, []);
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
+  // SESSION CART LOAD
   useEffect(() => {
     try {
       const storedCart = JSON.parse(sessionStorage.getItem("cart") || "[]");
       setCart(storedCart);
     } catch (error) {
-      console.error("Failed to parse cart from localStorage:", error);
+      console.error("Failed to parse cart:", error);
       setCart([]);
     }
   }, []);
 
-  const hideNavbar = window.location.pathname;
-
   return (
-    // <>
-    //   <ScrollToTop />
-
-    //   <NavbarWrapper />
-
-    //   {/* main page */}
-    //   <Home />
-    //   <Certified />
-    //   <AboutUsHero />
-    //   <ProductShowcase />
-    //   <VideoSection />
-    //   <PromotionalCards />
-
-    //   <HealthProductShowcase />
-    //   <DiscoverHeroSection />
-
-    //   <ProductPageMain />
-
-    //   {/* main page end */}
-
-    //   {/* aboutus */}
-
-    //   <AboutUsHeroMain />
-
-    //   {/* blog page */}
-    //   <BlogMainPageNew />
-
-    //   {/* ghee gallery */}
-    //   <GheeGallery />
-
-    //   {/* contact page */}
-    //   <ContactMainPage />
-
-    //   {/* track order */}
-
-    //   <OrderTracking />
-
-    //   {/* b2b */}
-
-    //   <B2BLandingPage />
-
-    //   <NewFooter />
-    // </>
-
-
- <>
+    <>
       <ScrollToTop />
-
       <NavbarWrapper />
 
       <Routes>
-        {/* Home (landing page) */}
+        {/* HOME PAGE */}
         <Route
           path="/"
           element={
@@ -124,31 +83,31 @@ function App() {
           }
         />
 
-        {/* About us page */}
+        {/* MAIN PAGES */}
         <Route path="/about" element={<AboutUsHeroMain />} />
-
-        {/* Blog page */}
         <Route path="/blog" element={<BlogMainPageNew />} />
-
-        {/* Gallery page */}
         <Route path="/gallery" element={<GheeGallery />} />
-
-        {/* Contact page */}
         <Route path="/contact" element={<ContactMainPage />} />
-
-        {/* Track order */}
         <Route path="/track-order" element={<OrderTracking />} />
-
-        {/* B2B */}
         <Route path="/b2b" element={<B2BLandingPage />} />
-
-        {/* Products separate route (optional) */}
         <Route path="/products" element={<ProductPageMain />} />
 
-        {/* 404 fallback */}
+        {/* NEW POLICY ROUTES */}
+        <Route path="/refund" element={<RefundMainPage />} />
+        <Route path="/shipping" element={<ShippingPolicy />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/faq" element={<FAQMainPage />} />
+        <Route path="/terms" element={<TermsConditions />} />
+        <Route path="/lab" element={<LabReportMain />} />
+
+        {/* 404 */}
         <Route
           path="*"
-          element={<h2 style={{ textAlign: "center" }}>Page not found</h2>}
+          element={
+            <h2 style={{ textAlign: "center", marginTop: "50px" }}>
+              Page Not Found
+            </h2>
+          }
         />
       </Routes>
 

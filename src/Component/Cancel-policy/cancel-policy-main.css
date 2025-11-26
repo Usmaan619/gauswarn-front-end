@@ -1,0 +1,543 @@
+/* Cancellation Policy Page Styles - Enhanced Version */
+.cancel {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.cancel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 15% 30%,
+      rgba(168, 237, 234, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(254, 214, 227, 0.1) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+.cancel-heading {
+  height: 420px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 50px rgba(168, 237, 234, 0.3);
+}
+
+.cancel-heading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.1) 30%,
+      rgba(255, 255, 255, 0.1) 70%,
+      transparent 70%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.1) 30%,
+      rgba(255, 255, 255, 0.1) 70%,
+      transparent 70%
+    );
+  background-size: 60px 60px;
+  animation: moveBackground 15s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(60px, 60px);
+  }
+}
+
+.cancel-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, #e0c3fc);
+}
+
+.cancel-heading img {
+  object-fit: cover;
+  object-position: center;
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(1.05) saturate(1.1);
+}
+
+.cancel-heading:hover img {
+  transform: scale(1.1) rotate(1deg);
+  filter: brightness(1.15) saturate(1.2);
+}
+
+.refund-list {
+  background: white;
+  border-radius: 25px;
+  box-shadow: 0 20px 60px rgba(142, 197, 252, 0.2);
+  padding: 4rem !important;
+  position: relative;
+  z-index: 10;
+  margin-top: -70px;
+  animation: fadeInUp 1s ease;
+  border: 2px solid rgba(168, 237, 234, 0.15);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.refund-list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
+  border-radius: 25px 25px 0 0;
+}
+
+.refund-list::after {
+  content: "✕";
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  font-size: 4rem;
+  color: #8ec5fc;
+  opacity: 0.05;
+  font-weight: bold;
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.refund-list p.fw-bold {
+  color: #2d3748;
+  line-height: 2;
+  margin-bottom: 3rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+  border-radius: 20px;
+  border-left: 6px solid #8ec5fc;
+  box-shadow: 0 8px 30px rgba(142, 197, 252, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.refund-list p.fw-bold::before {
+  content: "⚡";
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 3rem;
+  opacity: 0.15;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.25;
+  }
+}
+
+.refund-list p.fw-bold::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #8ec5fc 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.refund-list ul {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.refund-list ul li {
+  margin-bottom: 0;
+  padding: 1.8rem 2rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-left: 5px solid #8ec5fc;
+  border-radius: 15px;
+  line-height: 2;
+  color: #4a5568;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 4px 15px rgba(142, 197, 252, 0.1);
+  overflow: hidden;
+}
+
+.refund-list ul li::before {
+  content: "✓";
+  position: absolute;
+  left: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #8ec5fc 0%, #a8edea 100%);
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 20px rgba(142, 197, 252, 0.4);
+  transition: all 0.4s ease;
+}
+
+.refund-list ul li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, #8ec5fc 0%, #a8edea 100%);
+  transition: all 0.3s ease;
+}
+
+.refund-list ul li:hover {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  transform: translateX(20px) translateY(-5px);
+  box-shadow: 0 12px 40px rgba(142, 197, 252, 0.3);
+  border-left-width: 8px;
+}
+
+.refund-list ul li:hover::before {
+  left: 1rem;
+  transform: translateY(-50%) scale(1.2) rotate(360deg);
+  box-shadow: 0 8px 25px rgba(142, 197, 252, 0.6);
+}
+
+.refund-list ul li:hover::after {
+  width: 8px;
+}
+
+/* Alternating Card Colors */
+.refund-list ul li:nth-child(even) {
+  background: linear-gradient(135deg, #fef3f5 0%, #fce7eb 100%);
+  border-left-color: #fed6e3;
+}
+
+.refund-list ul li:nth-child(even)::before {
+  background: linear-gradient(135deg, #fed6e3 0%, #fbb6ce 100%);
+}
+
+.refund-list ul li:nth-child(even)::after {
+  background: linear-gradient(180deg, #fed6e3 0%, #fbb6ce 100%);
+}
+
+.refund-list ul li:nth-child(even):hover {
+  background: linear-gradient(135deg, #fce7eb 0%, #fbcfe8 100%);
+  border-left-color: #fbb6ce;
+}
+
+/* Icon Animation for List Items */
+.refund-list ul li:first-child::before {
+  content: "📋";
+  font-size: 1rem;
+}
+.refund-list ul li:nth-child(2)::before {
+  content: "🔄";
+  font-size: 1rem;
+}
+.refund-list ul li:nth-child(3)::before {
+  content: "💳";
+  font-size: 1rem;
+}
+.refund-list ul li:nth-child(4)::before {
+  content: "⏱️";
+  font-size: 1rem;
+}
+.refund-list ul li:nth-child(5)::before {
+  content: "📦";
+  font-size: 1rem;
+}
+.refund-list ul li:nth-child(6)::before {
+  content: "💰";
+  font-size: 1rem;
+}
+.refund-list ul li:nth-child(7)::before {
+  content: "🚚";
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .refund-list {
+    width: 85% !important;
+    padding: 3rem !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .refund-list {
+    width: 90% !important;
+    padding: 2.5rem !important;
+    margin-top: -50px;
+  }
+
+  .cancel-heading {
+    height: 350px;
+  }
+
+  .refund-list::after {
+    font-size: 3rem;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .refund-list p.fw-bold {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .refund-list ul li {
+    padding: 1.5rem 1.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .refund-list {
+    width: 92% !important;
+    padding: 2rem !important;
+    border-radius: 20px;
+  }
+
+  .cancel-heading {
+    height: 280px;
+  }
+
+  .refund-list::after {
+    font-size: 2.5rem;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .refund-list p.fw-bold {
+    font-size: 0.95rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .refund-list p.fw-bold::before {
+    font-size: 2.5rem;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .refund-list ul {
+    font-size: 0.9rem;
+    gap: 1.2rem;
+  }
+
+  .refund-list ul li {
+    padding: 1.3rem 1.4rem;
+  }
+
+  .refund-list ul li::before {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+
+  .refund-list ul li:hover {
+    transform: translateX(15px) translateY(-3px);
+  }
+}
+
+@media (max-width: 576px) {
+  .cancel::before {
+    opacity: 0.5;
+  }
+
+  .refund-list {
+    width: 95% !important;
+    padding: 1.5rem !important;
+    margin-top: -35px;
+    border-radius: 15px;
+  }
+
+  .cancel-heading {
+    height: 220px;
+  }
+
+  .refund-list::before {
+    height: 4px;
+  }
+
+  .refund-list::after {
+    font-size: 2rem;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .refund-list p.fw-bold {
+    font-size: 0.85rem;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-left-width: 4px;
+  }
+
+  .refund-list p.fw-bold::before {
+    font-size: 2rem;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .refund-list ul {
+    font-size: 0.82rem;
+    gap: 1rem;
+  }
+
+  .refund-list ul li {
+    padding: 1.1rem 1.2rem;
+    border-left-width: 4px;
+    border-radius: 12px;
+  }
+
+  .refund-list ul li::before {
+    width: 26px;
+    height: 26px;
+    font-size: 0.8rem;
+    left: -30px;
+  }
+
+  .refund-list ul li::after {
+    width: 4px;
+  }
+
+  .refund-list ul li:hover {
+    transform: translateX(12px) translateY(-2px);
+    border-left-width: 6px;
+  }
+
+  .refund-list ul li:hover::before {
+    left: 0.8rem;
+  }
+
+  .refund-list ul li:hover::after {
+    width: 6px;
+  }
+}
+
+@media (max-width: 375px) {
+  .refund-list {
+    padding: 1.2rem !important;
+  }
+
+  .refund-list p.fw-bold {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+
+  .refund-list ul li {
+    font-size: 0.78rem;
+    padding: 1rem;
+  }
+
+  .refund-list ul li::before {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .cancel {
+    background: white;
+  }
+
+  .cancel::before {
+    display: none;
+  }
+
+  .cancel-heading {
+    height: auto;
+    background: #a8edea;
+  }
+
+  .cancel-heading::before,
+  .cancel-heading::after {
+    display: none;
+  }
+
+  .refund-list {
+    box-shadow: none;
+    margin-top: 20px;
+  }
+
+  .refund-list::after {
+    display: none;
+  }
+
+  .refund-list ul li:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

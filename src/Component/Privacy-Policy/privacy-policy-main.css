@@ -1,0 +1,9 @@
+.privacy-policy-main {
+  background: white;
+  border-radius: 20px;
+  /* box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15); */
+  padding: 4rem !important;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease;
+}
