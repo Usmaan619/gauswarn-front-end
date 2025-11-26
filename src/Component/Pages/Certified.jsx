@@ -1,10 +1,10 @@
 import React from "react";
 
 // Images
-import FssaiLogo from "../../asset/img/Icons/FSSAI.svg";
-import IndiaOrganicLogo from "../../asset/img/Certified/Natural icon.png";
-import Usda from "../../asset/img/Certified/Orignal icon.png";
-import Apeda from "../../asset/img/Icons/apeda-seeklogo.com.svg";
+import FssaiLogo from "../../asset/new-img/certified/FSSAI.svg";
+import IndiaOrganicLogo from "../../asset/new-img/certified/Natural-icon.png";
+import Usda from "../../asset/new-img/certified/Orignal-icon.png";
+import Apeda from "../../asset/new-img/certified/apeda-seeklogo.com.svg";
 
 const Certified = () => {
   return (

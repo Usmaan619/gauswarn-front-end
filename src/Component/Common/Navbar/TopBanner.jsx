@@ -23,14 +23,14 @@ export default function TopBanner() {
           </div>
 
           {/* Center Section - Rating */}
-          <div className="top-banner-rating-section">
+          {/* <div className="top-banner-rating-section">
             <span className="top-banner-rating-text">
               4.8 Stars across 20k reviews
             </span>
             <span className="top-banner-stars top-banner-rating-text">
               ★★★★★
             </span>
-          </div>
+          </div> */}
 
           {/* Right Section - Social Icons */}
           <div className="social-section">

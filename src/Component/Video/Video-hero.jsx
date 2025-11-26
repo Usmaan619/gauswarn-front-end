@@ -3,7 +3,7 @@ import styles from "./hero-section.module.css";
 
 // import VideoSource from "../../asset/img/Video/gauswarn.mp4";
 
-import VideoSource from "../../asset/img/Video/gauswarn.mp4";
+import VideoSource from "../../asset/new-img/Video/gauswarn.mp4";
 
 export default function VideoSection() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
