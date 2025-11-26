@@ -1,0 +1,89 @@
+/* Hide desktop nav on mobile */
+.desktop-nav {
+  display: none;
+}
+
+/* Hamburger */
+.new-header-hamburger {
+  width: 22px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 200;
+}
+
+.new-header-hamburger span {
+  height: 3px;
+  width: 100%;
+  background: #1e1e23;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+/* Animation */
+.new-header-hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+  background: #1e1e23;
+}
+.new-header-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.new-header-hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+  background: #1e1e23;
+}
+
+/* Mobile Slide Menu */
+.new-header-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 240px;
+  height: 100vh;
+  background: #f5f6fa;
+  padding: 120px 25px;
+  box-shadow: 0 0 10px #85888c;
+  transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 150;
+}
+.new-header-mobile-menu.open {
+  left: 0;
+}
+
+.new-header-m-nav-link {
+  display: block;
+  padding: 12px 0;
+  font-size: 1.3rem;
+  color: #1e1e23;
+  text-decoration: none;
+}
+.new-header-m-nav-link:hover {
+  opacity: 0.5;
+}
+
+/* Overlay */
+.new-header-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 120;
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .desktop-nav {
+    display: flex;
+    gap: 18px;
+  }
+  .new-header-hamburger {
+    display: none;
+  }
+  .new-header-mobile-menu {
+    display: none;
+  }
+}
