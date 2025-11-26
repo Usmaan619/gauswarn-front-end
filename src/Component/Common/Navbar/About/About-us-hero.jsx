@@ -1,5 +1,5 @@
-import about1 from "../../../../asset/img/about1.png";
-import about2 from "../../../../asset/img/about2.png";
+import about1 from "../../../../asset/new-img/about-main/about1.png";
+import about2 from "../../../../asset/new-img/about-main/about2.png";
 import cupicon from "../../../../asset/cup.png";
 import leavesicon from "../../../../asset/leaves-icon.png";
 
