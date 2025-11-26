@@ -1004,23 +1004,31 @@ const FinalPaymentMainPage = () => {
                     <div className="new-itemWeight">{item.weight}</div>
                   </div>
 
-                  <div className="new-quantityControl">
-                    <button
-                      onClick={() => updateQuantity(index, -1)}
-                      disabled={item.quantity <= 1}
-                      className="new-qtyButton"
-                    >
-                      <Minus size={14} />
-                    </button>
-
-                    <span className="new-quantity">{item.quantity}</span>
-
-                    <button
-                      onClick={() => updateQuantity(index, 1)}
-                      className="new-qtyButton"
-                    >
-                      <Plus size={14} />
-                    </button>
+                  <div className="payment-quantity-section">
+                    <div className="payment-quantity-control">
+                      <button
+                        className="payment-quantity-btn payment-decrease-btn"
+                        onClick={() => updateQuantity(index, -1)}
+                        disabled={item.quantity <= 1}
+                        aria-label="Decrease quantity"
+                      >
+                        <Minus size={18} />
+                      </button>
+                      <input
+                        type="number"
+                        className="payment-quantity-input"
+                        value={item.quantity}
+                        // onChange={handleQuantityChange}
+                        min="1"
+                      />
+                      <button
+                        className="payment-quantity-btn payment-increase-btn"
+                        onClick={() => updateQuantity(index, 1)}
+                        aria-label="Increase quantity"
+                      >
+                        <Plus size={18} />
+                      </button>
+                    </div>
                   </div>
 
                   <div className="new-itemPrice">₹{item.price}</div>

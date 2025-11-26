@@ -282,3 +282,68 @@
   font-weight: 600;
   margin-top: 20px;
 }
+
+.payment-quantity-section {
+  /* padding: 0 0 20px 0;
+  border-bottom: 1px solid var(--border-color); */
+}
+
+.payment-quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+}
+
+.payment-quantity-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.payment-quantity-btn:hover {
+  border-color: var(--primary-yellow);
+  background-color: #fffbf0;
+}
+
+.payment-quantity-btn:active {
+  transform: scale(0.95);
+}
+
+.payment-quantity-input {
+  width: 70px;
+  padding: 10px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+.payment-quantity-input:focus {
+  outline: none;
+  border-color: var(--primary-yellow);
+  background-color: #fffbf0;
+}
+
+/* Remove number input spinner */
+.payment-quantity-input::-webkit-outer-spin-button,
+.payment-quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.payment-quantity-input[type="number"] {
+  -moz-appearance: textfield;
+}

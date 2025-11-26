@@ -28,7 +28,7 @@ export default function PartnerInquiryForm() {
   return (
     <div className="b2b-form-container">
       <div className="b2b-form-header">
-        <h1>Partner Inquiry Form</h1>
+        <h1>Inquiry Form</h1>
         <p>Fill in your details and we'll get back to you within 24 hours</p>
       </div>
 
