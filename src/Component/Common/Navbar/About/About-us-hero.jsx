@@ -2,8 +2,13 @@ import about1 from "../../../../asset/new-img/about-main/about1.png";
 import about2 from "../../../../asset/new-img/about-main/about2.png";
 import cupicon from "../../../../asset/cup.png";
 import leavesicon from "../../../../asset/leaves-icon.png";
+import { useNavigate } from "react-router-dom";
 
 export default function AboutUsHero() {
+  const naigate = useNavigate();
+
+  const learnMoreAbout = () => naigate("/about");
+
   return (
     <section className="about-us-hero">
       <div className="container-custom">
@@ -41,33 +46,29 @@ export default function AboutUsHero() {
 
             {/* Main Heading */}
             <h1 className="about-main-heading">
-              Pure Desi Ghee From Our Gaushala to Your Home – Crafted With Care
-              & Tradition At Gauswarn, we don’t just produce ghee — we protect
-              purity.
+              Pure A2 Desi Gir Cow Ghee – From Our Gaushala to Your Home
             </h1>
 
             {/* Description Paragraphs */}
             <p className="about-paragraph">
-              Every drop of our Pure Desi Ghee comes directly from our own
-              grass-fed, healthy Desi Gir cows, nurtured with love, devotion,
-              and ethical farming practices.
+              At GAUSWARN, purity isn’t just a promise — it’s our tradition. Our
+              A2 Desi Ghee is made from the milk of our own grass-fed Gir cows,
+              nurtured with care and ethical farming practices.
             </p>
 
             <p className="about-paragraph">
-              Using the traditional Bilona method, we prepare ghee that carries:
+              Prepared using the ancient Bilona method, our ghee delivers:
             </p>
 
             <p className="about-paragraph">
-              • The authentic taste of Indian tradition <br />
-              • The rich aroma of naturally cultured butter <br />
-              • The nutritional benefits of pure A2 <br />
-              ghee Our process is slow, natural, and rooted in centuries-old
-              wisdom — ensuring your family receives chemical-free,
-              preservative-free, 100% authentic Desi ghee.
+              • Authentic traditional taste <br />
+              • Rich natural aroma <br />
+              • High-nutrition A2 goodness <br />• 100% chemical-free,
+              preservative-free purity
             </p>
 
             {/* Mission Section */}
-            <h3 className="about-subtitle">Our Mission at Gauswarn</h3>
+            <h3 className="about-subtitle">Our Mission</h3>
 
             <ul className="mission-list">
               <li className="mission-list-item">
@@ -80,12 +81,12 @@ export default function AboutUsHero() {
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
                 <span>
-                  To ensure the health, care & happiness of our Desi Gir cows We
-                  believe pure ghee comes only from Gir cows that live
-                  stress-free, natural lives.
+                  To protect and nurture our Gir cows, preserve the traditional
+                  Bilona method, and deliver pure, trustworthy, farm-fresh A2
+                  ghee to every home.
                 </span>
               </li>
-              <li className="mission-list-item">
+              {/* <li className="mission-list-item">
                 <svg
                   className="check-svg"
                   viewBox="0 0 24 24"
@@ -114,7 +115,7 @@ export default function AboutUsHero() {
                   To deliver pure, trustworthy ghee to every home No chemicals.
                   Only pure, natural, farm-fresh Desi ghee.
                 </span>
-              </li>
+              </li> */}
             </ul>
 
             {/* Divider */}
@@ -126,17 +127,17 @@ export default function AboutUsHero() {
                 <img src={cupicon} className="cup-leaves-svg" />
 
                 <span>
-                  Driven by Tradition, Guided by Purity <br />
-                  At Gauswarn, we combine age-old Vedic practices with ethical
-                  and sustainable farming. Our commitment ensures that you get
-                  ghee that’s:
+                  Driven by Tradition. Guided by Purity.
                   <br />
+                  Experience nutrient-rich, easily digestible, immunity-boosting
+                  A2 Gir Cow Ghee — crafted with devotion and ancient wisdom.
+                  {/* <br />
                   • Rich in nutrients
                   <br />
                   • Easily digestible
                   <br />
                   • Perfect for immunity, heart health, and everyday cooking
-                  <br />
+                  <br /> */}
                 </span>
               </li>
               <li className="mission-list-item">
@@ -145,22 +146,22 @@ export default function AboutUsHero() {
                 <span>
                   Why Choose Gauswarn Desi Gir Cow Ghee?
                   <br />
-                  • Made from A2 milk of Desi Gir cows
+                  • Made from A2 milk of indigenous Gir cows
                   <br />
-                  • Bilona churned, not machine processed
+                  • Hand-churned Bilona method
                   <br />
-                  • Prepared in small batches for maximum purity
+                  • Small-batch, Gaushala-crafted purity
                   <br />
-                  • Authentic Gaushala-sourced farm ghee
+                  • Natural, ethical & chemical-free
                   <br />
-                  • organic, natural & chemical-free
-                  <br />
+                  {/* • organic, natural & chemical-free
+                  <br /> */}
                 </span>
               </li>
             </ul>
 
             {/* CTA Button */}
-            <button className="cta-button">
+            <button className="cta-button" onClick={learnMoreAbout}>
               Learn More About
               <svg
                 className="arrow-svg"

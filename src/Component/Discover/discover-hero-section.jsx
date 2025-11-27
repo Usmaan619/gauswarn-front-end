@@ -4,8 +4,13 @@ import image1 from "../../asset/new-img/onwer/onwer.png";
 import image2 from "../../asset/new-img/contact-back-arrow/contact-back-arow.png";
 
 import "./discover-hero-section.css";
+import { useNavigate } from "react-router-dom";
 
 export default function DiscoverHeroSection() {
+  const naigate = useNavigate();
+
+  const ContactUs = () => naigate("/contact");
+
   return (
     <section className="discover-hero-section">
       <div className="discover-hero-container">
@@ -81,7 +86,7 @@ No chemicals, no additives — only pure, trustworthy Desi ghee."
           </div>
 
           {/* CTA Button */}
-          <button className="discover-contact-button">
+          <button className="discover-contact-button" onClick={ContactUs}>
             Contact Us
             <img
               src={image2}

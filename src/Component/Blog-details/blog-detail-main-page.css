@@ -1,0 +1,527 @@
+.blog-detail-container {
+  background-color: #fafaf9;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.blog-hero {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #8b6f47 0%, #a0826d 100%);
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* Content Wrapper */
+.blog-content-wrapper {
+  max-width: 1400px;
+  margin: -80px auto 0;
+  padding: 0 20px 60px;
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 50px;
+  position: relative;
+}
+
+/* Main Article */
+.blog-article {
+  background: white;
+  border-radius: 16px;
+  padding: 50px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.blog-category {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 2px solid #2e7d32;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.blog-date {
+  color: #78716c;
+  font-size: 0.95rem;
+}
+
+.blog-title {
+  font-size: 2.8rem;
+  color: #1c1917;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Author Info */
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e7e5e4;
+  margin-bottom: 40px;
+}
+
+.author-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b6f47 0%, #a0826d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.author-name {
+  font-weight: 600;
+  color: #1c1917;
+  font-size: 1rem;
+}
+
+.author-meta {
+  color: #78716c;
+  font-size: 0.9rem;
+}
+
+/* Article Content */
+.article-content {
+  color: #44403c;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.lead-paragraph {
+  font-size: 1.3rem;
+  color: #57534e;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+.article-content h2 {
+  font-size: 2rem;
+  color: #1c1917;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.article-content p {
+  margin-bottom: 25px;
+}
+
+.article-content ul {
+  margin: 30px 0;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.benefit-card {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  padding: 30px;
+  border-radius: 12px;
+  border: 2px solid #fbbf24;
+}
+
+.benefit-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.benefit-card h3 {
+  font-size: 1.3rem;
+  color: #78350f;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.benefit-card p {
+  color: #92400e;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Diet Tips List */
+.diet-tips {
+  background-color: #fef3c7;
+  padding: 30px 30px 30px 50px;
+  border-radius: 12px;
+  border-left: 4px solid #f59e0b;
+  margin: 30px 0;
+}
+
+.diet-tips li {
+  margin-bottom: 20px;
+  color: #78350f;
+}
+
+.diet-tips li:last-child {
+  margin-bottom: 0;
+}
+
+.diet-tips strong {
+  color: #92400e;
+  font-weight: 700;
+}
+
+/* Highlight Box */
+.highlight-box {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  padding: 30px;
+  border-radius: 12px;
+  border: 2px solid #3b82f6;
+  margin: 40px 0;
+}
+
+.highlight-box h3 {
+  color: #1e40af;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.highlight-box p {
+  color: #1e3a8a;
+  margin-bottom: 0;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #8b6f47 0%, #a0826d 100%);
+  padding: 50px;
+  border-radius: 12px;
+  text-align: center;
+  margin: 50px 0 40px;
+  color: white;
+}
+
+.cta-section h2 {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.cta-section p {
+  color: #fef3c7;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.cta-button {
+  background-color: #fbbf24;
+  color: #78350f;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+}
+
+.cta-button:hover {
+  background-color: #f59e0b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+}
+
+/* Tags */
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid #e7e5e4;
+}
+
+.tag {
+  padding: 8px 16px;
+  background-color: #f5f5f4;
+  color: #57534e;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background-color: #e7e5e4;
+  color: #1c1917;
+}
+
+/* Share Section */
+.share-section {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid #e7e5e4;
+}
+
+.share-section h3 {
+  font-size: 1.3rem;
+  color: #1c1917;
+  margin-bottom: 20px;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.share-btn.facebook {
+  background-color: #1877f2;
+  color: white;
+}
+
+.share-btn.twitter {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.share-btn.linkedin {
+  background-color: #0077b5;
+  color: white;
+}
+
+.share-btn.whatsapp {
+  background-color: #25d366;
+  color: white;
+}
+
+.share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Sidebar */
+.blog-sidebar {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.sidebar-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.sidebar-card h3 {
+  font-size: 1.4rem;
+  color: #1c1917;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.related-article {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e7e5e4;
+}
+
+.related-article:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.related-article img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.related-article h4 {
+  font-size: 1rem;
+  color: #1c1917;
+  margin-bottom: 8px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.related-date {
+  font-size: 0.85rem;
+  color: #78716c;
+}
+
+/* Newsletter */
+.sidebar-card.newsletter {
+  background: linear-gradient(135deg, #8b6f47 0%, #a0826d 100%);
+  color: white;
+}
+
+.sidebar-card.newsletter h3 {
+  color: white;
+}
+
+.sidebar-card.newsletter p {
+  color: #fef3c7;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.newsletter-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #fbbf24;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: #f59e0b;
+}
+
+.newsletter-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #fbbf24;
+  color: #78350f;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-btn:hover {
+  background-color: #f59e0b;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .blog-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .blog-sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-hero {
+    height: 350px;
+  }
+
+  .blog-content-wrapper {
+    margin-top: -60px;
+    padding: 0 15px 40px;
+  }
+
+  .blog-article {
+    padding: 30px 25px;
+  }
+
+  .blog-title {
+    font-size: 2rem;
+  }
+
+  .article-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .blog-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-section {
+    padding: 35px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-hero {
+    height: 250px;
+  }
+
+  .blog-article {
+    padding: 25px 20px;
+  }
+
+  .blog-title {
+    font-size: 1.6rem;
+  }
+
+  .lead-paragraph {
+    font-size: 1.1rem;
+  }
+
+  .article-content {
+    font-size: 1rem;
+  }
+
+  .article-content h2 {
+    font-size: 1.4rem;
+    margin-top: 35px;
+  }
+
+  .benefit-card {
+    padding: 20px;
+  }
+
+  .diet-tips {
+    padding: 20px 20px 20px 35px;
+  }
+
+  .share-buttons {
+    flex-direction: column;
+  }
+
+  .share-btn {
+    width: 100%;
+  }
+}

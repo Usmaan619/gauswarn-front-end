@@ -28,6 +28,8 @@ import ProductShowcase from "../Carousel/product-showcase";
 import GheeFeatureProductPage from "./ghee-product";
 import PromotionalCards from "../PromotionalBanner/promotional-cards";
 
+import productImg from "../../asset/new-img/product-imgs/product1.png";
+
 const ProductPageMain = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("500ML");
@@ -68,13 +70,7 @@ const ProductPageMain = () => {
   const [reviewText, setReviewText] = useState("");
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const images = [
-    "/pure-desi-cow-ghee-jar-main-product-image.jpg",
-    "/pure-desi-cow-ghee-product-closeup.jpg",
-    "/cow-ghee-in-spoon-drizzling.jpg",
-    "/pure-desi-cow-ghee-cooking.jpg",
-    "/pure-desi-cow-ghee-jar-detailed.jpg",
-  ];
+  const images = [productImg, productImg, productImg, productImg, productImg];
 
   const sizes = ["500ML", "1000ML", "5KG", "10KG"];
 
@@ -233,7 +229,8 @@ const ProductPageMain = () => {
           <div className="details-section">
             {/* Product Title */}
             <h1 className="product-title">
-              Pure Desi Cow Ghee – Handcrafted from A2 Milk
+              GAUSWARN Authentic A2 Bilona Ghee – Made from Indigenous Gir Cow
+              Milk
             </h1>
 
             {/* Description */}
@@ -379,8 +376,11 @@ const ProductPageMain = () => {
             </div>
           ))}
         </div>
+      </div>
+      <ProfileSection />
 
-        {/* Reviews Section */}
+      {/* Reviews Section */}
+      <div className="product-page">
         <div className="reviews-section">
           <div className="reviews-header">
             <h2 className="reviews-title">Customer Reviews</h2>
@@ -515,7 +515,7 @@ const ProductPageMain = () => {
           </div>
         </div>
       </div>
-      <ProfileSection />
+
       <ProductHeroSection />
 
       <ProductShowcase showProduct={false} />
@@ -523,7 +523,7 @@ const ProductPageMain = () => {
       {/* ghee future  */}
       <GheeFeatureProductPage />
 
-      <PromotionalCards />
+      {/* <PromotionalCards /> */}
     </>
   );
 };

@@ -52,7 +52,7 @@ const CustomNavbar = () => {
       <AboutUsHero />
       <ProductShowcase />
       <VideoSection />
-      <PromotionalCards />
+      {/* <PromotionalCards /> */}
 
       <HealthProductShowcase />
       <DiscoverHeroSection />

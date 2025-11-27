@@ -27,7 +27,7 @@ const ContactPage = () => {
           </div>
           <div className="b2b-contact-details">
             <h3 className="b2b-contact-label">Phone</h3>
-            <p className="b2b-contact-value">+91-87691 15905</p>
+            <p className="b2b-contact-value">+91-74709-15905,+91-9685715905</p>
           </div>
         </div>
 
@@ -37,7 +37,7 @@ const ContactPage = () => {
           </div>
           <div className="b2b-contact-details">
             <h3 className="b2b-contact-label">E-mail</h3>
-            <p className="b2b-contact-value">rajlaxmiorganicfoods@gmail.com</p>
+            <p className="b2b-contact-value">info@gauswarn.com</p>
           </div>
         </div>
 

@@ -13,7 +13,7 @@ export default function AboutUsHeroMain() {
     <>
       <ProductHeroSection />
       <Certified />
-      <AboutUsHero />
+      {/* <AboutUsHero /> */}
       <DiscoverHeroSection />
       <NurituringAboutUs />
       <GheePurity />

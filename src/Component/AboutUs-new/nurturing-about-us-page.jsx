@@ -22,9 +22,11 @@ const NurituringAboutUs = () => {
             <div className="nurtring-card-content">
               <h3 className="nurtring-card-title">Our Mission</h3>
               <p className="nurtring-card-text">
-                At GAUSWARN, our mission is to deliver pure, authentic A2 ghee
-                crafted through traditional methods—fresh, natural, and full of
-                nourishment.
+                At GAUSWARN, our mission is to bring the purity of authentic A2
+                Desi Cow Ghee to every home—fresh, traditional, and deeply
+                nourishing. We follow the ancient Bilona method to craft pure A2
+                Gir Cow Ghee, ensuring unmatched aroma, taste, and health
+                benefits.
               </p>
             </div>
           </div>
@@ -44,9 +46,11 @@ const NurituringAboutUs = () => {
               <div className="nurtring-card-content">
                 <h3 className="nurtring-card-title">Our Vision</h3>
                 <p className="nurtring-card-text">
-                  We envision a world where every home enjoys honest,
-                  chemical-free, traditionally crafted ghee that supports better
-                  health.
+                  We are committed to supporting and promoting the (Pashupalak)
+                  community, the traditional cow-herding families who have
+                  preserved Gir cow breeds for generations. Their lifestyle,
+                  culture, and survival revolve around ethical cattle rearing,
+                  and we proudly stand with them to protect this heritage.
                 </p>
               </div>
             </div>
@@ -65,8 +69,13 @@ const NurituringAboutUs = () => {
               <div className="nurtring-card-content">
                 <h3 className="nurtring-card-title">Our Values</h3>
                 <p className="nurtring-card-text">
-                  We take pride in purity, transparency, and small-batch
-                  craftsmanship—ensuring quality in every spoon.
+                  Through our initiative, GAUSWARN aims to Empower the /
+                  Pashupalak community Promote sustainable and ethical Gir cow
+                  rearing Preserve India’s indigenous cattle traditions Deliver
+                  100% natural, chemical-free Bilona A2 ghee Connect consumers
+                  with truly pure, farm-fresh ghee Our mission is to keep purity
+                  alive — by delivering real A2 Gir Cow Ghee while uplifting the
+                  communities who safeguard our cows and culture.
                 </p>
               </div>
             </div>

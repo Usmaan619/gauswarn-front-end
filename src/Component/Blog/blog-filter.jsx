@@ -3,12 +3,13 @@ import "./filter-newsletter-card.css";
 
 const FilterNewsletterCard = () => {
   const [email, setEmail] = useState("");
+
   return (
     <div className="me-5 mt-4">
+      {/* FILTER CARD */}
       <div className="filter-card">
         <div className="filter-card-header">
           <span className="filter-icon">
-            {/* SVG or Emoji icon */}{" "}
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
               <path
                 d="M15 6L9 18"
@@ -33,33 +34,22 @@ const FilterNewsletterCard = () => {
           <span className="filter-card-title">Filter by</span>
         </div>
 
+        {/* NEW ➜ Sort Filter */}
         <div className="filter-section">
-          <label className="filter-label">Start Date Range</label>
-          <div className="row">
-            <input
-              type="date"
-              className="date-input"
-              placeholder="mm/dd/yyyy"
-            />
-          </div>
+          <label className="filter-label">Sort by</label>
+          <select className="sort-select">
+            <option value="new">Newest </option>
+            <option value="old">Oldest </option>
+          </select>
         </div>
 
-        <div className="filter-section">
-          <label className="filter-label">End Date Range</label>
-          <div className="row">
-            <input
-              type="date"
-              className="date-input"
-              placeholder="mm/dd/yyyy"
-            />
-          </div>
-        </div>
         <button className="main-btn">Apply Filters</button>
       </div>
+
+      {/* NEWSLETTER CARD */}
       <div className="newsletter-card my-5">
         <div className="newsletter-header">
           <span className="newsletter-icon">
-            {/* SVG or Emoji */}{" "}
             <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
               <rect
                 x="3"
@@ -67,7 +57,6 @@ const FilterNewsletterCard = () => {
                 width="18"
                 height="10"
                 rx="2"
-                fill="none"
                 stroke="#7B490B"
                 strokeWidth="2"
               />
@@ -76,9 +65,11 @@ const FilterNewsletterCard = () => {
           </span>
           <span className="newsletter-title">Newsletter Signup</span>
         </div>
+
         <div className="newsletter-desc">
           Get the latest carbon market updates delivered to your inbox
         </div>
+
         <input
           type="email"
           className="newsletter-email"
@@ -86,6 +77,7 @@ const FilterNewsletterCard = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Your email (e.g example@example.com)"
         />
+
         <button className="main-btn">Subscribe Now</button>
       </div>
     </div>

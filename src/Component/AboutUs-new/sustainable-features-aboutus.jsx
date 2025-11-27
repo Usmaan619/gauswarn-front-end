@@ -30,8 +30,9 @@ const SustainableFeaturesAboutus = () => {
     },
     {
       id: 5,
-      title: "189 Global Testing Standards",
+      title: "From Grass-Fed Gir Cows",
       icon: SustainableFeaturesAboutusImg5,
+      height: 85,
     },
   ];
 
@@ -40,7 +41,11 @@ const SustainableFeaturesAboutus = () => {
       <div className="sustainable-features-container">
         {features.map((feature) => (
           <div key={feature?.id} className="sustainable-feature-item">
-            <img src={feature?.icon} className="sustainable-icon-wrapper" />
+            <img
+              src={feature?.icon}
+              style={feature.id === 5 ? { padding: "20px" } : {}}
+              className="sustainable-icon-wrapper"
+            />
             <h3 className="sustainable-feature-title">{feature?.title}</h3>
           </div>
         ))}

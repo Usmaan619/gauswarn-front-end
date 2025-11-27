@@ -133,14 +133,11 @@ const OrderTracking = () => {
           </div>
         </div>
 
-        {/* ORDER STATUS SECTION */}
-        <div className="order-tracking-status-section">
+        {/* <div className="order-tracking-status-section">
           <h1 className="order-tracking-section-title">Order Status</h1>
 
-          {/* PROGRESS BAR */}
           <div className="order-tracking-progress-wrapper" />
 
-          {/* TIMELINE */}
           <div className="order-tracking-timeline-container">
             {orderSteps.map((step, index) => {
               const status = getStepStatus(index);
@@ -181,7 +178,6 @@ const OrderTracking = () => {
             })}
           </div>
 
-          {/* CONTROL BUTTONS */}
           <div className="order-tracking-demo-controls">
             <button
               className="order-tracking-demo-btn"
@@ -199,7 +195,7 @@ const OrderTracking = () => {
               Next Step
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* SUPPORT SECTION */}
         <div className="order-tracking-support-section">

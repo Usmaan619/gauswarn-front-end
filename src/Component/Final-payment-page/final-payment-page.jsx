@@ -985,7 +985,7 @@ const FinalPaymentMainPage = () => {
             <div className="new-logoContainer">
               <img src={mainLogo} alt="Gauswarn Logo" className="new-logo" />
 
-              <p className="new-logoSubtext">Premium Gir Cow Ghee</p>
+              <p className="new-logoSubtext">Premium A2 Gir Cow Ghee</p>
             </div>
 
             <div className="new-summaryTitle">Order Summary</div>

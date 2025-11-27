@@ -16,22 +16,32 @@ Whether you’re cooking, meditating, or caring for your family’s health, our 
   {
     key: "WhyChooseUs",
     label: "WHY CHOOSE US",
-    content: `✓ Improves digestion  
-✓ Supports immunity  
-✓ Increases stamina  
-✓ Boosts brain health  
-✓ Pure A2 nutrients`,
+    content: `✓ Improves Digestion
+Helps support a healthy and comfortable digestive system.
+✓ Supports Immunity
+Nourishing fats that naturally assist your body’s defense.
+✓ Increases Stamina
+Provides steady energy for daily activities.
+✓ Boosts Brain Health
+Healthy fats that support focus and mental clarity.
+✓ Pure A2 Nutrients
+Made from A2 milk of Gir cows using the traditional Bilona method.`,
     image: tab1,
   },
+
   {
     key: "KeyBenefits",
     label: "KEY BENEFITS",
-    content: `Use for:  
-• Cooking  
-• Morning empty stomach  
-• Kids nutrition  
-• Meditation  
-• Ayurvedic healing`,
+    content: `* Cooking
+Adds natural flavor and richness to everyday meals.
+* Morning Empty Stomach
+A gentle start to the day with pure, nourishing ghee.
+* Kids Nutrition
+Supports growing children with healthy fats.
+* Meditation
+Helps create calmness and balance during spiritual practices.
+* Ayurvedic Healing
+Traditionally used for soothing, cleansing, and wellness routines.`,
     image: tab1,
   },
 ];
