@@ -34,6 +34,7 @@ import NewFooter from "./Component/Common/Footer/Footer.jsx";
 import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
 import Aos from "aos";
 import FinalPaymentMainPage from "./Component/Final-payment-page/final-payment-page.jsx";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const { setCart } = useCartContext();
@@ -63,6 +64,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <ScrollToTop />
       <NavbarWrapper />
 
@@ -101,8 +103,6 @@ function App() {
         <Route path="/faq" element={<FAQMainPage />} />
         <Route path="/terms" element={<TermsConditions />} />
         <Route path="/lab" element={<LabReportMain />} />
-
-        
 
         {/* 404 */}
         <Route

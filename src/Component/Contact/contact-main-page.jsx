@@ -24,6 +24,7 @@ const Contact = () => {
         data
       );
 
+      console.log("response: ", response);
       toast.success("Form submitted successfully!", {
         position: "top-center",
         autoClose: 3000,
@@ -40,8 +41,6 @@ const Contact = () => {
 
   return (
     <>
-      <ToastContainer />
-
       <ProductHeroSection />
 
       <div className="ghee-new-contact-section">
@@ -63,88 +62,100 @@ const Contact = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   {/* NAME + EMAIL */}
                   <div className="ghee-new-form-row">
-                    <input
-                      type="text"
-                      placeholder="Name"
-                      {...register("user_name", {
-                        required: "Name is required",
-                      })}
-                    />
-                    {errors.user_name && (
-                      <small className="error-text">
-                        {errors.user_name.message}
-                      </small>
-                    )}
+                    <div className="ghee-new-form-field">
+                      <input
+                        type="text"
+                        placeholder="Name"
+                        {...register("user_name", {
+                          required: "Name is required",
+                        })}
+                      />
+                      {errors.user_name && (
+                        <small className="ghee-new-error-text">
+                          {errors.user_name.message}
+                        </small>
+                      )}
+                    </div>
 
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      {...register("user_email", {
-                        required: "Email is required",
-                        pattern: {
-                          value:
-                            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                          message: "Invalid email address",
-                        },
-                      })}
-                    />
-                    {errors.user_email && (
-                      <small className="error-text">
-                        {errors.user_email.message}
-                      </small>
-                    )}
+                    <div className="ghee-new-form-field">
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        {...register("user_email", {
+                          required: "Email is required",
+                          pattern: {
+                            value:
+                              /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                            message: "Invalid email address",
+                          },
+                        })}
+                      />
+                      {errors.user_email && (
+                        <small className="ghee-new-error-text">
+                          {errors.user_email.message}
+                        </small>
+                      )}
+                    </div>
                   </div>
 
                   {/* PHONE + SUBJECT */}
                   <div className="ghee-new-form-row">
-                    <input
-                      type="tel"
-                      placeholder="Phone Number"
-                      {...register("user_mobile", {
-                        required: "Phone number is required",
-                        pattern: {
-                          value: /^[0-9]{10}$/,
-                          message: "Phone number must be 10 digits",
-                        },
-                      })}
-                    />
-                    {errors.user_mobile && (
-                      <small className="ghee-new-error-text">
-                        {errors.user_mobile.message}
-                      </small>
-                    )}
+                    <div className="ghee-new-form-field">
+                      <input
+                        type="tel"
+                        placeholder="Phone Number"
+                        {...register("user_mobile", {
+                          required: "Phone number is required",
+                          pattern: {
+                            value: /^[0-9]{10}$/,
+                            message: "Phone number must be 10 digits",
+                          },
+                        })}
+                      />
+                      {errors.user_mobile && (
+                        <small className="ghee-new-error-text">
+                          {errors.user_mobile.message}
+                        </small>
+                      )}
+                    </div>
 
-                    <input
-                      type="text"
-                      placeholder="Subject"
-                      {...register("user_subject", {
-                        required: "Subject is required",
-                      })}
-                    />
-                    {errors.user_subject && (
-                      <small className="ghee-new-error-text">
-                        {errors.user_subject.message}
-                      </small>
-                    )}
+                    <div className="ghee-new-form-field">
+                      <input
+                        type="text"
+                        placeholder="Subject"
+                        {...register("user_subject", {
+                          required: "Subject is required",
+                        })}
+                      />
+                      {errors.user_subject && (
+                        <small className="ghee-new-error-text">
+                          {errors.user_subject.message}
+                        </small>
+                      )}
+                    </div>
                   </div>
 
                   {/* MESSAGE */}
                   <div className="ghee-new-form-row full">
-                    <textarea
-                      placeholder="Message"
-                      {...register("user_message", {
-                        required: "Message is required",
-                      })}
-                      rows="6"
-                    ></textarea>
-                    {errors.user_message && (
-                      <small className="ghee-new-error-text">
-                        {errors.user_message.message}
-                      </small>
-                    )}
+                    <div className="ghee-new-form-field">
+                      <textarea
+                        placeholder="Message"
+                        rows="6"
+                        {...register("user_message", {
+                          required: "Message is required",
+                        })}
+                      />
+                      {errors.user_message && (
+                        <small className="ghee-new-error-text">
+                          {errors.user_message.message}
+                        </small>
+                      )}
+                    </div>
                   </div>
 
-                  <button className="ghee-new-btn-cta">Submit</button>
+                  <button type="submit" className="ghee-new-btn-cta">
+                    Submit
+                  </button>
                 </form>
               </div>
             </div>

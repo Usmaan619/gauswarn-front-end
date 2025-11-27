@@ -1,6 +1,5 @@
 /* Layout */
 .ghee-new-contact-section {
-  /* margin-top: 20px; */
   background: #fef4db;
 }
 
@@ -17,21 +16,31 @@
 
 .ghee-new-form-row {
   display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 26px; /* Increased space for absolute error */
 }
 
 .ghee-new-form-row.full {
   flex-direction: column;
 }
 
-/* Inputs */
-.ghee-new-form-row input,
-.ghee-new-form-row textarea {
+/* Form Field Wrapper */
+.ghee-new-form-field {
   flex: 1;
-  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Important for error text positioning */
+}
+
+/* Inputs */
+.ghee-new-form-field input,
+.ghee-new-form-field textarea {
+  width: 100%;
+  padding: 14px 16px;
   border: 1px solid #ddd;
   border-radius: 12px;
+  font-size: 15px;
+  background: #fff;
 }
 
 input:focus-visible,
@@ -40,11 +49,15 @@ textarea:focus-visible {
   border-color: #555555;
 }
 
+/* Error Text (FIXED & absolute positioned) */
 .ghee-new-error-text {
-  color: red;
-  font-size: 13px;
-  margin-top: -12px;
-  display: block;
+  position: absolute;
+  bottom: -18px;
+  left: 4px;
+  color: #e53935;
+  font-size: 12px;
+  line-height: 1.2;
+  pointer-events: none;
 }
 
 /* Details Box */
@@ -68,6 +81,7 @@ textarea:focus-visible {
   font-size: 20px;
 }
 
+/* Button */
 .ghee-new-btn-cta {
   background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
   box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
@@ -92,10 +106,17 @@ textarea:focus-visible {
   transform: translateY(-1px);
 }
 
+/* MAP */
+.ghee-new-map-section iframe {
+  width: 100%;
+  border: 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .ghee-new-form-row {
     flex-direction: column;
+    margin-bottom: 30px;
   }
 
   .ghee-new-details-item {
