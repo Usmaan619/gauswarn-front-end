@@ -3,8 +3,12 @@ import "./nurturing-about-us-page.css";
 import aimImg from "../../asset/new-img/about-new-logo/aim.png";
 import eyeYellowImg from "../../asset/new-img/about-new-logo/eye-yellow.png";
 import reactImg from "../../asset/new-img/about-new-logo/react.png";
+import { useNavigate } from "react-router-dom";
 
 const NurituringAboutUs = () => {
+  const navigate = useNavigate();
+
+  const goToLabReport = () => navigate("/lab");
   return (
     <div className="nurtring-container">
       <div className="nurtring-content-wrapper">
@@ -82,7 +86,7 @@ const NurituringAboutUs = () => {
           </div>
 
           {/* Download Button */}
-          <button className="nurtring-download-btn">
+          <button className="nurtring-download-btn" onClick={goToLabReport}>
             <span>See Report</span>
           </button>
         </div>
