@@ -108,7 +108,7 @@ function App() {
         <Route
           path="*"
           element={
-            <h2 style={{ textAlign: "center", marginTop: "50px" }}>
+            <h2 style={{ textAlign: "center", marginTop: "50px",height:"41dvh" }}>
               Page Not Found
             </h2>
           }

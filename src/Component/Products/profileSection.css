@@ -76,9 +76,9 @@
 /* TEXT */
 .text-content {
   width: 100%;
-  font-size: 18px;
+  font-size: 14px;
   white-space: pre-line;
-  line-height: 1.7;
+  line-height: 1.5;
 }
 
 /* IMAGE */
@@ -113,7 +113,7 @@
     flex-direction: column;
   }
   .tab-btn {
-    font-size: 16px;
+    font-size: 13px;
     padding: 8px 14px;
   }
 
@@ -143,7 +143,7 @@
   }
 
   .text-content {
-    font-size: 16px;
+    font-size: 13px;
   }
 }
 

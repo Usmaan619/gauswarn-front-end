@@ -63,7 +63,7 @@
 
 /* Subheading */
 .discover-hero-subheading {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1.6;
   color: #999999;
   margin: 0;
@@ -150,7 +150,7 @@
   color: #1a1a1a;
   border: none;
   padding: 14px 28px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
@@ -167,7 +167,7 @@
 }
 
 .discover-button-icon {
-  font-size: 18px;
+  font-size: 14px;
   display: inline-flex;
   align-items: center;
   width: 21px;

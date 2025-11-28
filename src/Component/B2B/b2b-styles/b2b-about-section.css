@@ -31,7 +31,7 @@
   padding: 16px 0;
   border-bottom: 1px solid #f2e8d3;
   color: #7a6942;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .b2b-statsRow:last-child {
@@ -62,7 +62,7 @@
 }
 
 .b2b-aboutDescriptionModern {
-  font-size: 18px;
+  font-size: 14px;
   color: #6e6542;
   line-height: 1.7;
 }

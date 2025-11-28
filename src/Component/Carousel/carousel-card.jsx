@@ -1,7 +1,6 @@
 import React from "react";
 
 const CarouselCard = ({ product }) => {
-  console.log("product: ", product);
   return (
     <div className="carousel-card-wrapper">
       <div className="carousel-card">

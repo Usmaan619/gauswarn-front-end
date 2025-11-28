@@ -32,7 +32,7 @@
 }
 
 .badgeText {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 900;
   color: #2d2d2d;
   transform: rotate(45deg);
@@ -93,7 +93,7 @@
 }
 
 .productVariant {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
   color: #4a4a4a;
   margin: 0;
@@ -230,7 +230,7 @@
   }
 
   .badgeText {
-    font-size: 18px;
+    font-size: 14px;
     letter-spacing: 1px;
   }
 
@@ -249,7 +249,7 @@
   }
 
   .productName {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .productVariant {
@@ -293,7 +293,7 @@
   }
 
   .badgeText {
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .productJarContainer {

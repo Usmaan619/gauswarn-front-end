@@ -55,9 +55,13 @@
 .new-header-m-nav-link {
   display: block;
   padding: 12px 0;
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: #1e1e23;
   text-decoration: none;
+}
+
+.nav-link {
+  font-size: 14px !important;
 }
 .new-header-m-nav-link:hover {
   opacity: 0.5;

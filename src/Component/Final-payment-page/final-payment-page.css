@@ -40,7 +40,7 @@
 .new-sectionTitle {
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
   color: #333;
   gap: 10px;
@@ -203,7 +203,7 @@
 }
 
 .new-itemPrice {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
   color: #4b3109;
 }
@@ -265,7 +265,7 @@
 
 .new-emptyTitle {
   color: #fff;
-  font-size: 32px;
+  font-size: 26px;
   margin-top: 20px;
 }
 
@@ -324,7 +324,7 @@
   padding: 10px;
   border: 2px solid var(--border-color);
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
   text-align: center;
   color: var(--text-dark);

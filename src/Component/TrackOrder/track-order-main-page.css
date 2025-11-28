@@ -309,7 +309,7 @@
 }
 
 .order-tracking-support-card-description {
-  font-size: 16px;
+  font-size: 13px;
   color: #4b3109;
 }
 
@@ -349,7 +349,7 @@
 
 .order-tracking-demo-btn {
   padding: 12px 30px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
   color: white;
   background: linear-gradient(135deg, #e8b931 0%, #d4a72c 100%);
@@ -426,7 +426,7 @@
   }
 
   .order-tracking-step-title {
-    font-size: 16px;
+    font-size: 13px;
   }
   .order-tracking-step-description {
     font-size: 13px;
@@ -472,7 +472,7 @@
   }
 
   .order-tracking-support-subtitle {
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 

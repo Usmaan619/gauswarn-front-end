@@ -229,7 +229,7 @@
 }
 
 .product-description {
-  font-size: 16px;
+  font-size: 13px;
   color: var(--text-dark);
   font-weight: 500;
   margin: 0;
@@ -251,7 +251,7 @@
 
 .rating-value {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 13px;
   color: var(--text-dark);
 }
 
@@ -342,7 +342,7 @@
 }
 
 .section-title {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
   margin-bottom: 12px;
   color: var(--text-dark);
@@ -414,13 +414,13 @@
 }
 
 .current-price {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 800;
   color: var(--text-dark);
 }
 
 .original-price {
-  font-size: 18px;
+  font-size: 14px;
   color: var(--text-light);
   text-decoration: line-through;
 }
@@ -447,7 +447,7 @@
   padding: 14px 22px;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.18s ease;
@@ -586,7 +586,7 @@
 }
 
 .trust-title {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--text-dark);
 }
@@ -684,7 +684,7 @@
   }
 
   .product-title {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .current-price {
@@ -880,7 +880,7 @@
   padding: 10px;
   border: 2px solid var(--border-color);
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
   text-align: center;
   color: var(--text-dark);
@@ -945,7 +945,7 @@
 }
 
 .rating-score {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--text-dark);
 }
@@ -1169,7 +1169,7 @@
   color: var(--text-dark);
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   display: flex;

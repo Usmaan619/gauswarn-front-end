@@ -105,7 +105,7 @@
   font-weight: 400;
 }
 .blog-title {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   color: #000;
   margin-bottom: 12px;
@@ -159,7 +159,7 @@
 
 /* FILTER STYLES */
 .filter-title {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   color: #000;
 }
@@ -210,7 +210,7 @@
   border-radius: 16px;
 }
 .newsletter-title {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   color: #78350f;
   margin-bottom: 12px;

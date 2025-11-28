@@ -23,8 +23,6 @@ import { environment } from "../../environment/environment";
 import { v4 as uuidv4 } from "uuid";
 
 const Order = () => {
-
-
   const data = [
     {
       user_id: 1,
@@ -80,7 +78,6 @@ const Order = () => {
   });
 
   const [prdData, setPrdData] = useState([]);
-  
 
   const images = [Image1, Image2, Image3, Image4, Image5, Image6];
 
@@ -103,7 +100,9 @@ const Order = () => {
     setCount(count + 1);
     const selectedIndex = checkedItems.findIndex((item) => item);
     if (selectedIndex !== -1) {
-      setTotalAmount((prdData[selectedIndex].product_price * (count + 1)).toFixed(2));
+      setTotalAmount(
+        (prdData[selectedIndex].product_price * (count + 1)).toFixed(2)
+      );
     }
   };
 
@@ -113,7 +112,9 @@ const Order = () => {
       // Update total amount whenever quantity changes
       const selectedIndex = checkedItems.findIndex((item) => item);
       if (selectedIndex !== -1) {
-        setTotalAmount((prdData[selectedIndex].product_price * (count - 1)).toFixed(2));
+        setTotalAmount(
+          (prdData[selectedIndex].product_price * (count - 1)).toFixed(2)
+        );
       }
     }
   };
@@ -182,7 +183,7 @@ const Order = () => {
     }
 
     const selectedItem = prdData[selectedIndex];
-    
+
     let pId;
     // if (!localStorage.getItem("product_id")) {
     //   pId = uuidv4();
@@ -255,7 +256,6 @@ const Order = () => {
         toast.error("Failed to add item to cart. Please try again.");
       }
     } catch (error) {
-      
       toast.error("Something went wrong. Please try again later.");
     }
   };
@@ -280,7 +280,7 @@ const Order = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            'ngrok-skip-browser-warning': '69420',
+            "ngrok-skip-browser-warning": "69420",
           },
         }
       );
@@ -322,9 +322,7 @@ const Order = () => {
       setReviews(data.reviews || []);
 
       setReviews(response?.data?.reviews); // Assuming the response contains a `reviews` array
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
   const ProductData = async () => {
     try {
@@ -338,11 +336,9 @@ const Order = () => {
         }
       );
       setPrdData(response?.data?.products);
-      
+
       // return response?.data?.products
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
 
   // Fetch reviews on component mount
@@ -419,7 +415,8 @@ const Order = () => {
                     >
                       Rs.{" "}
                       {selectedPrice
-                        ? prdData[checkedItems.findIndex((item) => item)]?.product_del_price
+                        ? prdData[checkedItems.findIndex((item) => item)]
+                            ?.product_del_price
                         : "0"}
                     </span>
                     <b className="ms-2">Rs. {selectedPrice || "0"}</b> MRP
@@ -432,8 +429,9 @@ const Order = () => {
                     {prdData?.map((item, index) => (
                       <div
                         key={index}
-                        className={`order-card ${checkedItems[index] ? "highlight" : ""
-                          }`}
+                        className={`order-card ${
+                          checkedItems[index] ? "highlight" : ""
+                        }`}
                         onClick={() => handleCheckboxChange(index)}
                       >
                         <div
@@ -508,58 +506,9 @@ const Order = () => {
                         add to cart
                       </p>
                     </button>
-
-                    {/* <Link
-                      to="/finalpayment"
-                      className="cart-btn text-decoration-none ms-5 px-1 text-uppercase text-light d-flex align-items-center justify-content-between border rounded-pill"
-                    >
-                      <div className="cart-icon rounded-pill d-flex align-items-center justify-content-center fs-5">
-                        <HiOutlineShoppingCart />
-                      </div>
-                      <p className="m-auto text-uppercase lh-1">BUY NOW</p>
-                    </Link> */}
                   </div>
                 </div>
               </div>
-
-              {/* <div className="container mt-5">
-                <div className="row">
-                  {prdData?.map((item) => (
-                    <div className="col-md-4" key={item.product_id}>
-                      <div className="card mb-4">
-                        <img
-                          width={200}
-                          height={200}
-                          src={item.product_image}
-                          alt=""
-                          className="m-auto"
-                        />
-                        <div className="d-flex">
-                          <div className="card-body">
-                            <h5 className="card-title">
-                              Product: {item.product_name}
-                            </h5>
-                            <p className="card-text">
-                              Price: {item.product_price}
-                            </p>
-                          </div>
-                          <div className="card-body">
-                            <p className="card-title">
-                              Stock: {item.product_stock}
-                            </p>
-                            <p className="card-text">id: {item.product_id}</p>
-                          </div>
-                        </div>
-                        <div className="p-2">
-                          <a href="#" className="btn btn-primary">
-                            Add to Cart
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div> */}
 
               <div className="row py-3 mt-4 d-flex justify-content-center">
                 <h4 className="text-center mb-3">Customer Review</h4>

@@ -73,7 +73,7 @@
 .date-input {
   flex: 1;
   padding: 13px;
-  font-size: 16px;
+  font-size: 13px;
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-right: 6px;
@@ -96,7 +96,7 @@
   background: #ffd324;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
   color: #6b480c;
   margin-top: 7px;
@@ -117,7 +117,7 @@
   margin-bottom: 15px;
 }
 .newsletter-title {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   color: #7b490b;
 }
@@ -125,14 +125,14 @@
   vertical-align: middle;
 }
 .newsletter-desc {
-  font-size: 16px;
+  font-size: 13px;
   color: #6b480c;
   margin-bottom: 19px;
 }
 .newsletter-email {
   width: 100%;
   padding: 13px;
-  font-size: 16px;
+  font-size: 13px;
   border-radius: 10px;
   border: 1px solid #ccc;
   background: #fff;
@@ -148,7 +148,7 @@
     border-radius: 12px;
   }
   .main-btn {
-    font-size: 18px;
+    font-size: 14px;
     padding: 11px;
   }
   .filter-card-title,
@@ -156,7 +156,7 @@
     font-size: 19px;
   }
   .filter-label {
-    font-size: 16px;
+    font-size: 13px;
   }
   .newsletter-desc {
     font-size: 14px;
