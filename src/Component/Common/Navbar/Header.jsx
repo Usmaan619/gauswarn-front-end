@@ -45,9 +45,15 @@ export default function Header() {
             <NavLink to="/products" className="nav-link">
               Shop Now
             </NavLink>
-            <NavLink to="/track-order" className="nav-link">
-              Track Order
-            </NavLink>
+           <a
+  href="https://panel.shipmozo.com/track-order/LBYfQgGFRljv1A249H87"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="nav-link"
+>
+  Track Order
+</a>
+
             <NavLink to="/gallery" className="nav-link">
               Gallery
             </NavLink>

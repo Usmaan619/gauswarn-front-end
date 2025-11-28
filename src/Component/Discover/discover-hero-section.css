@@ -54,7 +54,7 @@
 
 /* Heading */
 .discover-hero-heading {
-  font-size: 48px;
+  font-size: 26px;
   font-weight: 700;
   line-height: 1.2;
   color: #5a4a2a;
@@ -100,7 +100,7 @@
 }
 
 .discover-stats-number {
-  font-size: 42px;
+  font-size: 26px;
   font-weight: 700;
   color: #5a4a2a;
   line-height: 1;
@@ -136,7 +136,7 @@
 }
 
 .discover-checklist-text {
-  font-size: 15px;
+  font-size: 12px;
   color: #1a1a1a;
   font-weight: 500;
   line-height: 1.5;
