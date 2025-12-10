@@ -123,6 +123,13 @@
   transform: translateY(0);
 }
 
+.b2b-error-text {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-bottom: 0px;
+}
+
 /* Tablet Responsive */
 @media (max-width: 768px) {
   .b2b-form-header h1 {

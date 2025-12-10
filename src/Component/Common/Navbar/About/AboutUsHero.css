@@ -1,0 +1,245 @@
+/* AboutUsHero.css - Cleaned Version (Duplicates Removed) */
+
+/* Base Styles */
+.aboutUsHero {
+  background: linear-gradient(135deg, #f5e6d3 0%, #faf2e8 100%);
+  padding: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.containerCustom {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.aboutWrapper {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 0;
+  align-items: stretch;
+  height: 100vh;
+}
+
+.aboutLeft {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.aboutMainImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.aboutContentSection {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 60px;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5e6d3 0%, #faf2e8 100%);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.aboutMainHeading {
+  font-size: 32px;
+  font-weight: 800;
+  color: #2d2d2d;
+  line-height: 1.3;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.5px;
+}
+
+.aboutParagraph {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 12px 0;
+}
+
+.aboutSubtitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d2d2d;
+  margin: 0 0 18px 0;
+  letter-spacing: -0.3px;
+}
+
+.missionList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.missionListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+.checkSvg {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+  flex-shrink: 0;
+  stroke-width: 2.5;
+  margin-top: 2px;
+  background: #29a44f;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.iconPlaceholder {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.missionText {
+  font-size: 15px;
+  color: #2d2d2d;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.aboutDivider {
+  border: none;
+  border-top: 2px solid #d4c4b0;
+  margin: 10px 0;
+  padding: 0;
+  width: 100%;
+  align-self: flex-start;
+}
+
+.ctaButton {
+  background: #ffd700;
+  color: #1a1a1a;
+  border: none;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  margin-top: 10px;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+.arrowSvg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .aboutWrapper {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .aboutUsHero {
+    min-height: auto;
+  }
+
+  .containerCustom {
+    height: auto;
+  }
+
+  .aboutLeft {
+    height: 400px;
+  }
+
+  .aboutContentSection {
+    padding: 40px 20px;
+    gap: 18px;
+  }
+
+  .aboutMainHeading {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .aboutParagraph,
+  .missionText {
+    font-size: 14px;
+  }
+
+  .aboutSubtitle {
+    font-size: 16px;
+    margin: 24px 0 16px 0;
+  }
+
+  .ctaButton {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutContentSection {
+    padding: 30px 15px;
+    gap: 15px;
+  }
+
+  .aboutMainHeading {
+    font-size: 22px;
+  }
+
+  .aboutParagraph,
+  .missionText {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .ctaButton {
+    padding: 12px 20px;
+    font-size: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .aboutDivider {
+    width: 100%;
+  }
+}

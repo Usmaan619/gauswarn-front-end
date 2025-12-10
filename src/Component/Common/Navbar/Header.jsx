@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import mainLogo from "../../../asset/new-img/logo/gauswarn-main-logo.png";
 import "./header-main.css";
+import { useCartContext } from "../../Context/UserContext";
 
 export default function Header() {
-  const [cartCount] = useState(1);
+  const { cart } = useCartContext(); // GET CART FROM CONTEXT
+  const cartCount = cart.length; // DYNAMIC CART COUNT
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const navigate = useNavigate();
@@ -28,6 +31,7 @@ export default function Header() {
     <header className={`navbar-header ${isFixed ? "fixed" : ""}`}>
       <div className="container-fluid px-4 px-md-3">
         <div className="d-flex align-items-center justify-content-between py-3 py-md-2 header-content">
+          
           {/* Logo */}
           <div
             className="logo-wrapper"
@@ -39,40 +43,29 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <nav className="desktop-nav">
-            <NavLink to="/" className="nav-link">
-              Home
-            </NavLink>
-            <NavLink to="/products" className="nav-link">
-              Shop Now
-            </NavLink>
-           <a
-  href="https://panel.shipmozo.com/track-order/LBYfQgGFRljv1A249H87"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="nav-link"
->
-  Track Order
-</a>
+            <NavLink to="/" className="nav-link">Home</NavLink>
+            <NavLink to="/products" className="nav-link">Shop Now</NavLink>
 
-            <NavLink to="/gallery" className="nav-link">
-              Gallery
-            </NavLink>
-            <NavLink to="/b2b" className="nav-link">
-              B2B
-            </NavLink>
-            <NavLink to="/blog" className="nav-link">
-              Blog
-            </NavLink>
-            <NavLink to="/about" className="nav-link">
-              About Us
-            </NavLink>
-            <NavLink to="/contact" className="nav-link">
-              Contact Us
-            </NavLink>
+            <a
+              href="https://panel.shipmozo.com/track-order/LBYfQgGFRljv1A249H87"
+              // target="_blank"
+              rel="noopener noreferrer"
+              className="nav-link"
+            >
+              Track Order
+            </a>
+
+            <NavLink to="/gallery" className="nav-link">Gallery</NavLink>
+            <NavLink to="/b2b" className="nav-link">B2B</NavLink>
+            <NavLink to="/blog" className="nav-link">Blog</NavLink>
+            <NavLink to="/about" className="nav-link">About Us</NavLink>
+            <NavLink to="/contact" className="nav-link">Contact Us</NavLink>
           </nav>
 
           {/* Right Icons + Mobile Toggle */}
           <div className="icons-section">
+            
+            {/* CART BUTTON WITH DYNAMIC COUNT */}
             <button
               className="cart-button"
               onClick={() => handleNavClick("/cart")}
@@ -95,62 +88,19 @@ export default function Header() {
 
       {/* Slide Menu */}
       <div className={`new-header-mobile-menu ${isMenuOpen ? "open" : ""}`}>
-        {/* Logo */}
-        {/* <div
-          className="logo-wrapper"
-          onClick={() => handleNavClick("/")}
-          style={{ cursor: "pointer" }}
-        >
-          <img src={mainLogo} alt="Gauswarn Logo" className="logo-image" />
-        </div> */}
-        <NavLink
-          onClick={() => handleNavClick("/")}
-          className="new-header-m-nav-link"
-        >
-          Home
-        </NavLink>
-        <NavLink
-          onClick={() => handleNavClick("/products")}
-          className="new-header-m-nav-link"
-        >
-          Shop Now
-        </NavLink>
-        <NavLink
-          onClick={() => handleNavClick("/track-order")}
-          className="new-header-m-nav-link"
-        >
-          Track Order
-        </NavLink>
-        <NavLink
-          onClick={() => handleNavClick("/gallery")}
-          className="new-header-m-nav-link"
-        >
-          Gallery
-        </NavLink>
-        <NavLink
-          onClick={() => handleNavClick("/b2b")}
-          className="new-header-m-nav-link"
-        >
-          B2B
-        </NavLink>
-        <NavLink
-          onClick={() => handleNavClick("/blog")}
-          className="new-header-m-nav-link"
-        >
-          Blog
-        </NavLink>
-        <NavLink
-          onClick={() => handleNavClick("/about")}
-          className="new-header-m-nav-link"
-        >
-          About Us
-        </NavLink>
-        <NavLink
-          onClick={() => handleNavClick("/contact")}
-          className="new-header-m-nav-link"
-        >
-          Contact Us
-        </NavLink>
+        <NavLink onClick={() => handleNavClick("/")} className="new-header-m-nav-link">Home</NavLink>
+        <NavLink onClick={() => handleNavClick("/products")} className="new-header-m-nav-link">Shop Now</NavLink>
+        <NavLink onClick={() => handleNavClick("/track-order")} className="new-header-m-nav-link">Track Order</NavLink>
+        <NavLink onClick={() => handleNavClick("/gallery")} className="new-header-m-nav-link">Gallery</NavLink>
+        <NavLink onClick={() => handleNavClick("/b2b")} className="new-header-m-nav-link">B2B</NavLink>
+        <NavLink onClick={() => handleNavClick("/blog")} className="new-header-m-nav-link">Blog</NavLink>
+        <NavLink onClick={() => handleNavClick("/about")} className="new-header-m-nav-link">About Us</NavLink>
+        <NavLink onClick={() => handleNavClick("/contact")} className="new-header-m-nav-link">Contact Us</NavLink>
+
+        {/* MOBILE CART BUTTON WITH COUNT */}
+        <div className="mobile-cart-btn" onClick={() => handleNavClick("/cart")}>
+          Cart ({cartCount})
+        </div>
       </div>
 
       {/* Background Overlay */}

@@ -35,6 +35,8 @@ import GheeFeatureProductPage from "./ghee-product";
 
 import productPlaceholder from "../../asset/new-img/product-imgs/product1.png";
 
+import "../../Component/Carousel/carousel-card-wrapper.css";
+
 const ProductPageMain = () => {
   // Image gallery & UI selection
   const [selectedImage, setSelectedImage] = useState(0);
