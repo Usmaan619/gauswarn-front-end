@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import TopBanner from "./TopBanner";
 import Header from "./Header";
+import { useCartContext } from "../../Context/UserContext";
 
 export default function NavbarWrapper() {
   const [hideBanner, setHideBanner] = useState(false);
@@ -11,10 +12,8 @@ export default function NavbarWrapper() {
       const currentScroll = window.scrollY;
 
       if (currentScroll > lastScroll && currentScroll > 50) {
-        // Scrolling down → hide banner
         setHideBanner(true);
       } else {
-        // Scrolling up → show banner
         setHideBanner(false);
       }
 
@@ -28,7 +27,7 @@ export default function NavbarWrapper() {
   return (
     <div className={`navbar-wrapper ${hideBanner ? "banner-hide" : ""}`}>
       <TopBanner />
-      <Header />
+      <Header /> {/* ⭐ Pass cartCount here */}
     </div>
   );
 }

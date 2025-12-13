@@ -1,0 +1,122 @@
+/* ===============================
+   Payment Failed Page
+   =============================== */
+
+.payment-failed .payment-fail {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.payment-failed .container {
+  max-width: 600px;
+}
+
+.payment-failed .col-lg-12 {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   Error Icon
+   =============================== */
+
+.payment-failed .check_mark {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.payment-failed .sa-icon.sa-error {
+  width: 90px;
+  height: 90px;
+  border: 4px solid #e53935;
+  border-radius: 50%;
+  position: relative;
+  animation: scaleIn 0.3s ease-in-out forwards;
+}
+
+.payment-failed .sa-icon.sa-error .sa-line {
+  height: 5px;
+  background-color: #e53935;
+  display: block;
+  border-radius: 2px;
+  position: absolute;
+  top: 42px;
+}
+
+.payment-failed .sa-icon.sa-error .sa-line.sa-tip {
+  width: 35px;
+  left: 18px;
+  transform: rotate(45deg);
+}
+
+.payment-failed .sa-icon.sa-error .sa-line.sa-long {
+  width: 35px;
+  right: 18px;
+  transform: rotate(-45deg);
+}
+
+/* ===============================
+   Text & Button
+   =============================== */
+
+.payment-failed p {
+  color: #c62828;
+  margin-bottom: 20px;
+}
+
+.payment-failed button {
+  background: linear-gradient(135deg, #e53935, #b71c1c);
+  color: #ffffff;
+  border: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.payment-failed button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(229, 57, 53, 0.4);
+}
+
+.payment-failed button:active {
+  transform: scale(0.97);
+}
+
+/* ===============================
+   Animation
+   =============================== */
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   Responsive
+   =============================== */
+
+@media (max-width: 576px) {
+  .payment-failed .col-lg-12 {
+    padding: 30px 20px;
+  }
+
+  .payment-failed .sa-icon.sa-error {
+    width: 70px;
+    height: 70px;
+  }
+
+  .payment-failed p {
+    font-size: 20px;
+  }
+}

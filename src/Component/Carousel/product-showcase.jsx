@@ -1,264 +1,63 @@
-// "use client";
-
-// import React from "react";
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import ProductCard from "./product-card";
-// import CarouselCard from "./carousel-card";
-// import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-
-// import Rectangle1 from "../../asset/new-img/mini-slider-img/Rectangle1.png";
-// import Rectangle2 from "../../asset/new-img/mini-slider-img/Rectangle2.png";
-// import Rectangle3 from "../../asset/new-img/mini-slider-img/Rectangle3.png";
-
-// const ProductShowcase = ({ showProduct = true }) => {
-//   const settings = {
-//     dots: true,
-//     infinite: true,
-//     speed: 500,
-//     slidesToShow: 3,
-//     slidesToScroll: 1,
-//     // nextArrow: <CustomNextArrow />,
-//     // prevArrow: <CustomPrevArrow />,
-//     autoplay: true,
-//     autoplaySpeed: 3000,
-//     customPaging: () => <div className="custom-dot" />,
-//     responsive: [
-//       {
-//         breakpoint: 1024,
-//         settings: {
-//           slidesToShow: 2,
-//         },
-//       },
-//       {
-//         breakpoint: 768,
-//         settings: {
-//           slidesToShow: 1,
-//         },
-//       },
-//     ],
-//   };
-
-//   const products = [
-//     {
-//       id: 1,
-//       title: "The Secret to Authentic Flavor",
-//       subtitle: "Premium A2 Gir Cow Ghee",
-//       video:
-//         "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-//     },
-//     {
-//       id: 2,
-//       title: "Ancient Wisdom",
-//       subtitle: "Modern Wellness with A2 Gir Cow Ghee",
-//       video:
-//         "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-//     },
-//     {
-//       id: 3,
-//       title: "Pure Love in Every Meal",
-//       subtitle: "Premium A2 Cow Ghee for Your Family",
-//       video:
-//         "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-//     },
-//     {
-//       id: 4,
-//       title: "Ancient Recipes",
-//       subtitle: "Modern Wellness with A2 Gir Cow Ghee",
-//       video:
-//         "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-//     },
-//   ];
-
-//   return (
-//     <div className="product-showcase">
-//       <div className="showcase-container">
-//         <h1 className="showcase-title">Our Product</h1>
-
-//         <div className="showcase-content">
-//           {/* Featured Product */}
-
-//           {showProduct && <ProductCard />}
-
-//           {/* Carousel */}
-//           <div className="carousel-section">
-//             <Slider {...settings} className="products-carousel">
-//               {products.map((product) => (
-//                 <CarouselCard key={product.id} product={product} />
-//               ))}
-//             </Slider>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// const CustomNextArrow = (props) => {
-//   const { onClick } = props;
-//   return (
-//     <button
-//       className="custom-arrow next-arrow"
-//       onClick={onClick}
-//       aria-label="Next slide"
-//     >
-//       <ChevronRight size={24} />
-//     </button>
-//   );
-// };
-
-// const CustomPrevArrow = (props) => {
-//   const { onClick } = props;
-//   return (
-//     <button
-//       className="custom-arrow prev-arrow"
-//       onClick={onClick}
-//       aria-label="Previous slide"
-//     >
-//       <ChevronLeft size={24} />
-//     </button>
-//   );
-// };
-
-// export default ProductShowcase;
-
-// import React, { useState } from "react";
-// import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-
-// import ProductCard from "./product-card";
-// import CarouselCard from "./carousel-card";
-
-// const ProductShowcase = ({ showProduct = true }) => {
-//   const [activeSlide, setActiveSlide] = useState(0);
-
-//   const settings = {
-//     dots: true,
-//     infinite: false,
-//     speed: 500,
-//     slidesToShow: 3,
-//     slidesToScroll: 1,
-//     autoplay: false, // ❌ Auto-play fully disabled
-//     beforeChange: (_, next) => setActiveSlide(next),
-//     customPaging: () => <div className="custom-dot" />,
-//     responsive: [
-//       { breakpoint: 1024, settings: { slidesToShow: 2 } },
-//       { breakpoint: 768, settings: { slidesToShow: 1 } },
-//     ],
-//   };
-
-//   const products = [
-//     {
-//       id: 1,
-//       title: "The Secret to Authentic Flavor",
-//       subtitle: "Premium A2 Gir Cow Ghee",
-//       video:
-//         "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-//     },
-//     {
-//       id: 2,
-//       title: "Ancient Wisdom",
-//       subtitle: "Modern Wellness with A2 Gir Cow Ghee",
-//       video:
-//         "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-//     },
-//     {
-//       id: 3,
-//       title: "Pure Love in Every Meal",
-//       subtitle: "Premium A2 Cow Ghee for Your Family",
-//       video:
-//         "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-//     },
-//     {
-//       id: 4,
-//       title: "Ancient Recipes",
-//       subtitle: "Modern Wellness with A2 Gir Cow Ghee",
-//       video:
-//         "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-//     },
-//   ];
-
-//   return (
-//     <div className="product-showcase">
-//       <div className="showcase-container">
-//         <h1 className="showcase-title">Our Product</h1>
-
-//         <div className="showcase-content">
-//           {showProduct && <ProductCard />}
-
-//           <div className="carousel-section">
-//             <Slider {...settings} className="products-carousel">
-//               {products.map((product, index) => (
-//                 <CarouselCard
-//                   key={product.id}
-//                   product={product}
-//                   isActive={activeSlide === index}
-//                 />
-//               ))}
-//             </Slider>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductShowcase;
-
-import React, { useState } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-import ProductCard from "./product-card";
 import CarouselCard from "./carousel-card";
+import { getData } from "../../services/api";
+import ProductCard from "./product-card";
+import { environment } from "../../environment/environment";
+import axios from "axios";
 
 const ProductShowcase = ({ showProduct = true }) => {
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 400,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: false, // no autoplay
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-    ],
-  };
+  const [reels, setReels] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  const products = [
-    {
-      id: 1,
-      title: "Premium A2 Ghee",
-      subtitle: "Authentic A2 Gir Cow Ghee",
-      video:
-        "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-    },
-    {
-      id: 2,
-      title: "Ancient Wisdom",
-      subtitle: "Modern Wellness",
-      video:
-        "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-    },
-    {
-      id: 3,
-      title: "Pure Love in Every Meal",
-      subtitle: "Healthy & Authentic",
-      video:
-        "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-    },
-    {
-      id: 4,
-      title: "Modern Wellness",
-      subtitle: "Premium A2 Cow Ghee",
-      video:
-        "https://gauswarn-bucket.s3.ap-south-1.amazonaws.com/reels-video/11th+reel.mp4",
-    },
-  ];
+  const settings = useMemo(
+    () => ({
+      dots: true,
+      infinite: false,
+      speed: 400,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      responsive: [
+        { breakpoint: 1024, settings: { slidesToShow: 2 } },
+        { breakpoint: 768, settings: { slidesToShow: 1 } },
+      ],
+    }),
+    []
+  );
+
+  const loadReels = useCallback(async () => {
+    const res = await getData("admin/reels/all");
+    if (res.success) setReels(res.reels);
+  }, []);
+
+  const loadProducts = useCallback(async () => {
+    try {
+      const res = await axios.get(
+        `${environment.API_BASE_URL}/users/getAllProduct`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+          },
+        }
+      );
+
+      setProducts(res?.data?.products || []);
+    } catch (err) {
+      console.error("Product fetch error", err);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadReels();
+    loadProducts();
+  }, [loadReels, loadProducts]);
+
+  const memoizedReelsList = useMemo(
+    () =>
+      reels.map((item) => <CarouselCard key={item.id} reelId={item.reel_id} />),
+    [reels]
+  );
 
   return (
     <div className="product-showcase">
@@ -266,13 +65,15 @@ const ProductShowcase = ({ showProduct = true }) => {
         <h1 className="showcase-title">Our Product</h1>
 
         <div className="showcase-content">
-          {showProduct && <ProductCard />}
+          {/*  MAIN PRODUCT */}
+          {showProduct && products.length > 0 && (
+            <ProductCard product={products} />
+          )}
 
+          {/*  REELS */}
           <div className="carousel-section">
             <Slider {...settings} className="products-carousel">
-              {products.map((product) => (
-                <CarouselCard key={product.id} product={product} />
-              ))}
+              {memoizedReelsList}
             </Slider>
           </div>
         </div>
@@ -282,3 +83,74 @@ const ProductShowcase = ({ showProduct = true }) => {
 };
 
 export default ProductShowcase;
+
+// import React, { useEffect, useState, useMemo, useCallback } from "react";
+// import Slider from "react-slick";
+// import CarouselCard from "./carousel-card";
+// import { getData } from "../../services/api";
+// import ProductCard from "./product-card";
+
+// const ProductShowcase = ({ showProduct = true }) => {
+//   const [reels, setReels] = useState([]);
+
+//   // ============================
+//   // Memoized Slider Settings
+//   // ============================
+//   const settings = useMemo(
+//     () => ({
+//       dots: true,
+//       infinite: false,
+//       speed: 400,
+//       slidesToShow: 3,
+//       slidesToScroll: 1,
+//       autoplay: false,
+//       responsive: [
+//         { breakpoint: 1024, settings: { slidesToShow: 2 } },
+//         { breakpoint: 768, settings: { slidesToShow: 1 } },
+//       ],
+//     }),
+//     []
+//   );
+
+//   // ============================
+//   // Memoized API Function
+//   // ============================
+//   const loadReels = useCallback(async () => {
+//     const res = await getData("admin/reels/all");
+//     if (res.success) setReels(res.reels);
+//   }, []);
+
+//   // Load reels on mount
+//   useEffect(() => {
+//     loadReels();
+//   }, [loadReels]);
+
+//   // ============================
+//   // Memoized Render List
+//   // ============================
+//   const memoizedReelsList = useMemo(
+//     () =>
+//       reels.map((item) => <CarouselCard key={item.id} reelId={item.reel_id} />),
+//     [reels]
+//   );
+
+//   return (
+//     <div className="product-showcase">
+//       <div className="showcase-container">
+//         <h1 className="showcase-title">Our Product</h1>
+
+//         <div className="showcase-content">
+//           {showProduct && <ProductCard />}
+
+//           <div className="carousel-section">
+//             <Slider {...settings} className="products-carousel">
+//               {memoizedReelsList}
+//             </Slider>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ProductShowcase;

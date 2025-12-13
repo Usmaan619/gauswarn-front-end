@@ -1,22 +1,17 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import image from "../../asset/img/Gallery/gal-food2.png";
+import CarouselCard from "./CarouselCard";
+import "./custom-carousel.css";
 
-const CustomCarousel = ({ products, slidesToShow = 3 }) => {
+const CustomCarousel = ({ products = [], slidesToShow = 3 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(slidesToShow);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setItemsToShow(1);
-      } else if (window.innerWidth < 1024) {
-        setItemsToShow(2);
-      } else {
-        setItemsToShow(slidesToShow);
-      }
+      if (window.innerWidth < 768) setItemsToShow(1);
+      else if (window.innerWidth < 1024) setItemsToShow(2);
+      else setItemsToShow(slidesToShow);
     };
 
     handleResize();
@@ -24,23 +19,15 @@ const CustomCarousel = ({ products, slidesToShow = 3 }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [slidesToShow]);
 
-  const maxIndex = products?.length - itemsToShow;
+  const maxIndex = useMemo(() => {
+    return Math.max(products.length - itemsToShow, 0);
+  }, [products.length, itemsToShow]);
 
-  const goToPrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? maxIndex : prevIndex - 1
-    );
-  };
+  const prev = () => setCurrentIndex((i) => (i <= 0 ? maxIndex : i - 1));
 
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === maxIndex ? 0 : prevIndex + 1
-    );
-  };
+  const next = () => setCurrentIndex((i) => (i >= maxIndex ? 0 : i + 1));
 
-  const goToDot = (index) => {
-    setCurrentIndex(index);
-  };
+  if (!products.length) return null;
 
   return (
     <div className="custom-carousel-container">
@@ -51,57 +38,35 @@ const CustomCarousel = ({ products, slidesToShow = 3 }) => {
             transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)`,
           }}
         >
-          {products.map((product) => (
+          {products.map((item, index) => (
             <div
-              key={product.id}
+              key={item.id || index}
               className="carousel-item"
-              style={{
-                flex: `0 0 ${100 / itemsToShow}%`,
-              }}
+              style={{ flex: `0 0 ${100 / itemsToShow}%` }}
             >
-              <div className="carousel-card">
-                <img
-                  src={image}
-                  alt={product?.title}
-                  className="carousel-image"
-                />
-                <div className="carousel-overlay">
-                  <h3 className="carousel-title">{product.title}</h3>
-                  <p className="carousel-subtitle">{product.subtitle}</p>
-                </div>
-              </div>
+              <CarouselCard reelId={item.reelId} />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Navigation Arrows */}
-      <div className="carousel-controls">
-        <button
-          className="carousel-arrow prev-arrow"
-          onClick={goToPrevious}
-          aria-label="Previous slide"
-        >
-          <ChevronLeft size={24} />
-        </button>
+      {products.length > itemsToShow && (
+        <div className="carousel-controls">
+          <button onClick={prev}>
+            <ChevronLeft size={28} />
+          </button>
+          <button onClick={next}>
+            <ChevronRight size={28} />
+          </button>
+        </div>
+      )}
 
-        <button
-          className="carousel-arrow next-arrow"
-          onClick={goToNext}
-          aria-label="Next slide"
-        >
-          <ChevronRight size={24} />
-        </button>
-      </div>
-
-      {/* Dots Navigation */}
       <div className="carousel-dots">
-        {products.map((_, index) => (
+        {Array.from({ length: maxIndex + 1 }).map((_, i) => (
           <button
-            key={index}
-            className={`dot ${index === currentIndex ? "active" : ""}`}
-            onClick={() => goToDot(index)}
-            aria-label={`Go to slide ${index + 1}`}
+            key={i}
+            className={`dot ${i === currentIndex ? "active" : ""}`}
+            onClick={() => setCurrentIndex(i)}
           />
         ))}
       </div>

@@ -1,0 +1,134 @@
+/* ===============================
+   Payment Success Page
+   =============================== */
+
+.payment-success .payment {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-success .payment .container {
+  max-width: 600px;
+}
+
+.payment-success .payment .row {
+  justify-content: center;
+}
+
+.payment-success .payment .col-lg-12 {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ===============================
+   Success Animation
+   =============================== */
+
+.payment-success .success-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-success .checkmark {
+  width: 90px;
+  height: 90px;
+  stroke-width: 3;
+  stroke: #4caf50;
+  fill: white;
+  stroke-miterlimit: 10;
+  animation: scaleIn 0.3s ease-in-out forwards;
+  border-radius: 50%;
+}
+
+.payment-success .checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 3;
+  stroke: #4caf50;
+  fill: white;
+  animation: strokeCircle 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.payment-success .checkmark__check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  stroke: #4caf50;
+  animation: strokeCheck 0.4s 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+/* ===============================
+   Text & Button
+   =============================== */
+
+.payment-success .payment p {
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.payment-success .payment button {
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+  color: #ffffff;
+  border: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.payment-success .payment button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(46, 125, 50, 0.4);
+}
+
+.payment-success .payment button:active {
+  transform: scale(0.98);
+}
+
+/* ===============================
+   Animations
+   =============================== */
+
+@keyframes strokeCircle {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes strokeCheck {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   Responsive
+   =============================== */
+
+@media (max-width: 576px) {
+  .payment-success .payment .col-lg-12 {
+    padding: 30px 20px;
+  }
+
+  .payment-success .checkmark {
+    width: 70px;
+    height: 70px;
+  }
+
+  .payment-success .payment p {
+    font-size: 20px;
+  }
+}

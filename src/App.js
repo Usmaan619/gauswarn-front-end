@@ -35,6 +35,8 @@ import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
 import Aos from "aos";
 import FinalPaymentMainPage from "./Component/Final-payment-page/final-payment-page.jsx";
 import { ToastContainer } from "react-toastify";
+import PaymentFailed from "./Component/Payment-fails-pages/PaymentFailed.jsx";
+import PaymentSuccess from "./Component/PaymentSuccess/PaymentSuccess.jsx";
 
 function App() {
   const { setCart } = useCartContext();
@@ -79,7 +81,6 @@ function App() {
               <AboutUsHero />
               <ProductShowcase />
               <VideoSection />
-              {/* <PromotionalCards /> */}
               <HealthProductShowcase />
               <DiscoverHeroSection />
             </>
@@ -96,6 +97,12 @@ function App() {
         <Route path="/products" element={<ProductPageMain />} />
         <Route path="/cart" element={<FinalPaymentMainPage />} />
 
+        <Route path="/products" element={<ProductPageMain />} />
+        <Route path="/cart" element={<FinalPaymentMainPage />} />
+
+        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/payment-failed" element={<PaymentFailed />} />
+
         {/* NEW POLICY ROUTES */}
         <Route path="/refund" element={<RefundMainPage />} />
         <Route path="/shipping" element={<ShippingPolicy />} />
@@ -108,7 +115,13 @@ function App() {
         <Route
           path="*"
           element={
-            <h2 style={{ textAlign: "center", marginTop: "50px",height:"41dvh" }}>
+            <h2
+              style={{
+                textAlign: "center",
+                marginTop: "50px",
+                height: "41dvh",
+              }}
+            >
               Page Not Found
             </h2>
           }
@@ -121,3 +134,7 @@ function App() {
 }
 
 export default App;
+
+{
+  /* <PromotionalCards /> */
+}
