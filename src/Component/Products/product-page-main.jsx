@@ -173,7 +173,7 @@ const ProductPageMain = () => {
   const increaseCount = () => setCount((c) => c + 1);
   const decreaseCount = () => setCount((c) => (c > 1 ? c - 1 : 1));
 
-  // ✅ FIXED ADD TO CART
+  // FIXED ADD TO CART
   const handleAddToCart = async () => {
     const selectedIndex = checkedItems.findIndex(Boolean);
     if (selectedIndex === -1) {
@@ -190,7 +190,7 @@ const ProductPageMain = () => {
       user_id: selectedItem.product_id,
       product_weight: selectedItem.product_weight,
       product_quantity: count,
-      quantity: count, // ✅ ADD THIS FOR HEADER COUNT
+      quantity: count, // ADD THIS FOR HEADER COUNT
       product_price: selectedItem.product_price,
       product_total_amount: selectedItem.product_price * count,
       purchase_price: selectedItem.product_purchase_price,
@@ -221,7 +221,7 @@ const ProductPageMain = () => {
 
         if (foundIndex !== -1) {
           existingCart[foundIndex].product_quantity += count;
-          existingCart[foundIndex].quantity += count; // ✅ UPDATE THIS TOO
+          existingCart[foundIndex].quantity += count; // UPDATE THIS TOO
           existingCart[foundIndex].product_total_amount =
             existingCart[foundIndex].product_price *
             existingCart[foundIndex].product_quantity;
@@ -230,7 +230,7 @@ const ProductPageMain = () => {
         }
 
         sessionStorage.setItem("cart", JSON.stringify(existingCart));
-        setCart(existingCart); // ✅ UPDATE CONTEXT STATE
+        setCart(existingCart); // UPDATE CONTEXT STATE
       } else {
         toast.error("Failed to add to cart");
       }
@@ -303,7 +303,7 @@ const ProductPageMain = () => {
     </>
   );
 
-  // ✅ FIXED BUY NOW
+  // FIXED BUY NOW
   const handleBuyNow = async () => {
     const selectedIndex = checkedItems.findIndex(Boolean);
     if (selectedIndex === -1) {
@@ -320,7 +320,7 @@ const ProductPageMain = () => {
       user_id: selectedItem.product_id,
       product_weight: selectedItem.product_weight,
       product_quantity: count,
-      quantity: count, // ✅ ADD THIS
+      quantity: count, // ADD THIS
       product_price: selectedItem.product_price,
       product_total_amount: selectedItem.product_price * count,
       purchase_price: selectedItem.product_purchase_price,
@@ -336,7 +336,7 @@ const ProductPageMain = () => {
 
     if (foundIndex !== -1) {
       existingCart[foundIndex].product_quantity += count;
-      existingCart[foundIndex].quantity += count; // ✅ UPDATE THIS TOO
+      existingCart[foundIndex].quantity += count; // UPDATE THIS TOO
       existingCart[foundIndex].product_total_amount =
         existingCart[foundIndex].product_price *
         existingCart[foundIndex].product_quantity;
@@ -345,7 +345,7 @@ const ProductPageMain = () => {
     }
 
     sessionStorage.setItem("cart", JSON.stringify(existingCart));
-    setCart(existingCart); // ✅ UPDATE CONTEXT STATE
+    setCart(existingCart); // UPDATE CONTEXT STATE
 
     triggerCrossPageToast("success", "Item added to cart!");
     navigate("/cart");
@@ -739,19 +739,6 @@ const ProductPageMain = () => {
                 <button type="submit" className="submit-review-btn">
                   <Send size={18} /> Submit
                 </button>
-
-                {/* <button
-                  type="button"
-                  className="cancel-review-btn"
-                  onClick={() => {
-                    setReviewName("");
-                    setReviewEmail("");
-                    setReviewFeedback("");
-                    setReviewRating(5);
-                  }}
-                >
-                  Cancel
-                </button> */}
               </div>
             </form>
           </div>

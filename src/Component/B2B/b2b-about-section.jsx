@@ -1,9 +1,8 @@
 import React from "react";
 import { Building2, Globe, Users } from "lucide-react";
-
 import "./b2b-styles/b2b-about-section.css";
 
-const B2bAboutSection = () => {
+const B2bAboutSection = ({ onQuoteClick }) => {
   return (
     <section className="b2b-aboutSection">
       <div className="container b2b-aboutGrid">
@@ -25,18 +24,18 @@ const B2bAboutSection = () => {
 
         <div className="b2b-aboutTextModern">
           <h1 className="b2b-sectionTitleModern">About Our B2B Program</h1>
+
           <p className="b2b-aboutDescriptionModern">
-            Our B2B partnership program is designed to empower businesses across
-            multiple sectors. Whether you're a retailer, wholesaler,
-            distributor, or corporate client, we provide the premium products,
-            pricing flexibility, and support you need to thrive.
+            Our B2B partnership program empowers retailers, wholesalers,
+            distributors, and corporate clients with premium products and
+            flexible pricing.
           </p>
+
           <p className="b2b-aboutDescriptionModern">
-            We work with supermarkets, gyms, spas, Ayurvedic stores, online
-            sellers, and export partners to deliver consistent quality and
-            reliable supply chains that drive profitability and customer
-            satisfaction.
+            We serve supermarkets, gyms, spas, Ayurvedic stores, online sellers,
+            and export partners across India.
           </p>
+
           <hr className="b2b-dividerModern" />
 
           <div className="b2b-featuresModern">
@@ -60,14 +59,17 @@ const B2bAboutSection = () => {
               <div key={i} className="b2b-featureModern">
                 <span className="b2b-featureIconModern">{item.icon}</span>
                 <span>
-                  <b>{item.title}</b> <br />
+                  <b>{item.title}</b>
+                  <br />
                   {item.desc}
                 </span>
               </div>
             ))}
           </div>
 
-          <button className="b2b-ctaButtonModern">Get a Free Quote</button>
+          <button className="b2b-ctaButtonModern" onClick={onQuoteClick}>
+            Get a Free Quote
+          </button>
         </div>
       </div>
     </section>

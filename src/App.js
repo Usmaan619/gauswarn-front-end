@@ -37,6 +37,7 @@ import FinalPaymentMainPage from "./Component/Final-payment-page/final-payment-p
 import { ToastContainer } from "react-toastify";
 import PaymentFailed from "./Component/Payment-fails-pages/PaymentFailed.jsx";
 import PaymentSuccess from "./Component/PaymentSuccess/PaymentSuccess.jsx";
+import BlogView from "./Component/Blog/blogView.jsx";
 
 function App() {
   const { setCart } = useCartContext();
@@ -90,6 +91,8 @@ function App() {
         {/* MAIN PAGES */}
         <Route path="/about" element={<AboutUsHeroMain />} />
         <Route path="/blog" element={<BlogMainPageNew />} />
+        <Route path="/blog/:slug" element={<BlogView />} />
+
         <Route path="/gallery" element={<GheeGallery />} />
         <Route path="/contact" element={<ContactMainPage />} />
         <Route path="/track-order" element={<OrderTracking />} />

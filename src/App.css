@@ -2370,7 +2370,7 @@ body {
 /* Small Mobile (Below 480px) */
 @media (max-width: 480px) {
   body {
-    padding-top: 109px;
+    padding-top: 75px;
   }
 
   .navbar-wrapper.banner-hide {
@@ -2411,4 +2411,8 @@ body {
 
 .btn-cta:active {
   transform: translateY(-1px);
+}
+
+.Toastify__toast-container {
+  z-index: 9999999 !important;
 }
