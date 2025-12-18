@@ -1,37 +1,53 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+
 import { getData } from "../../services/api";
 import { toastError } from "../../services/toaster.service";
 
+/* =========================
+   INITIAL STATE
+========================= */
+const INITIAL_BANNERS = {
+  banner1: null,
+  banner2: null,
+  banner3: null,
+  banner4: null,
+};
+
 const Home = () => {
-  const [banners, setBanners] = useState({
-    banner1: null,
-    banner2: null,
-    banner3: null,
-    banner4: null,
-  });
-  const [loading, setLoading] = useState(false);
+  const [banners, setBanners] = useState(INITIAL_BANNERS);
+  const [loading, setLoading] = useState(true);
 
-  // 🔹 API call – yahi se data aa raha hai
+  /* =========================
+     FETCH BANNERS (SAFE)
+  ========================= */
   const fetchBanners = useCallback(async () => {
-    try {
-      setLoading(true);
-      const res = await getData("admin/home-banners"); // GET /home-banners se data aaega [web:7][web:13]
+    setLoading(true);
 
-      // assume API => { banner1: 'url', banner2: 'url', ... }
-      if (res) {
-        setBanners({
-          banner1: res.banner1 || null,
-          banner2: res.banner2 || null,
-          banner3: res.banner3 || null,
-          banner4: res.banner4 || null,
-        });
+    try {
+      const res = await getData("admin/home-banners");
+
+      if (!res || typeof res !== "object") {
+        throw new Error("Invalid banner response");
       }
-    } catch (err) {
-      console.error("Failed to fetch banners:", err);
+
+      setBanners({
+        banner1: res?.banner1 ?? null,
+        banner2: res?.banner2 ?? null,
+        banner3: res?.banner3 ?? null,
+        banner4: res?.banner4 ?? null,
+      });
+    } catch (error) {
+      console.error("Failed to fetch banners:", error);
       toastError("Failed to load banners");
+      setBanners(INITIAL_BANNERS);
     } finally {
       setLoading(false);
     }
@@ -41,72 +57,62 @@ const Home = () => {
     fetchBanners();
   }, [fetchBanners]);
 
-  // 🔹 API se aayi values ko slides me map
+  /* =========================
+     SLIDES (SAFE MAP)
+  ========================= */
   const slides = useMemo(() => {
-    const items = [];
-
-    if (banners.banner1)
-      items.push({
-        desktop: banners.banner1,
-        mobile: banners.banner1,
-        alt: "Banner 1",
-      });
-    if (banners.banner2)
-      items.push({
-        desktop: banners.banner2,
-        mobile: banners.banner2,
-        alt: "Banner 2",
-      });
-    if (banners.banner3)
-      items.push({
-        desktop: banners.banner3,
-        mobile: banners.banner3,
-        alt: "Banner 3",
-      });
-    if (banners.banner4)
-      items.push({
-        desktop: banners.banner4,
-        mobile: banners.banner4,
-        alt: "Banner 4",
-      });
-
-    return items;
+    try {
+      return Object.values(banners)
+        .filter(Boolean)
+        .map((url, index) => ({
+          desktop: url,
+          mobile: url,
+          alt: `Banner ${index + 1}`,
+        }));
+    } catch (error) {
+      console.error("Slide mapping error:", error);
+      return [];
+    }
   }, [banners]);
 
-  const hasSlides = useMemo(() => slides.length > 0, [slides]);
+  const hasSlides = slides.length > 0;
 
-  const CustomPrevArrow = useCallback(
+  /* =========================
+     CUSTOM ARROWS
+  ========================= */
+  const renderPrevArrow = useCallback(
     (onClickHandler, hasPrev, label) =>
       hasPrev && (
         <button
           type="button"
           onClick={onClickHandler}
           title={label}
-          className="custom-arrow custom-arrow-prev"
-          aria-label="Previous"
+          className="custom-arrow prev-arrow"
         >
-          <BsChevronLeft className="carousel-icon" />
+          <BsChevronLeft />
         </button>
       ),
     []
   );
 
-  const CustomNextArrow = useCallback(
+  const renderNextArrow = useCallback(
     (onClickHandler, hasNext, label) =>
       hasNext && (
         <button
           type="button"
           onClick={onClickHandler}
           title={label}
-          className="custom-arrow custom-arrow-next"
-          aria-label="Next"
+          className="custom-arrow next-arrow"
         >
-          <BsChevronRight className="carousel-icon" />
+          <BsChevronRight />
         </button>
       ),
     []
   );
 
+  /* =========================
+     CAROUSEL CONFIG
+  ========================= */
   const carouselProps = useMemo(
     () => ({
       showArrows: false,
@@ -118,43 +124,70 @@ const Home = () => {
       transitionTime: 600,
       swipeable: true,
       emulateTouch: true,
-      dynamicHeight: false,
       stopOnHover: false,
-      renderArrowPrev: CustomPrevArrow,
-      renderArrowNext: CustomNextArrow,
+      renderArrowPrev: renderPrevArrow,
+      renderArrowNext: renderNextArrow,
       className: "main-carousel",
-      width: "100%",
     }),
-    [CustomPrevArrow, CustomNextArrow]
+    [renderPrevArrow, renderNextArrow]
   );
 
-  // 🔹 Loading + no data state
+  /* =========================
+     SKELETON (HEIGHT LOCK)
+  ========================= */
   if (loading || !hasSlides) {
     return (
       <div className="home">
+        <style>
+          {`
+            @keyframes shimmer {
+              0% { background-position: 100% 0; }
+              100% { background-position: -100% 0; }
+            }
+          `}
+        </style>
+
         <div className="carousel-container">
           <div
-            className="carousel-skeleton"
-            style={{ height: "500px", background: "#f5f5f5" }}
+            className="carousel-full-image"
+            style={{
+              background:
+                "linear-gradient(90deg, #eeeeee 25%, #f5f5f5 37%, #eeeeee 63%)",
+              backgroundSize: "400% 100%",
+              animation: "shimmer 1.4s infinite",
+            }}
           />
         </div>
       </div>
     );
   }
 
+  /* =========================
+     MAIN RENDER
+  ========================= */
   return (
     <div className="home">
       <div className="carousel-container">
         <Carousel {...carouselProps}>
           {slides.map((item, index) => (
-            <div key={`${item.alt}-${index}`} className="carousel-slide">
+            <div
+              key={`${item.alt}-${index}`}
+              className="carousel-slide"
+            >
               <picture>
-                <source media="(max-width: 768px)" srcSet={item.mobile} />
+                <source
+                  media="(max-width: 768px)"
+                  srcSet={item.mobile}
+                />
                 <img
                   src={item.desktop}
                   alt={item.alt}
                   className="carousel-full-image"
                   loading={index === 0 ? "eager" : "lazy"}
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      "/default-banner.jpg";
+                  }}
                 />
               </picture>
             </div>

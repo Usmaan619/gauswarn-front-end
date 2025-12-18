@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./footer.css";
 import logo from "../../../asset/new-img/logo/gauswarn-white-logo.png";
 import amazonlogo from "../../../asset/new-img/ecommerce/amazon.png";
 import flipkartlogo from "../../../asset/new-img/ecommerce/flipkart.png";
 import { Link } from "react-router-dom";
+import { postData } from "../../../services/api";
+import { toastError, toastSuccess } from "../../../services/toaster.service";
 
 export default function NewFooter() {
-  const handleNewsletterSubmit = (e) => {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    const formElement = e.currentTarget;
-    const emailInput = formElement.querySelector('input[type="email"]');
-    if (emailInput) {
-      emailInput.value = "";
+
+    if (!email) return;
+
+    try {
+      setLoading(true);
+
+      const response = await postData("/admin/createNewsletter", {
+        email,
+      });
+
+      if (response?.success) {
+        toastSuccess("Thank you for subscribing!");
+        setEmail("");
+      } else {
+        toastError(response?.message || "Subscription failed");
+      }
+    } catch (error) {
+      console.error("Newsletter Error:", error);
+      toastError("Something went wrong");
+    } finally {
+      setLoading(false);
     }
-    alert("Thank you for subscribing!");
   };
 
   // Smooth Scroll to Top
@@ -35,7 +55,7 @@ export default function NewFooter() {
                 <div className="footer-cta-text">
                   <h4>Find us</h4>
                   <span>
-                    11 Manish Baag Sapna Sangeeta Road Indore Madhya Pradesh
+                    11, Manish Baag Sapna Sangeeta Road Indore Madhya Pradesh
                     452001
                   </span>
                 </div>
@@ -191,9 +211,22 @@ export default function NewFooter() {
 
                 <div className="footer-subscribe-form">
                   <form onSubmit={handleNewsletterSubmit}>
-                    <input type="email" placeholder="Email Address" required />
-                    <button>
-                      <i className="fab fa-telegram-plane"></i>
+                    <input
+                      type="email"
+                      placeholder="Email Address"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+
+                    <button type="submit" disabled={loading}>
+                      <i
+                        className={
+                          loading
+                            ? "fas fa-spinner fa-spin"
+                            : "fab fa-telegram-plane"
+                        }
+                      ></i>
                     </button>
                   </form>
                 </div>

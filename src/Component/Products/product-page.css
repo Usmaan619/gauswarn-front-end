@@ -1,5 +1,209 @@
 /* Product Page - Custom Styling (Complete Responsive) */
 
+/* ========================================
+   SHIMMER ANIMATION - LOADING STATES
+======================================== */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.shimmer-base {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 400% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* IMAGE SHIMMER */
+.shimmer-image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.shimmer-image {
+  composes: shimmer-base;
+  width: 100%;
+  height: 100%;
+}
+
+/* THUMBNAIL SHIMMER */
+.shimmer-thumbnail {
+  composes: shimmer-base;
+  height: 80px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* LINE SHIMMER */
+.shimmer-line {
+  composes: shimmer-base;
+  margin-bottom: 12px;
+}
+
+/* STARS SHIMMER */
+.shimmer-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.shimmer-star {
+  composes: shimmer-base;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+/* SIZE BUTTON SHIMMER */
+.shimmer-size-btn {
+  composes: shimmer-base;
+  height: 48px;
+  width: 80px;
+  margin-right: 12px;
+  border-radius: 24px;
+}
+
+/* REVIEW SHIMMER */
+.shimmer-review-card {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  background: #f8f9fa;
+}
+
+.shimmer-review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.shimmer-avatar {
+  composes: shimmer-base;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.shimmer-reviewer-info {
+  flex: 1;
+}
+
+.shimmer-review-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shimmer-rating-score {
+  composes: shimmer-base;
+  width: 3rem;
+  height: 2.5rem;
+  border-radius: 8px;
+}
+
+/* PRODUCT DETAILS SHIMMER */
+.shimmer-rating-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.shimmer-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.shimmer-size-section,
+.shimmer-quantity-section {
+  margin: 24px 0;
+}
+
+.shimmer-size-section > .shimmer-line {
+  width: 25%;
+  margin-bottom: 12px;
+}
+
+.shimmer-size-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.shimmer-quantity-section > .shimmer-line {
+  width: 30%;
+  margin-bottom: 12px;
+}
+
+.shimmer-quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 140px;
+}
+
+.shimmer-input {
+  composes: shimmer-base;
+  height: 48px;
+  width: 60px;
+  border-radius: 8px;
+}
+
+.shimmer-btn {
+  composes: shimmer-base;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.shimmer-price-section {
+  margin: 20px 0;
+}
+
+.shimmer-price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.shimmer-buttons {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.shimmer-btn-large {
+  composes: shimmer-base;
+  height: 56px;
+  flex: 1;
+  border-radius: 8px;
+}
+
+/* RESPONSIVE SHIMMER */
+@media (max-width: 768px) {
+  .shimmer-image-wrapper {
+    height: 300px;
+  }
+
+  .shimmer-size-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+/* ========================================
+   ROOT VARIABLES & BASE STYLES
+======================================== */
 :root {
   --primary-yellow: #ffc107;
   --primary-green: #27ae60;
@@ -480,8 +684,6 @@
 }
 
 /* Payment Section */
-/* PAYMENT SECTION — FINAL FIX */
-
 .payment-section {
   margin-top: 20px;
   padding-top: 15px;
@@ -1165,7 +1367,6 @@
   padding: 14px 28px;
   background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
   box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
-  /* background-color: var(--primary-yellow); */
   color: var(--text-dark);
   border: none;
   border-radius: 8px;
@@ -1244,6 +1445,7 @@
 /* Small visual tweaks */
 @media (prefers-reduced-motion: reduce) {
   * {
+    animation: none !important;
     transition: none !important;
   }
 }

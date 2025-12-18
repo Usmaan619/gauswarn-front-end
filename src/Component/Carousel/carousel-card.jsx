@@ -13,10 +13,13 @@ const CarouselCard = ({ reelId }) => {
 
         <iframe
           src={`https://www.instagram.com/reel/${reelId}/embed`}
-          title="Instagram Reel"
+          title={`Instagram Reel ${reelId}`}
           allow="autoplay; encrypted-media; picture-in-picture"
           allowFullScreen
+          loading="lazy"
           onLoad={() => setLoaded(true)}
+          onError={() => setLoaded(true)} // Hide skeleton on error too
+          className="reel-iframe"
         />
       </div>
     </div>

@@ -1,318 +1,190 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "./blog-new-main.css";
+
 import FilterNewsletterCard from "./blog-filter";
 import ProductHeroSection from "../Products/product-hero-section";
 import { getData } from "../../services/api";
 
-const BlogCard = ({
-  image,
-  title,
-  description,
-  date,
-  tags,
-  watermark,
-  slug,
-}) => (
-  <div className="blog-card">
-    <div className="blog-image">
-      <img src={image} alt={title} />
-      {watermark && <div className="watermark">{watermark}</div>}
-    </div>
-    <div className="blog-content">
-      <div className="blog-meta">
-        <div className="blog-tags">
-          {tags?.map((tag, index) => (
-            <span key={index} className="tag">
-              {tag}
-            </span>
-          ))}
-        </div>
-        <span className="blog-date">{date}</span>
-      </div>
-      <h3 className="blog-title">{title}</h3>
-      <p className="blog-description">{description}</p>
+/* ======================
+   UTILITIES
+====================== */
+const truncateText = (html = "", limit = 150) => {
+  try {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    const text = div.innerText || "";
+    return text.length > limit ? `${text.slice(0, limit)}...` : text;
+  } catch {
+    return "";
+  }
+};
 
-      <Link to={`/blog/${slug}`} className="read-more-btn">
-        Read More
-      </Link>
+const formatSlug = (slug) =>
+  slug ? slug.toLowerCase().replace(/[^a-z0-9]+/g, "-") : "blog";
+
+const formatDate = (dateString) => {
+  try {
+    return dateString
+      ? new Date(dateString).toLocaleDateString("en-IN", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        })
+      : "N/A";
+  } catch {
+    return "N/A";
+  }
+};
+
+/* ======================
+   BLOG CARD
+====================== */
+const BlogCard = ({ image, title, description, date, category, slug }) => (
+  <Link to={`/blog/${formatSlug(slug)}`} className="blog-card-link">
+    <div className="blog-card">
+      <div className="blog-image">
+        <img
+          src={image || "/default-blog-image.jpg"}
+          alt={title || "Blog post"}
+          loading="lazy"
+        />
+      </div>
+
+      <div className="blog-content">
+        <div className="blog-meta">
+          <span className="tag">{category || "Blog"}</span>
+          <span className="blog-date">{date}</span>
+        </div>
+
+        <h3 className="blog-title">{title || "Untitled"}</h3>
+
+        <p className="blog-description">{truncateText(description)}</p>
+
+        <span className="read-more-btn">More →</span>
+      </div>
+    </div>
+  </Link>
+);
+
+/* ======================
+   SKELETON
+====================== */
+const BlogSkeleton = () => (
+  <div className="blogcard-skel">
+    <div className="blogcard-skel-img shimmer" />
+    <div className="blogcard-skel-body">
+      <div className="blogcard-skel-line sm shimmer" />
+      <div className="blogcard-skel-line md shimmer" />
+      <div className="blogcard-skel-line shimmer" />
+      <div className="blogcard-skel-line shimmer" />
     </div>
   </div>
 );
 
+/* ======================
+   MAIN PAGE
+====================== */
 const BlogMainPageNew = () => {
-  const [email, setEmail] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-
   const [blogs, setBlogs] = useState([]);
-  const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [sortOrder, setSortOrder] = useState("new");
+  const [error, setError] = useState("");
 
-  const postsPerPage = 9;
+  /* ===== FETCH BLOGS ===== */
+  const fetchBlogs = useCallback(async () => {
+    setLoading(true);
+    setError("");
 
-  const fetchBlogs = async (page) => {
     try {
-      setLoading(true);
+      const res = await getData("admin/blogs");
 
-      const res = await getData(`admin/blogs`, {
-        params: {
-          page,
-          limit: postsPerPage,
-        },
-      });
+      const blogList = res?.data?.blogs || res?.blogs || [];
 
-      // { success, blogs: [...], page, limit }
-      const list = res.blogs || [];
-      setBlogs(list);
-
-      if (list.length < postsPerPage) {
-        setTotalPages(page);
-      } else {
-        setTotalPages(page + 1);
+      if (!Array.isArray(blogList)) {
+        throw new Error("Invalid blog response");
       }
+
+      setBlogs(blogList);
     } catch (err) {
-      console.error("Error loading blogs:", err);
+      console.error("Blog fetch failed:", err);
+      setBlogs([]);
+      setError("Failed to load blogs. Please try again.");
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    fetchBlogs(currentPage);
-  }, [currentPage]);
+    fetchBlogs();
+  }, [fetchBlogs]);
 
-  const paginate = (pageNumber) => {
-    if (pageNumber === currentPage) return;
-    setCurrentPage(pageNumber);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  /* ===== SORTING ===== */
+  const sortedBlogs = useMemo(() => {
+    if (!Array.isArray(blogs)) return [];
 
-  const formatDate = (iso) => {
-    if (!iso) return "";
-    const d = new Date(iso);
-    return d.toLocaleDateString("en-IN", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
+    return [...blogs].sort((a, b) => {
+      const dateA = new Date(a?.created_at || 0);
+      const dateB = new Date(b?.created_at || 0);
+      return sortOrder === "new" ? dateB - dateA : dateA - dateB;
     });
-  };
+  }, [blogs, sortOrder]);
 
+  /* ===== ERROR STATE ===== */
+  if (error) {
+    return (
+      <div className="blog-error">
+        <div className="error-message">
+          <h2>{error}</h2>
+          <button className="retry-btn" onClick={fetchBlogs}>
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ===== RENDER ===== */
   return (
-    <div className="mt-4">
+    <>
       <ProductHeroSection />
+
       <div className="app">
         <div className="main-content">
-          {loading ? (
-            <p>Loading...</p>
-          ) : (
-            <div className="blog-grid">
-              {blogs.map((post) => (
+          <div className="blog-grid">
+            {loading ? (
+              Array.from({ length: 6 }).map((_, i) => <BlogSkeleton key={i} />)
+            ) : sortedBlogs.length > 0 ? (
+              sortedBlogs.map((post) => (
                 <BlogCard
-                  key={post.id}
-                  image={post.image_url}
-                  title={post.title}
-                  description={post.content}
-                  date={formatDate(post.created_at)}
-                  tags={[post.category]}
-                  watermark={null}
-                  slug={post.slug}
+                  key={post?.id || post?._id}
+                  image={post?.image_url || post?.image}
+                  title={post?.title}
+                  description={post?.content || post?.description}
+                  date={formatDate(post?.created_at || post?.date)}
+                  category={post?.category?.name || post?.category}
+                  slug={post?.slug || post?.id}
                 />
-              ))}
-              {blogs.length === 0 && !loading && <p>No blogs found.</p>}
-            </div>
-          )}
+              ))
+            ) : (
+              <div className="no-blogs">
+                <h3>No blogs found</h3>
+                <p>Check back later for new content!</p>
+              </div>
+            )}
+          </div>
         </div>
 
-        <FilterNewsletterCard />
+        {/* FILTER / SORT */}
+        <div className="right-filter-card">
+          <FilterNewsletterCard
+            sortOrder={sortOrder}
+            onSortChange={setSortOrder}
+          />
+        </div>
       </div>
-
-      <div className="pagination my-3">
-        <button
-          className="pagination-btn"
-          disabled={currentPage === 1}
-          onClick={() => currentPage > 1 && paginate(currentPage - 1)}
-        >
-          Prev
-        </button>
-
-        {[...Array(totalPages)].map((_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => paginate(index + 1)}
-            className={`pagination-btn ${
-              currentPage === index + 1 ? "pagination-active" : ""
-            }`}
-          >
-            {index + 1}
-          </button>
-        ))}
-
-        <button
-          className="pagination-btn"
-          disabled={currentPage === totalPages}
-          onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
-        >
-          Next
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 
 export default BlogMainPageNew;
-
-// import React, { useState, useEffect } from "react";
-// import "./blog-new-main.css";
-// import FilterNewsletterCard from "./blog-filter";
-// import ProductHeroSection from "../Products/product-hero-section";
-// import { getData } from "../../services/api";
-
-// const BlogCard = ({ image, title, description, date, tags, watermark }) => (
-//   <div className="blog-card">
-//     <div className="blog-image">
-//       <img src={image} alt={title} />
-//       {watermark && <div className="watermark">{watermark}</div>}
-//     </div>
-//     <div className="blog-content">
-//       <div className="blog-meta">
-//         <div className="blog-tags">
-//           {tags?.map((tag, index) => (
-//             <span key={index} className="tag">
-//               {tag}
-//             </span>
-//           ))}
-//         </div>
-//         <span className="blog-date">{date}</span>
-//       </div>
-//       <h3 className="blog-title">{title}</h3>
-//       <p className="blog-description">{description}</p>
-//       <button className="read-more-btn">Read More</button>
-//     </div>
-//   </div>
-// );
-
-// const BlogMainPageNew = () => {
-//   const [email, setEmail] = useState("");
-//   const [currentPage, setCurrentPage] = useState(1);
-
-//   const [blogs, setBlogs] = useState([]);
-//   const [totalPages, setTotalPages] = useState(1);
-//   const [loading, setLoading] = useState(false);
-
-//   const postsPerPage = 9;
-
-//   const fetchBlogs = async (page) => {
-//     try {
-//       setLoading(true);
-
-//       const res = await getData(`admin/blogs`, {
-//         params: {
-//           page,
-//           limit: postsPerPage,
-//         },
-//       });
-
-//       // response structure tumne diya hai:
-//       // { success, blogs: [...], page, limit }
-//       setBlogs(res.blogs || []);
-
-//       // agar backend total count nahi de raha,
-//       // simple logic: agar current page pe less than limit aaye,
-//       // to ye last page hai.
-//       if ((res.blogs || []).length < postsPerPage) {
-//         setTotalPages(page);
-//       } else {
-//         // ya to fixed 10 pages maan lo, ya alag se total leke aao
-//         setTotalPages(page + 1); // simple optimistic approach
-//       }
-//     } catch (err) {
-//       console.error(err);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchBlogs(currentPage);
-//   }, [currentPage]);
-
-//   const paginate = (pageNumber) => {
-//     if (pageNumber === currentPage) return;
-//     setCurrentPage(pageNumber);
-//     window.scrollTo({ top: 0, behavior: "smooth" });
-//   };
-
-//   // helper: ISO date ko readable banane ke liye
-//   const formatDate = (iso) => {
-//     if (!iso) return "";
-//     const d = new Date(iso);
-//     return d.toLocaleDateString("en-IN", {
-//       day: "2-digit",
-//       month: "short",
-//       year: "numeric",
-//     });
-//   };
-
-//   return (
-//     <div className="mt-4">
-//       <ProductHeroSection />
-//       <div className="app">
-//         <div className="main-content">
-//           {loading ? (
-//             <p>Loading...</p>
-//           ) : (
-//             <div className="blog-grid">
-//               {blogs.map((post) => (
-//                 <BlogCard
-//                   key={post.id}
-//                   image={post.image_url}
-//                   title={post.title}
-//                   description={post.content}
-//                   date={formatDate(post.created_at)}
-//                   tags={[post.category]} // ya jo bhi tags logic hai
-//                   watermark={null}
-//                 />
-//               ))}
-//               {blogs.length === 0 && !loading && <p>No blogs found.</p>}
-//             </div>
-//           )}
-//         </div>
-
-//         <FilterNewsletterCard />
-//       </div>
-
-//       {/* PAGINATION */}
-//       <div className="pagination my-3">
-//         <button
-//           className="pagination-btn"
-//           disabled={currentPage === 1}
-//           onClick={() => currentPage > 1 && paginate(currentPage - 1)}
-//         >
-//           Prev
-//         </button>
-
-//         {[...Array(totalPages)].map((_, index) => (
-//           <button
-//             key={index + 1}
-//             onClick={() => paginate(index + 1)}
-//             className={`pagination-btn ${
-//               currentPage === index + 1 ? "pagination-active" : ""
-//             }`}
-//           >
-//             {index + 1}
-//           </button>
-//         ))}
-
-//         <button
-//           className="pagination-btn"
-//           disabled={currentPage === totalPages}
-//           onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
-//         >
-//           Next
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default BlogMainPageNew;

@@ -91,12 +91,10 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="product-info">
-        <h2 className="product-name">
-          {selectedVariant?.product_name || "Product"}
-        </h2>
+        <h2 className="product-name">{"GAUSWARN A2 Bilona Ghee"}</h2>
 
         <p className="product-description">
-          {selectedVariant?.product_description || "100% Natural Product"}
+          {selectedVariant?.product_description || "Natural Product"}
         </p>
 
         {/* PRICE */}

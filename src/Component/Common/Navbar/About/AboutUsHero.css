@@ -1,37 +1,34 @@
-/* AboutUsHero.css - Cleaned Version (Duplicates Removed) */
-
 /* Base Styles */
 .aboutUsHero {
   background: linear-gradient(135deg, #f5e6d3 0%, #faf2e8 100%);
   padding: 0;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  min-height: 100vh;
 }
 
+/* Container ko full height sirf desktop pe rakhenge */
 .containerCustom {
   width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+  /* max-width: 1300px; */
+  margin: 0 auto;
 }
 
+/* Desktop: 2-column grid (image | content) */
 .aboutWrapper {
   display: grid;
   grid-template-columns: 45% 55%;
   gap: 0;
   align-items: stretch;
-  height: 100vh;
+  min-height: 100vh;
 }
 
+/* LEFT IMAGE SECTION */
 .aboutLeft {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  height: 100%;
   overflow: hidden;
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
     rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
@@ -42,21 +39,20 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 
+/* RIGHT CONTENT SECTION */
 .aboutContentSection {
   display: flex;
   flex-direction: column;
-  padding: 30px 60px;
+  padding: 40px 60px;
   justify-content: center;
   background: linear-gradient(135deg, #f5e6d3 0%, #faf2e8 100%);
-  overflow-y: auto;
   box-sizing: border-box;
 }
 
 .aboutMainHeading {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   color: #2d2d2d;
   line-height: 1.3;
@@ -75,7 +71,7 @@
   font-size: 18px;
   font-weight: 700;
   color: #2d2d2d;
-  margin: 0 0 18px 0;
+  margin: 20px 0 16px 0;
   letter-spacing: -0.3px;
 }
 
@@ -92,8 +88,6 @@
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  margin: 0;
-  padding: 0;
 }
 
 .checkSvg {
@@ -113,11 +107,10 @@
   height: 24px;
   flex-shrink: 0;
   margin-top: 2px;
-  font-size: 20px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
 }
 
 .missionText {
@@ -130,8 +123,7 @@
 .aboutDivider {
   border: none;
   border-top: 2px solid #d4c4b0;
-  margin: 10px 0;
-  padding: 0;
+  margin: 14px 0;
   width: 100%;
   align-self: flex-start;
 }
@@ -141,7 +133,7 @@
   color: #1a1a1a;
   border: none;
   padding: 14px 32px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   border-radius: 10px;
   cursor: pointer;
@@ -159,45 +151,35 @@
   box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
-.ctaButton:active {
-  transform: translateY(0);
-}
-
 .arrowSvg {
   width: 18px;
   height: 18px;
   stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
+/* ======================
+   TABLET (<= 1024px)
+====================== */
+@media (max-width: 1024px) {
   .aboutWrapper {
     grid-template-columns: 1fr;
-    height: auto;
-  }
-
-  .aboutUsHero {
     min-height: auto;
   }
 
-  .containerCustom {
-    height: auto;
+  .aboutUsHero {
+    align-items: flex-start;
   }
 
   .aboutLeft {
-    height: 400px;
+    height: 380px;
   }
 
   .aboutContentSection {
-    padding: 40px 20px;
-    gap: 18px;
+    padding: 32px 24px;
   }
 
   .aboutMainHeading {
     font-size: 24px;
-    margin-bottom: 16px;
   }
 
   .aboutParagraph,
@@ -207,23 +189,24 @@
 
   .aboutSubtitle {
     font-size: 16px;
-    margin: 24px 0 16px 0;
-  }
-
-  .ctaButton {
-    padding: 12px 24px;
-    font-size: 14px;
   }
 }
 
-@media (max-width: 480px) {
+/* ======================
+   MOBILE (<= 600px)
+====================== */
+@media (max-width: 600px) {
   .aboutContentSection {
-    padding: 30px 15px;
-    gap: 15px;
+    padding: 28px 18px;
+  }
+
+  .aboutLeft {
+    height: 300px;
   }
 
   .aboutMainHeading {
     font-size: 22px;
+    margin-bottom: 14px;
   }
 
   .aboutParagraph,
@@ -232,14 +215,14 @@
     line-height: 1.5;
   }
 
-  .ctaButton {
-    padding: 12px 20px;
-    font-size: 14px;
-    width: 100%;
-    justify-content: center;
+  .missionList {
+    gap: 10px;
   }
 
-  .aboutDivider {
+  .ctaButton {
     width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 14px;
   }
 }
