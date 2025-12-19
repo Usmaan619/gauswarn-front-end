@@ -1,19 +1,18 @@
-.ghee-purity-aboutus-container {
+.new-ghee-purity {
   background: #fef4db;
-  padding: 60px 20px;
-  min-height: 100vh;
+  padding: 80px 20px;
 }
 
-.ghee-purity-aboutus-main-title {
+.new-ghee-purity-title {
   text-align: center;
   font-size: 48px;
   font-weight: 700;
   color: #2c1810;
-  margin-bottom: 20px;
-  letter-spacing: -0.5px;
+  margin-bottom: 60px;
 }
 
-.ghee-purity-aboutus-content-wrapper {
+/* Layout */
+.new-ghee-purity-layout {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
@@ -22,314 +21,94 @@
   align-items: center;
 }
 
-.ghee-purity-aboutus-features-left,
-.ghee-purity-aboutus-features-right {
+.new-ghee-column {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 36px;
 }
 
-.ghee-purity-aboutus-feature-item {
+/* Feature */
+.new-ghee-feature-item {
   display: flex;
-  gap: 20px;
+  gap: 18px;
   align-items: flex-start;
 }
 
-.ghee-purity-aboutus-icon-wrapper {
-  min-width: 25px;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.new-ghee-feature-icon {
+  width: 26px;
+  height: 26px;
   flex-shrink: 0;
 }
 
-.ghee-purity-aboutus-icon-wrapper.green {
-  /* background-color: #22c55e; */
-  color: white;
-}
-
-.ghee-purity-aboutus-icon-wrapper.star {
-  /* background-color: #22c55e; */
-  color: white;
-}
-
-.ghee-purity-aboutus-icon-wrapper svg {
-  width: 24px;
-  height: 24px;
-}
-
-.ghee-purity-aboutus-feature-content {
-  flex: 1;
-}
-
-.ghee-purity-aboutus-feature-title {
-  font-size: 20px;
+.new-ghee-feature-title {
+  font-size: 18px;
   font-weight: 700;
   color: #2c1810;
-  margin-bottom: 8px;
-  line-height: 1.3;
+  margin-bottom: 6px;
 }
 
-.ghee-purity-aboutus-feature-description {
-  font-size: 13px;
+.new-ghee-feature-desc {
+  font-size: 14px;
   color: #5c4a3a;
   line-height: 1.6;
 }
 
-.ghee-purity-aboutus-center-image {
-  position: relative;
+/* Bottle */
+.new-ghee-bottle-wrapper {
   width: 400px;
-  height: 500px;
+  height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.ghee-purity-aboutus-ghee-jar {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.new-ghee-bottle {
+  max-width: 320px;
+  max-height: 460px;
+  object-fit: contain;
+
+  /* PREMIUM SHADOW */
+  filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.35))
+    drop-shadow(0 10px 18px rgba(255, 165, 0, 0.35));
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-.ghee-purity-aboutus-jar-container {
-  position: relative;
-  width: 280px;
-  height: 380px;
-  z-index: 2;
+.new-ghee-bottle:hover {
+  transform: translateY(-6px) scale(1.02);
+  filter: drop-shadow(0 38px 70px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 12px 22px rgba(255, 165, 0, 0.45));
 }
 
-.ghee-purity-aboutus-jar-lid {
-  width: 100%;
-  height: 30px;
-  background: linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 100%);
-  border-radius: 140px 140px 0 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.ghee-purity-aboutus-jar-body {
-  width: 100%;
-  height: 350px;
-  background: linear-gradient(180deg, #ffd700 0%, #ffa500 100%);
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ghee-purity-aboutus-jar-label {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 30px 20px;
-  border-radius: 10px;
-  text-align: center;
-  backdrop-filter: blur(5px);
-}
-
-.ghee-purity-aboutus-brand-name {
-  font-size: 13px;
-  color: #2c1810;
-  margin-bottom: 10px;
-  font-style: italic;
-}
-
-.ghee-purity-aboutus-product-title {
-  font-size: 26px;
-  font-weight: 900;
-  color: #2c1810;
-  line-height: 1.1;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.ghee-purity-aboutus-product-subtitle {
-  font-size: 14px;
-  color: #5c4a3a;
-  font-style: italic;
-}
-
-.ghee-purity-aboutus-cow-image {
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 280px;
-  height: 160px;
-  z-index: 1;
-}
-
-.ghee-purity-aboutus-cow-svg {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .ghee-purity-aboutus-content-wrapper {
-    gap: 40px;
-  }
-
-  .ghee-purity-aboutus-center-image {
-    width: 350px;
-    height: 450px;
-  }
-
-  .ghee-purity-aboutus-jar-container {
-    width: 240px;
-    height: 340px;
-  }
-
-  .ghee-purity-aboutus-cow-image {
-    width: 240px;
-    height: 140px;
-  }
-
-  .ghee-purity-aboutus-feature-title {
-    font-size: 14px;
-  }
-
-  .ghee-purity-aboutus-feature-description {
-    font-size: 15px;
-  }
-}
-
+/* Responsive */
 @media (max-width: 992px) {
-  .ghee-purity-aboutus-main-title {
-    font-size: 36px;
-    margin-bottom: 40px;
-  }
-
-  .ghee-purity-aboutus-content-wrapper {
+  .new-ghee-purity-layout {
     grid-template-columns: 1fr;
     gap: 50px;
   }
 
-  .ghee-purity-aboutus-features-left {
-    order: 1;
-  }
-
-  .ghee-purity-aboutus-center-image {
-    order: 2;
+  .new-ghee-bottle-wrapper {
     margin: 0 auto;
-  }
-
-  .ghee-purity-aboutus-features-right {
-    order: 3;
   }
 }
 
 @media (max-width: 768px) {
-  .ghee-purity-aboutus-ghee-purity-container {
-    padding: 40px 15px;
+  .new-ghee-purity-title {
+    font-size: 30px;
   }
 
-  .ghee-purity-aboutus-main-title {
-    font-size: 28px;
-    margin-bottom: 30px;
-  }
-
-  .ghee-purity-aboutus-center-image {
+  .new-ghee-bottle-wrapper {
     width: 300px;
-    height: 400px;
-  }
-
-  .ghee-purity-aboutus-jar-container {
-    width: 200px;
-    height: 300px;
-  }
-
-  .ghee-purity-aboutus-jar-body {
-    height: 280px;
-  }
-
-  .ghee-purity-aboutus-cow-image {
-    width: 200px;
-    height: 120px;
-    bottom: -30px;
-  }
-
-  .ghee-purity-aboutus-feature-item {
-    gap: 15px;
-  }
-
-  .ghee-purity-aboutus-icon-wrapper {
-    min-width: 40px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .ghee-purity-aboutus-icon-wrapper svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .ghee-purity-aboutus-feature-title {
-    font-size: 17px;
-  }
-
-  .ghee-purity-aboutus-feature-description {
-    font-size: 14px;
-  }
-
-  .ghee-purity-aboutus-product-title {
-    font-size: 26px;
-  }
-
-  .ghee-purity-aboutus-jar-label {
-    padding: 20px 15px;
+    height: 420px;
   }
 }
 
 @media (max-width: 480px) {
-  .ghee-purity-aboutus-main-title {
+  .new-ghee-purity-title {
     font-size: 24px;
-    margin-bottom: 25px;
   }
 
-  .ghee-purity-aboutus-center-image {
+  .new-ghee-bottle-wrapper {
     width: 260px;
     height: 360px;
-  }
-
-  .ghee-purity-aboutus-jar-container {
-    width: 180px;
-    height: 270px;
-  }
-
-  .ghee-purity-aboutus-jar-body {
-    height: 250px;
-  }
-
-  .ghee-purity-aboutus-cow-image {
-    width: 180px;
-    height: 110px;
-    bottom: -25px;
-  }
-
-  .ghee-purity-aboutus-feature-title {
-    font-size: 13px;
-  }
-
-  .ghee-purity-aboutus-feature-description {
-    font-size: 13px;
-  }
-
-  .ghee-purity-aboutus-product-title {
-    font-size: 22px;
-  }
-
-  .ghee-purity-aboutus-brand-name {
-    font-size: 14px;
-  }
-
-  .ghee-purity-aboutus-product-subtitle {
-    font-size: 12px;
   }
 }

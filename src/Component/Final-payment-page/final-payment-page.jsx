@@ -350,7 +350,7 @@ const FinalPaymentMainPage = () => {
                       />
 
                       <div className="new-itemDetails">
-                        <div className="new-itemName">{item?.name}</div>
+                        <div className="new-itemName">Ghee</div>
                         <div className="new-itemWeight">
                           {item?.product_weight}
                         </div>

@@ -25,7 +25,6 @@
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 1rem;
 }
 
 /* Cards */
@@ -33,10 +32,10 @@
   background: rgba(139, 115, 91, 0.6);
   backdrop-filter: blur(10px);
   border-radius: 1.5rem;
-  padding: 1rem 1rem;
+  padding: 1.5rem;
   display: flex;
   gap: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .nurtring-card:hover {
@@ -45,11 +44,10 @@
 }
 
 .nurtring-mission-card {
-  background: rgba(139, 115, 91, 0.7);
+  background: rgba(139, 115, 91, 0.75);
 }
 
 .nurtring-icon-wrapper {
-  flex-shrink: 0;
   width: 64px;
   height: 64px;
   background: #f4d03f;
@@ -57,15 +55,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
-.nurtring-icon {
-  width: 40px;
-  height: 40px;
+.nurtring-react-icon {
+  font-size: 32px;
+  color: #2c2416;
 }
 
 .nurtring-card-content {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -94,7 +92,7 @@
   align-items: flex-start;
 }
 
-/* Download Button */
+/* Button */
 .nurtring-download-btn {
   background: #f4d03f;
   color: #2c2416;
@@ -103,34 +101,19 @@
   padding: 1.25rem 2rem;
   font-size: 1.125rem;
   font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
   cursor: pointer;
   transition: all 0.3s ease;
   align-self: flex-start;
-  box-shadow: 0 4px 15px rgba(244, 208, 63, 0.3);
 }
 
 .nurtring-download-btn:hover {
   background: #ffe066;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(244, 208, 63, 0.4);
-}
-
-.nurtring-download-btn:active {
-  transform: translateY(0);
-}
-
-.nurtring-download-icon {
-  width: 24px;
-  height: 24px;
 }
 
 /* Right Section */
 .nurtring-right-section {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -146,24 +129,12 @@
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .nurtring-main-heading {
-    font-size: 3rem;
-  }
-}
-
+/* Responsive */
 @media (max-width: 992px) {
   .nurtring-content-wrapper {
     grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .nurtring-main-heading {
-    font-size: 2.5rem;
   }
 
   .nurtring-right-section {
@@ -172,10 +143,6 @@
 }
 
 @media (max-width: 768px) {
-  .nurtring-container {
-    padding: 1.5rem;
-  }
-
   .nurtring-main-heading {
     font-size: 2rem;
   }
@@ -183,67 +150,11 @@
   .nurtring-cards-row {
     grid-template-columns: 1fr;
   }
-
-  .nurtring-card {
-    padding: 1.5rem;
-  }
-
-  .nurtring-card-title {
-    font-size: 1.25rem;
-  }
-
-  .nurtring-card-text {
-    font-size: 0.95rem;
-  }
 }
 
 @media (max-width: 480px) {
-  .nurtring-container {
-    padding: 1rem;
-  }
-
-  .nurtring-main-heading {
-    font-size: 1.75rem;
-  }
-
-  .nurtring-card {
-    flex-direction: column;
-    padding: 1.25rem;
-    gap: 1rem;
-  }
-
-  .nurtring-icon-wrapper {
-    width: 56px;
-    height: 56px;
-  }
-
-  .nurtring-icon {
-    width: 32px;
-    height: 32px;
-  }
-
   .nurtring-download-btn {
     width: 100%;
-    justify-content: center;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-  }
-
-  .nurtring-image-container {
-    border-radius: 1.5rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .nurtring-main-heading {
-    font-size: 1.5rem;
-  }
-
-  .nurtring-card-title {
-    font-size: 1.125rem;
-  }
-
-  .nurtring-card-text {
-    font-size: 0.875rem;
+    text-align: center;
   }
 }
