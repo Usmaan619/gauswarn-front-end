@@ -111,4 +111,9 @@
     width: 260px;
     height: 360px;
   }
+
+  .new-ghee-bottle {
+  max-width: 320px;
+  max-height: 390px;
+  }
 }

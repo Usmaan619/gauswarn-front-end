@@ -1,42 +1,80 @@
-import React, { useEffect, useState } from "react";
-import {
-  Heart,
-  Star,
-  ChevronLeft,
-  ChevronRight,
-  Minus,
-  Plus,
-  Send,
-} from "lucide-react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
+import { ChevronLeft, ChevronRight, Minus, Plus, Send } from "lucide-react";
+import { Rating } from "react-simple-star-rating";
 import "./product-page.css";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from "uuid";
 import { environment } from "../../environment/environment";
+import { useNavigate } from "react-router-dom";
+import { useCartContext } from "../Context/UserContext";
 
+// Assets
 import secure1 from "../../asset/new-img/product-page-logo/fast.png";
 import secure2 from "../../asset/new-img/product-page-logo/secure.png";
 import secure3 from "../../asset/new-img/product-page-logo/quality.png";
 import secure4 from "../../asset/new-img/product-page-logo/natural.png";
-
 import paymentLogo1 from "../../asset/new-img/product-page-logo/Visa.png";
 import paymentLogo2 from "../../asset/new-img/product-page-logo/rupay.png";
 import paymentLogo3 from "../../asset/new-img/product-page-logo/master-card.png";
 import paymentLogo4 from "../../asset/new-img/product-page-logo/Bhim.png";
 import paymentLogo5 from "../../asset/new-img/product-page-logo/razor-pay.png";
+import productPlaceholder from "../../asset/new-img/product-imgs/product1.png";
 
+// Components
 import ProfileSection from "./profileSection";
 import ProductHeroSection from "./product-hero-section";
 import ProductShowcase from "../Carousel/product-showcase";
 import GheeFeatureProductPage from "./ghee-product";
-import productPlaceholder from "../../asset/new-img/product-imgs/product1.png";
-
 import "../../Component/Carousel/carousel-card-wrapper.css";
-import { useNavigate } from "react-router-dom";
-import { useCartContext } from "../Context/UserContext";
 
-// SHIMMER COMPONENTS
+/* ========================= 
+   CONSTANTS 
+========================= */
+const API_CONFIG = {
+  HEADERS: {
+    "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "69420",
+  },
+  RETRY_ATTEMPTS: 3,
+  RETRY_DELAY: 2000,
+};
+
+const TRUST_BADGES = [
+  { icon: secure1, title: "Fast Shipping" },
+  { icon: secure2, title: "Secure Payment" },
+  { icon: secure3, title: "Quality Guarantee" },
+  { icon: secure4, title: "Natural Ingredients" },
+];
+
+const PAYMENT_LOGOS = [
+  paymentLogo1,
+  paymentLogo2,
+  paymentLogo3,
+  paymentLogo4,
+  paymentLogo5,
+];
+
+const PRODUCT_BENEFITS = [
+  "Boosts Immunity & Digestion",
+  "Promotes Glowing Skin & Hair",
+  "Enhances Focus & Memory",
+  "Helps Improve Sleep Quality",
+  "Strengthens Joints & Bones",
+  "Promotes Healthy Metabolism",
+];
+
+const INITIAL_REVIEW_STATE = {
+  name: "",
+  email: "",
+  feedback: "",
+  rating: 5,
+};
+
+/* ========================= 
+   SHIMMER COMPONENTS 
+========================= */
 const ShimmerImage = () => (
   <div className="shimmer-image-wrapper">
     <div className="shimmer-image"></div>
@@ -51,11 +89,9 @@ const ShimmerLine = ({ height = "1rem", width = "100%" }) => (
 
 const ShimmerStars = () => (
   <div className="shimmer-stars">
-    <div className="shimmer-star"></div>
-    <div className="shimmer-star"></div>
-    <div className="shimmer-star"></div>
-    <div className="shimmer-star"></div>
-    <div className="shimmer-star"></div>
+    {[...Array(5)].map((_, i) => (
+      <div key={i} className="shimmer-star"></div>
+    ))}
   </div>
 );
 
@@ -76,209 +112,296 @@ const ShimmerReviewCard = () => (
   </div>
 );
 
+/* ========================= 
+   HELPER FUNCTIONS 
+========================= */
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const calculateDiscountPercentage = (originalPrice, currentPrice) => {
+  const origPrice = parseFloat(originalPrice) || 0;
+  const currPrice = parseFloat(currentPrice) || 0;
+
+  if (!origPrice || !currPrice || origPrice <= currPrice) return 0;
+
+  return Math.round(((origPrice - currPrice) / origPrice) * 100);
+};
+
+const parseProductImages = (imageData) => {
+  if (!imageData) return [productPlaceholder];
+
+  try {
+    const parsed = JSON.parse(imageData);
+    const images = parsed.map((img) =>
+      typeof img === "string" ? img : img?.url || img?.src || ""
+    );
+    return images.length > 0 ? images : [productPlaceholder];
+  } catch {
+    return [productPlaceholder];
+  }
+};
+
+const normalizeProduct = (product) => ({
+  ...product,
+  images: parseProductImages(product.product_images),
+});
+
+const getSessionStorageCart = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem("cart") || "[]");
+  } catch {
+    return [];
+  }
+};
+
+const setSessionStorageCart = (cart) => {
+  try {
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+  } catch (error) {
+    console.error("Failed to save cart:", error);
+  }
+};
+
+const triggerCrossPageToast = (type, message) => {
+  try {
+    sessionStorage.setItem("toastMessage", JSON.stringify({ type, message }));
+  } catch (error) {
+    console.error("Failed to set toast message:", error);
+  }
+};
+
+/* ========================= 
+   STAR RATING COMPONENT 
+========================= */
+/* ========================= 
+   INTERACTIVE STAR RATING COMPONENT 
+========================= */
+// const StarRating = ({
+//   rating = 0,
+//   totalStars = 5,
+//   size = 20,
+//   interactive = false,
+//   onRatingChange,
+// }) => {
+//   const handleStarClick = (starIndex) => {
+//     if (interactive && onRatingChange) {
+//       onRatingChange(starIndex + 1); // 1-5 rating
+//     }
+//   };
+
+//   const handleStarHover = (starIndex) => {
+//     if (interactive) {
+//       // Hover effect add kar sakte ho future mein
+//     }
+//   };
+
+//   const fullStars = Math.floor(rating);
+//   const hasHalfStar = rating % 1 !== 0;
+//   const emptyStars = totalStars - fullStars - (hasHalfStar ? 1 : 0);
+
+//   return (
+//     <div
+//       className="star-rating"
+//       style={{
+//         display: "flex",
+//         gap: "2px",
+//         cursor: interactive ? "pointer" : "default",
+//       }}
+//     >
+//       {Array(totalStars)
+//         .fill()
+//         .map((_, i) => {
+//           const starValue = i + 1;
+//           const isFull = starValue <= fullStars;
+//           const isHalf = starValue === fullStars + 1 && hasHalfStar;
+//           const isActive = interactive ? starValue <= rating : false;
+
+//           return (
+//             <div
+//               key={i}
+//               className={`star ${interactive ? "interactive" : ""}`}
+//               onClick={() => handleStarClick(i)}
+//               onMouseEnter={() => handleStarHover(i)}
+//               style={{ cursor: interactive ? "pointer" : "default" }}
+//               title={
+//                 interactive
+//                   ? `Rate ${starValue} star${starValue > 1 ? "s" : ""}`
+//                   : ""
+//               }
+//             >
+//               {isFull || isActive ? (
+//                 <FaStar color="gold" size={size} />
+//               ) : isHalf ? (
+//                 <FaStarHalfAlt color="gold" size={size} />
+//               ) : (
+//                 <FaRegStar
+//                   color={interactive ? "#ffd700" : "#ddd"}
+//                   size={size}
+//                 />
+//               )}
+//             </div>
+//           );
+//         })}
+//     </div>
+//   );
+// };
+
+/* ========================= 
+   MAIN COMPONENT 
+========================= */
 const ProductPageMain = () => {
   const navigate = useNavigate();
   const { cart, setCart } = useCartContext();
 
-  // LOADING STATES
+  // Loading states
   const [isProductsLoading, setIsProductsLoading] = useState(true);
   const [isReviewsLoading, setIsReviewsLoading] = useState(true);
 
-  // Image gallery & UI selection
+  // Image gallery & UI
   const [selectedImage, setSelectedImage] = useState(0);
-  const [isFavorite, setIsFavorite] = useState(false);
 
-  // Product & variant data from API
-  const [prdData, setPrdData] = useState([]);
-  const [images, setImages] = useState([productPlaceholder]);
-  const [checkedItems, setCheckedItems] = useState([]);
-  const [selectedPrice, setSelectedPrice] = useState(null);
-  const [selectedSize, setSelectedSize] = useState(null);
-  const [count, setCount] = useState(1);
+  // Product data
+  const [products, setProducts] = useState([]);
+  const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   // Reviews
   const [reviews, setReviews] = useState([]);
   const [averageRating, setAverageRating] = useState(0);
   const [totalReviews, setTotalReviews] = useState(0);
-  const [ratingsBreakdown, setRatingsBreakdown] = useState({
-    5: 0,
-    4: 0,
-    3: 0,
-    2: 0,
-    1: 0,
-  });
-  const [reviewName, setReviewName] = useState("");
-  const [reviewEmail, setReviewEmail] = useState("");
-  const [reviewFeedback, setReviewFeedback] = useState("");
-  const [reviewRating, setReviewRating] = useState(5);
+
+  const [reviewForm, setReviewForm] = useState(INITIAL_REVIEW_STATE);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  // FETCH PRODUCTS WITH SHIMMER
-  const fetchProducts = async () => {
+  /* ========================= 
+     COMPUTED VALUES 
+  ========================= */
+  const selectedProduct = useMemo(
+    () => products[selectedVariantIndex] || null,
+    [products, selectedVariantIndex]
+  );
+
+  const productImages = useMemo(
+    () => selectedProduct?.images || [productPlaceholder],
+    [selectedProduct]
+  );
+
+  /* ========================= 
+     API FUNCTIONS 
+  ========================= */
+  const fetchProducts = useCallback(async (attempt = 1) => {
     try {
       setIsProductsLoading(true);
-      const res = await axios.get(
+
+      const response = await axios.get(
         `${environment?.API_BASE_URL}/users/getAllProduct`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "ngrok-skip-browser-warning": "69420",
-          },
-        }
+        { headers: API_CONFIG.HEADERS }
       );
-      const apiProducts = res?.data?.products || [];
 
-      const products = apiProducts?.map((p) => {
-        let imgs = [];
-        if (p.product_images) {
-          try {
-            const parsed = JSON.parse(p.product_images);
-            imgs = parsed?.map((img) =>
-              typeof img === "string" ? img : img?.url || img?.src || ""
-            );
-          } catch {
-            imgs = [];
-          }
-        }
-        return {
-          ...p,
-          images: imgs.length > 0 ? imgs : [productPlaceholder],
-        };
-      });
+      const apiProducts = response?.data?.products || [];
+      const normalizedProducts = apiProducts.map(normalizeProduct);
 
-      setPrdData(products);
+      setProducts(normalizedProducts);
 
-      if (products.length > 0) {
-        const initChecks = Array(products.length).fill(false);
-        initChecks[0] = true;
-        setCheckedItems(initChecks);
-        setSelectedPrice(products[0].product_price);
-        setSelectedSize(products[0].product_weight);
-        setImages(products[0].images);
-        setSelectedImage(0);
+      if (normalizedProducts.length > 0) {
+        setSelectedVariantIndex(0);
       }
-    } catch (err) {
-      console.error("Error fetching products:", err?.response || err.message);
+    } catch (error) {
+      console.error(`Product fetch attempt ${attempt} failed:`, error);
+
+      if (attempt < API_CONFIG.RETRY_ATTEMPTS) {
+        await delay(API_CONFIG.RETRY_DELAY);
+        return fetchProducts(attempt + 1);
+      }
+
       toast.error("Unable to fetch product data");
     } finally {
       setIsProductsLoading(false);
     }
-  };
+  }, []);
 
-  const triggerCrossPageToast = (type, message) => {
-    sessionStorage.setItem("toastMessage", JSON.stringify({ type, message }));
-  };
-
-  // FETCH REVIEWS WITH SHIMMER
-  const fetchReviews = async () => {
+  const fetchReviews = useCallback(async () => {
     try {
       setIsReviewsLoading(true);
-      const res = await axios.get(
+
+      const response = await axios.get(
         `${environment?.API_BASE_URL}/users/allfeedback`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "ngrok-skip-browser-warning": "69420",
-          },
-        }
+        { headers: API_CONFIG.HEADERS }
       );
-      const data = res?.data || {};
+
+      const data = response?.data || {};
       setAverageRating(data.averageRating ?? 0);
-      setTotalReviews(data.totalReviews ?? (data.reviews?.length || 0));
-      setRatingsBreakdown(data.ratingsBreakdown || {});
+      setTotalReviews(data.totalReviews ?? data.reviews?.length ?? 0);
       setReviews(data.reviews || []);
-    } catch (err) {
-      console.error("Error fetching reviews:", err?.response || err.message);
+      // setRatingsBreakdown(data.ratingsBreakdown || {});
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
     } finally {
       setIsReviewsLoading(false);
     }
-  };
-
-  useEffect(() => {
-    fetchProducts();
-    fetchReviews();
   }, []);
 
-  useEffect(() => {
-    if (selectedImage >= images.length) setSelectedImage(0);
-  }, [images, selectedImage]);
+  /* ========================= 
+     CART FUNCTIONS 
+  ========================= */
+  const updateCartItem = useCallback((cartItem, existingCart) => {
+    const foundIndex = existingCart.findIndex(
+      (item) =>
+        item.user_id === cartItem.user_id &&
+        item.product_weight === cartItem.product_weight
+    );
 
-  // VARIANT SELECT
-  const handleVariantSelect = (index) => {
-    if (!prdData.length || isProductsLoading) return;
-    const newChecked = Array(prdData.length).fill(false);
-    newChecked[index] = true;
-    setCheckedItems(newChecked);
+    if (foundIndex !== -1) {
+      existingCart[foundIndex].product_quantity += cartItem.product_quantity;
+      existingCart[foundIndex].quantity += cartItem.quantity;
+      existingCart[foundIndex].product_total_amount =
+        existingCart[foundIndex].product_price *
+        existingCart[foundIndex].product_quantity;
+    } else {
+      existingCart.push(cartItem);
+    }
 
-    const variant = prdData[index];
-    setSelectedPrice(variant.product_price);
-    setSelectedSize(variant.product_weight);
-    setImages(variant.images);
-    setSelectedImage(0);
-    setCount(1);
-  };
+    return existingCart;
+  }, []);
 
-  const increaseCount = () => setCount((c) => c + 1);
-  const decreaseCount = () => setCount((c) => (c > 1 ? c - 1 : 1));
+  const createCartItem = useCallback((product, qty) => {
+    const productId = sessionStorage.getItem("product_id") || uuidv4();
+    sessionStorage.setItem("product_id", productId);
 
-  // FIXED ADD TO CART
-  const handleAddToCart = async () => {
-    if (isProductsLoading) return;
-    const selectedIndex = checkedItems.findIndex(Boolean);
-    if (selectedIndex === -1) {
+    return {
+      product_id: productId,
+      user_id: product.product_id,
+      product_weight: product.product_weight,
+      product_quantity: qty,
+      quantity: qty,
+      product_price: product.product_price,
+      product_total_amount: product.product_price * qty,
+      purchase_price: product.product_purchase_price,
+      product_image: product.images?.[0] || productPlaceholder,
+    };
+  }, []);
+
+  const handleAddToCart = useCallback(async () => {
+    if (isProductsLoading || !selectedProduct) {
       toast.error("Please select a variant first");
       return;
     }
 
-    const selectedItem = prdData[selectedIndex];
-    let pId = sessionStorage.getItem("product_id") || uuidv4();
-    sessionStorage.setItem("product_id", pId);
-
-    const cartItem = {
-      product_id: pId,
-      user_id: selectedItem.product_id,
-      product_weight: selectedItem.product_weight,
-      product_quantity: count,
-      quantity: count,
-      product_price: selectedItem.product_price,
-      product_total_amount: selectedItem.product_price * count,
-      purchase_price: selectedItem.product_purchase_price,
-      product_image: selectedItem.images?.[0] || productPlaceholder,
-    };
+    const cartItem = createCartItem(selectedProduct, quantity);
 
     try {
       const response = await axios.post(
         `${environment?.API_BASE_URL}/users/login/addtocart`,
         cartItem,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "ngrok-skip-browser-warning": "69420",
-          },
-        }
+        { headers: API_CONFIG.HEADERS }
       );
 
       if (response.status === 200 || response.status === 201) {
         toast.success("Item added to cart successfully!");
 
-        const existingCart = JSON.parse(sessionStorage.getItem("cart") || "[]");
-        const foundIndex = existingCart.findIndex(
-          (it) =>
-            it.user_id === selectedItem.product_id &&
-            it.product_weight === selectedItem.product_weight
-        );
+        let existingCart = getSessionStorageCart();
+        existingCart = updateCartItem(cartItem, existingCart);
 
-        if (foundIndex !== -1) {
-          existingCart[foundIndex].product_quantity += count;
-          existingCart[foundIndex].quantity += count;
-          existingCart[foundIndex].product_total_amount =
-            existingCart[foundIndex].product_price *
-            existingCart[foundIndex].product_quantity;
-        } else {
-          existingCart.push(cartItem);
-        }
-
-        sessionStorage.setItem("cart", JSON.stringify(existingCart));
+        setSessionStorageCart(existingCart);
         setCart(existingCart);
       } else {
         toast.error("Failed to add to cart");
@@ -287,125 +410,134 @@ const ProductPageMain = () => {
       console.error("Add to cart error:", error);
       toast.error("Something went wrong");
     }
-  };
+  }, [
+    isProductsLoading,
+    selectedProduct,
+    quantity,
+    createCartItem,
+    updateCartItem,
+    setCart,
+  ]);
 
-  // SUBMIT REVIEW
-  const handleSubmitReview = async (e) => {
-    e.preventDefault();
-    if (!reviewName || !reviewEmail || !reviewFeedback || !reviewRating) {
-      toast.error("Please fill all fields");
-      return;
-    }
-
-    const payload = {
-      name: reviewName,
-      email: reviewEmail,
-      feedback: reviewFeedback,
-      rating: reviewRating,
-    };
-
-    try {
-      const res = await axios.post(
-        `${environment?.API_BASE_URL}/users/feedback`,
-        payload,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "ngrok-skip-browser-warning": "69420",
-          },
-        }
-      );
-
-      if (res.status === 200 || res.status === 201) {
-        toast.success("Thank you! Your review has been submitted.");
-        fetchReviews();
-        setReviewName("");
-        setReviewEmail("");
-        setReviewFeedback("");
-        setReviewRating(5);
-        setSubmitSuccess(true);
-        setTimeout(() => setSubmitSuccess(false), 3000);
-      }
-    } catch (err) {
-      toast.error("Something went wrong");
-    }
-  };
-
-  const handlePrevImage = () => {
-    setSelectedImage((p) => (p === 0 ? images.length - 1 : p - 1));
-  };
-
-  const handleNextImage = () => {
-    setSelectedImage((p) => (p === images.length - 1 ? 0 : p + 1));
-  };
-
-  const renderAverageStars = (avg) => (
-    <>
-      {[...Array(5)].map((_, i) => (
-        <Star
-          key={i}
-          size={20}
-          fill={i < Math.floor(avg) ? "#ffc107" : "none"}
-          color={i < Math.floor(avg) ? "#ffc107" : "#ddd"}
-        />
-      ))}
-    </>
-  );
-
-  // FIXED BUY NOW
-  const handleBuyNow = async () => {
-    if (isProductsLoading) return;
-    const selectedIndex = checkedItems.findIndex(Boolean);
-    if (selectedIndex === -1) {
+  const handleBuyNow = useCallback(async () => {
+    if (isProductsLoading || !selectedProduct) {
       toast.error("Please select a variant first");
       return;
     }
 
-    const selectedItem = prdData[selectedIndex];
-    let pId = sessionStorage.getItem("product_id") || uuidv4();
-    sessionStorage.setItem("product_id", pId);
+    const cartItem = createCartItem(selectedProduct, quantity);
+    let existingCart = getSessionStorageCart();
+    existingCart = updateCartItem(cartItem, existingCart);
 
-    const cartItem = {
-      product_id: pId,
-      user_id: selectedItem.product_id,
-      product_weight: selectedItem.product_weight,
-      product_quantity: count,
-      quantity: count,
-      product_price: selectedItem.product_price,
-      product_total_amount: selectedItem.product_price * count,
-      purchase_price: selectedItem.product_purchase_price,
-      product_image: selectedItem.images?.[0] || productPlaceholder,
-    };
-
-    let existingCart = JSON.parse(sessionStorage.getItem("cart") || "[]");
-    const foundIndex = existingCart.findIndex(
-      (it) =>
-        it.user_id === selectedItem.product_id &&
-        it.product_weight === selectedItem.product_weight
-    );
-
-    if (foundIndex !== -1) {
-      existingCart[foundIndex].product_quantity += count;
-      existingCart[foundIndex].quantity += count;
-      existingCart[foundIndex].product_total_amount =
-        existingCart[foundIndex].product_price *
-        existingCart[foundIndex].product_quantity;
-    } else {
-      existingCart.push(cartItem);
-    }
-
-    sessionStorage.setItem("cart", JSON.stringify(existingCart));
+    setSessionStorageCart(existingCart);
     setCart(existingCart);
 
     triggerCrossPageToast("success", "Item added to cart!");
     navigate("/cart");
-  };
+  }, [
+    isProductsLoading,
+    selectedProduct,
+    quantity,
+    createCartItem,
+    updateCartItem,
+    setCart,
+    navigate,
+  ]);
 
+  /* ========================= 
+     REVIEW FUNCTIONS 
+  ========================= */
+  const handleSubmitReview = useCallback(
+    async (e) => {
+      e.preventDefault();
+
+      const { name, email, feedback, rating } = reviewForm;
+
+      if (!name || !email || !feedback || !rating) {
+        toast.error("Please fill all fields");
+        return;
+      }
+
+      try {
+        const response = await axios.post(
+          `${environment?.API_BASE_URL}/users/feedback`,
+          reviewForm,
+          { headers: API_CONFIG.HEADERS }
+        );
+
+        if (response.status === 200 || response.status === 201) {
+          toast.success("Thank you! Your review has been submitted.");
+          fetchReviews();
+          setReviewForm(INITIAL_REVIEW_STATE);
+          setSubmitSuccess(true);
+          setTimeout(() => setSubmitSuccess(false), 3000);
+        }
+      } catch (error) {
+        console.error("Review submission error:", error);
+        toast.error("Something went wrong");
+      }
+    },
+    [reviewForm, fetchReviews]
+  );
+
+  /* ========================= 
+     UI HANDLERS 
+  ========================= */
+  const handleVariantSelect = useCallback((index) => {
+    setSelectedVariantIndex(index);
+    setSelectedImage(0);
+    setQuantity(1);
+  }, []);
+
+  const handlePrevImage = useCallback(() => {
+    setSelectedImage((prev) =>
+      prev === 0 ? productImages.length - 1 : prev - 1
+    );
+  }, [productImages.length]);
+
+  const handleNextImage = useCallback(() => {
+    setSelectedImage((prev) =>
+      prev === productImages.length - 1 ? 0 : prev + 1
+    );
+  }, [productImages.length]);
+
+  const handleQuantityChange = useCallback((value) => {
+    const newQuantity = parseInt(value, 10) || 1;
+    setQuantity(newQuantity > 0 ? newQuantity : 1);
+  }, []);
+
+  const increaseQuantity = useCallback(
+    () => setQuantity((prev) => prev + 1),
+    []
+  );
+
+  const decreaseQuantity = useCallback(
+    () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1)),
+    []
+  );
+
+  /* ========================= 
+     EFFECTS 
+  ========================= */
+  useEffect(() => {
+    fetchProducts();
+    fetchReviews();
+  }, [fetchProducts, fetchReviews]);
+
+  useEffect(() => {
+    if (selectedImage >= productImages.length) {
+      setSelectedImage(0);
+    }
+  }, [productImages.length, selectedImage]);
+
+  /* ========================= 
+     RENDER 
+  ========================= */
   return (
     <>
       <div className="product-page">
         <div className="product-container">
-          {/* Left Side - Image Gallery */}
+          {/* ========== IMAGE GALLERY ========== */}
           <div className="image-section">
             <div className="main-image-wrapper">
               <div className="main-image" aria-live="polite">
@@ -413,7 +545,7 @@ const ProductPageMain = () => {
                   <ShimmerImage />
                 ) : (
                   <img
-                    src={images[selectedImage] || productPlaceholder}
+                    src={productImages[selectedImage]}
                     alt={`Product image ${selectedImage + 1}`}
                     className="responsive-product-img"
                     loading="lazy"
@@ -444,13 +576,12 @@ const ProductPageMain = () => {
             <div className="thumbnail-gallery" role="list">
               {isProductsLoading ? (
                 <>
-                  <ShimmerThumbnail />
-                  <ShimmerThumbnail />
-                  <ShimmerThumbnail />
-                  <ShimmerThumbnail />
+                  {[...Array(4)].map((_, i) => (
+                    <ShimmerThumbnail key={i} />
+                  ))}
                 </>
               ) : (
-                images.map((img, idx) => (
+                productImages.map((img, idx) => (
                   <button
                     key={idx}
                     className={`thumbnail ${
@@ -461,7 +592,7 @@ const ProductPageMain = () => {
                     role="listitem"
                   >
                     <img
-                      src={img || productPlaceholder}
+                      src={img}
                       alt={`Thumbnail ${idx + 1}`}
                       loading="lazy"
                     />
@@ -471,7 +602,7 @@ const ProductPageMain = () => {
             </div>
           </div>
 
-          {/* Right Side - Product Details */}
+          {/* ========== PRODUCT DETAILS ========== */}
           <div className="details-section">
             {isProductsLoading ? (
               <>
@@ -491,28 +622,10 @@ const ProductPageMain = () => {
                 <div className="shimmer-size-section">
                   <ShimmerLine height="1.25rem" width="20%" />
                   <div className="shimmer-size-buttons">
-                    <ShimmerSizeBtn />
-                    <ShimmerSizeBtn />
-                    <ShimmerSizeBtn />
+                    {[...Array(3)].map((_, i) => (
+                      <ShimmerSizeBtn key={i} />
+                    ))}
                   </div>
-                </div>
-                <div className="shimmer-quantity-section">
-                  <ShimmerLine height="1.25rem" width="25%" />
-                  <div className="shimmer-quantity-control">
-                    <div className="shimmer-btn"></div>
-                    <div className="shimmer-input"></div>
-                    <div className="shimmer-btn"></div>
-                  </div>
-                </div>
-                <div className="shimmer-price-section">
-                  <div className="shimmer-price">
-                    <ShimmerLine height="2rem" width="5rem" />
-                    <ShimmerLine height="1.5rem" width="6rem" />
-                  </div>
-                </div>
-                <div className="shimmer-buttons">
-                  <div className="shimmer-btn-large"></div>
-                  <div className="shimmer-btn-large"></div>
                 </div>
               </>
             ) : (
@@ -527,9 +640,16 @@ const ProductPageMain = () => {
                 </p>
 
                 <div className="rating-section">
-                  <div className="stars-product" aria-hidden="true">
-                    {renderAverageStars(averageRating)}
-                  </div>
+                  {/* <StarRating rating={Math.floor(averageRating)} /> */}
+
+                  <Rating
+                    initialValue={averageRating}
+                    readonly
+                    size={20}
+                    allowFraction={true}
+                    fillColor="gold"
+                    emptyColor="#ddd"
+                  />
                   <span className="rating-value">
                     {averageRating.toFixed(1)}
                   </span>
@@ -540,20 +660,12 @@ const ProductPageMain = () => {
 
                 <div className="badges-section">
                   <p className="certifications-text mb-0">
-                    100% Natural | Chemical-Free | Lactose-Free | Gluten-Free |
-                    Traditionally Churned
+                    100% Natural | Chemical-Free | Traditionally Churned
                   </p>
                 </div>
 
                 <div className="benefits-grid">
-                  {[
-                    "Boosts Immunity & Digestion",
-                    "Promotes Glowing Skin & Hair",
-                    "Enhances Focus & Memory",
-                    "Helps Improve Sleep Quality",
-                    "Strengthens Joints & Bones",
-                    "Supports Hormonal Balance",
-                  ].map((benefit, idx) => (
+                  {PRODUCT_BENEFITS.map((benefit, idx) => (
                     <div key={idx} className="benefit-item">
                       <span className="checkmark" aria-hidden="true">
                         ✓
@@ -563,32 +675,34 @@ const ProductPageMain = () => {
                   ))}
                 </div>
 
-                {/* Variant / Size */}
+                {/* SIZE SELECTION */}
                 <div className="size-section">
                   <h3 className="section-title">Size</h3>
                   <div className="size-options">
-                    {prdData?.map((v, idx) => (
+                    {products.map((product, idx) => (
                       <button
-                        key={v.product_id || idx}
+                        key={product.product_id || idx}
                         className={`size-btn ${
-                          checkedItems[idx] ? "selected" : ""
+                          selectedVariantIndex === idx ? "selected" : ""
                         }`}
                         onClick={() => handleVariantSelect(idx)}
-                        aria-pressed={checkedItems[idx] || false}
+                        aria-pressed={selectedVariantIndex === idx}
                       >
-                        {v.product_weight || v.liter || `Variant ${idx + 1}`}
+                        {product.product_weight ||
+                          product.liter ||
+                          `Variant ${idx + 1}`}
                       </button>
                     ))}
                   </div>
                 </div>
 
-                {/* Quantity */}
+                {/* QUANTITY */}
                 <div className="quantity-section">
                   <h3 className="section-title">Quantity</h3>
                   <div className="quantity-control">
                     <button
                       className="quantity-btn decrease-btn"
-                      onClick={decreaseCount}
+                      onClick={decreaseQuantity}
                       aria-label="Decrease quantity"
                     >
                       <Minus size={18} />
@@ -596,16 +710,13 @@ const ProductPageMain = () => {
                     <input
                       type="number"
                       className="quantity-input"
-                      value={count}
-                      onChange={(e) => {
-                        const v = parseInt(e.target.value, 10) || 1;
-                        setCount(v > 0 ? v : 1);
-                      }}
+                      value={quantity}
+                      onChange={(e) => handleQuantityChange(e.target.value)}
                       min="1"
                     />
                     <button
                       className="quantity-btn increase-btn"
-                      onClick={increaseCount}
+                      onClick={increaseQuantity}
                       aria-label="Increase quantity"
                     >
                       <Plus size={18} />
@@ -618,33 +729,65 @@ const ProductPageMain = () => {
                   <span className="availability-status">In Stock</span>
                 </div>
 
-                <div className="pricing-section">
+                {/* <div className="pricing-section">
                   <div className="price">
                     <span className="current-price">
-                      ₹{selectedPrice ?? prdData[0]?.product_price ?? "0"}
+                      ₹{selectedProduct?.product_price ?? "0"}
                     </span>
                     <span className="original-price">
-                      {selectedPrice
-                        ? prdData[checkedItems.findIndex((item) => item)]
-                            ?.product_del_price
-                        : "0"}
+                      ₹{selectedProduct?.product_del_price ?? "0"}
                     </span>
                   </div>
                   <div className="discount-badge">Save 50%</div>
+                </div> */}
+
+                <div className="pricing-section">
+                  <div className="price">
+                    <span className="current-price">
+                      ₹
+                      {selectedProduct?.product_price?.toLocaleString(
+                        "en-IN"
+                      ) ?? "0"}
+                    </span>
+                    {selectedProduct?.product_del_price &&
+                      parseFloat(selectedProduct.product_del_price) >
+                        parseFloat(selectedProduct.product_price) && (
+                        <span className="original-price">
+                          ₹
+                          {parseFloat(
+                            selectedProduct.product_del_price
+                          ).toLocaleString("en-IN")}
+                        </span>
+                      )}
+                  </div>
+
+                  {selectedProduct &&
+                    selectedProduct.product_del_price &&
+                    parseFloat(selectedProduct.product_del_price) >
+                      parseFloat(selectedProduct.product_price) && (
+                      <div className="discount-badge">
+                        Save{" "}
+                        {calculateDiscountPercentage(
+                          selectedProduct.product_del_price,
+                          selectedProduct.product_price
+                        )}
+                        %
+                      </div>
+                    )}
                 </div>
 
                 <div className="action-buttons">
                   <button
                     className="btn-add-cart border"
-                    aria-label="Add to cart"
                     onClick={handleAddToCart}
+                    aria-label="Add to cart"
                   >
                     Add to Cart
                   </button>
                   <button
                     className="btn-buy-now action-buttons-bg"
-                    aria-label="Buy it now"
                     onClick={handleBuyNow}
+                    aria-label="Buy it now"
                   >
                     Buy now
                   </button>
@@ -653,17 +796,11 @@ const ProductPageMain = () => {
                 <div className="payment-section">
                   <h4 className="payment-title">Guaranteed Safe Checkout</h4>
                   <div className="payment-methods" role="list">
-                    {[
-                      paymentLogo1,
-                      paymentLogo2,
-                      paymentLogo3,
-                      paymentLogo4,
-                      paymentLogo5,
-                    ].map((icon, idx) => (
+                    {PAYMENT_LOGOS.map((logo, idx) => (
                       <div key={idx} className="payment-method" role="listitem">
                         <img
-                          src={icon}
-                          alt={`payment-${idx}`}
+                          src={logo}
+                          alt={`Payment method ${idx + 1}`}
                           className="payment-logo"
                           loading="lazy"
                         />
@@ -676,20 +813,17 @@ const ProductPageMain = () => {
           </div>
         </div>
 
+        {/* ========== TRUST BADGES ========== */}
         <div className="trust-section">
-          {[secure1, secure2, secure3, secure4].map((icon, idx) => (
+          {TRUST_BADGES.map((badge, idx) => (
             <div key={idx} className="trust-item">
-              <img src={icon} alt={`trust-${idx}`} className="trust-icon" />
-              <h4 className="trust-title">
-                {
-                  [
-                    "Fast Shipping",
-                    "Secure Payment",
-                    "Quality Guarantee",
-                    "Natural Ingredients",
-                  ][idx]
-                }
-              </h4>
+              <img
+                src={badge.icon}
+                alt={badge.title}
+                className="trust-icon"
+                loading="lazy"
+              />
+              <h4 className="trust-title">{badge.title}</h4>
             </div>
           ))}
         </div>
@@ -697,7 +831,7 @@ const ProductPageMain = () => {
 
       <ProfileSection />
 
-      {/* ===================== REVIEWS SECTION ===================== */}
+      {/* ========== REVIEWS SECTION ========== */}
       <div className="product-page">
         <div className="reviews-section">
           <div className="reviews-header">
@@ -713,18 +847,16 @@ const ProductPageMain = () => {
               <div className="reviews-summary">
                 <div className="rating-summary">
                   <div className="rating-score">{averageRating.toFixed(1)}</div>
+                  {/* <StarRating rating={Math.floor(averageRating)} size={16} /> */}
 
-                  <div className="rating-stars">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={16}
-                        fill={i < averageRating ? "#ffc107" : "#ddd"}
-                        color={i < averageRating ? "#ffc107" : "#ddd"}
-                      />
-                    ))}
-                  </div>
-
+                  <Rating
+                    initialValue={averageRating}
+                    readonly
+                    size={16}
+                    allowFraction={true}
+                    fillColor="gold"
+                    emptyColor="#ddd"
+                  />
                   <div className="rating-count">
                     Based on {totalReviews} reviews
                   </div>
@@ -733,23 +865,22 @@ const ProductPageMain = () => {
             )}
           </div>
 
-          {/* ------------------- REVIEWS LIST ------------------- */}
+          {/* REVIEWS LIST */}
           <div className="reviews-list">
             {isReviewsLoading ? (
               <>
-                <ShimmerReviewCard />
-                <ShimmerReviewCard />
-                <ShimmerReviewCard />
+                {[...Array(3)].map((_, i) => (
+                  <ShimmerReviewCard key={i} />
+                ))}
               </>
             ) : (
-              reviews.map((review) => (
-                <div key={review.id || review.email} className="review-item">
+              reviews.map((review, idx) => (
+                <div key={review.id || idx} className="review-item">
                   <div className="review-header">
                     <div className="reviewer-info">
                       <div className="reviewer-avatar">
-                        {(review.name || "U").charAt(0)}
+                        {(review.name || "U").charAt(0).toUpperCase()}
                       </div>
-
                       <div className="reviewer-details">
                         <h4 className="reviewer-name">
                           {review.name}
@@ -757,29 +888,25 @@ const ProductPageMain = () => {
                             ✓ Verified Purchase
                           </span>
                         </h4>
-                        <span className="review-date"></span>
                       </div>
                     </div>
                   </div>
-
-                  <div className="review-rating">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={14}
-                        fill={i < review.rating ? "#ffc107" : "#ddd"}
-                        color={i < review.rating ? "#ffc107" : "#ddd"}
-                      />
-                    ))}
-                  </div>
-
+                  {/* <StarRating rating={review.rating} size={14} /> */}
+                  <Rating
+                    initialValue={review.rating || 0}
+                    readonly
+                    size={14}
+                    allowFraction={true}
+                    fillColor="gold"
+                    emptyColor="#ddd"
+                  />
                   <p className="review-text">{review.feedback}</p>
                 </div>
               ))
             )}
           </div>
 
-          {/* ------------------ ADD REVIEW FORM ------------------ */}
+          {/* ADD REVIEW FORM */}
           <div className="add-review-section">
             <h3 className="add-review-title">Share Your Review</h3>
 
@@ -790,64 +917,67 @@ const ProductPageMain = () => {
             )}
 
             <form onSubmit={handleSubmitReview} className="review-form">
-              {/* Rating */}
               <div className="form-group">
                 <label className="form-label">Give Your Rating *</label>
-                <div className="rating-selector">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                      key={star}
-                      type="button"
-                      className={`star-btn ${
-                        reviewRating >= star ? "selected" : ""
-                      }`}
-                      onClick={() => setReviewRating(star)}
-                      aria-label={`Rate ${star} stars`}
-                    >
-                      <Star
-                        size={28}
-                        fill={reviewRating >= star ? "#ffc107" : "none"}
-                        color={reviewRating >= star ? "#ffc107" : "#ddd"}
-                      />
-                    </button>
-                  ))}
-                </div>
+                {/* <StarRating
+                  rating={reviewForm.rating}
+                  size={28}
+                  interactive={true}
+                  onRatingChange={(rating) =>
+                    setReviewForm({ ...reviewForm, rating })
+                  }
+                /> */}
+
+                <Rating
+                  onClick={(value) =>
+                    setReviewForm((prev) => ({ ...prev, rating: value }))
+                  }
+                  initialValue={reviewForm.rating}
+                  size={28}
+                  allowFraction={true}
+                  transition
+                  fillColor="gold"
+                  emptyColor="#ddd"
+                />
               </div>
 
-              {/* Name */}
               <div className="form-group">
                 <label className="form-label">Enter your name *</label>
                 <input
                   type="text"
                   className="form-input"
                   placeholder="Enter your name"
-                  value={reviewName}
-                  onChange={(e) => setReviewName(e.target.value)}
+                  value={reviewForm.name}
+                  onChange={(e) =>
+                    setReviewForm({ ...reviewForm, name: e.target.value })
+                  }
                   required
                 />
               </div>
 
-              {/* Email */}
               <div className="form-group">
                 <label className="form-label">Email *</label>
                 <input
                   type="email"
                   className="form-input"
                   placeholder="Email address"
-                  value={reviewEmail}
-                  onChange={(e) => setReviewEmail(e.target.value)}
+                  value={reviewForm.email}
+                  onChange={(e) =>
+                    setReviewForm({ ...reviewForm, email: e.target.value })
+                  }
                   required
                 />
               </div>
 
-              {/* Feedback */}
               <div className="form-group">
                 <label className="form-label">Share your feedback *</label>
                 <textarea
                   className="form-textarea"
                   placeholder="Share your feedback..."
-                  value={reviewFeedback}
-                  onChange={(e) => setReviewFeedback(e.target.value)}
+                  value={reviewForm.feedback}
+                  onChange={(e) =>
+                    setReviewForm({ ...reviewForm, feedback: e.target.value })
+                  }
                   rows="5"
                   required
                 />
@@ -864,775 +994,10 @@ const ProductPageMain = () => {
       </div>
 
       <ProductHeroSection />
-      <ProductShowcase showProduct={false} />
+      {/* <ProductShowcase showProduct={false} /> */}
       <GheeFeatureProductPage />
     </>
   );
 };
 
 export default ProductPageMain;
-
-// import React, { useEffect, useState } from "react";
-// import {
-//   Heart,
-//   Star,
-//   ChevronLeft,
-//   ChevronRight,
-//   Minus,
-//   Plus,
-//   Send,
-// } from "lucide-react";
-// import "./product-page.css";
-
-// import axios from "axios";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import { v4 as uuidv4 } from "uuid";
-// import { environment } from "../../environment/environment";
-
-// import secure1 from "../../asset/new-img/product-page-logo/fast.png";
-// import secure2 from "../../asset/new-img/product-page-logo/secure.png";
-// import secure3 from "../../asset/new-img/product-page-logo/quality.png";
-// import secure4 from "../../asset/new-img/product-page-logo/natural.png";
-
-// import paymentLogo1 from "../../asset/new-img/product-page-logo/Visa.png";
-// import paymentLogo2 from "../../asset/new-img/product-page-logo/rupay.png";
-// import paymentLogo3 from "../../asset/new-img/product-page-logo/master-card.png";
-// import paymentLogo4 from "../../asset/new-img/product-page-logo/Bhim.png";
-// import paymentLogo5 from "../../asset/new-img/product-page-logo/razor-pay.png";
-
-// import ProfileSection from "./profileSection";
-// import ProductHeroSection from "./product-hero-section";
-// import ProductShowcase from "../Carousel/product-showcase";
-// import GheeFeatureProductPage from "./ghee-product";
-
-// import productPlaceholder from "../../asset/new-img/product-imgs/product1.png";
-
-// import "../../Component/Carousel/carousel-card-wrapper.css";
-// import { useNavigate } from "react-router-dom";
-// import { useCartContext } from "../Context/UserContext";
-
-// const ProductPageMain = () => {
-//   const navigate = useNavigate();
-//   const { cart, setCart } = useCartContext();
-
-//   // Image gallery & UI selection
-//   const [selectedImage, setSelectedImage] = useState(0);
-//   const [isFavorite, setIsFavorite] = useState(false);
-
-//   // Product & variant data from API
-//   const [prdData, setPrdData] = useState([]);
-//   const [images, setImages] = useState([productPlaceholder]);
-//   const [checkedItems, setCheckedItems] = useState([]);
-//   const [selectedPrice, setSelectedPrice] = useState(null);
-//   const [selectedSize, setSelectedSize] = useState(null);
-//   const [count, setCount] = useState(1);
-
-//   // Reviews
-//   const [reviews, setReviews] = useState([]);
-//   const [averageRating, setAverageRating] = useState(0);
-//   const [totalReviews, setTotalReviews] = useState(0);
-//   const [ratingsBreakdown, setRatingsBreakdown] = useState({
-//     5: 0,
-//     4: 0,
-//     3: 0,
-//     2: 0,
-//     1: 0,
-//   });
-//   const [reviewName, setReviewName] = useState("");
-//   const [reviewEmail, setReviewEmail] = useState("");
-//   const [reviewFeedback, setReviewFeedback] = useState("");
-//   const [reviewRating, setReviewRating] = useState(5);
-//   const [submitSuccess, setSubmitSuccess] = useState(false);
-
-//   // FETCH PRODUCTS
-//   const fetchProducts = async () => {
-//     try {
-//       const res = await axios.get(
-//         `${environment?.API_BASE_URL}/users/getAllProduct`,
-//         {
-//           headers: {
-//             "Content-Type": "application/json",
-//             "ngrok-skip-browser-warning": "69420",
-//           },
-//         }
-//       );
-//       const apiProducts = res?.data?.products || [];
-
-//       const products = apiProducts?.map((p) => {
-//         let imgs = [];
-//         if (p.product_images) {
-//           try {
-//             const parsed = JSON.parse(p.product_images);
-//             imgs = parsed?.map((img) =>
-//               typeof img === "string" ? img : img?.url || img?.src || ""
-//             );
-//           } catch {
-//             imgs = [];
-//           }
-//         }
-//         return {
-//           ...p,
-//           images: imgs.length > 0 ? imgs : [productPlaceholder],
-//         };
-//       });
-
-//       setPrdData(products);
-
-//       if (products.length > 0) {
-//         const initChecks = Array(products.length).fill(false);
-//         initChecks[0] = true;
-//         setCheckedItems(initChecks);
-//         setSelectedPrice(products[0].product_price);
-//         setSelectedSize(products[0].product_weight);
-//         setImages(products[0].images);
-//         setSelectedImage(0);
-//       }
-//     } catch (err) {
-//       console.error("Error fetching products:", err?.response || err.message);
-//       toast.error("Unable to fetch product data");
-//     }
-//   };
-
-//   const triggerCrossPageToast = (type, message) => {
-//     sessionStorage.setItem("toastMessage", JSON.stringify({ type, message }));
-//   };
-
-//   // FETCH REVIEWS
-//   const fetchReviews = async () => {
-//     try {
-//       const res = await axios.get(
-//         `${environment?.API_BASE_URL}/users/allfeedback`,
-//         {
-//           headers: {
-//             "Content-Type": "application/json",
-//             "ngrok-skip-browser-warning": "69420",
-//           },
-//         }
-//       );
-//       const data = res?.data || {};
-//       setAverageRating(data.averageRating ?? 0);
-//       setTotalReviews(data.totalReviews ?? (data.reviews?.length || 0));
-//       setRatingsBreakdown(data.ratingsBreakdown || {});
-//       setReviews(data.reviews || []);
-//     } catch (err) {
-//       console.error("Error fetching reviews:", err?.response || err.message);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchProducts();
-//     fetchReviews();
-//   }, []);
-
-//   useEffect(() => {
-//     if (selectedImage >= images.length) setSelectedImage(0);
-//   }, [images, selectedImage]);
-
-//   // VARIANT SELECT
-//   const handleVariantSelect = (index) => {
-//     if (!prdData.length) return;
-//     const newChecked = Array(prdData.length).fill(false);
-//     newChecked[index] = true;
-//     setCheckedItems(newChecked);
-
-//     const variant = prdData[index];
-//     setSelectedPrice(variant.product_price);
-//     setSelectedSize(variant.product_weight);
-//     setImages(variant.images);
-//     setSelectedImage(0);
-//     setCount(1);
-//   };
-
-//   const increaseCount = () => setCount((c) => c + 1);
-//   const decreaseCount = () => setCount((c) => (c > 1 ? c - 1 : 1));
-
-//   // FIXED ADD TO CART
-//   const handleAddToCart = async () => {
-//     const selectedIndex = checkedItems.findIndex(Boolean);
-//     if (selectedIndex === -1) {
-//       toast.error("Please select a variant first");
-//       return;
-//     }
-
-//     const selectedItem = prdData[selectedIndex];
-//     let pId = sessionStorage.getItem("product_id") || uuidv4();
-//     sessionStorage.setItem("product_id", pId);
-
-//     const cartItem = {
-//       product_id: pId,
-//       user_id: selectedItem.product_id,
-//       product_weight: selectedItem.product_weight,
-//       product_quantity: count,
-//       quantity: count, // ADD THIS FOR HEADER COUNT
-//       product_price: selectedItem.product_price,
-//       product_total_amount: selectedItem.product_price * count,
-//       purchase_price: selectedItem.product_purchase_price,
-//       product_image: selectedItem.images?.[0] || productPlaceholder,
-//     };
-
-//     try {
-//       const response = await axios.post(
-//         `${environment?.API_BASE_URL}/users/login/addtocart`,
-//         cartItem,
-//         {
-//           headers: {
-//             "Content-Type": "application/json",
-//             "ngrok-skip-browser-warning": "69420",
-//           },
-//         }
-//       );
-
-//       if (response.status === 200 || response.status === 201) {
-//         toast.success("Item added to cart successfully!");
-
-//         const existingCart = JSON.parse(sessionStorage.getItem("cart") || "[]");
-//         const foundIndex = existingCart.findIndex(
-//           (it) =>
-//             it.user_id === selectedItem.product_id &&
-//             it.product_weight === selectedItem.product_weight
-//         );
-
-//         if (foundIndex !== -1) {
-//           existingCart[foundIndex].product_quantity += count;
-//           existingCart[foundIndex].quantity += count; // UPDATE THIS TOO
-//           existingCart[foundIndex].product_total_amount =
-//             existingCart[foundIndex].product_price *
-//             existingCart[foundIndex].product_quantity;
-//         } else {
-//           existingCart.push(cartItem);
-//         }
-
-//         sessionStorage.setItem("cart", JSON.stringify(existingCart));
-//         setCart(existingCart); // UPDATE CONTEXT STATE
-//       } else {
-//         toast.error("Failed to add to cart");
-//       }
-//     } catch (error) {
-//       console.error("Add to cart error:", error);
-//       toast.error("Something went wrong");
-//     }
-//   };
-
-//   // SUBMIT REVIEW
-//   const handleSubmitReview = async (e) => {
-//     e.preventDefault();
-//     if (!reviewName || !reviewEmail || !reviewFeedback || !reviewRating) {
-//       toast.error("Please fill all fields");
-//       return;
-//     }
-
-//     const payload = {
-//       name: reviewName,
-//       email: reviewEmail,
-//       feedback: reviewFeedback,
-//       rating: reviewRating,
-//     };
-
-//     try {
-//       const res = await axios.post(
-//         `${environment?.API_BASE_URL}/users/feedback`,
-//         payload,
-//         {
-//           headers: {
-//             "Content-Type": "application/json",
-//             "ngrok-skip-browser-warning": "69420",
-//           },
-//         }
-//       );
-
-//       if (res.status === 200 || res.status === 201) {
-//         toast.success("Thank you! Your review has been submitted.");
-//         fetchReviews();
-//         setReviewName("");
-//         setReviewEmail("");
-//         setReviewFeedback("");
-//         setReviewRating(5);
-//         setSubmitSuccess(true);
-//         setTimeout(() => setSubmitSuccess(false), 3000);
-//       }
-//     } catch (err) {
-//       toast.error("Something went wrong");
-//     }
-//   };
-
-//   const handlePrevImage = () => {
-//     setSelectedImage((p) => (p === 0 ? images.length - 1 : p - 1));
-//   };
-
-//   const handleNextImage = () => {
-//     setSelectedImage((p) => (p === images.length - 1 ? 0 : p + 1));
-//   };
-
-//   const renderAverageStars = (avg) => (
-//     <>
-//       {[...Array(5)].map((_, i) => (
-//         <Star
-//           key={i}
-//           size={20}
-//           fill={i < Math.floor(avg) ? "#ffc107" : "none"}
-//           color={i < Math.floor(avg) ? "#ffc107" : "#ddd"}
-//         />
-//       ))}
-//     </>
-//   );
-
-//   // FIXED BUY NOW
-//   const handleBuyNow = async () => {
-//     const selectedIndex = checkedItems.findIndex(Boolean);
-//     if (selectedIndex === -1) {
-//       toast.error("Please select a variant first");
-//       return;
-//     }
-
-//     const selectedItem = prdData[selectedIndex];
-//     let pId = sessionStorage.getItem("product_id") || uuidv4();
-//     sessionStorage.setItem("product_id", pId);
-
-//     const cartItem = {
-//       product_id: pId,
-//       user_id: selectedItem.product_id,
-//       product_weight: selectedItem.product_weight,
-//       product_quantity: count,
-//       quantity: count, // ADD THIS
-//       product_price: selectedItem.product_price,
-//       product_total_amount: selectedItem.product_price * count,
-//       purchase_price: selectedItem.product_purchase_price,
-//       product_image: selectedItem.images?.[0] || productPlaceholder,
-//     };
-
-//     let existingCart = JSON.parse(sessionStorage.getItem("cart") || "[]");
-//     const foundIndex = existingCart.findIndex(
-//       (it) =>
-//         it.user_id === selectedItem.product_id &&
-//         it.product_weight === selectedItem.product_weight
-//     );
-
-//     if (foundIndex !== -1) {
-//       existingCart[foundIndex].product_quantity += count;
-//       existingCart[foundIndex].quantity += count; // UPDATE THIS TOO
-//       existingCart[foundIndex].product_total_amount =
-//         existingCart[foundIndex].product_price *
-//         existingCart[foundIndex].product_quantity;
-//     } else {
-//       existingCart.push(cartItem);
-//     }
-
-//     sessionStorage.setItem("cart", JSON.stringify(existingCart));
-//     setCart(existingCart); // UPDATE CONTEXT STATE
-
-//     triggerCrossPageToast("success", "Item added to cart!");
-//     navigate("/cart");
-//   };
-
-//   return (
-//     <>
-//       <div className="product-page">
-//         <div className="product-container">
-//           {/* Left Side - Image Gallery */}
-//           <div className="image-section">
-//             <div className="main-image-wrapper">
-//               <div className="main-image" aria-live="polite">
-//                 <img
-//                   src={images[selectedImage] || productPlaceholder}
-//                   alt={`Product image ${selectedImage + 1}`}
-//                   className="responsive-product-img"
-//                   loading="lazy"
-//                 />
-//               </div>
-
-//               <button
-//                 className="arrow-btn prev-btn"
-//                 onClick={handlePrevImage}
-//                 aria-label="Previous image"
-//               >
-//                 <ChevronLeft size={18} color="#fff" />
-//               </button>
-//               <button
-//                 className="arrow-btn next-btn"
-//                 onClick={handleNextImage}
-//                 aria-label="Next image"
-//               >
-//                 <ChevronRight size={18} color="#fff" />
-//               </button>
-//             </div>
-
-//             <div className="thumbnail-gallery" role="list">
-//               {images.map((img, idx) => (
-//                 <button
-//                   key={idx}
-//                   className={`thumbnail ${
-//                     selectedImage === idx ? "active" : ""
-//                   }`}
-//                   onClick={() => setSelectedImage(idx)}
-//                   aria-label={`Show image ${idx + 1}`}
-//                   role="listitem"
-//                 >
-//                   <img
-//                     src={img || productPlaceholder}
-//                     alt={`Thumbnail ${idx + 1}`}
-//                     loading="lazy"
-//                   />
-//                 </button>
-//               ))}
-//             </div>
-//           </div>
-
-//           {/* Right Side - Product Details */}
-//           <div className="details-section">
-//             <h1 className="product-title">
-//               GAUSWARN Authentic A2 Bilona Ghee – Made from Indigenous Gir Cow
-//               Milk
-//             </h1>
-
-//             <p className="product-description">
-//               Traditionally made. Naturally pure. Rich in aroma & nutrition.
-//             </p>
-
-//             <div className="rating-section">
-//               <div className="stars-product" aria-hidden="true">
-//                 {renderAverageStars(averageRating)}
-//               </div>
-//               <span className="rating-value">{averageRating.toFixed(1)}</span>
-//               <span className="reviews">from {totalReviews || 0} Reviews</span>
-//             </div>
-
-//             <div className="badges-section">
-//               <p className="certifications-text mb-0">
-//                 100% Natural | Chemical-Free | Lactose-Free | Gluten-Free |
-//                 Traditionally Churned
-//               </p>
-//             </div>
-
-//             <div className="benefits-grid">
-//               {[
-//                 "Boosts Immunity & Digestion",
-//                 "Promotes Glowing Skin & Hair",
-//                 "Enhances Focus & Memory",
-//                 "Helps Improve Sleep Quality",
-//                 "Strengthens Joints & Bones",
-//                 "Supports Hormonal Balance",
-//               ].map((benefit, idx) => (
-//                 <div key={idx} className="benefit-item">
-//                   <span className="checkmark" aria-hidden="true">
-//                     ✓
-//                   </span>
-//                   <span className="benefit-text">{benefit}</span>
-//                 </div>
-//               ))}
-//             </div>
-
-//             {/* Variant / Size */}
-//             <div className="size-section">
-//               <h3 className="section-title">Size</h3>
-//               <div className="size-options">
-//                 {prdData?.length
-//                   ? prdData?.map((v, idx) => (
-//                       <button
-//                         key={v.product_id || idx}
-//                         className={`size-btn ${
-//                           checkedItems[idx] ? "selected" : ""
-//                         }`}
-//                         onClick={() => handleVariantSelect(idx)}
-//                         aria-pressed={checkedItems[idx] || false}
-//                       >
-//                         {v.product_weight || v.liter || `Variant ${idx + 1}`}
-//                       </button>
-//                     ))
-//                   : ["500ML", "1000ML", "5KG"].map((s, i) => (
-//                       <button
-//                         key={s + i}
-//                         className={`size-btn ${
-//                           selectedSize === s ? "selected" : ""
-//                         }`}
-//                         onClick={() => setSelectedSize(s)}
-//                       >
-//                         {s}
-//                       </button>
-//                     ))}
-//               </div>
-//             </div>
-
-//             {/* Quantity */}
-//             <div className="quantity-section">
-//               <h3 className="section-title">Quantity</h3>
-//               <div className="quantity-control">
-//                 <button
-//                   className="quantity-btn decrease-btn"
-//                   onClick={decreaseCount}
-//                   aria-label="Decrease quantity"
-//                 >
-//                   <Minus size={18} />
-//                 </button>
-//                 <input
-//                   type="number"
-//                   className="quantity-input"
-//                   value={count}
-//                   onChange={(e) => {
-//                     const v = parseInt(e.target.value, 10) || 1;
-//                     setCount(v > 0 ? v : 1);
-//                   }}
-//                   min="1"
-//                 />
-//                 <button
-//                   className="quantity-btn increase-btn"
-//                   onClick={increaseCount}
-//                   aria-label="Increase quantity"
-//                 >
-//                   <Plus size={18} />
-//                 </button>
-//               </div>
-//             </div>
-
-//             <div className="availability-section">
-//               <span className="availability-label">Availability:</span>
-//               <span className="availability-status">In Stock</span>
-//             </div>
-
-//             <div className="pricing-section">
-//               <div className="price">
-//                 <span className="current-price">
-//                   ₹{selectedPrice ?? prdData[0]?.product_price ?? "0"}
-//                 </span>
-//                 <span className="original-price">
-//                   {selectedPrice
-//                     ? prdData[checkedItems.findIndex((item) => item)]
-//                         ?.product_del_price
-//                     : "0"}
-//                 </span>
-//               </div>
-//               <div className="discount-badge">Save 50%</div>
-//             </div>
-
-//             <div className="action-buttons">
-//               <button
-//                 className="btn-add-cart border"
-//                 aria-label="Add to cart"
-//                 onClick={handleAddToCart}
-//               >
-//                 Add to Cart
-//               </button>
-//               <button
-//                 className="btn-buy-now action-buttons-bg"
-//                 aria-label="Buy it now"
-//                 onClick={handleBuyNow}
-//               >
-//                 Buy now
-//               </button>
-//             </div>
-
-//             <div className="payment-section">
-//               <h4 className="payment-title">Guaranteed Safe Checkout</h4>
-//               <div className="payment-methods" role="list">
-//                 {[
-//                   paymentLogo1,
-//                   paymentLogo2,
-//                   paymentLogo3,
-//                   paymentLogo4,
-//                   paymentLogo5,
-//                 ].map((icon, idx) => (
-//                   <div key={idx} className="payment-method" role="listitem">
-//                     <img
-//                       src={icon}
-//                       alt={`payment-${idx}`}
-//                       className="payment-logo"
-//                       loading="lazy"
-//                     />
-//                   </div>
-//                 ))}
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-
-//         <div className="trust-section">
-//           {[secure1, secure2, secure3, secure4].map((icon, idx) => (
-//             <div key={idx} className="trust-item">
-//               <img src={icon} alt={`trust-${idx}`} className="trust-icon" />
-//               <h4 className="trust-title">
-//                 {
-//                   [
-//                     "Fast Shipping",
-//                     "Secure Payment",
-//                     "Quality Guarantee",
-//                     "Natural Ingredients",
-//                   ][idx]
-//                 }
-//               </h4>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-
-//       <ProfileSection />
-
-//       {/* ===================== REVIEWS SECTION ===================== */}
-//       <div className="product-page">
-//         <div className="reviews-section">
-//           <div className="reviews-header">
-//             <h2 className="reviews-title">Customer Reviews</h2>
-
-//             <div className="reviews-summary">
-//               <div className="rating-summary">
-//                 <div className="rating-score">{averageRating.toFixed(1)}</div>
-
-//                 <div className="rating-stars">
-//                   {[...Array(5)].map((_, i) => (
-//                     <Star
-//                       key={i}
-//                       size={16}
-//                       fill={i < averageRating ? "#ffc107" : "#ddd"}
-//                       color={i < averageRating ? "#ffc107" : "#ddd"}
-//                     />
-//                   ))}
-//                 </div>
-
-//                 <div className="rating-count">
-//                   Based on {totalReviews} reviews
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* ------------------- REVIEWS LIST ------------------- */}
-//           <div className="reviews-list">
-//             {reviews.map((review) => (
-//               <div key={review.id || review.email} className="review-item">
-//                 <div className="review-header">
-//                   <div className="reviewer-info">
-//                     <div className="reviewer-avatar">
-//                       {(review.name || "U").charAt(0)}
-//                     </div>
-
-//                     <div className="reviewer-details">
-//                       <h4 className="reviewer-name">
-//                         {review.name}
-//                         {/* hard-coded verified badge */}
-//                         <span className="verified-badge">
-//                           ✓ Verified Purchase
-//                         </span>
-//                       </h4>
-
-//                       {/* no date in API — left blank */}
-//                       <span className="review-date"></span>
-//                     </div>
-//                   </div>
-//                 </div>
-
-//                 <div className="review-rating">
-//                   {[...Array(5)].map((_, i) => (
-//                     <Star
-//                       key={i}
-//                       size={14}
-//                       fill={i < review.rating ? "#ffc107" : "#ddd"}
-//                       color={i < review.rating ? "#ffc107" : "#ddd"}
-//                     />
-//                   ))}
-//                 </div>
-
-//                 <p className="review-text">{review.feedback}</p>
-//               </div>
-//             ))}
-//           </div>
-
-//           {/* ------------------ ADD REVIEW FORM ------------------ */}
-//           <div className="add-review-section">
-//             <h3 className="add-review-title">Share Your Review</h3>
-
-//             {submitSuccess && (
-//               <div className="success-message">
-//                 ✓ Thank you! Your review has been submitted successfully.
-//               </div>
-//             )}
-
-//             <form onSubmit={handleSubmitReview} className="review-form">
-//               {/* Rating */}
-//               <div className="form-group">
-//                 <label className="form-label">Give Your Rating *</label>
-//                 <div className="rating-selector">
-//                   {[1, 2, 3, 4, 5].map((star) => (
-//                     <button
-//                       key={star}
-//                       type="button"
-//                       className={`star-btn ${
-//                         reviewRating >= star ? "selected" : ""
-//                       }`}
-//                       onClick={() => setReviewRating(star)}
-//                       aria-label={`Rate ${star} stars`}
-//                     >
-//                       <Star
-//                         size={28}
-//                         fill={reviewRating >= star ? "#ffc107" : "none"}
-//                         color={reviewRating >= star ? "#ffc107" : "#ddd"}
-//                       />
-//                     </button>
-//                   ))}
-//                 </div>
-//               </div>
-
-//               {/* Name */}
-//               <div className="form-group">
-//                 <label className="form-label">Enter your name *</label>
-//                 <input
-//                   type="text"
-//                   className="form-input"
-//                   placeholder="Enter your name"
-//                   value={reviewName}
-//                   onChange={(e) => setReviewName(e.target.value)}
-//                   required
-//                 />
-//               </div>
-
-//               {/* Email */}
-//               <div className="form-group">
-//                 <label className="form-label">Email *</label>
-//                 <input
-//                   type="email"
-//                   className="form-input"
-//                   placeholder="Email address"
-//                   value={reviewEmail}
-//                   onChange={(e) => setReviewEmail(e.target.value)}
-//                   required
-//                 />
-//               </div>
-
-//               {/* Feedback */}
-//               <div className="form-group">
-//                 <label className="form-label">Share your feedback *</label>
-//                 <textarea
-//                   className="form-textarea"
-//                   placeholder="Share your feedback..."
-//                   value={reviewFeedback}
-//                   onChange={(e) => setReviewFeedback(e.target.value)}
-//                   rows="5"
-//                   required
-//                 />
-//               </div>
-
-//               <div className="form-actions d-flex gap-2">
-//                 <button type="submit" className="submit-review-btn">
-//                   <Send size={18} /> Submit
-//                 </button>
-//               </div>
-//             </form>
-//           </div>
-//         </div>
-//       </div>
-
-//       <ProductHeroSection />
-//       <ProductShowcase showProduct={false} />
-//       <GheeFeatureProductPage />
-//       {/* <PromotionalCards /> */}
-
-//       <ToastContainer
-//         position="top-center"
-//         autoClose={3000}
-//         hideProgressBar
-//         closeOnClick
-//         pauseOnHover
-//       />
-//     </>
-//   );
-// };
-
-// export default ProductPageMain;

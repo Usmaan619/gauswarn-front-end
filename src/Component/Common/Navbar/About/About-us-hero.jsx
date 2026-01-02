@@ -1,11 +1,12 @@
-import React from "react";
+import React, { use } from "react";
 import about1 from "../../../../asset/new-img/about-main/about1.png";
 import "./AboutUsHero.css"; // Separate CSS file
+import { useNavigate } from "react-router-dom";
 
 export default function AboutUsHero() {
-  const learnMoreAbout = () => {
-    console.log("Navigate to about page");
-  };
+  const navigate = useNavigate();
+
+  const learnMoreAbout = () => navigate("/about");
 
   return (
     <section className="aboutUsHero">
@@ -90,7 +91,7 @@ export default function AboutUsHero() {
                   <br />
                   • Made from A2 milk of indigenous Gir cows
                   <br />
-                  • Hand-churned Bilona method
+                  • Prepared using the traditional Bilona method with modern efficiency
                   <br />
                   • Small-batch, Gaushala-crafted purity
                   <br />• Natural, ethical & chemical-free

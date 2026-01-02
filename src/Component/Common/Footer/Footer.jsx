@@ -162,10 +162,17 @@ export default function NewFooter() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/track-order" onClick={scrollToTop}>
+                    <a
+                      href="https://panel.shipmozo.com/track-order/LBYfQgGFRljv1A249H87"
+                      rel="noopener noreferrer"
+                      // target="_blank"
+
+                      onClick={scrollToTop}
+                    >
                       Track Order
-                    </Link>
+                    </a>
                   </li>
+
                   <li>
                     <Link to="/refund" onClick={scrollToTop}>
                       Refund Policy
@@ -202,10 +209,9 @@ export default function NewFooter() {
                   <h3>Newsletter</h3>
                 </div>
 
-                <div className="footer-text mb-25">
-                  <p>
-                    From our Gaushala to your kitchen — purity you can taste,
-                    trust, and feel.
+                <div className="footer-text mb-25 ">
+                  <p className="">
+                    Pure updates from our Gaushala, straight to your inbox.
                   </p>
                 </div>
 
@@ -239,39 +245,51 @@ export default function NewFooter() {
       {/* BOTTOM BAR */}
       <div className="top-banner">
         <div className="container-fluid px-3 px-md-4">
-          <div className="banner-content">
-            {/* Copyright */}
-            <div className="contact-section ">
-              <div className="contact-item">
-                <b>Copyright © 2025 Gauswarn. All Rights Reserved.</b>
-              </div>
+          <div className="banner-content footer-bottom-bar">
+            {/* Left */}
+            <div className="footer-bottom-left">
+              <span>
+                © 2025 <b>Gauswarn</b> All Rights Reserved.
+              </span>
             </div>
 
-            {/* Social Icons */}
-            <div className="social-section">
+            {/* Center - No Hover */}
+            <div className="footer-bottom-center">
+              Powered by
+              <b>
+                <a className="ms-1"
+                  href="https://rajlakshmijaviks.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {"  "} Rajlakshmi javiks International
+                </a>
+              </b>
+            </div>
+
+            {/* Right */}
+            <div className="footer-bottom-right">
               <a
                 href="https://www.facebook.com/profile.php?id=61577996747357"
-                className="social-icon facebook"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="social-icon facebook"
               >
                 <i className="fab fa-facebook-f"></i>
               </a>
-
               <a
                 href="https://www.instagram.com/gauswarn/"
-                className="social-icon instagram"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="social-icon instagram"
               >
                 <i className="fab fa-instagram"></i>
               </a>
-
               <a
                 href="https://www.youtube.com/@gauswarngircowghee-2"
-                className="social-icon youtube"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="social-icon youtube"
               >
                 <i className="fab fa-youtube"></i>
               </a>

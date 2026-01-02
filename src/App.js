@@ -1,48 +1,106 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import { useEffect, lazy, Suspense } from "react";
+import Aos from "aos";
+import { ToastContainer } from "react-toastify";
+
 import ScrollToTop from "./Component/Common/Scroll-to-Top/scroll-to-top.jsx";
-import { useEffect, useState } from "react";
+import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
+import NewFooter from "./Component/Common/Footer/Footer.jsx";
+
 import { useCartContext } from "./Component/Context/UserContext.jsx";
 
-// MAIN HOME PAGE COMPONENTS
-import Home from "./Component/Pages/Home.jsx";
-import Certified from "./Component/Pages/Certified.jsx";
-import AboutUsHero from "./Component/Common/Navbar/About/About-us-hero.jsx";
-import ProductShowcase from "./Component/Carousel/product-showcase.jsx";
-import VideoSection from "./Component/Video/Video-hero.jsx";
-import PromotionalCards from "./Component/PromotionalBanner/promotional-cards.jsx";
-import HealthProductShowcase from "./Component/Banefit/health-product-showcase.jsx";
-import DiscoverHeroSection from "./Component/Discover/discover-hero-section.jsx";
+/* =======================
+   LAZY LOAD COMPONENTS
+======================= */
 
-// OTHER PAGES
-import AboutUsHeroMain from "./Component/AboutUs-new/about-us-new-main-page.jsx";
-import BlogMainPageNew from "./Component/Blog/blog-new-main.jsx";
-import GheeGallery from "./Component/Gallery/gallery-main.jsx";
-import ContactMainPage from "./Component/Contact/contact-main-page.jsx";
-import OrderTracking from "./Component/TrackOrder/track-order-main-page.jsx";
-import B2BLandingPage from "./Component/B2B/b2b-main-page.jsx";
-import ProductPageMain from "./Component/Products/product-page-main.jsx";
-import RefundMainPage from "./Component/Refund/refund-main.page.jsx";
-import ShippingPolicy from "./Component/Shipping-policy/shipping-policy-main-page.jsx";
-import PrivacyPolicy from "./Component/Privacy-Policy/privacy-policy-main-page.jsx";
-import FAQMainPage from "./Component/FAQ/faq-main-page.jsx";
-import TermsConditions from "./Component/Terms-And-Conditions/terms-and-condition.jsx";
-import LabReportMain from "./Component/Lab/lab-report-main.jsx";
+// Home sections
+const Home = lazy(() => import("./Component/Pages/Home.jsx"));
+const Certified = lazy(() => import("./Component/Pages/Certified.jsx"));
+const AboutUsHero = lazy(() =>
+  import("./Component/Common/Navbar/About/About-us-hero.jsx")
+);
+const ProductShowcase = lazy(() =>
+  import("./Component/Carousel/product-showcase.jsx")
+);
+const VideoSection = lazy(() => import("./Component/Video/Video-hero.jsx"));
+const GheePurity = lazy(() =>
+  import("./Component/AboutUs-new/ghee-purity.jsx")
+);
+const HealthProductShowcase = lazy(() =>
+  import("./Component/Banefit/health-product-showcase.jsx")
+);
+const DiscoverHeroSection = lazy(() =>
+  import("./Component/Discover/discover-hero-section.jsx")
+);
 
-// FOOTER + NAVBAR
-import NewFooter from "./Component/Common/Footer/Footer.jsx";
-import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
-import Aos from "aos";
-import FinalPaymentMainPage from "./Component/Final-payment-page/final-payment-page.jsx";
-import { ToastContainer } from "react-toastify";
-import PaymentFailed from "./Component/Payment-fails-pages/PaymentFailed.jsx";
-import PaymentSuccess from "./Component/PaymentSuccess/PaymentSuccess.jsx";
-import BlogView from "./Component/Blog/blogView.jsx";
+// Pages
+const AboutUsHeroMain = lazy(() =>
+  import("./Component/AboutUs-new/about-us-new-main-page.jsx")
+);
+const BlogMainPageNew = lazy(() =>
+  import("./Component/Blog/blog-new-main.jsx")
+);
+const BlogView = lazy(() => import("./Component/Blog/blogView.jsx"));
+const GheeGallery = lazy(() => import("./Component/Gallery/gallery-main.jsx"));
+const ContactMainPage = lazy(() =>
+  import("./Component/Contact/contact-main-page.jsx")
+);
+const OrderTracking = lazy(() =>
+  import("./Component/TrackOrder/track-order-main-page.jsx")
+);
+const B2BLandingPage = lazy(() => import("./Component/B2B/b2b-main-page.jsx"));
+const ProductPageMain = lazy(() =>
+  import("./Component/Products/product-page-main.jsx")
+);
+const FinalPaymentMainPage = lazy(() =>
+  import("./Component/Final-payment-page/final-payment-page.jsx")
+);
+
+// Policies
+const RefundMainPage = lazy(() =>
+  import("./Component/Refund/refund-main.page.jsx")
+);
+const ShippingPolicy = lazy(() =>
+  import("./Component/Shipping-policy/shipping-policy-main-page.jsx")
+);
+const PrivacyPolicy = lazy(() =>
+  import("./Component/Privacy-Policy/privacy-policy-main-page.jsx")
+);
+const FAQMainPage = lazy(() => import("./Component/FAQ/faq-main-page.jsx"));
+const TermsConditions = lazy(() =>
+  import("./Component/Terms-And-Conditions/terms-and-condition.jsx")
+);
+const LabReportMain = lazy(() => import("./Component/Lab/lab-report-main.jsx"));
+
+// Payment
+const PaymentFailed = lazy(() =>
+  import("./Component/Payment-fails-pages/PaymentFailed.jsx")
+);
+const PaymentSuccess = lazy(() =>
+  import("./Component/PaymentSuccess/PaymentSuccess.jsx")
+);
+
+/* =======================
+   HOME PAGE GROUP
+======================= */
+const HomePage = () => (
+  <>
+    <Home />
+    <Certified />
+    <AboutUsHero />
+    <ProductShowcase />
+    <VideoSection />
+    <GheePurity />
+    <HealthProductShowcase />
+    <DiscoverHeroSection />
+  </>
+);
 
 function App() {
   const { setCart } = useCartContext();
 
-  // AOS INIT
+  /* ---------- AOS ---------- */
   useEffect(() => {
     Aos.init({
       offset: 100,
@@ -54,16 +112,15 @@ function App() {
     });
   }, []);
 
-  // SESSION CART LOAD
+  /* ---------- CART ---------- */
   useEffect(() => {
     try {
-      const storedCart = JSON.parse(sessionStorage.getItem("cart") || "[]");
-      setCart(storedCart);
-    } catch (error) {
-      console.error("Failed to parse cart:", error);
+      const cart = JSON.parse(sessionStorage.getItem("cart") || "[]");
+      setCart(cart);
+    } catch {
       setCart([]);
     }
-  }, []);
+  }, [setCart]);
 
   return (
     <>
@@ -71,65 +128,52 @@ function App() {
       <ScrollToTop />
       <NavbarWrapper />
 
-      <Routes>
-        {/* HOME PAGE */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Home />
-              <Certified />
-              <AboutUsHero />
-              <ProductShowcase />
-              <VideoSection />
-              <HealthProductShowcase />
-              <DiscoverHeroSection />
-            </>
-          }
-        />
+      {/*  Suspense Wrapper */}
+      <Suspense
+        fallback={
+          <div
+            style={{ textAlign: "center", padding: "100px 0", height: "100vh" }}
+          >
+            Loading...
+          </div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<HomePage />} />
 
-        {/* MAIN PAGES */}
-        <Route path="/about" element={<AboutUsHeroMain />} />
-        <Route path="/blog" element={<BlogMainPageNew />} />
-        <Route path="/blog/:slug" element={<BlogView />} />
+          <Route path="/about" element={<AboutUsHeroMain />} />
+          <Route path="/blog" element={<BlogMainPageNew />} />
+          <Route path="/blog/:slug" element={<BlogView />} />
 
-        <Route path="/gallery" element={<GheeGallery />} />
-        <Route path="/contact" element={<ContactMainPage />} />
-        <Route path="/track-order" element={<OrderTracking />} />
-        <Route path="/b2b" element={<B2BLandingPage />} />
-        <Route path="/products" element={<ProductPageMain />} />
-        <Route path="/cart" element={<FinalPaymentMainPage />} />
+          <Route path="/gallery" element={<GheeGallery />} />
+          <Route path="/contact" element={<ContactMainPage />} />
+          <Route path="/track-order" element={<OrderTracking />} />
+          <Route path="/b2b" element={<B2BLandingPage />} />
+          <Route path="/products" element={<ProductPageMain />} />
+          <Route path="/cart" element={<FinalPaymentMainPage />} />
 
-        <Route path="/products" element={<ProductPageMain />} />
-        <Route path="/cart" element={<FinalPaymentMainPage />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-failed" element={<PaymentFailed />} />
 
-        <Route path="/payment-success" element={<PaymentSuccess />} />
-        <Route path="/payment-failed" element={<PaymentFailed />} />
+          <Route path="/refund" element={<RefundMainPage />} />
+          <Route path="/shipping" element={<ShippingPolicy />} />
 
-        {/* NEW POLICY ROUTES */}
-        <Route path="/refund" element={<RefundMainPage />} />
-        <Route path="/shipping" element={<ShippingPolicy />} />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
-        <Route path="/faq" element={<FAQMainPage />} />
-        <Route path="/terms" element={<TermsConditions />} />
-        <Route path="/lab" element={<LabReportMain />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsConditions />} />
 
-        {/* 404 */}
-        <Route
-          path="*"
-          element={
-            <h2
-              style={{
-                textAlign: "center",
-                marginTop: "50px",
-                height: "41dvh",
-              }}
-            >
-              Page Not Found
-            </h2>
-          }
-        />
-      </Routes>
+          <Route path="/faq" element={<FAQMainPage />} />
+          <Route path="/lab" element={<LabReportMain />} />
+
+          <Route
+            path="*"
+            element={
+              <h2 style={{ textAlign: "center", marginTop: 50,height:"100vh" }}>
+                Page Not Found
+              </h2>
+            }
+          />
+        </Routes>
+      </Suspense>
 
       <NewFooter />
     </>
@@ -137,7 +181,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <PromotionalCards /> */
-}

@@ -35,13 +35,13 @@ const rightFeatures = [
     icon: ghee4Img,
     title: "Multi-Stage Quality Checks",
     description:
-      "Each jar goes through strict lab analysis for nutrition, safety, and purity.",
+      "Every batch of our ghee is carefully tested for nutrition, safety, and purity before it reaches you.",
   },
   {
     icon: ghee3Img,
     title: "Eco-Friendly & Ethical Farming",
     description:
-      "We follow clean, sustainable, and cruelty-free practices at our partner farms.",
+      "We follow clean, sustainable, and cruelty-free practices at our farms.",
   },
   {
     icon: ghee5Img,

@@ -501,7 +501,7 @@ body {
   border-bottom: 1px solid var(--color-yellow);
 }
 
-/* Restructured banner layout for better responsiveness */
+/* Main layout */
 .banner-content {
   display: flex;
   align-items: center;
@@ -511,6 +511,7 @@ body {
   row-gap: 12px;
 }
 
+/* Left: contact */
 .contact-section {
   display: flex;
   align-items: center;
@@ -552,6 +553,52 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+/* CENTER: OFFERS SLIDER */
+.top-banner-offer-section {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.offer-slider {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+}
+
+.offer-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  white-space: nowrap;
+  animation: offerTicker 20s linear infinite;
+}
+
+.offer-item {
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* pause on hover - desktop */
+.offer-slider:hover .offer-track {
+  animation-play-state: paused;
+}
+
+@keyframes offerTicker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* (Optional) old rating section if needed */
 .top-banner-rating-section {
   display: flex;
   align-items: center;
@@ -576,6 +623,7 @@ body {
   white-space: nowrap;
 }
 
+/* Right: social icons */
 .social-section {
   display: flex;
   align-items: center;
@@ -620,7 +668,10 @@ body {
   color: white;
 }
 
-/* Comprehensive responsive breakpoints for all screen sizes */
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
 @media (max-width: 1200px) {
   .banner-content {
     gap: 12px;
@@ -630,11 +681,15 @@ body {
     font-size: 12px;
   }
 
-  .rating-text {
+  .offer-item {
     font-size: 12px;
   }
 
-  .stars {
+  .top-banner-rating-text {
+    font-size: 12px;
+  }
+
+  .top-banner-stars {
     font-size: 14px;
   }
 
@@ -654,6 +709,7 @@ body {
   .banner-content {
     gap: 10px;
     row-gap: 10px;
+    flex-wrap: wrap;
   }
 
   .contact-section {
@@ -666,18 +722,19 @@ body {
     font-size: 11px;
   }
 
-  .rating-section {
-    min-width: 100%;
+  /* Offer center, last on tablet */
+  .top-banner-offer-section {
     order: 3;
-    gap: 6px;
+    min-width: 100%;
+    justify-content: center;
   }
 
-  .stars {
-    font-size: 14px;
-  }
-
-  .rating-text {
+  .offer-item {
     font-size: 11px;
+  }
+
+  .offer-track {
+    animation-duration: 18s;
   }
 
   .social-section {
@@ -713,8 +770,6 @@ body {
     width: 100%;
     min-width: auto;
     justify-content: space-between;
-    /* flex-direction: column; */
-    /* gap: 5%; */
   }
 
   .contact-item {
@@ -722,24 +777,21 @@ body {
     justify-content: center;
   }
 
-  .rating-section {
+  .top-banner-offer-section {
     width: 100%;
     min-width: auto;
-    flex-direction: column;
-    gap: 4px;
+    justify-content: center;
   }
 
-  .stars {
-    font-size: 13px;
-    letter-spacing: 1px;
-    display: none;
-  }
-
-  .rating-text {
+  .offer-item {
     font-size: 10px;
-    display: none;
   }
 
+  .offer-track {
+    animation-duration: 16s;
+  }
+
+  /* Hide social on small screens (as you had) */
   .social-section {
     width: 100%;
     min-width: auto;
@@ -769,12 +821,20 @@ body {
     font-size: 14px;
   }
 
-  .rating-text {
+  .offer-item {
+    font-size: 9px;
+  }
+
+  .offer-track {
+    animation-duration: 14s;
+  }
+
+  .top-banner-rating-text {
     font-size: 9px;
     display: none;
   }
 
-  .stars {
+  .top-banner-stars {
     font-size: 12px;
     letter-spacing: 0.5px;
     display: none;
@@ -2233,7 +2293,9 @@ body {
     font-size: 28px;
     margin-bottom: 20px;
   }
-
+  .showcase-content {
+    align-items: center !important;
+  }
   .showcase-container {
     padding: 40px 15px;
   }
@@ -2370,7 +2432,7 @@ body {
 /* Small Mobile (Below 480px) */
 @media (max-width: 480px) {
   body {
-    padding-top: 75px;
+    padding-top: 125px;
   }
 
   .navbar-wrapper.banner-hide {
@@ -2381,7 +2443,7 @@ body {
 /* Extra small screens (Below 360px) */
 @media (max-width: 360px) {
   body {
-    padding-top: 109px;
+    padding-top: 130px;
   }
 
   .navbar-wrapper.banner-hide {

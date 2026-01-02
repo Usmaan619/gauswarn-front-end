@@ -47,7 +47,7 @@ const B2bAboutSection = ({ onQuoteClick }) => {
               },
               {
                 icon: <Users color="#29A44F" />,
-                title: "Dedicated Support",
+                title: "24/7 Personal Care",
                 desc: "Account manager for every partner",
               },
               {

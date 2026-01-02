@@ -3,84 +3,84 @@ import "./shipping-policy-main-page.css";
 
 const ShippingPolicy = () => {
   return (
-    <>
-      <div className="">
-        <div className="shipping-policy-main ">
-          <h4 className="d-flex justify-content-center mt-4 fw-bold">
-            Shipping & Delivery Policy
-          </h4>
-          <ul className=" m-auto">
-            <li>
-              <b>Processing Time </b>
-              <ul>
-                <li>
-                  All orders will be devliverd within , 5-10 Working days.
-                </li>
-                <li>
-                  Orders are not shipped or delivered on weekends or holidays.
-                </li>
-                <li>
-                  If we experience a high volume of orders, shipments may be
-                  delayed. In such cases, we will notify you via email or phone.
-                </li>
-              </ul>
-            </li>
+    <div className="shipping-container">
+      <div className="shipping-header">
+        <h4 className="shipping-title">Shipping & Delivery Policy</h4>
+      </div>
+      
+      <div className="shipping-content">
+        <div className="shipping-sections">
+          {/* Processing Time */}
+          <div className="shipping-section">
+            <h5 className="section-title">⏱️ Processing Time</h5>
+            <ul className="section-list">
+              <li>All orders will be delivered within <strong>5-10 working days</strong>.</li>
+              <li>Orders are not shipped or delivered on weekends or holidays.</li>
+              <li>
+                If we experience a high volume of orders, shipments may be delayed. 
+                We will notify you via email or phone.
+              </li>
+            </ul>
+          </div>
 
-            <li>
-              <b>Shipping Confirmation & Order Tracking </b>
-              <ul>
-                <li>
-                  You will receive a shipment confirmation email once your order
-                  has shipped, containing a tracking number and a link to track
-                  your package.
-                </li>
-                <li>
-                  Non-personal information is automatically collected as you
-                  interact with our website through the use of cookies, web
-                  beacons, and other tracking technologies.
-                </li>
-              </ul>
-            </li>
+          {/* Shipping Confirmation */}
+          <div className="shipping-section">
+            <h5 className="section-title">📬 Shipping Confirmation & Order Tracking</h5>
+            <ul className="section-list">
+              <li>
+                You will receive a shipment confirmation email once your order has shipped, 
+                containing a tracking number and link to track your package.
+              </li>
+              <li>
+                Non-personal information is automatically collected as you interact with 
+                our website through cookies, web beacons, and other tracking technologies.
+              </li>
+            </ul>
+          </div>
 
-            <li>
-              <b>Damages </b>
-              <ul>
+          {/* Damages */}
+          <div className="shipping-section">
+            <h5 className="section-title">💥 Damages</h5>
+            <ul className="section-list">
+              <li>
+                Gauswarn is not responsible for products damaged or lost during shipping. 
+                Contact the shipment carrier or our support team to file a claim.
+              </li>
+              <li>Please save all packaging materials and damaged goods before filing a claim.</li>
+            </ul>
+          </div>
+
+          {/* Undeliverable Packages */}
+          <div className="shipping-section">
+            <h5 className="section-title">📦 Undeliverable Packages</h5>
+            <ul className="section-list">
+              <li>
+                If a package is returned as undeliverable due to incorrect address, 
+                additional shipping charges may apply for reshipping.
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Us */}
+          <div className="shipping-section">
+            <h5 className="section-title">📞 Contact Us</h5>
+            <div className="contact-details">
+              <p>For questions about shipping or issues with your order:</p>
+              <ul className="contact-list">
                 <li>
-                  Gauswarn is not responsible for products damaged or lost
-                  during shipping. If you received your order in a damaged
-                  condition, please contact the shipment carrier or our support
-                  team to file a claim.
+                  <strong>Email:</strong>{' '}
+                  <a href="mailto:rajlaxmiorganicfoods@gmail.com" className="contact-link">
+                    rajlaxmiorganicfoods@gmail.com
+                  </a>
                 </li>
-                <li>
-                  Please save all packaging materials and damaged goods before
-                  filing a claim.
-                </li>
+                <li><strong>Phone:</strong> <strong>+91 8769115905</strong></li>
+                <li><strong>Business Hours:</strong> Mon to Sat 10AM to 8PM</li>
               </ul>
-            </li>
-            <li>
-              <b> Undeliverable Packages</b>
-              <ul>
-                <li>
-                  If a package is returned to us as undeliverable due to an
-                  incorrect address provided by the customer, additional
-                  shipping charges may apply for reshipping.
-                </li>
-              </ul>
-            </li>
-            <li>
-              <b> Contact Us</b> <br />
-              For questions about shipping or issues with your order, please
-              contact us:
-              <ul>
-                <li>Email: rajlaxmiorganicfoods@gmail.com</li>
-                <li>Phone: +91 8769115905</li>
-                <li>Business Hours: Mon to Sat 10Am to 8Pm</li>
-              </ul>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

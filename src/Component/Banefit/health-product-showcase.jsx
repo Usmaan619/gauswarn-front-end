@@ -3,7 +3,7 @@ import "./health-product-showcase.css";
 
 export default function HealthProductShowcase() {
   return (
-    <section className="health-product-showcase mt-5">
+    <section className="health-product-showcase ">
       <div className="health-showcase-container">
         {/* Left side - Product image and kitchen scene */}
         <div className="health-product-section">

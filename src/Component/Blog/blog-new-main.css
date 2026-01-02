@@ -193,6 +193,21 @@
   animation: shimmer 1.4s infinite;
 }
 
+.blog-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* hover / active / visited – sab case cover */
+.blog-card-link:hover,
+.blog-card-link:focus,
+.blog-card-link:active,
+.blog-card-link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
 @keyframes shimmer {
   0% {
     background-position: 100% 0;

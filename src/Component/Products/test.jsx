@@ -377,8 +377,7 @@ const ProductPageMain = () => {
 
             <div className="badges-section">
               <p className="certifications-text mb-0">
-                100% Natural | Chemical-Free | Lactose-Free | Gluten-Free |
-                Traditionally Churned
+                100% Natural | Chemical-Free | Traditionally Churned
               </p>
             </div>
 

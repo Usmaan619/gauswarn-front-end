@@ -6,11 +6,11 @@ const data = [
   {
     key: "description",
     label: "DESCRIPTION",
-    content: `Discover the golden essence of purity with Premium A2 Desi Cow Ghee — your all-natural source of nourishment, energy, and wellness.
-Handcrafted using the traditional Bilona method from grass-fed Gir cow’s milk, each spoonful is rich in aroma, taste, and nutrition — just like homemade ghee.
-This pure A2 Ghee is packed with essential fatty acids, antioxidants, and vitamins that support digestion, enhance immunity, and boost overall vitality — without any preservatives or chemicals.
-Whether you’re cooking, meditating, or caring for your family’s health, our ghee adds a touch of tradition and purity to every meal, every day.
-✅ 100% Natural | A2 Milk | Chemical-Free | Gluten-Free | Traditionally Made`,
+    content: `Discover the golden purity of Premium A2 Desi Cow Ghee, made the traditional way for everyday health and nourishment.
+Prepared using the slow Bilona method from the milk of grass-fed Gir cows, every spoon has a rich aroma, natural taste, and the comfort of homemade ghee. Nothing rushed, nothing artificial — just pure care in every step.
+Made from pure A2 milk, this ghee naturally supports digestion, immunity, and overall well-being. There are no chemicals, no preservatives, and no shortcuts — only honest ghee you can trust for your family.
+Whether you’re cooking daily meals or simply choosing better for your home, our ghee brings tradition, purity, and warmth to your kitchen — every day.
+100% Natural • A2 Milk • Chemical-Free • Traditionally Made`,
     image: tab1,
   },
   {
@@ -32,15 +32,15 @@ Made from A2 milk of Gir cows using the traditional Bilona method.`,
   {
     key: "KeyBenefits",
     label: "KEY BENEFITS",
-    content: `* Cooking
+    content: `✓ Cooking
 Adds natural flavor and richness to everyday meals.
-* Morning Empty Stomach
+✓ Morning Empty Stomach
 A gentle start to the day with pure, nourishing ghee.
-* Kids Nutrition
+✓ Kids Nutrition
 Supports growing children with healthy fats.
-* Meditation
+✓ Meditation
 Helps create calmness and balance during spiritual practices.
-* Ayurvedic Healing
+✓ Ayurvedic Healing
 Traditionally used for soothing, cleansing, and wellness routines.`,
     image: tab1,
   },

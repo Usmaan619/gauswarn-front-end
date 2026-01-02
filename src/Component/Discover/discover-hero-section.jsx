@@ -35,10 +35,10 @@ export default function DiscoverHeroSection() {
           {/* Subheading */}
           <p className="discover-hero-subheading">
             At Gauswarn, ghee isn’t just a product — it’s a legacy of Indian
-            tradition. From hand-churned Bilona butter to rich, golden ghee,
-            every step reflects love, patience, and pure Vedic craftsmanship. We
-            follow time-tested methods to deliver authentic Desi Gir Cow Ghee
-            your family can trust.
+            tradition. From carefully prepared Bilona butter to rich, golden
+            ghee, every step blends Vedic craftsmanship with modern efficiency.
+            We follow time-tested methods enhanced by advanced processes to
+            deliver authentic Desi Gir Cow Ghee your family can trust.
           </p>
 
           {/* Divider */}

@@ -173,7 +173,7 @@ const FinalPaymentMainPage = () => {
 
       // Rest of Razorpay code remains same...
       const options = {
-        key: "rzp_test_qcl3EzwXvpMnwS",
+        key: "rzp_live_woFUpWK35AZbcn",
         amount: order.amount,
         currency: order.currency,
         name: "Gauswarn",
@@ -186,7 +186,6 @@ const FinalPaymentMainPage = () => {
           contact: order.notes.user_mobile_num,
         },
         handler: async function (rzpResponse) {
-          // ... existing handler code
           try {
             setShowLoader(true);
 
