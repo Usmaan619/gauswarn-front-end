@@ -1,4 +1,3 @@
-import React, { use } from "react";
 import about1 from "../../../../asset/new-img/about-main/about1.png";
 import "./AboutUsHero.css"; // Separate CSS file
 import { useNavigate } from "react-router-dom";

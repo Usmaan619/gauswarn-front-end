@@ -5,6 +5,7 @@ import "./blog-new-main.css";
 import FilterNewsletterCard from "./blog-filter";
 import ProductHeroSection from "../Products/product-hero-section";
 import { getData } from "../../services/api";
+import Seo from "../SEO/Seo";
 
 /* ======================
    UTILITIES
@@ -147,6 +148,11 @@ const BlogMainPageNew = () => {
   /* ===== RENDER ===== */
   return (
     <>
+      <Seo
+        title="A2 Ghee Benefits & Ayurveda | Gauswarn Blog"
+        description="Read expert articles on A2 ghee benefits, ayurveda, digestion, immunity and healthy living."
+        url="https://gauswarn.com/blog"
+      />
       <ProductHeroSection />
 
       <div className="app">

@@ -1,4 +1,3 @@
-"use client";
 
 import BenefitCard from "./benefit-card";
 import "./health-benefits-grid.css";

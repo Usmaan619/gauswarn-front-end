@@ -1,4 +1,3 @@
-import React from "react";
 import { Award, Package, TrendingUp, Shield } from "lucide-react";
 import "./b2b-styles/b2b-why-partner.css";
 

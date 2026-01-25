@@ -1,7 +1,6 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import TopBanner from "./TopBanner";
 import Header from "./Header";
-import { useCartContext } from "../../Context/UserContext";
 
 export default function NavbarWrapper() {
   const [hideBanner, setHideBanner] = useState(false);

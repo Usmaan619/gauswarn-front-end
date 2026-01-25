@@ -176,7 +176,7 @@ const Home = () => {
                   className="carousel-full-image"
                   loading={index === 0 ? "eager" : "lazy"}
                   onError={(e) => {
-                    e.currentTarget.src = "/default-banner.jpg";
+                    e.currentTarget.src = banner1Img;
                   }}
                   decoding="async"
                 />

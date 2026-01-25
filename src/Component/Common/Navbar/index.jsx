@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Navbar, Nav } from "react-bootstrap";
-import logo from "../../../asset/img/Logo/GAUSWARN A2 GHEE  Logo.png";
-import { GrHomeRounded } from "react-icons/gr";
+import { useState, useEffect } from "react";
 import { useCartContext } from "../../Context/UserContext";
-import { FiShoppingCart } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
-import GoogleTranslate from "../../Pages/GoogleTranslate";
 import TopBanner from "./TopBanner";
 import Header from "./Header";
 import Home from "../../Pages/Home";
@@ -13,11 +7,8 @@ import Certified from "../../Pages/Certified";
 import AboutUsHero from "./About/About-us-hero";
 import ProductShowcase from "../../Carousel/product-showcase";
 import VideoSection from "../../Video/Video-hero";
-import PromotionalBanner from "../../PromotionalBanner/promotional-banner";
-import PromotionalCards from "../../PromotionalBanner/promotional-cards";
 import HealthProductShowcase from "../../Banefit/health-product-showcase";
 import DiscoverHeroSection from "../../Discover/discover-hero-section";
-import Footer from "../Footer";
 import NewFooter from "../Footer/Footer";
 
 const CustomNavbar = () => {

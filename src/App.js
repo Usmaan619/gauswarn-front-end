@@ -9,6 +9,7 @@ import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
 import NewFooter from "./Component/Common/Footer/Footer.jsx";
 
 import { useCartContext } from "./Component/Context/UserContext.jsx";
+import Seo from "./Component/SEO/Seo.jsx";
 
 /* =======================
    LAZY LOAD COMPONENTS
@@ -17,68 +18,68 @@ import { useCartContext } from "./Component/Context/UserContext.jsx";
 // Home sections
 const Home = lazy(() => import("./Component/Pages/Home.jsx"));
 const Certified = lazy(() => import("./Component/Pages/Certified.jsx"));
-const AboutUsHero = lazy(() =>
-  import("./Component/Common/Navbar/About/About-us-hero.jsx")
+const AboutUsHero = lazy(
+  () => import("./Component/Common/Navbar/About/About-us-hero.jsx"),
 );
-const ProductShowcase = lazy(() =>
-  import("./Component/Carousel/product-showcase.jsx")
+const ProductShowcase = lazy(
+  () => import("./Component/Carousel/product-showcase.jsx"),
 );
 const VideoSection = lazy(() => import("./Component/Video/Video-hero.jsx"));
-const GheePurity = lazy(() =>
-  import("./Component/AboutUs-new/ghee-purity.jsx")
+const GheePurity = lazy(
+  () => import("./Component/AboutUs-new/ghee-purity.jsx"),
 );
-const HealthProductShowcase = lazy(() =>
-  import("./Component/Banefit/health-product-showcase.jsx")
+const HealthProductShowcase = lazy(
+  () => import("./Component/Banefit/health-product-showcase.jsx"),
 );
-const DiscoverHeroSection = lazy(() =>
-  import("./Component/Discover/discover-hero-section.jsx")
+const DiscoverHeroSection = lazy(
+  () => import("./Component/Discover/discover-hero-section.jsx"),
 );
 
 // Pages
-const AboutUsHeroMain = lazy(() =>
-  import("./Component/AboutUs-new/about-us-new-main-page.jsx")
+const AboutUsHeroMain = lazy(
+  () => import("./Component/AboutUs-new/about-us-new-main-page.jsx"),
 );
-const BlogMainPageNew = lazy(() =>
-  import("./Component/Blog/blog-new-main.jsx")
+const BlogMainPageNew = lazy(
+  () => import("./Component/Blog/blog-new-main.jsx"),
 );
 const BlogView = lazy(() => import("./Component/Blog/blogView.jsx"));
 const GheeGallery = lazy(() => import("./Component/Gallery/gallery-main.jsx"));
-const ContactMainPage = lazy(() =>
-  import("./Component/Contact/contact-main-page.jsx")
+const ContactMainPage = lazy(
+  () => import("./Component/Contact/contact-main-page.jsx"),
 );
-const OrderTracking = lazy(() =>
-  import("./Component/TrackOrder/track-order-main-page.jsx")
+const OrderTracking = lazy(
+  () => import("./Component/TrackOrder/track-order-main-page.jsx"),
 );
 const B2BLandingPage = lazy(() => import("./Component/B2B/b2b-main-page.jsx"));
-const ProductPageMain = lazy(() =>
-  import("./Component/Products/product-page-main.jsx")
+const ProductPageMain = lazy(
+  () => import("./Component/Products/product-page-main.jsx"),
 );
-const FinalPaymentMainPage = lazy(() =>
-  import("./Component/Final-payment-page/final-payment-page.jsx")
+const FinalPaymentMainPage = lazy(
+  () => import("./Component/Final-payment-page/final-payment-page.jsx"),
 );
 
 // Policies
-const RefundMainPage = lazy(() =>
-  import("./Component/Refund/refund-main.page.jsx")
+const RefundMainPage = lazy(
+  () => import("./Component/Refund/refund-main.page.jsx"),
 );
-const ShippingPolicy = lazy(() =>
-  import("./Component/Shipping-policy/shipping-policy-main-page.jsx")
+const ShippingPolicy = lazy(
+  () => import("./Component/Shipping-policy/shipping-policy-main-page.jsx"),
 );
-const PrivacyPolicy = lazy(() =>
-  import("./Component/Privacy-Policy/privacy-policy-main-page.jsx")
+const PrivacyPolicy = lazy(
+  () => import("./Component/Privacy-Policy/privacy-policy-main-page.jsx"),
 );
 const FAQMainPage = lazy(() => import("./Component/FAQ/faq-main-page.jsx"));
-const TermsConditions = lazy(() =>
-  import("./Component/Terms-And-Conditions/terms-and-condition.jsx")
+const TermsConditions = lazy(
+  () => import("./Component/Terms-And-Conditions/terms-and-condition.jsx"),
 );
 const LabReportMain = lazy(() => import("./Component/Lab/lab-report-main.jsx"));
 
 // Payment
-const PaymentFailed = lazy(() =>
-  import("./Component/Payment-fails-pages/PaymentFailed.jsx")
+const PaymentFailed = lazy(
+  () => import("./Component/Payment-fails-pages/PaymentFailed.jsx"),
 );
-const PaymentSuccess = lazy(() =>
-  import("./Component/PaymentSuccess/PaymentSuccess.jsx")
+const PaymentSuccess = lazy(
+  () => import("./Component/PaymentSuccess/PaymentSuccess.jsx"),
 );
 
 /* =======================
@@ -86,6 +87,11 @@ const PaymentSuccess = lazy(() =>
 ======================= */
 const HomePage = () => (
   <>
+    <Seo
+      title="Gauswarn India - Pure A2 Gir Cow Ghee"
+      description="Buy 100% pure, bilona-made A2 Gir cow ghee from Gauswarn India. Farm fresh and lab tested."
+      url="https://gauswarn.com/"
+    />
     <Home />
     <Certified />
     <AboutUsHero />
@@ -167,7 +173,9 @@ function App() {
           <Route
             path="*"
             element={
-              <h2 style={{ textAlign: "center", marginTop: 50,height:"100vh" }}>
+              <h2
+                style={{ textAlign: "center", marginTop: 50, height: "100vh" }}
+              >
                 Page Not Found
               </h2>
             }

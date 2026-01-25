@@ -1,39 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-IN">
   <head>
-    <!-- 🌿 Basic Meta -->
+    <!-- ================= BASIC META ================= -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f5e1a4" />
-    <meta
-      name="description"
-      content="Gauswarn India - 100% pure, traditional bilona-made A2 Gir cow ghee delivered fresh from our farm to your home."
-    />
-    <meta
-      name="keywords"
-      content="Gauswarn, A2 Ghee India, Gir Cow Ghee, Bilona Ghee, Pure Ghee"
-    />
-    <meta name="author" content="Gauswarn India" />
+
     <title>Gauswarn India - Pure A2 Gir Cow Ghee</title>
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://gauswarn.in" />
+    <meta
+      name="description"
+      content="Gauswarn India offers 100% pure, traditional bilona-made A2 Gir cow ghee, delivered fresh from our farm to your home."
+    />
+    <meta name="author" content="Gauswarn India" />
+    <meta
+      name="keywords"
+      content="A2 gir cow ghee, pure ghee, bilona ghee, desi ghee"
+    />
+    <meta name="robots" content="index, follow" />
 
-    <!-- Favicons -->
+    <!-- ================= THEME ================= -->
+    <meta name="theme-color" content="#f5e1a4" />
+
+    <!-- ================= CANONICAL ================= -->
+    <link rel="canonical" href="https://gauswarn.com/" />
+
+    <!-- ================= ICONS & PWA ================= -->
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/favicon-192x192.png" />
+    <link rel="manifest" href="/manifest.json" />
 
-    <!-- Open Graph -->
+    <!-- ================= PERFORMANCE ================= -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://connect.facebook.net" />
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+
+    <!-- ================= GOOGLE FONTS ================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ================= OPEN GRAPH ================= -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Gauswarn India" />
     <meta property="og:title" content="Gauswarn India - Pure A2 Gir Cow Ghee" />
     <meta
       property="og:description"
-      content="Buy 100% pure, bilona-made A2 Gir cow ghee from Gauswarn India."
+      content="Buy 100% pure bilona-made A2 Gir cow ghee."
     />
-    <meta property="og:image" content="/favicon-512x512.png" />
-    <meta property="og:url" content="https://gauswarn.in" />
+    <meta
+      property="og:image"
+      content="https://gauswarn.com/favicon-512x512.png"
+    />
+    <meta property="og:url" content="https://gauswarn.com/" />
 
-    <!-- 🧩 Google Tag Manager -->
+    <!-- ================= TWITTER ================= -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Gauswarn India - Pure A2 Gir Cow Ghee"
+    />
+    <meta
+      name="twitter:description"
+      content="Pure bilona-made A2 Gir cow ghee."
+    />
+    <meta
+      name="twitter:image"
+      content="https://gauswarn.com/favicon-512x512.png"
+    />
+
+    <!-- ================= STRUCTURED DATA : ORGANIZATION ================= -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Gauswarn India",
+        "url": "https://gauswarn.com",
+        "logo": "https://gauswarn.com/favicon-512x512.png",
+        "sameAs": [
+          "https://www.facebook.com/gauswarn",
+          "https://www.instagram.com/gauswarn"
+        ]
+      }
+    </script>
+
+    <!-- ================= STRUCTURED DATA : PRODUCT ================= -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "A2 Gir Cow Ghee",
+        "brand": {
+          "@type": "Brand",
+          "name": "Gauswarn India"
+        },
+        "image": "https://gauswarn.com/favicon-512x512.png",
+        "description": "Pure bilona-made A2 Gir cow ghee from grass-fed Gir cows.",
+        "offers": {
+          "@type": "Offer",
+          "price": "1200",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://gauswarn.com/"
+        }
+      }
+    </script>
+
+    <!-- ================= GOOGLE TAG MANAGER ================= -->
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -46,90 +122,45 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-P77S2HDJ");
     </script>
-    <!-- End GTM -->
 
-    <!-- 🪶 Meta Pixel (Facebook) -->
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js"
-      );
-      fbq("init", "882653264133520");
-      fbq("track", "PageView");
-    </script>
-    <!-- End Meta Pixel -->
-
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-DX7H5SRPP4"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-DX7H5SRPP4");
-    </script>
-
-    <!-- Bootstrap -->
+    <!-- ================= BOOTSTRAP CSS ================= -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
+      crossorigin="anonymous"
     />
 
-    <!-- Razorpay -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- ================= RAZORPAY ================= -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
   </head>
 
   <body>
-    <!-- Google Tag Manager (noscript) -->
+    <!-- ================= GTM NOSCRIPT ================= -->
     <noscript>
       <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-P77S2HDJ"
         height="0"
         width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
-    </noscript>
-
-    <!-- Meta Pixel (noscript) -->
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        style="display: none"
-        src="https://www.facebook.com/tr?id=882653264133520&ev=PageView&noscript=1"
-      />
+        style="display:none;visibility:hidden">
+      </iframe>
     </noscript>
 
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
-    <!-- Bootstrap JS -->
+    <!-- ================= BOOTSTRAP JS ================= -->
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       defer
     ></script>
+
+    <!-- ================= SERVICE WORKER REGISTER ================= -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js");
+        });
+      }
+    </script>
   </body>
 </html>

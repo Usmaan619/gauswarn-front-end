@@ -1,4 +1,4 @@
-import HealthBenefitsGrid from "./health-benefits-grid";
+// import HealthBenefitsGrid from "./health-benefits-grid";
 import "./health-product-showcase.css";
 
 export default function HealthProductShowcase() {

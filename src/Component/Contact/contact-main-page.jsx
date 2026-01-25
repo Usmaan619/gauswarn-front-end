@@ -1,13 +1,11 @@
-import React from "react";
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { environment } from "../../environment/environment";
-import Button from "../Common/Button";
-
 import "./contact-main-page.css";
 import ProductHeroSection from "../Products/product-hero-section";
+import Seo from "../SEO/Seo";
 
 const Contact = () => {
   const {
@@ -21,7 +19,7 @@ const Contact = () => {
     try {
       const response = await axios.post(
         `${environment?.API_BASE_URL}/users/contact`,
-        data
+        data,
       );
 
       console.log("response: ", response);
@@ -41,6 +39,11 @@ const Contact = () => {
 
   return (
     <>
+      <Seo
+        title="Contact Gauswarn India | A2 Gir Cow Ghee"
+        description="Get in touch with Gauswarn India for orders, support and wholesale inquiries."
+        url="https://gauswarn.com/contact"
+      />
       <ProductHeroSection />
 
       <div className="ghee-new-contact-section">
@@ -207,6 +210,7 @@ const Contact = () => {
       {/* MAP */}
       <div className="ghee-new-map-section">
         <iframe
+          title="ghee-new-map-section"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.756483627257!2d75.86814137476085!3d22.700107428286067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fce21e4694af%3A0xa8938712e4fc840d!2sIndore!"
           height="450"
           loading="lazy"

@@ -43,6 +43,7 @@ const SustainableFeaturesAboutus = () => {
           <div key={feature?.id} className="sustainable-feature-item">
             <img
               src={feature?.icon}
+              alt={feature?.title}
               style={feature.id === 5 ? { padding: "20px" } : {}}
               className="sustainable-icon-wrapper"
             />

@@ -25,9 +25,9 @@ import productPlaceholder from "../../asset/new-img/product-imgs/product1.png";
 // Components
 import ProfileSection from "./profileSection";
 import ProductHeroSection from "./product-hero-section";
-import ProductShowcase from "../Carousel/product-showcase";
 import GheeFeatureProductPage from "./ghee-product";
 import "../../Component/Carousel/carousel-card-wrapper.css";
+import Seo from "../SEO/Seo";
 
 /* ========================= 
    CONSTANTS 
@@ -132,7 +132,7 @@ const parseProductImages = (imageData) => {
   try {
     const parsed = JSON.parse(imageData);
     const images = parsed.map((img) =>
-      typeof img === "string" ? img : img?.url || img?.src || ""
+      typeof img === "string" ? img : img?.url || img?.src || "",
     );
     return images.length > 0 ? images : [productPlaceholder];
   } catch {
@@ -250,7 +250,7 @@ const triggerCrossPageToast = (type, message) => {
 ========================= */
 const ProductPageMain = () => {
   const navigate = useNavigate();
-  const { cart, setCart } = useCartContext();
+  const { setCart } = useCartContext();
 
   // Loading states
   const [isProductsLoading, setIsProductsLoading] = useState(true);
@@ -277,12 +277,12 @@ const ProductPageMain = () => {
   ========================= */
   const selectedProduct = useMemo(
     () => products[selectedVariantIndex] || null,
-    [products, selectedVariantIndex]
+    [products, selectedVariantIndex],
   );
 
   const productImages = useMemo(
     () => selectedProduct?.images || [productPlaceholder],
-    [selectedProduct]
+    [selectedProduct],
   );
 
   /* ========================= 
@@ -294,7 +294,7 @@ const ProductPageMain = () => {
 
       const response = await axios.get(
         `${environment?.API_BASE_URL}/users/getAllProduct`,
-        { headers: API_CONFIG.HEADERS }
+        { headers: API_CONFIG.HEADERS },
       );
 
       const apiProducts = response?.data?.products || [];
@@ -325,7 +325,7 @@ const ProductPageMain = () => {
 
       const response = await axios.get(
         `${environment?.API_BASE_URL}/users/allfeedback`,
-        { headers: API_CONFIG.HEADERS }
+        { headers: API_CONFIG.HEADERS },
       );
 
       const data = response?.data || {};
@@ -347,7 +347,7 @@ const ProductPageMain = () => {
     const foundIndex = existingCart.findIndex(
       (item) =>
         item.user_id === cartItem.user_id &&
-        item.product_weight === cartItem.product_weight
+        item.product_weight === cartItem.product_weight,
     );
 
     if (foundIndex !== -1) {
@@ -392,7 +392,7 @@ const ProductPageMain = () => {
       const response = await axios.post(
         `${environment?.API_BASE_URL}/users/login/addtocart`,
         cartItem,
-        { headers: API_CONFIG.HEADERS }
+        { headers: API_CONFIG.HEADERS },
       );
 
       if (response.status === 200 || response.status === 201) {
@@ -462,7 +462,7 @@ const ProductPageMain = () => {
         const response = await axios.post(
           `${environment?.API_BASE_URL}/users/feedback`,
           reviewForm,
-          { headers: API_CONFIG.HEADERS }
+          { headers: API_CONFIG.HEADERS },
         );
 
         if (response.status === 200 || response.status === 201) {
@@ -477,7 +477,7 @@ const ProductPageMain = () => {
         toast.error("Something went wrong");
       }
     },
-    [reviewForm, fetchReviews]
+    [reviewForm, fetchReviews],
   );
 
   /* ========================= 
@@ -491,13 +491,13 @@ const ProductPageMain = () => {
 
   const handlePrevImage = useCallback(() => {
     setSelectedImage((prev) =>
-      prev === 0 ? productImages.length - 1 : prev - 1
+      prev === 0 ? productImages.length - 1 : prev - 1,
     );
   }, [productImages.length]);
 
   const handleNextImage = useCallback(() => {
     setSelectedImage((prev) =>
-      prev === productImages.length - 1 ? 0 : prev + 1
+      prev === productImages.length - 1 ? 0 : prev + 1,
     );
   }, [productImages.length]);
 
@@ -508,12 +508,12 @@ const ProductPageMain = () => {
 
   const increaseQuantity = useCallback(
     () => setQuantity((prev) => prev + 1),
-    []
+    [],
   );
 
   const decreaseQuantity = useCallback(
     () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1)),
-    []
+    [],
   );
 
   /* ========================= 
@@ -535,6 +535,11 @@ const ProductPageMain = () => {
   ========================= */
   return (
     <>
+      <Seo
+        title="Buy Pure A2 Gir Cow Ghee Online | Gauswarn"
+        description="Order authentic A2 Gir cow ghee made using the traditional bilona method. Free delivery across India."
+        url="https://gauswarn.com/products"
+      />
       <div className="product-page">
         <div className="product-container">
           {/* ========== IMAGE GALLERY ========== */}
@@ -746,7 +751,7 @@ const ProductPageMain = () => {
                     <span className="current-price">
                       ₹
                       {selectedProduct?.product_price?.toLocaleString(
-                        "en-IN"
+                        "en-IN",
                       ) ?? "0"}
                     </span>
                     {selectedProduct?.product_del_price &&
@@ -755,7 +760,7 @@ const ProductPageMain = () => {
                         <span className="original-price">
                           ₹
                           {parseFloat(
-                            selectedProduct.product_del_price
+                            selectedProduct.product_del_price,
                           ).toLocaleString("en-IN")}
                         </span>
                       )}
@@ -769,7 +774,7 @@ const ProductPageMain = () => {
                         Save{" "}
                         {calculateDiscountPercentage(
                           selectedProduct.product_del_price,
-                          selectedProduct.product_price
+                          selectedProduct.product_price,
                         )}
                         %
                       </div>

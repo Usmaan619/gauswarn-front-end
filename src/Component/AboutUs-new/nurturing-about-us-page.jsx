@@ -1,9 +1,8 @@
-import React from "react";
 import "./nurturing-about-us-page.css";
 import { useNavigate } from "react-router-dom";
 import cowGif from "../../asset/new-img/about-new-logo/cow.png";
 
-import { FaBullseye, FaEye, FaHandsHelping } from "react-icons/fa";
+import {  FaEye, FaHandsHelping } from "react-icons/fa";
 import { GiArrowScope } from "react-icons/gi";
 
 const NurituringAboutUs = () => {

@@ -8,17 +8,21 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { UserProvider } from "./Component/Context/UserContext";
+import { HelmetProvider } from "react-helmet-async";
+
 import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <UserProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </UserProvider>
-  </React.StrictMode>
+    <HelmetProvider>
+      <UserProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UserProvider>
+    </HelmetProvider>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

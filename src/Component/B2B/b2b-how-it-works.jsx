@@ -55,16 +55,7 @@
 
 // export default B2bHowItWorks;
 
-import React from "react";
-import {
-  Package,
-  TrendingUp,
-  Shield,
-  FileText,
-  Calculator,
-  CircleCheckBig,
-  Truck,
-} from "lucide-react";
+import { FileText, Calculator, CircleCheckBig, Truck } from "lucide-react";
 import "./b2b-styles/b2b-how-it-work.css";
 
 const PartnerSection = () => {

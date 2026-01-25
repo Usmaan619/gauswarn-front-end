@@ -1,37 +1,37 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { useNavigate } from "react-router-dom";
+// import { toast } from "react-toastify";
 import { useCartContext } from "../Context/UserContext";
 import "./payment-success.css";
 
 const PaymentSuccess = () => {
   const { setCart } = useCartContext();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const sendInvoice = async () => {
-    const order_payload = sessionStorage.getItem("order_payload");
+  // const sendInvoice = async () => {
+  //   const order_payload = sessionStorage.getItem("order_payload");
 
-    if (!order_payload) {
-      toast.error("Failed to retrieve order details.");
-      return;
-    }
+  //   if (!order_payload) {
+  //     toast.error("Failed to retrieve order details.");
+  //     return;
+  //   }
 
-    const orderData = JSON.parse(order_payload);
-    const { user_mobile_num, user_total_amount } = orderData;
-    const ordeId = sessionStorage.getItem("orderId");
+  //   const orderData = JSON.parse(order_payload);
+  //   const { user_mobile_num, user_total_amount } = orderData;
+  //   const ordeId = sessionStorage.getItem("orderId");
 
-    const whatsappApiUrl = `https://bhashsms.com/api/sendmsg.php?user=RAJLAKSHMIBWA&pass=123456&sender=BUZWAP&phone=${user_mobile_num}&text=gauswarn_ghee002&priority=wa&stype=normal&Params=${ordeId},${user_total_amount}&htype=image&url=https://i.ibb.co/p6P86j3J/Whats-App-Image-2025-02-17-at-12-46-41.jpg`;
+  //   const whatsappApiUrl = `https://bhashsms.com/api/sendmsg.php?user=RAJLAKSHMIBWA&pass=123456&sender=BUZWAP&phone=${user_mobile_num}&text=gauswarn_ghee002&priority=wa&stype=normal&Params=${ordeId},${user_total_amount}&htype=image&url=https://i.ibb.co/p6P86j3J/Whats-App-Image-2025-02-17-at-12-46-41.jpg`;
 
-    try {
-      await fetch(whatsappApiUrl, { mode: "no-cors" });
-      toast.success("Invoice sent successfully!");
-      navigate("/");
-      localStorage.removeItem("orderId");
-    } catch (error) {
-      toast.error("Failed to send invoice.");
-      localStorage.removeItem("orderId");
-    }
-  };
+  //   try {
+  //     await fetch(whatsappApiUrl, { mode: "no-cors" });
+  //     toast.success("Invoice sent successfully!");
+  //     navigate("/");
+  //     localStorage.removeItem("orderId");
+  //   } catch (error) {
+  //     toast.error("Failed to send invoice.");
+  //     localStorage.removeItem("orderId");
+  //   }
+  // };
 
   useEffect(() => {
     localStorage.removeItem("cart");
