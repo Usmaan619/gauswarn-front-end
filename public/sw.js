@@ -2,85 +2,73 @@
    Gauswarn PWA Service Worker
    =============================== */
 
-const CACHE_NAME = 'gauswarn-v1';
+const CACHE_NAME = "gauswarn-v2";
 
-/**
- * Static files to cache on install
- * (index.html is important for React SPA)
- */
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/favicon.ico'
-];
+const urlsToCache = ["/", "/index.html", "/manifest.json", "/favicon.ico"];
 
 /* ================= INSTALL ================= */
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache)),
   );
-  // Activate immediately
   self.skipWaiting();
 });
 
 /* ================= ACTIVATE ================= */
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
         cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache);
-          }
-        })
-      );
-    })
+          if (cache !== CACHE_NAME) return caches.delete(cache);
+        }),
+      ),
+    ),
   );
-  // Take control of all clients
   self.clients.claim();
 });
 
 /* ================= FETCH ================= */
-self.addEventListener('fetch', (event) => {
-  // ❌ Only cache GET requests
-  if (event.request.method !== 'GET') return;
+self.addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
 
-  // ❌ Ignore chrome-extension, devtools, adblock, etc.
-  if (!event.request.url.startsWith('http')) return;
+  // 🚫 NEVER handle sitemap, robots, xml files
+  if (
+    url.pathname === "/sitemap.xml" ||
+    url.pathname === "/robots.txt" ||
+    url.pathname.endsWith(".xml")
+  ) {
+    return;
+  }
+
+  // ❌ Only GET requests
+  if (event.request.method !== "GET") return;
+  if (!event.request.url.startsWith("http")) return;
 
   event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        // ✅ Serve from cache if available
-        if (cachedResponse) {
-          return cachedResponse;
-        }
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) return cachedResponse;
 
-        // 🌐 Fetch from network
-        return fetch(event.request)
-          .then((networkResponse) => {
-            // ✅ Cache only valid same-origin responses
-            if (
-              networkResponse &&
-              networkResponse.status === 200 &&
-              networkResponse.type === 'basic'
-            ) {
-              const responseClone = networkResponse.clone();
-              caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, responseClone);
-              });
-            }
-            return networkResponse;
-          });
-      })
-      .catch(() => {
-        // 🔌 Offline fallback for React SPA navigation
-        if (event.request.mode === 'navigate') {
-          return caches.match('/index.html');
-        }
-      })
+      return fetch(event.request)
+        .then((networkResponse) => {
+          if (
+            networkResponse &&
+            networkResponse.status === 200 &&
+            networkResponse.type === "basic"
+          ) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseClone);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          // ✅ SPA fallback ONLY for real page navigation
+          if (event.request.mode === "navigate") {
+            return caches.match("/index.html");
+          }
+        });
+    }),
   );
 });
