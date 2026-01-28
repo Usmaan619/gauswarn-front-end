@@ -87,25 +87,235 @@
       }
     </script>
 
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Refund Policy - Gauswarn India",
+        "url": "https://www.gauswarn.com/refund",
+        "description": "Refund, replacement and return policy for Gauswarn India products."
+      }
+    </script>
+
     <!-- ================= STRUCTURED DATA : PRODUCT ================= -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Product",
+        "@type": "ProductGroup",
         "name": "A2 Gir Cow Ghee",
+        "description": "Pure bilona-made A2 Gir cow ghee from grass-fed Gir cows.",
         "brand": {
           "@type": "Brand",
           "name": "Gauswarn India"
         },
-        "image": "https://gauswarn.com/favicon-512x512.png",
-        "description": "Pure bilona-made A2 Gir cow ghee from grass-fed Gir cows.",
-        "offers": {
-          "@type": "Offer",
-          "price": "1200",
-          "priceCurrency": "INR",
-          "availability": "https://schema.org/InStock",
-          "url": "https://gauswarn.com/"
-        }
+        "image": ["https://gauswarn.com/favicon-512x512.png"],
+        "variesBy": "https://schema.org/size",
+
+        "hasVariant": [
+          {
+            "@type": "Product",
+            "name": "A2 Gir Cow Ghee - 500 ml",
+            "sku": "GAUSWARN-A2-GHEE-500ML",
+            "size": "500 ml",
+
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.7",
+              "reviewCount": "84"
+            },
+            "review": [
+              {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Verified Buyer" },
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                },
+                "reviewBody": "Excellent quality ghee, perfect for daily use."
+              }
+            ],
+
+            "offers": {
+              "@type": "Offer",
+              "url": "https://gauswarn.com/",
+              "priceCurrency": "INR",
+              "price": "799",
+              "priceValidUntil": "2026-12-31",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition",
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+              },
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "INR"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "IN"
+                }
+              }
+            }
+          },
+
+          {
+            "@type": "Product",
+            "name": "A2 Gir Cow Ghee - 1 Litre",
+            "sku": "GAUSWARN-A2-GHEE-1L",
+            "size": "1 Litre",
+
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "126"
+            },
+            "review": [
+              {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Verified Buyer" },
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                },
+                "reviewBody": "Authentic aroma and taste, truly premium A2 ghee."
+              }
+            ],
+
+            "offers": {
+              "@type": "Offer",
+              "url": "https://gauswarn.com/",
+              "priceCurrency": "INR",
+              "price": "1499",
+              "priceValidUntil": "2026-12-31",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition",
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+              },
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "INR"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "IN"
+                }
+              }
+            }
+          },
+
+          {
+            "@type": "Product",
+            "name": "A2 Gir Cow Ghee - 5 Kg",
+            "sku": "GAUSWARN-A2-GHEE-5KG",
+            "size": "5 Kg",
+
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "41"
+            },
+            "review": [
+              {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Bulk Buyer" },
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                },
+                "reviewBody": "Best choice for families, consistent quality in bulk."
+              }
+            ],
+
+            "offers": {
+              "@type": "Offer",
+              "url": "https://gauswarn.com/",
+              "priceCurrency": "INR",
+              "price": "5999",
+              "priceValidUntil": "2026-12-31",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition",
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+              },
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "INR"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "IN"
+                }
+              }
+            }
+          },
+
+          {
+            "@type": "Product",
+            "name": "A2 Gir Cow Ghee - 15 Kg",
+            "sku": "GAUSWARN-A2-GHEE-15KG",
+            "size": "15 Kg",
+
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.0",
+              "reviewCount": "18"
+            },
+            "review": [
+              {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Wholesale Customer" },
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                },
+                "reviewBody": "Excellent consistency and packaging, ideal for wholesale."
+              }
+            ],
+
+            "offers": {
+              "@type": "Offer",
+              "url": "https://gauswarn.com/",
+              "priceCurrency": "INR",
+              "price": "17999",
+              "priceValidUntil": "2026-12-31",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition",
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+              },
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "INR"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "IN"
+                }
+              }
+            }
+          }
+        ]
       }
     </script>
 

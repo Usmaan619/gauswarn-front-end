@@ -14,7 +14,7 @@ const RefundMainPage = () => {
             refund requests. However, in any of the below situations, we are
             more than happy to work with our patrons to find an amicable
             solution that is fair to all parties.
-          </p>
+          </p> 
         </div>
 
         <div className="refund-sections">
