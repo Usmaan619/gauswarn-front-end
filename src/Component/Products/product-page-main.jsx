@@ -261,6 +261,7 @@ const ProductPageMain = () => {
 
   // Product data
   const [products, setProducts] = useState([]);
+  console.log("products: ", products);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
@@ -533,6 +534,7 @@ const ProductPageMain = () => {
   /* ========================= 
      RENDER 
   ========================= */
+  console.log("selectedProduct: ", selectedProduct);
   return (
     <>
       <Seo
@@ -541,49 +543,63 @@ const ProductPageMain = () => {
         url="https://gauswarn.com/products"
       />
 
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Product",
-          name: "GAUSWARN Authentic A2 Bilona Ghee",
-          description:
-            "Pure A2 Gir Cow Ghee made using the traditional bilona method. 100% natural, chemical-free and lab-tested for purity.",
-          brand: {
-            "@type": "Brand",
-            name: "Gauswarn India",
-          },
-          image: productImages?.length
-            ? productImages
-            : ["https://gauswarn.com/favicon-512x512.png"],
-          sku: selectedProduct?.product_id || "GAUSWARN-A2-GHEE",
-          offers: {
-            "@type": "Offer",
-            url: "https://gauswarn.com/products",
-            priceCurrency: "INR",
-            price: selectedProduct?.product_price || "0",
-            availability: "https://schema.org/InStock",
-            itemCondition: "https://schema.org/NewCondition",
-          },
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: averageRating || 5,
-            reviewCount: totalReviews || 1,
-          },
-          review: reviews?.slice(0, 5).map((review) => ({
-            "@type": "Review",
-            author: {
-              "@type": "Person",
-              name: review.name || "Verified Customer",
+      {/* {selectedProduct && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+
+            "@id": `https://gauswarn.com/products#a2-ghee-${selectedProduct.product_weight
+              .toLowerCase()
+              .replace(/\s+/g, "")}`,
+
+            name: `GAUSWARN Authentic A2 Bilona Ghee - ${selectedProduct.product_weight}`,
+
+            description:
+              "Pure A2 Gir Cow Ghee made using the traditional bilona method. 100% natural, chemical-free and lab-tested for purity.",
+
+            brand: {
+              "@type": "Brand",
+              name: "Gauswarn India",
             },
-            reviewRating: {
-              "@type": "Rating",
-              ratingValue: review.rating || 5,
-              bestRating: "5",
+
+            image: selectedProduct.images?.length
+              ? selectedProduct.images
+              : ["https://gauswarn.com/favicon-512x512.png"],
+
+            sku: `GAUSWARN-A2-${selectedProduct.product_weight}`,
+
+            offers: {
+              "@type": "Offer",
+              url: "https://gauswarn.com/products",
+              priceCurrency: "INR",
+              price: String(selectedProduct.product_price),
+              availability: "https://schema.org/InStock",
+              itemCondition: "https://schema.org/NewCondition",
             },
-            reviewBody: review.feedback || "Excellent quality ghee.",
-          })),
-        })}
-      </script>
+
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: Number(averageRating || 5),
+              reviewCount: Number(totalReviews || 1),
+            },
+
+            review: reviews?.slice(0, 5).map((review) => ({
+              "@type": "Review",
+              author: {
+                "@type": "Person",
+                name: review.name || "Verified Customer",
+              },
+              reviewRating: {
+                "@type": "Rating",
+                ratingValue: Number(review.rating || 5),
+                bestRating: "5",
+              },
+              reviewBody: review.feedback || "Excellent quality ghee.",
+            })),
+          })}
+        </script>
+      )} */}
 
       <div className="product-page">
         <div className="product-container">

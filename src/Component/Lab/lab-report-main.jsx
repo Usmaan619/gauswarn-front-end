@@ -8,18 +8,29 @@ const LabReportMain = () => {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CreativeWork",
-          additionalType: "Report",
+          additionalType: "https://schema.org/Report",
+
+          "@id": "https://gauswarn.com/lab-report#creativework",
+
           name: "Lab Tested Purity Report – A2 Gir Cow Ghee",
           description:
             "Official laboratory test report verifying the purity, safety, and quality of Gauswarn India’s A2 Gir Cow Ghee.",
+
           url: "https://gauswarn.com/lab-report",
-          image: "https://gauswarn.com/asset/new-img/lap-report/labreport.webp",
+
+          image: [
+            "https://gauswarn.com/asset/new-img/lap-report/labreport.webp",
+          ],
+
           inLanguage: "en-IN",
           datePublished: "2024-01-01",
+
           about: {
-            "@type": "Product",
+            "@type": "ProductGroup",
+            "@id": "https://gauswarn.com/products#a2-ghee",
             name: "A2 Gir Cow Ghee",
           },
+
           publisher: {
             "@type": "Organization",
             name: "Gauswarn India",

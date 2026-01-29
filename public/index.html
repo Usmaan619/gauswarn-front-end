@@ -98,25 +98,34 @@
     </script>
 
     <!-- ================= STRUCTURED DATA : PRODUCT ================= -->
-    <script type="application/ld+json">
+    <!-- <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "ProductGroup",
+        "@id": "https://gauswarn.com/products",
+        "productGroupID": "GAUSWARN-A2-GHEE",
         "name": "A2 Gir Cow Ghee",
-        "description": "Pure bilona-made A2 Gir cow ghee from grass-fed Gir cows.",
+        "description": "Pure bilona-made A2 Gir cow ghee prepared from grass-fed indigenous Gir cows using traditional Ayurvedic methods.",
         "brand": {
           "@type": "Brand",
           "name": "Gauswarn India"
         },
-        "image": ["https://gauswarn.com/favicon-512x512.png"],
         "variesBy": "https://schema.org/size",
-
         "hasVariant": [
           {
             "@type": "Product",
+            "@id": "https://gauswarn.com/products",
+            "productGroupID": "GAUSWARN-A2-GHEE",
             "name": "A2 Gir Cow Ghee - 500 ml",
             "sku": "GAUSWARN-A2-GHEE-500ML",
             "size": "500 ml",
+            "description": "500 ml pack of pure A2 Gir cow ghee made using the traditional bilona method.",
+            "image": [
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1765448891/products/1/nwlwn4og5bd2l20uc1ci.png",
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1766058646/products/1/vqzhifhug02pway2b0qd.png",
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1766058722/products/1/fwgpr5s5aarqpx0zwwdu.png",
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1766060080/products/1/aarng2kupuc9lffrrdgh.png"
+            ],
 
             "aggregateRating": {
               "@type": "AggregateRating",
@@ -146,10 +155,26 @@
               "itemCondition": "https://schema.org/NewCondition",
               "hasMerchantReturnPolicy": {
                 "@type": "MerchantReturnPolicy",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+                "applicableCountry": "IN"
               },
               "shippingDetails": {
                 "@type": "OfferShippingDetails",
+                "deliveryTime": {
+                  "@type": "ShippingDeliveryTime",
+                  "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 1,
+                    "unitCode": "DAY"
+                  },
+                  "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 2,
+                    "maxValue": 5,
+                    "unitCode": "DAY"
+                  }
+                },
                 "shippingRate": {
                   "@type": "MonetaryAmount",
                   "value": "0",
@@ -165,9 +190,18 @@
 
           {
             "@type": "Product",
+            "@id": "https://gauswarn.com/products",
+            "productGroupID": "GAUSWARN-A2-GHEE",
             "name": "A2 Gir Cow Ghee - 1 Litre",
             "sku": "GAUSWARN-A2-GHEE-1L",
             "size": "1 Litre",
+            "description": "1 litre pack of premium A2 Gir cow ghee with authentic aroma and taste.",
+            "image": [
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1766058170/products/2/vamjbbuylutqwcuhz7no.png",
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1766058188/products/2/sp7t7hyvbtc0d8van2nq.png",
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1766058209/products/2/zvnu56qtaga8gadudp31.png",
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1766059842/products/2/kpdjtthjekf4sae1iauk.png"
+            ],
 
             "aggregateRating": {
               "@type": "AggregateRating",
@@ -197,10 +231,26 @@
               "itemCondition": "https://schema.org/NewCondition",
               "hasMerchantReturnPolicy": {
                 "@type": "MerchantReturnPolicy",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+                "applicableCountry": "IN"
               },
               "shippingDetails": {
                 "@type": "OfferShippingDetails",
+                "deliveryTime": {
+                  "@type": "ShippingDeliveryTime",
+                  "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 1,
+                    "unitCode": "DAY"
+                  },
+                  "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 2,
+                    "maxValue": 5,
+                    "unitCode": "DAY"
+                  }
+                },
                 "shippingRate": {
                   "@type": "MonetaryAmount",
                   "value": "0",
@@ -216,9 +266,15 @@
 
           {
             "@type": "Product",
+            "@id": "https://gauswarn.com/products",
+            "productGroupID": "GAUSWARN-A2-GHEE",
             "name": "A2 Gir Cow Ghee - 5 Kg",
             "sku": "GAUSWARN-A2-GHEE-5KG",
             "size": "5 Kg",
+            "description": "5 kg bulk pack of A2 Gir cow ghee, ideal for families and frequent use.",
+            "image": [
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1769594906/products/3/sb7zappj4jpdgma2dlov.png"
+            ],
 
             "aggregateRating": {
               "@type": "AggregateRating",
@@ -248,10 +304,26 @@
               "itemCondition": "https://schema.org/NewCondition",
               "hasMerchantReturnPolicy": {
                 "@type": "MerchantReturnPolicy",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+                "applicableCountry": "IN"
               },
               "shippingDetails": {
                 "@type": "OfferShippingDetails",
+                "deliveryTime": {
+                  "@type": "ShippingDeliveryTime",
+                  "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 1,
+                    "unitCode": "DAY"
+                  },
+                  "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 2,
+                    "maxValue": 5,
+                    "unitCode": "DAY"
+                  }
+                },
                 "shippingRate": {
                   "@type": "MonetaryAmount",
                   "value": "0",
@@ -267,9 +339,15 @@
 
           {
             "@type": "Product",
+            "@id": "https://gauswarn.com/products",
+            "productGroupID": "GAUSWARN-A2-GHEE",
             "name": "A2 Gir Cow Ghee - 15 Kg",
             "sku": "GAUSWARN-A2-GHEE-15KG",
             "size": "15 Kg",
+            "description": "15 kg wholesale or bulk pack of pure A2 Gir cow ghee for retailers or large households.",
+            "image": [
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1766212999/products/4/ueaw6pukcuawiaigt86h.png"
+            ],
 
             "aggregateRating": {
               "@type": "AggregateRating",
@@ -299,10 +377,26 @@
               "itemCondition": "https://schema.org/NewCondition",
               "hasMerchantReturnPolicy": {
                 "@type": "MerchantReturnPolicy",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+                "applicableCountry": "IN"
               },
               "shippingDetails": {
                 "@type": "OfferShippingDetails",
+                "deliveryTime": {
+                  "@type": "ShippingDeliveryTime",
+                  "handlingTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 0,
+                    "maxValue": 1,
+                    "unitCode": "DAY"
+                  },
+                  "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 2,
+                    "maxValue": 5,
+                    "unitCode": "DAY"
+                  }
+                },
                 "shippingRate": {
                   "@type": "MonetaryAmount",
                   "value": "0",
@@ -314,6 +408,205 @@
                 }
               }
             }
+          }
+        ]
+      }
+    </script> -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProductGroup",
+        "@id": "https://gauswarn.com/products#a2-ghee",
+        "productGroupID": "GAUSWARN-A2-GHEE",
+        "name": "A2 Gir Cow Ghee",
+        "description": "Pure bilona-made A2 Gir cow ghee prepared from grass-fed indigenous Gir cows using traditional Ayurvedic methods.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Gauswarn India"
+        },
+        "variesBy": "https://schema.org/size",
+        "hasVariant": [
+          {
+            "@type": "Product",
+            "@id": "https://gauswarn.com/products#a2-ghee-500ml",
+            "productGroupID": "GAUSWARN-A2-GHEE",
+            "name": "A2 Gir Cow Ghee - 500 ml",
+            "sku": "GAUSWARN-A2-GHEE-500ML",
+            "size": "500 ml",
+            "image": [
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1765448891/products/1/nwlwn4og5bd2l20uc1ci.png"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "url": "https://gauswarn.com/products",
+              "priceCurrency": "INR",
+              "price": "799",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://gauswarn.com/products#a2-ghee-1l",
+            "productGroupID": "GAUSWARN-A2-GHEE",
+            "name": "A2 Gir Cow Ghee - 1 Litre",
+            "sku": "GAUSWARN-A2-GHEE-1L",
+            "size": "1 Litre",
+            "image": [
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1766058170/products/2/vamjbbuylutqwcuhz7no.png"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "url": "https://gauswarn.com/products",
+              "priceCurrency": "INR",
+              "price": "1499",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://gauswarn.com/products#a2-ghee-5kg",
+            "productGroupID": "GAUSWARN-A2-GHEE",
+            "name": "A2 Gir Cow Ghee - 5 Kg",
+            "sku": "GAUSWARN-A2-GHEE-5KG",
+            "size": "5 Kg",
+            "image": [
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1769594906/products/3/sb7zappj4jpdgma2dlov.png"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "url": "https://gauswarn.com/products",
+              "priceCurrency": "INR",
+              "price": "5999",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://gauswarn.com/products#a2-ghee-15kg",
+            "productGroupID": "GAUSWARN-A2-GHEE",
+            "name": "A2 Gir Cow Ghee - 15 Kg",
+            "sku": "GAUSWARN-A2-GHEE-15KG",
+            "size": "15 Kg",
+            "image": [
+              "https://res.cloudinary.com/dwblyw2vf/image/upload/v1766212999/products/4/ueaw6pukcuawiaigt86h.png"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "url": "https://gauswarn.com/products",
+              "priceCurrency": "INR",
+              "price": "17999",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "OfferCatalog",
+        "name": "A2 Gir Cow Ghee Pack Sizes",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "A2 Gir Cow Ghee - 500 ml"
+            },
+            "price": "799",
+            "priceCurrency": "INR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "A2 Gir Cow Ghee - 1 Litre"
+            },
+            "price": "1499",
+            "priceCurrency": "INR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "A2 Gir Cow Ghee - 5 Kg"
+            },
+            "price": "5999",
+            "priceCurrency": "INR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "A2 Gir Cow Ghee - 15 Kg"
+            },
+            "price": "17999",
+            "priceCurrency": "INR"
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is A2 Gir Cow Ghee?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A2 Gir Cow Ghee is traditional bilona-made ghee prepared from the milk of indigenous Gir cows, known for easy digestion and Ayurvedic benefits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Gauswarn A2 Ghee suitable for daily use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Gauswarn A2 Gir Cow Ghee is ideal for daily cooking, Ayurveda, puja rituals, and improving digestion and immunity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What pack sizes are available?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A2 Gir Cow Ghee is available in 500 ml, 1 litre, 5 kg, and 15 kg pack sizes."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://gauswarn.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Products",
+            "item": "https://gauswarn.com/products"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "A2 Gir Cow Ghee",
+            "item": "https://gauswarn.com/products"
           }
         ]
       }
