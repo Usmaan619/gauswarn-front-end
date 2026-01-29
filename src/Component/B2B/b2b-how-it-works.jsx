@@ -1,110 +1,151 @@
-// import React from "react";
-// import "./b2b-styles/b2b-how-it-work.css";
-// const B2bHowItWorks = () => {
-//   const steps = [
-//     {
-//       title: "Submit Inquiry",
-//       desc: "Fill the partnership form",
-//       icon1: <path d="M14 2H6v20h12V8z" />,
-//       icon2: <path d="M14 2v6h6" />,
-//     },
-//     {
-//       title: "Get Quote",
-//       desc: "Receive custom pricing",
-//       icon1: <rect x="3" y="3" width="18" height="18" rx="2" />,
-//       icon2: <path d="M3 9h18" />,
-//     },
-//     {
-//       title: "Approve Order",
-//       desc: "Approve terms & place order",
-//       icon1: <path d="M22 11.08V12a10 10..." />,
-//       icon2: <path d="M22 4L12 14..." />,
-//     },
-//     {
-//       title: "Packaging + Dispatch",
-//       desc: "Timely delivery at your location",
-//       icon1: <rect x="1" y="3" width="15" height="13" />,
-//       icon2: <path d="M16 8l4-4 4 4" />,
-//     },
-//   ];
-
-//   return (
-//     <section className="howItWorksSection">
-//       <div className="container">
-//         <h2 className="sectionTitle">How B2B Works</h2>
-//         <p className="sectionSubtitle">Start your journey in 4 steps</p>
-
-//         <div className="stepsGrid">
-//           {steps.map((s, i) => (
-//             <div key={i} className="stepCard">
-//               <div className="stepIcon">
-//                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-//                   {s.icon1}
-//                   {s.icon2}
-//                 </svg>
-//               </div>
-//               <h3 className="stepTitle">{s.title}</h3>
-//               <p className="stepDescription">{s.desc}</p>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default B2bHowItWorks;
-
 import { FileText, Calculator, CircleCheckBig, Truck } from "lucide-react";
 import "./b2b-styles/b2b-how-it-work.css";
 
 const PartnerSection = () => {
   const features = [
     {
-      icon: <FileText size={28} strokeWidth={1.5} />,
+      icon: <FileText size={28} strokeWidth={1.5} aria-hidden="true" />,
       title: "Submit Inquiry",
       description:
         "Fill out our partnership form with your business details and requirements.",
     },
     {
-      icon: <Calculator size={28} strokeWidth={1.5} />,
+      icon: <Calculator size={28} strokeWidth={1.5} aria-hidden="true" />,
       title: "Get Custom Quote",
       description:
         "Receive personalized pricing based on your volume and product selection.",
     },
     {
-      icon: <CircleCheckBig size={28} strokeWidth={1.5} />,
+      icon: <CircleCheckBig size={28} strokeWidth={1.5} aria-hidden="true" />,
       title: "Approve & Place Order",
       description:
         "Review terms, approve the quotation, and confirm your bulk order.",
     },
     {
-      icon: <Truck size={28} strokeWidth={1.5} />,
-      title: "Packaging + Dispatch",
+      icon: <Truck size={28} strokeWidth={1.5} aria-hidden="true" />,
+      title: "Packaging & Dispatch",
       description:
-        "We handle quality packaging and ensure timely delivery to your location.",
+        "We ensure secure packaging and timely delivery to your location.",
     },
   ];
 
   return (
-    <div className="b2b-how-partner-section">
-      <div className="b2b-how-partner-container">
-        <h1 className="b2b-how-partner-title">How B2B Works</h1>
-        <p className="sectionSubtitle">Start your journey in 4 steps</p>
+    <section className="b2b-how-partner-section">
+      <p className="sr-only">
+        Step-by-step process to partner with Gauswarn India for wholesale and
+        bulk A2 Gir Cow Ghee supply.
+      </p>
 
-        <div className="b2b-how-features-grid">
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Wholesale & Bulk A2 Gir Cow Ghee Supply",
+          description:
+            "Gauswarn India provides bulk and wholesale supply of A2 Gir Cow Ghee for retailers, distributors, wholesalers, and corporate buyers across India.",
+          provider: {
+            "@type": "Organization",
+            name: "Gauswarn India",
+            url: "https://gauswarn.com",
+          },
+          areaServed: {
+            "@type": "Country",
+            name: "India",
+          },
+          audience: {
+            "@type": "BusinessAudience",
+            audienceType: [
+              "Retailers",
+              "Distributors",
+              "Wholesalers",
+              "Corporate Buyers",
+              "Exporters",
+            ],
+          },
+          availableChannel: {
+            "@type": "ServiceChannel",
+            serviceLocation: {
+              "@type": "Place",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "IN",
+              },
+            },
+          },
+        })}
+      </script>
+
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Do you provide wholesale A2 Gir Cow Ghee?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes, Gauswarn India supplies bulk and wholesale A2 Gir Cow Ghee to retailers, distributors, and corporate partners across India.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What is the minimum order quantity for B2B partners?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Minimum order quantity depends on packaging format and location. Our team offers flexible MOQ options for B2B and wholesale partners.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is your A2 Gir Cow Ghee lab tested and certified?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes, our A2 Gir Cow Ghee is lab tested and certified to ensure purity, safety, and consistent quality for B2B supply.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do you offer bulk packaging or private labeling?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes, we provide bulk packaging options and private labeling support for eligible B2B and wholesale partners.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How can I become a B2B partner with Gauswarn India?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "You can submit your details through the B2B partnership form on this page, and our team will contact you with pricing and onboarding information.",
+              },
+            },
+          ],
+        })}
+      </script>
+
+      <div className="b2b-how-partner-container">
+        {/* Section Heading */}
+        <h2 className="b2b-how-partner-title">How Our B2B Process Works</h2>
+
+        <h3 className="sectionSubtitle">
+          Start your journey in 4 simple steps
+        </h3>
+
+        {/* Ordered Steps */}
+        <ol className="b2b-how-features-grid">
           {features.map((feature, index) => (
-            <div key={index} className="b2b-how-feature-card">
+            <li key={index} className="b2b-how-feature-card">
               <div className="b2b-how-icon-wrapper">{feature.icon}</div>
-              <h3 className="b2b-how-feature-title">{feature.title}</h3>
+              <h4 className="b2b-how-feature-title">{feature.title}</h4>
               <p className="b2b-how-feature-description">
                 {feature.description}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -16,81 +16,86 @@ import gallery9 from "../../asset/new-img/gallery/gallery9.png";
 
 import gallery10 from "../../asset/new-img/gallery/gallery10.png";
 import gallery11 from "../../asset/new-img/gallery/gallery11.png";
+import Seo from "../SEO/Seo";
 
 const GheeShowcase = () => {
   const images = [
     {
       id: 1,
       src: gallery1,
-      alt: "Farmer with cow",
+      alt: "Gir cow farmer caring for cows at Gauswarn India gaushala",
       size: "large",
     },
     {
       id: 2,
       src: gallery2,
-      alt: "Farmer with cattle",
+      alt: "Traditional Gir cow farming at Gauswarn India gaushala",
       size: "medium",
     },
-
     {
       id: 3,
       src: gallery3,
-      alt: "Ghee jar on wooden surface",
+      alt: "Pure A2 Gir Cow Ghee jar placed on a wooden surface",
       size: "small",
     },
-
     {
       id: 4,
       src: gallery4,
-      alt: "Ghee product jar",
+      alt: "A2 Gir Cow Ghee product jar by Gauswarn India",
       size: "small",
     },
     {
       id: 5,
       src: gallery5,
-      alt: "Person holding ghee jar",
+      alt: "Customer holding pure A2 Gir Cow Ghee jar",
       size: "medium",
     },
     {
       id: 6,
       src: gallery8,
-      alt: "Cooking with ghee",
+      alt: "Traditional Indian cooking using A2 Gir Cow Ghee",
       size: "large",
     },
     {
       id: 7,
       src: gallery6,
-      alt: "Farmer with cattle",
+      alt: "Healthy Gir cows at Gauswarn India gaushala",
       size: "small",
     },
     {
       id: 8,
       src: gallery7,
-      alt: "Ghee jar rustic",
+      alt: "Rustic presentation of pure A2 Gir Cow Ghee jar",
       size: "small",
     },
     {
       id: 9,
       src: gallery9,
-      alt: "Woman cooking with ghee",
+      alt: "Home cooking with pure A2 Gir Cow Ghee in Indian kitchen",
       size: "medium",
     },
     {
       id: 10,
       src: gallery10,
-      alt: "Rural cattle scene",
+      alt: "Rural gaushala environment with Gir cows at Gauswarn India",
       size: "large",
     },
     {
       id: 11,
       src: gallery11,
-      alt: "Man using ghee in cooking",
+      alt: "Using A2 Gir Cow Ghee for healthy everyday cooking",
       size: "medium",
     },
   ];
 
   return (
     <>
+      <Seo
+        title="Gallery | Gauswarn India – A2 Gir Cow Ghee Journey"
+        description="Explore Gauswarn India's gallery showcasing our Gaushala, Gir cows, traditional bilona ghee making process, and farm-to-home purity."
+        url="https://gauswarn.com/gallery"
+      />
+
       <ProductHeroSection />
       <div className="gallery-showcase-container">
         <div className="gallery-grid-container">

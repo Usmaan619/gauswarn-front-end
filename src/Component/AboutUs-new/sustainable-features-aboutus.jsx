@@ -20,38 +20,38 @@ const SustainableFeaturesAboutus = () => {
     },
     {
       id: 3,
-      title: "Chemical & Pesticide-free",
+      title: "Chemical & Pesticide-Free",
       icon: SustainableFeaturesAboutusImg3,
     },
     {
       id: 4,
-      title: "Non-Genetically Modified Organism Produce",
+      title: "Non-GMO Produce",
       icon: SustainableFeaturesAboutusImg4,
     },
     {
       id: 5,
       title: "From Grass-Fed Gir Cows",
       icon: SustainableFeaturesAboutusImg5,
-      height: 85,
     },
   ];
 
   return (
-    <div className="sustainable-features">
-      <div className="sustainable-features-container">
+    <section className="sustainable-features">
+      <ul className="sustainable-features-container">
         {features.map((feature) => (
-          <div key={feature?.id} className="sustainable-feature-item">
+          <li key={feature.id} className="sustainable-feature-item">
             <img
-              src={feature?.icon}
-              alt={feature?.title}
+              src={feature.icon}
+              alt={`${feature.title} at Gauswarn India`}
+              loading="lazy"
               style={feature.id === 5 ? { padding: "20px" } : {}}
               className="sustainable-icon-wrapper"
             />
-            <h3 className="sustainable-feature-title">{feature?.title}</h3>
-          </div>
+            <h3 className="sustainable-feature-title">{feature.title}</h3>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 };
 

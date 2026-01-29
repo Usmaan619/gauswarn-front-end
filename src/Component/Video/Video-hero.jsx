@@ -10,6 +10,11 @@ export default function VideoSection() {
 
   return (
     <>
+      <p className="sr-only">
+        Watch how Gauswarn India prepares pure A2 Gir Cow Ghee using the
+        traditional Bilona method in our Gaushala.
+      </p>
+
       <section className={styles.hero}>
         {/* Video Background */}
         <video
@@ -28,7 +33,7 @@ export default function VideoSection() {
 
         {/* Content */}
         <div className={styles.content}>
-          <h1 className={styles.title}>Why Our Ghee is Truly Special</h1>
+          <h2 className={styles.title}>Why Our Ghee is Truly Special</h2>
 
           <button
             className={styles.playButton}

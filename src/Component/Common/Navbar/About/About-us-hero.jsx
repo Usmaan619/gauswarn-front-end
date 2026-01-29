@@ -15,7 +15,7 @@ export default function AboutUsHero() {
           <div className="aboutLeft">
             <img
               src={about1}
-              alt="Gauswarn Ghee Jar"
+              alt="Pure A2 Gir Cow Ghee jar by Gauswarn India"
               className="aboutMainImg"
             />
           </div>
@@ -23,9 +23,10 @@ export default function AboutUsHero() {
           {/* Right - Content Section */}
           <div className="aboutContentSection">
             {/* Main Heading */}
-            <h1 className="aboutMainHeading">
-              Pure A2 Desi Gir Cow Ghee – From Our Gaushala to Your Home
-            </h1>
+            <h2 className="aboutMainHeading">
+              Pure A2 Desi Gir Cow Ghee in India – From Our Gaushala to Your
+              Home
+            </h2>
 
             {/* Description Paragraphs */}
             <p className="aboutParagraph">
@@ -39,11 +40,15 @@ export default function AboutUsHero() {
             </p>
 
             <p className="aboutParagraph">
-              • Authentic traditional taste <br />
-              • Rich natural aroma <br />
-              • High-nutrition A2 goodness <br />• 100% chemical-free,
-              preservative-free purity
+              Prepared using the ancient Bilona method, our ghee delivers:
             </p>
+
+            <ul className="aboutBenefits">
+              <li>Authentic traditional taste</li>
+              <li>Rich natural aroma</li>
+              <li>High-nutrition A2 goodness</li>
+              <li>100% chemical-free & preservative-free purity</li>
+            </ul>
 
             {/* Mission Section */}
             <h3 className="aboutSubtitle">Our Mission</h3>
@@ -55,6 +60,7 @@ export default function AboutUsHero() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <polyline
                     points="20 6 9 17 4 12"
@@ -62,9 +68,13 @@ export default function AboutUsHero() {
                   ></polyline>
                 </svg>
                 <span className="missionText">
-                  To protect and nurture our Gir cows, preserve the traditional
-                  Bilona method, and deliver pure, trustworthy, farm-fresh A2
-                  ghee to every home.
+                  Why Choose Gauswarn Desi Gir Cow Ghee?
+                  <ul className="aboutBenefits small">
+                    <li>Made from A2 milk of indigenous Gir cows</li>
+                    <li>Prepared using the traditional Bilona method</li>
+                    <li>Small-batch, Gaushala-crafted purity</li>
+                    <li>Natural, ethical & chemical-free</li>
+                  </ul>
                 </span>
               </li>
             </ul>
@@ -90,7 +100,8 @@ export default function AboutUsHero() {
                   <br />
                   • Made from A2 milk of indigenous Gir cows
                   <br />
-                  • Prepared using the traditional Bilona method with modern efficiency
+                  • Prepared using the traditional Bilona method with modern
+                  efficiency
                   <br />
                   • Small-batch, Gaushala-crafted purity
                   <br />• Natural, ethical & chemical-free
@@ -100,12 +111,13 @@ export default function AboutUsHero() {
 
             {/* CTA Button */}
             <button className="ctaButton" onClick={learnMoreAbout}>
-              Learn More About
+              Learn More About Gauswarn
               <svg
                 className="arrowSvg"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   d="M7 17l9.2-9.2M17 17V7h-10"

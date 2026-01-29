@@ -47,9 +47,9 @@ const GheeGallery = lazy(() => import("./Component/Gallery/gallery-main.jsx"));
 const ContactMainPage = lazy(
   () => import("./Component/Contact/contact-main-page.jsx"),
 );
-const OrderTracking = lazy(
-  () => import("./Component/TrackOrder/track-order-main-page.jsx"),
-);
+// const OrderTracking = lazy(
+//   () => import("./Component/TrackOrder/track-order-main-page.jsx"),
+// );
 const B2BLandingPage = lazy(() => import("./Component/B2B/b2b-main-page.jsx"));
 const ProductPageMain = lazy(
   () => import("./Component/Products/product-page-main.jsx"),
@@ -92,6 +92,16 @@ const HomePage = () => (
       description="Buy 100% pure, bilona-made A2 Gir cow ghee from Gauswarn India. Farm fresh and lab tested."
       url="https://gauswarn.com/"
     />
+
+    <h1 className="sr-only">
+      Pure A2 Gir Cow Ghee is a premium Indian desi ghee prepared using the
+      traditional Bilona method. Made from the milk of indigenous Gir cows, this
+      A2 cow ghee contains natural nutrients and rich aroma. Gauswarn India
+      provides 100% pure, chemical-free, preservative-free A2 Gir Cow Ghee
+      suitable for healthy cooking, Ayurveda, puja rituals, and daily
+      consumption.
+    </h1>
+
     <Home />
     <Certified />
     <AboutUsHero />
@@ -153,8 +163,10 @@ function App() {
 
           <Route path="/gallery" element={<GheeGallery />} />
           <Route path="/contact" element={<ContactMainPage />} />
-          <Route path="/track-order" element={<OrderTracking />} />
+
+          {/* <Route path="/track-order" element={<OrderTracking />} /> */}
           <Route path="/b2b" element={<B2BLandingPage />} />
+
           <Route path="/products" element={<ProductPageMain />} />
           <Route path="/cart" element={<FinalPaymentMainPage />} />
 

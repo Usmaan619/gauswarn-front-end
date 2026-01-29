@@ -148,6 +148,25 @@ const BlogMainPageNew = () => {
   /* ===== RENDER ===== */
   return (
     <>
+      {/* SEO SUPPORTING CONTENT (Google-safe) */}
+      <section className="sr-only">
+        <h1>A2 Ghee Benefits, Ayurveda & Healthy Living Blog</h1>
+
+        <p>
+          Welcome to the Gauswarn India blog where we share expert knowledge on
+          Pure A2 Gir Cow Ghee, traditional Bilona method, Ayurveda principles,
+          digestion, immunity, and natural wellness. Our articles focus on the
+          health benefits of A2 desi cow ghee made from indigenous Gir cows.
+        </p>
+
+        <p>
+          Learn how A2 ghee supports gut health, boosts immunity, improves
+          metabolism, and fits into a modern healthy lifestyle. We also cover
+          organic living, natural food habits, and ancient Indian traditions
+          backed by Ayurveda.
+        </p>
+      </section>
+
       <Seo
         title="A2 Ghee Benefits & Ayurveda | Gauswarn Blog"
         description="Read expert articles on A2 ghee benefits, ayurveda, digestion, immunity and healthy living."

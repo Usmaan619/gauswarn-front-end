@@ -17,7 +17,7 @@ const FinalPaymentMainPage = () => {
 
   // useState se cart manage karo + context ko sync karo
   const [cart, setCart] = useState(
-    JSON.parse(sessionStorage.getItem("cart")) || []
+    JSON.parse(sessionStorage.getItem("cart")) || [],
   );
 
   // Cart change ho to context ko update karo
@@ -79,7 +79,7 @@ const FinalPaymentMainPage = () => {
 
     try {
       await axios.delete(
-        `${environment.API_BASE_URL}/users/removecart?product_id=${item.product_id}&user_id=${item.user_id}`
+        `${environment.API_BASE_URL}/users/removecart?product_id=${item.product_id}&user_id=${item.user_id}`,
       );
 
       const filtered = cart.filter((_, i) => i !== index);
@@ -140,7 +140,7 @@ const FinalPaymentMainPage = () => {
 
       const subtotal = cart.reduce(
         (acc, item) => acc + item.product_price * item.product_quantity,
-        0
+        0,
       );
 
       //  FIXED: Include FULL cart array in payload
@@ -150,7 +150,7 @@ const FinalPaymentMainPage = () => {
         purchase_price: cart[0]?.product_price || 0, // Use first item's price
         product_quantity: cart.reduce(
           (acc, item) => acc + item.product_quantity,
-          0
+          0,
         ), // Total quantity
         cart: cart, //  THIS WAS MISSING!
       };
@@ -160,7 +160,7 @@ const FinalPaymentMainPage = () => {
       // CREATE ORDER API
       const res = await axios.post(
         `${environment.API_BASE_URL}/users/create-order`,
-        payload
+        payload,
       );
 
       if (!res.data.success) {
@@ -191,7 +191,7 @@ const FinalPaymentMainPage = () => {
 
             const validateRes = await axios.post(
               `${environment.API_BASE_URL}/users/status`,
-              { rzpResponse, ...order }
+              { rzpResponse, ...order },
             );
 
             const result = validateRes.data;
@@ -249,7 +249,7 @@ const FinalPaymentMainPage = () => {
   // SUMMARY CALCULATIONS
   const subtotal = cart.reduce(
     (acc, item) => acc + item.product_price * item.product_quantity,
-    0
+    0,
   );
   const totalItems = cart.reduce((acc, item) => acc + item.product_quantity, 0);
 

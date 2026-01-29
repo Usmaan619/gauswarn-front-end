@@ -13,13 +13,18 @@ export default function DiscoverHeroSection() {
 
   return (
     <section className="discover-hero-section">
+      <p className="sr-only">
+        Learn how Gauswarn India produces pure A2 Gir Cow Ghee using traditional
+        Bilona methods, ethical farming, and modern quality checks.
+      </p>
+
       <div className="discover-hero-container">
         {/* Left Section - Image */}
         <div className="discover-hero-left">
           <div className="discover-image-wrapper">
             <img
               src={image1}
-              alt="Gauswarn Ghee Master"
+              alt="Founder and ghee artisan at Gauswarn India Gaushala"
               className="discover-hero-image"
             />
           </div>
@@ -28,9 +33,9 @@ export default function DiscoverHeroSection() {
         {/* Right Section - Content */}
         <div className="discover-hero-right">
           {/* Heading */}
-          <h1 className="discover-hero-heading">
+          <h2 className="discover-hero-heading">
             Discover the Purity Behind Every Drop of Gauswarn Ghee
-          </h1>
+          </h2>
 
           {/* Subheading */}
           <p className="discover-hero-subheading">
@@ -91,8 +96,7 @@ No chemicals, no additives — only pure, trustworthy Desi ghee."
             <img
               src={image2}
               className="discover-button-icon"
-              alt=""
-              srcset=""
+              alt="Founder and ghee artisan at Gauswarn India Gaushala"
             />
           </button>
         </div>

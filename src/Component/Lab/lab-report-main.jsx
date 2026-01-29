@@ -4,6 +4,34 @@ import Image1 from "../../asset/new-img/lap-report/labreport.webp";
 const LabReportMain = () => {
   return (
     <>
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          additionalType: "Report",
+          name: "Lab Tested Purity Report – A2 Gir Cow Ghee",
+          description:
+            "Official laboratory test report verifying the purity, safety, and quality of Gauswarn India’s A2 Gir Cow Ghee.",
+          url: "https://gauswarn.com/lab-report",
+          image: "https://gauswarn.com/asset/new-img/lap-report/labreport.webp",
+          inLanguage: "en-IN",
+          datePublished: "2024-01-01",
+          about: {
+            "@type": "Product",
+            name: "A2 Gir Cow Ghee",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "Gauswarn India",
+            url: "https://gauswarn.com",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://gauswarn.com/favicon-512x512.png",
+            },
+          },
+        })}
+      </script>
+
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
         {/* Center Heading */}
         <h4

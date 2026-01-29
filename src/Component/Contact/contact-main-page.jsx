@@ -44,12 +44,41 @@ const Contact = () => {
         description="Get in touch with Gauswarn India for orders, support and wholesale inquiries."
         url="https://gauswarn.com/contact"
       />
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Gauswarn India",
+          url: "https://gauswarn.com/contact",
+          mainEntity: {
+            "@type": "Organization",
+            name: "Gauswarn India",
+            url: "https://gauswarn.com",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "11 Manish Baag, Sapna Sangeeta Road",
+              addressLocality: "Indore",
+              addressRegion: "MP",
+              postalCode: "452001",
+              addressCountry: "IN",
+            },
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+91-7470915905",
+              contactType: "customer support",
+              areaServed: "IN",
+              availableLanguage: ["English", "Hindi"],
+            },
+          },
+        })}
+      </script>
+
       <ProductHeroSection />
 
       <div className="ghee-new-contact-section">
         <div className="container py-4">
           <div className="row">
-            <h1 className="ghee-new-contact-title">Contact Us</h1>
+            <h2 className="ghee-new-contact-title">Contact Us</h2>
 
             {/* FORM LEFT */}
             <div className="col-lg-8 col-md-12 mb-5">
@@ -66,6 +95,9 @@ const Contact = () => {
                   {/* NAME + EMAIL */}
                   <div className="ghee-new-form-row">
                     <div className="ghee-new-form-field">
+                      <label className="sr-only" htmlFor="user_name">
+                        Name
+                      </label>
                       <input
                         type="text"
                         placeholder="Name"
@@ -81,6 +113,9 @@ const Contact = () => {
                     </div>
 
                     <div className="ghee-new-form-field">
+                      <label className="sr-only" htmlFor="user_email">
+                        Email
+                      </label>
                       <input
                         type="email"
                         placeholder="Email"
@@ -104,6 +139,9 @@ const Contact = () => {
                   {/* PHONE + SUBJECT */}
                   <div className="ghee-new-form-row">
                     <div className="ghee-new-form-field">
+                      <label className="sr-only" htmlFor="user_mobile">
+                        Phone Number
+                      </label>
                       <input
                         type="tel"
                         placeholder="Phone Number"
@@ -123,6 +161,9 @@ const Contact = () => {
                     </div>
 
                     <div className="ghee-new-form-field">
+                      <label className="sr-only" htmlFor="user_subject">
+                        Subject
+                      </label>
                       <input
                         type="text"
                         placeholder="Subject"
@@ -141,6 +182,9 @@ const Contact = () => {
                   {/* MESSAGE */}
                   <div className="ghee-new-form-row full">
                     <div className="ghee-new-form-field">
+                      <label className="sr-only" htmlFor="user_message">
+                        Message
+                      </label>
                       <textarea
                         placeholder="Message"
                         rows="6"

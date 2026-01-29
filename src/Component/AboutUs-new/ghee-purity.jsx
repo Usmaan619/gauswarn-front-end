@@ -53,7 +53,11 @@ const rightFeatures = [
 
 const FeatureItem = ({ icon, title, description }) => (
   <div className="new-ghee-feature-item">
-    <img src={icon} alt={title} className="new-ghee-feature-icon" />
+    <img
+      src={icon}
+      alt={`${title} – Gauswarn A2 Gir Cow Ghee`}
+      className="new-ghee-feature-icon"
+    />
     <div>
       <h3 className="new-ghee-feature-title">{title}</h3>
       <p className="new-ghee-feature-desc">{description}</p>
@@ -64,9 +68,12 @@ const FeatureItem = ({ icon, title, description }) => (
 const GheePurity = () => {
   return (
     <section className="new-ghee-purity">
-      <h1 className="new-ghee-purity-title">
-        Lab-tested purity you can trust
-      </h1>
+      <p className="sr-only">
+        Discover how Gauswarn India ensures lab-tested purity, ethical sourcing,
+        and chemical-free A2 Gir Cow Ghee using traditional methods.
+      </p>
+
+      <h2 className="new-ghee-purity-title">Lab-tested purity you can trust</h2>
 
       <div className="new-ghee-purity-layout">
         <div className="new-ghee-column">
@@ -78,7 +85,7 @@ const GheePurity = () => {
         <div className="new-ghee-bottle-wrapper">
           <img
             src={gheeBottleImg}
-            alt="Pure A2 Ghee Bottle"
+            alt="Pure A2 Gir Cow Ghee bottle by Gauswarn India"
             className="new-ghee-bottle"
             loading="lazy"
           />

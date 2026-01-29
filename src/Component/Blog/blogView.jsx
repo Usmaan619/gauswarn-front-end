@@ -54,6 +54,24 @@ const BlogView = () => {
 
   return (
     <>
+      {/* SEO SUPPORT CONTENT – Google & Accessibility Friendly */}
+      <section className="sr-only">
+        <h2>{blog?.title}</h2>
+
+        <p>
+          This article by Gauswarn India explains insights related to A2 Gir Cow
+          Ghee, Ayurveda, natural nutrition, digestion, immunity, and healthy
+          living. The blog focuses on traditional Indian practices including the
+          Bilona method and the benefits of pure desi cow ghee.
+        </p>
+
+        <p>
+          Readers can learn how A2 ghee supports gut health, boosts immunity,
+          improves metabolism, and plays an important role in Ayurvedic wellness
+          and daily cooking.
+        </p>
+      </section>
+
       <Seo
         title={`${blog.title} | Gauswarn Blog`}
         description={
@@ -64,6 +82,39 @@ const BlogView = () => {
         url={`https://gauswarn.com/blog/${slug}`}
         image={blog.image_url}
       />
+
+      {/*  ARTICLE STRUCTURED DATA (ADD HERE ) */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: blog?.title,
+          description:
+            blog?.meta_description ||
+            blog?.excerpt ||
+            "Informative article on A2 Gir Cow Ghee, Ayurveda and natural wellness by Gauswarn India.",
+          image: blog?.image_url,
+          author: {
+            "@type": "Organization",
+            name: "Gauswarn India",
+            url: "https://gauswarn.com",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "Gauswarn India",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://gauswarn.com/favicon-512x512.png",
+            },
+          },
+          datePublished: blog?.created_at,
+          dateModified: blog?.updated_at || blog?.created_at,
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `https://gauswarn.com/blog/${slug}`,
+          },
+        })}
+      </script>
 
       <div style={{ overflow: "hidden", background: "#f8f8f8" }}>
         {/* BACK BUTTON */}
@@ -125,7 +176,7 @@ const BlogView = () => {
               </div>
             )}
 
-            <h1
+            <h2
               style={{
                 fontSize: "clamp(24px, 4vw, 40px)",
                 fontWeight: 700,
@@ -134,7 +185,7 @@ const BlogView = () => {
               }}
             >
               {blog?.title}
-            </h1>
+            </h2>
 
             <p
               style={{

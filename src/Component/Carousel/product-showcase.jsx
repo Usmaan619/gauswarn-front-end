@@ -49,7 +49,7 @@ const ProductShowcaseComplete = ({ showProduct = true }) => {
         },
       ],
     }),
-    []
+    [],
   );
 
   const loadReels = useCallback(async () => {
@@ -71,7 +71,7 @@ const ProductShowcaseComplete = ({ showProduct = true }) => {
             "Content-Type": "application/json",
             "ngrok-skip-browser-warning": "69420",
           },
-        }
+        },
       );
       setProducts(res?.data?.products || []);
     } catch (err) {
@@ -108,14 +108,14 @@ const ProductShowcaseComplete = ({ showProduct = true }) => {
       reels.map((item) => (
         <CarouselCard key={item.id || item.reel_id} reelId={item.reel_id} />
       )),
-    [reels]
+    [reels],
   );
 
   if (error && !loading) {
     return (
       <div className="product-showcase">
         <div className="showcase-container">
-          <h1 className="showcase-title">Our Product</h1>
+          <h2 className="showcase-title">Our Product</h2>
           <div className="error-message">
             <span>{error}</span>
             <button onClick={handleRefresh} className="refresh-btn">
@@ -123,7 +123,7 @@ const ProductShowcaseComplete = ({ showProduct = true }) => {
             </button>
           </div>
         </div>
-        <style jsx>{`
+        <style>{`
           .error-message {
             text-align: center;
             padding: 80px 20px;
@@ -170,6 +170,11 @@ const ProductShowcaseComplete = ({ showProduct = true }) => {
 
   return (
     <div className="product-showcase">
+      <p className="sr-only">
+        Explore our range of pure A2 Gir Cow Ghee products, crafted using the
+        traditional Bilona method and sourced from our Gaushala.
+      </p>
+
       <div className="showcase-container">
         <h1 className="showcase-title">Our Product</h1>
 
