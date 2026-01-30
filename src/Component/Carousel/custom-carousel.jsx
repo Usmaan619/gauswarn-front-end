@@ -52,10 +52,10 @@ const CustomCarousel = ({ products = [], slidesToShow = 3 }) => {
 
       {products.length > itemsToShow && (
         <div className="carousel-controls">
-          <button onClick={prev}>
+          <button aria-label="Previous slide" onClick={prev}>
             <ChevronLeft size={28} />
           </button>
-          <button onClick={next}>
+          <button aria-label="Next slide" onClick={next}>
             <ChevronRight size={28} />
           </button>
         </div>
@@ -64,6 +64,7 @@ const CustomCarousel = ({ products = [], slidesToShow = 3 }) => {
       <div className="carousel-dots">
         {Array.from({ length: maxIndex + 1 }).map((_, i) => (
           <button
+            aria-label={`Go to slide ${i + 1}`}
             key={i}
             className={`dot ${i === currentIndex ? "active" : ""}`}
             onClick={() => setCurrentIndex(i)}

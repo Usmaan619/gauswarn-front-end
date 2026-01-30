@@ -30,7 +30,7 @@ const PaymentFailed = () => {
               </div>
               <div className="text-center py-2">
                 <p className="fs-2 fw-bold">Payment Failed</p>
-                <button className="px-5 py-2 fw-bold border rounded-pill bg-danger text-light">Try Again</button>
+                <button aria-label="Try Again" className="px-5 py-2 fw-bold border rounded-pill bg-danger text-light">Try Again</button>
               </div>
             </div>
           </div>

@@ -137,7 +137,11 @@ const BlogMainPageNew = () => {
       <div className="blog-error">
         <div className="error-message">
           <h2>{error}</h2>
-          <button className="retry-btn" onClick={fetchBlogs}>
+          <button
+            aria-label="Retry loading blogs"
+            className="retry-btn"
+            onClick={fetchBlogs}
+          >
             Try Again
           </button>
         </div>

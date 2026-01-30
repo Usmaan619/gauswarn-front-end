@@ -14,7 +14,7 @@ const RefundMainPage = () => {
             refund requests. However, in any of the below situations, we are
             more than happy to work with our patrons to find an amicable
             solution that is fair to all parties.
-          </p> 
+          </p>
         </div>
 
         <div className="refund-sections">
@@ -43,6 +43,7 @@ const RefundMainPage = () => {
                 <strong>2 days</strong>
                 from delivery date via email to{" "}
                 <a
+                  aria-label="Send an email to Gauswarn regarding damaged product"
                   href="mailto:rajlaxmiorganicfoods@gmail.com"
                   className="email-link"
                 >
@@ -77,6 +78,7 @@ const RefundMainPage = () => {
                 <strong>2 days</strong>
                 from delivery date via email to{" "}
                 <a
+                  aria-label="Send an email to Gauswarn regarding missing product"
                   href="mailto:rajlaxmiorganicfoods@gmail.com"
                   className="email-link"
                 >
@@ -108,6 +110,7 @@ const RefundMainPage = () => {
                 <strong>2 days</strong>
                 from delivery date via email to{" "}
                 <a
+                  aria-label="Send an email to Gauswarn regarding spoiled product"
                   href="mailto:rajlaxmiorganicfoods@gmail.com"
                   className="email-link"
                 >
@@ -138,6 +141,7 @@ const RefundMainPage = () => {
           <p className="contact-note">
             <strong>📧 Contact:</strong>{" "}
             <a
+              aria-label="Send an email to Gauswarn regarding refund policy"
               href="mailto:rajlaxmiorganicfoods@gmail.com"
               className="email-link"
             >

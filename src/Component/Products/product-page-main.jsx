@@ -612,7 +612,7 @@ const ProductPageMain = () => {
                 ) : (
                   <img
                     src={productImages[selectedImage]}
-                    alt={`Product image ${selectedImage + 1}`}
+                    alt={`Product image ${selectedImage + '1'}`}
                     className="responsive-product-img"
                     loading="lazy"
                   />
@@ -1050,7 +1050,7 @@ const ProductPageMain = () => {
               </div>
 
               <div className="form-actions d-flex gap-2">
-                <button type="submit" className="submit-review-btn">
+                <button aria-label="Submit Review" type="submit" className="submit-review-btn">
                   <Send size={18} /> Submit
                 </button>
               </div>

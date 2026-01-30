@@ -23,7 +23,7 @@ const TermsConditions = () => {
             <ul className="section-list">
               <li>
                 Published as per IT Rules 2011 for{" "}
-                <a href="https://gauswarn.com" className="website-link">
+                <a  aria-label="Visit Gauswarn website" href="https://gauswarn.com" className="website-link">
                   gauswarn.com
                 </a>
               </li>

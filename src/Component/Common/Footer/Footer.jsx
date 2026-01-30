@@ -91,7 +91,7 @@ export default function NewFooter() {
             <div className="col-xl-4 col-lg-4 mb-50">
               <div className="footer-widget">
                 <div className="footer-logo">
-                  <a>
+                  <a href="/" aria-label="Gauswarn Home">
                     <img src={logo} alt="logo" />
                   </a>
                 </div>
@@ -107,6 +107,7 @@ export default function NewFooter() {
                   <span>Also available on</span>
 
                   <a
+                    aria-label="Visit our Amazon store"
                     href="https://amzn.in/d/h5EBdP1"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -114,11 +115,12 @@ export default function NewFooter() {
                     <img
                       src={amazonlogo}
                       className="footer-facebook-bg-img"
-                      alt=""
+                      alt="amazonlogo"
                     />
                   </a>
 
                   <a
+                    aria-label="Visit our Flipkart store"
                     target="_blank"
                     rel="noopener noreferrer"
                     href="https://www.flipkart.com/gau-swarn-a2-gir-cow-ghee-glass-bottle/p/itm48ba9c417cecd"
@@ -126,7 +128,7 @@ export default function NewFooter() {
                     <img
                       src={flipkartlogo}
                       className="footer-facebook-bg-img"
-                      alt=""
+                      alt="flipkartlogo"
                     />
                   </a>
                 </div>
@@ -162,7 +164,7 @@ export default function NewFooter() {
                     </Link>
                   </li>
                   <li>
-                    <a
+                    <a aria-label="Track your order"
                       href="https://panel.shipmozo.com/track-order/LBYfQgGFRljv1A249H87"
                       rel="noopener noreferrer"
                       // target="_blank"
@@ -225,7 +227,11 @@ export default function NewFooter() {
                       onChange={(e) => setEmail(e.target.value)}
                     />
 
-                    <button type="submit" disabled={loading}>
+                    <button
+                      aria-label="Subscribe to newsletter"
+                      type="submit"
+                      disabled={loading}
+                    >
                       <i
                         className={
                           loading
@@ -257,7 +263,9 @@ export default function NewFooter() {
             <div className="footer-bottom-center">
               Powered by
               <b>
-                <a className="ms-1"
+                <a
+                aria-label="Visit Rajlakshmi javiks International website"
+                  className="ms-1"
                   href="https://rajlakshmijaviks.com/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -274,6 +282,7 @@ export default function NewFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon facebook"
+                aria-label="Visit our Facebook page"
               >
                 <i className="fab fa-facebook-f"></i>
               </a>
@@ -282,6 +291,7 @@ export default function NewFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon instagram"
+                aria-label="Visit our Instagram page"
               >
                 <i className="fab fa-instagram"></i>
               </a>
@@ -290,6 +300,7 @@ export default function NewFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon youtube"
+                aria-label="Visit our YouTube channel"
               >
                 <i className="fab fa-youtube"></i>
               </a>

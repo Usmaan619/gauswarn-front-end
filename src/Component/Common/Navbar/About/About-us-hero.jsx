@@ -1,4 +1,4 @@
-import about1 from "../../../../asset/new-img/about-main/about1.png";
+import about1 from "../../../../asset/new-img/about-main/about1.jpeg";
 import "./AboutUsHero.css"; // Separate CSS file
 import { useNavigate } from "react-router-dom";
 
@@ -110,7 +110,7 @@ export default function AboutUsHero() {
             </ul>
 
             {/* CTA Button */}
-            <button className="ctaButton" onClick={learnMoreAbout}>
+            <button aria-label="Learn more about Gauswarn" className="ctaButton" onClick={learnMoreAbout}>
               Learn More About Gauswarn
               <svg
                 className="arrowSvg"

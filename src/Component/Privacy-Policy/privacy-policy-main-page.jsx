@@ -30,10 +30,10 @@ const PrivacyPolicy = () => {
               This Privacy Policy describes how RAJLAKSHMI JAVIKS IN and its
               affiliates collect, use, share, protect or otherwise process your
               information through our website{" "}
-              <a href="https://gauswarn.com" className="website-link">
+              <a aria-label="Visit Gauswarn website" href="https://gauswarn.com" className="website-link">
                 gauswarn.com
               </a>
-              .
+              
             </p>
           </div>
 

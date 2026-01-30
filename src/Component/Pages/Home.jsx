@@ -130,7 +130,7 @@ const Home = () => {
   if (loading || !hasSlides) {
     return (
       <div className="home">
-        <style jsx>{`
+        <style>{`
           @keyframes shimmer {
             0% {
               background-position: 100% 0;

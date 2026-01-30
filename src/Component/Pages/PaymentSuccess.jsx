@@ -108,7 +108,7 @@ const PaymentSuccess = () => {
               </div>
               <div className="text-center py-2">
                 <p className="fs-2 fw-bold">Payment Success full</p>
-                <button
+                <button aria-label="Print Invoice"
                   onClick={sendInvoice}
                   className="px-5 py-2 fw-bold border rounded-pill bg-success text-light"
                 >

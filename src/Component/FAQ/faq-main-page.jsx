@@ -120,7 +120,7 @@ const FAQMainPage = () => {
           <div className="faq-list">
             {faqData.map((faq, index) => (
               <div key={index} className="faq-item">
-                <button
+                <button aria-label={`Toggle FAQ answer for: ${faq.question}`}
                   className={`faq-question ${openIndex === index ? "active" : ""}`}
                   onClick={() => toggleFAQ(index)}
                 >

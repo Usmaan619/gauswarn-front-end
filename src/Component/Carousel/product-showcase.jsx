@@ -118,7 +118,11 @@ const ProductShowcaseComplete = ({ showProduct = true }) => {
           <h2 className="showcase-title">Our Product</h2>
           <div className="error-message">
             <span>{error}</span>
-            <button onClick={handleRefresh} className="refresh-btn">
+            <button
+              aria-label="Retry loading content"
+              onClick={handleRefresh}
+              className="refresh-btn"
+            >
               🔄 Retry
             </button>
           </div>
@@ -193,7 +197,11 @@ const ProductShowcaseComplete = ({ showProduct = true }) => {
             ) : (
               <div className="no-reels">
                 No reels available
-                <button onClick={loadReels} className="refresh-btn">
+                <button
+                  aria-label="Refresh reels"
+                  onClick={loadReels}
+                  className="refresh-btn"
+                >
                   🔄 Refresh
                 </button>
               </div>
@@ -202,7 +210,7 @@ const ProductShowcaseComplete = ({ showProduct = true }) => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .product-showcase {
           width: 100%;
           padding: 40px 20px;

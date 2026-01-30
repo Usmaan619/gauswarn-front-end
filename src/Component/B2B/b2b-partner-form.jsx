@@ -192,8 +192,12 @@ const PartnerInquiryForm = forwardRef((props, ref) => {
           {/* ROW 3 */}
           <div className="b2b-form-row">
             <div className="b2b-form-group">
-              <label>Business Type*</label>
+              <label aria-label="Select Business Type" htmlFor="businessType">
+                Business Type*
+              </label>
               <select
+                aria-label="Select Business Type"
+                id="businessType"
                 {...register("businessType", {
                   required: "Business Type is required",
                 })}
@@ -222,6 +226,7 @@ const PartnerInquiryForm = forwardRef((props, ref) => {
           </div>
 
           <button
+            aria-label="Submit Partner Inquiry Form"
             type="submit"
             disabled={isSubmitting}
             className="b2b-submit-btn"

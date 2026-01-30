@@ -41,14 +41,24 @@ export default function TopBanner() {
                 <span className="phone-icon">
                   <FiPhoneCall />
                 </span>
-                <a href="tel:+917470915905">+91-74709 15905</a>
+                <a
+                  aria-label="Call Gauswarn customer support"
+                  href="tel:+917470915905"
+                >
+                  +91-74709 15905
+                </a>
               </div>
               <div className="divider d-none d-md-block"></div>
               <div className="contact-item">
                 <span className="email-icon">
                   <FiMail />
                 </span>
-                <a href="mailto:info@gauswarn.com">info@gauswarn.com</a>
+                <a
+                  aria-label="Send an email to Gauswarn"
+                  href="mailto:info@gauswarn.com"
+                >
+                  info@gauswarn.com
+                </a>
               </div>
             </div>
 
@@ -62,6 +72,7 @@ export default function TopBanner() {
               <a
                 href="https://www.facebook.com/profile.php?id=61577996747357"
                 className="social-icon facebook"
+                aria-label="Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -71,6 +82,7 @@ export default function TopBanner() {
                 href="https://www.instagram.com/gauswarn/"
                 className="social-icon instagram"
                 target="_blank"
+                aria-label="Visit our Instagram page"
                 rel="noopener noreferrer"
               >
                 <i className="fab fa-instagram"></i>
@@ -79,6 +91,7 @@ export default function TopBanner() {
                 href="https://www.youtube.com/@gauswarngircowghee-2"
                 className="social-icon youtube"
                 target="_blank"
+                aria-label="Visit our YouTube channel"
                 rel="noopener noreferrer"
               >
                 <i className="fab fa-youtube"></i>
@@ -100,14 +113,24 @@ export default function TopBanner() {
               <span className="phone-icon">
                 <FiPhoneCall />
               </span>
-              <a href="tel:+917470915905">+91-74709 15905</a>
+              <a
+                aria-label="Call Gauswarn customer support"
+                href="tel:+917470915905"
+              >
+                +91-74709 15905
+              </a>
             </div>
             <div className="divider d-none d-md-block"></div>
             <div className="contact-item">
               <span className="email-icon">
                 <FiMail />
               </span>
-              <a href="mailto:info@gauswarn.com">info@gauswarn.com</a>
+              <a
+                aria-label="Send an email to Gauswarn"
+                href="mailto:info@gauswarn.com"
+              >
+                info@gauswarn.com
+              </a>
             </div>
           </div>
 

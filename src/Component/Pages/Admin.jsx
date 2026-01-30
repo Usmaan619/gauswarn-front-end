@@ -37,7 +37,7 @@ const Admin = () => {
             <div className="text-center track-formsd shadow px-4 py-4">
               <p className="fs-1 my-3 fw-bold track-text mb-3">Admin</p>
               <div className="d-flex justify-content-center mt-4">
-                <button
+                <button aria-label="Download Excel file"
                   onClick={downloadCsv}
                   type="button"
                   className="track-button text-white px-5 py-2 border rounded-pill"

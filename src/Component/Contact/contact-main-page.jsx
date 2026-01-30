@@ -200,7 +200,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <button type="submit" className="ghee-new-btn-cta">
+                  <button   aria-label="Submit contact form" type="submit" className="ghee-new-btn-cta">
                     Submit
                   </button>
                 </form>

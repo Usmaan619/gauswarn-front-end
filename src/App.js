@@ -88,8 +88,8 @@ const PaymentSuccess = lazy(
 const HomePage = () => (
   <>
     <Seo
-      title="Gauswarn India - Pure A2 Gir Cow Ghee"
-      description="Buy 100% pure, bilona-made A2 Gir cow ghee from Gauswarn India. Farm fresh and lab tested."
+      title="Buy Pure A2 Gir Cow Ghee in India – Gauswarn India"
+      description="Buy 100% pure, bilona-made A2 Gir cow ghee from Gauswarn India. Farm fresh, lab tested, rich in nutrients and delivered across India."
       url="https://gauswarn.com/"
     />
 

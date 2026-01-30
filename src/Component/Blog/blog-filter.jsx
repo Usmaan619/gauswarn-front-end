@@ -17,9 +17,17 @@ const FilterNewsletterCard = ({ sortOrder, onSortChange }) => {
         </div>
 
         <div className="filter-section">
-          <label className="filter-label">Sort by</label>
+          <label
+            aria-label="Select sorting order for blog posts"
+            htmlFor="sortOrder"
+            className="filter-label"
+          >
+            Sort by
+          </label>
 
           <select
+            id="sortOrder"
+            aria-label="Sort blog posts by newest or oldest"
             className="sort-select"
             value={sortOrder}
             onChange={(e) => onSortChange(e.target.value)}

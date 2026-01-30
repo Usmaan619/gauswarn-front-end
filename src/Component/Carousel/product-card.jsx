@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
     try {
       const parsed = JSON.parse(selectedVariant.product_images);
       return parsed?.map((img) =>
-        typeof img === "string" ? img : img?.url || img?.src
+        typeof img === "string" ? img : img?.url || img?.src,
       );
     } catch {
       return [productPlaceholder];
@@ -60,7 +60,7 @@ const ProductCard = ({ product }) => {
     const foundIndex = existingCart.findIndex(
       (it) =>
         it.user_id === selectedVariant.product_id &&
-        it.product_weight === selectedVariant.product_weight
+        it.product_weight === selectedVariant.product_weight,
     );
 
     if (foundIndex !== -1) {
@@ -116,6 +116,7 @@ const ProductCard = ({ product }) => {
         {/* VARIANT SELECT */}
         <div className="product-quantity">
           <select
+            aria-label="Select product variant"
             value={selectedIndex}
             onChange={(e) => setSelectedIndex(Number(e.target.value))}
             className="quantity-select"
@@ -131,6 +132,7 @@ const ProductCard = ({ product }) => {
 
         {/* BUY NOW */}
         <button
+          aria-label="Buy Now"
           className="add-to-cart-btn mt-3 product-action-buttons-bg"
           onClick={handleBuyNow}
         >

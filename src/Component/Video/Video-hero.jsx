@@ -17,6 +17,22 @@ export default function VideoSection() {
 
       <section className={styles.hero}>
         {/* Video Background */}
+        {/* <video
+          className={styles.backgroundVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={VideoSource} type="video/mp4" />
+          Your browser does not support the video tag.
+          <track
+            src="captions.vtt"
+            kind="captions"
+            srclang="en"
+            label="English"
+          />
+        </video> */}
         <video
           className={styles.backgroundVideo}
           autoPlay
@@ -25,6 +41,13 @@ export default function VideoSection() {
           playsInline
         >
           <source src={VideoSource} type="video/mp4" />
+          <track
+            src="captions.vtt"
+            kind="captions"
+            srcLang="en"
+            label="English"
+            default
+          />
           Your browser does not support the video tag.
         </video>
 

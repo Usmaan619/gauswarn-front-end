@@ -101,7 +101,7 @@ const NurituringAboutUs = () => {
             </div>
 
             {/* CTA */}
-            <button className="nurtring-download-btn" onClick={goToLabReport}>
+            <button aria-label="View Lab Report" className="nurtring-download-btn" onClick={goToLabReport}>
               <span>View Lab Report</span>
             </button>
           </div>

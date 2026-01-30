@@ -60,6 +60,7 @@ export default function TabsSection() {
             key={item.key}
             className={`tab-btn ${activeTab === item.key ? "active" : ""}`}
             onClick={() => setActiveTab(item.key)}
+            aria-label={item.label}
           >
             {item.label}
           </button>
@@ -69,7 +70,7 @@ export default function TabsSection() {
       {/* ANIMATED CONTENT */}
       <div className="content-wrapper fade-slide mx-4">
         <div className="image-box">
-          <img src={active.image} alt="" />
+          <img src={active.image} alt={active.label} />
         </div>
         <div className="text-content">{active.content}</div>
       </div>

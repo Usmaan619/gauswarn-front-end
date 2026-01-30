@@ -69,7 +69,7 @@ const ShippingPolicy = () => {
               <ul className="contact-list">
                 <li>
                   <strong>Email:</strong>{' '}
-                  <a href="mailto:rajlaxmiorganicfoods@gmail.com" className="contact-link">
+                  <a aria-label="Send an email to Gauswarn" href="mailto:rajlaxmiorganicfoods@gmail.com" className="contact-link">
                     rajlaxmiorganicfoods@gmail.com
                   </a>
                 </li>

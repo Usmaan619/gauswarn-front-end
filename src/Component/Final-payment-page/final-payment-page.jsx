@@ -236,7 +236,7 @@ const FinalPaymentMainPage = () => {
         <ToastContainer />
         <ShoppingCart size={80} color="#fff" strokeWidth={1.5} />
         <h2 className="new-emptyTitle">Your Cart is Empty</h2>
-        <button
+        <button aria-label="Start Shopping"
           className="new-shopButton"
           onClick={() => navigate("/products")}
         >
@@ -317,7 +317,7 @@ const FinalPaymentMainPage = () => {
                   </div>
                 ))}
 
-                <button
+                <button aria-label="Proceed to Payment"
                   onClick={handleSubmit}
                   className="new-btn-cta new-checkoutBtn"
                   disabled={isLoading || showLoader}
@@ -358,7 +358,7 @@ const FinalPaymentMainPage = () => {
                       {/* QUANTITY CONTROL */}
                       <div className="payment-quantity-section">
                         <div className="payment-quantity-control">
-                          <button
+                          <button 
                             className="payment-quantity-btn payment-decrease-btn"
                             onClick={() => updateQuantity(index, -1)}
                             disabled={
@@ -392,7 +392,7 @@ const FinalPaymentMainPage = () => {
                         ₹{item?.product_price}
                       </div>
 
-                      <button
+                      <button aria-label="Remove item from cart"
                         onClick={() => removeFromCart(index)}
                         className="new-deleteButton"
                         disabled={isLoading || showLoader}

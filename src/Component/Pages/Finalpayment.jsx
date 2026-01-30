@@ -397,7 +397,7 @@ const Finalpayment = () => {
                 </div>
                 <Link to="/singleproduct" className="text-center d-block mt-3">
                   {/* <button className="btn btn-primary">Go Back to Shopping</button> */}
-                  <Button title="Go Back to Shopping" />
+                  <Button aria-label="Go Back to Shopping" title="Go Back to Shopping" />
                 </Link>
               </div>
             ) : (
@@ -553,7 +553,7 @@ const Finalpayment = () => {
                         </div>
 
                         <div className="d-flex align-items-center justify-content-center pt-4">
-                          <button
+                          <button aria-label="Pay Now"
                             type="submit"
                             className="w-50 border rounded-pill text-uppercase button-feedback"
                           >
@@ -589,7 +589,7 @@ const Finalpayment = () => {
                                 <td>
                                   <div className="quantity-controls d-flex align-items-center justify-content-center">
                                     <button
-                                      className="btn btn-outline-secondary btn-sm"
+                                      aria-label="Decrease quantity"
                                       onClick={() => updateQuantity(index, -1)}
                                       disabled={item.product_quantity <= 1}
                                     >
@@ -598,7 +598,7 @@ const Finalpayment = () => {
                                     <span className="mx-3">
                                       {item.product_quantity}
                                     </span>
-                                    <button
+                                    <button aria-label="Increase quantity"
                                       className="btn btn-outline-secondary btn-sm"
                                       onClick={() => updateQuantity(index, 1)}
                                     >
@@ -608,7 +608,7 @@ const Finalpayment = () => {
                                 </td>
                                 <td>₹ {item.product_price}</td>
                                 <td>
-                                  <button
+                                  <button aria-label="Remove item from cart"
                                     className="btn btn-danger btn-sm"
                                     onClick={() => removeFromCart(item)}
                                   >

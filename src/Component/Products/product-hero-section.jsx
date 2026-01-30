@@ -18,7 +18,7 @@ const ProductHeroSection = () => {
             <p className="product-hero-subtitle">
               Begin your GAUSWARN GHEE Wellness Journey Today!
             </p>
-            <button className="btn-cta" onClick={goToBuyNow}>
+            <button aria-label="Buy now" className="btn-cta" onClick={goToBuyNow}>
               Buy now
             </button>
           </div>

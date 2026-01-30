@@ -18,7 +18,7 @@ export default function Header() {
 
     const count = sessionCart.reduce(
       (total, item) => total + (item.quantity || 1),
-      0
+      0,
     );
     setCartCount(count);
   }, []); // Empty dependency array - sirf mount par run hoga
@@ -28,7 +28,7 @@ export default function Header() {
     if (cart && cart.length > 0) {
       const count = cart.reduce(
         (total, item) => total + (item.quantity || 1),
-        0
+        0,
       );
       setCartCount(count);
     } else {
@@ -72,7 +72,8 @@ export default function Header() {
               src={mainLogo}
               alt="Gauswarn Logo"
               className="logo-image"
-              loading="lazy"
+              // loading="lazy"
+              fetchpriority="high"
             />
           </div>
 
@@ -94,6 +95,7 @@ export default function Header() {
             </NavLink>
 
             <a
+              aria-label="Track your order"
               href="https://panel.shipmozo.com/track-order/LBYfQgGFRljv1A249H87"
               rel="noopener noreferrer"
               // target="_blank"

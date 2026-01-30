@@ -195,7 +195,7 @@ export default function BlogDetailPage() {
                 Ready to transform your health with the purest A2 Gir cow ghee?
                 Order your jar today and taste the tradition.
               </p>
-              <button className="cta-button">Shop A2 Ghee Now</button>
+              <button aria-label="Shop A2 Ghee Now" className="cta-button">Shop A2 Ghee Now</button>
             </div>
           </div>
 
@@ -213,10 +213,10 @@ export default function BlogDetailPage() {
           <div className="share-section">
             <h3>Share this article</h3>
             <div className="share-buttons">
-              <button className="share-btn facebook">Facebook</button>
-              <button className="share-btn twitter">Twitter</button>
-              <button className="share-btn linkedin">LinkedIn</button>
-              <button className="share-btn whatsapp">WhatsApp</button>
+              <button aria-label="Share on Facebook" className="share-btn facebook">Facebook</button>
+              <button aria-label="Share on Twitter" className="share-btn twitter">Twitter</button>
+              <button aria-label="Share on LinkedIn" className="share-btn linkedin">LinkedIn</button>
+              <button aria-label="Share on WhatsApp" className="share-btn whatsapp">WhatsApp</button>
             </div>
           </div>
         </article>
@@ -268,7 +268,7 @@ export default function BlogDetailPage() {
               placeholder="Your email address"
               className="newsletter-input"
             />
-            <button className="newsletter-btn">Subscribe</button>
+            <button aria-label="Subscribe to newsletter" className="newsletter-btn">Subscribe</button>
           </div>
         </aside>
       </div>

@@ -91,7 +91,7 @@ No chemicals, no additives — only pure, trustworthy Desi ghee."
           </div>
 
           {/* CTA Button */}
-          <button className="discover-contact-button" onClick={ContactUs}>
+          <button aria-label="Contact Us" className="discover-contact-button" onClick={ContactUs}>
             Contact Us
             <img
               src={image2}
