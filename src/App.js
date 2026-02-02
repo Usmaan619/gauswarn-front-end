@@ -180,7 +180,7 @@ function App() {
           <Route path="/terms" element={<TermsConditions />} />
 
           <Route path="/faq" element={<FAQMainPage />} />
-          <Route path="/lab" element={<LabReportMain />} />
+          <Route path="/lab-report" element={<LabReportMain />} />
 
           <Route
             path="*"

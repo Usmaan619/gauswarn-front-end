@@ -1,92 +1,105 @@
 import React from "react";
-import Image1 from "../../asset/new-img/lap-report/labreport.webp";
+import "./lab-report-main.css";
+
+// NDDB CALF – Ghee Purity
+import GheeReport1 from "../../asset/new-img/lap-report/ghee-report-1.webp";
+import GheeReport2 from "../../asset/new-img/lap-report/ghee-report-2.webp";
+import GheeReport3 from "../../asset/new-img/lap-report/ghee-report-3.webp";
+
+// GeneOmbio – A2 Test
+import LabReport from "../../asset/new-img/lap-report/labreport.webp";
+
+// NDDB CALF – Texture
+import Texture1 from "../../asset/new-img/lap-report/texture-1.webp";
+import Texture2 from "../../asset/new-img/lap-report/texture-2.webp";
 
 const LabReportMain = () => {
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          additionalType: "https://schema.org/Report",
+    <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: `
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "additionalType": "https://schema.org/Report",
+  "@id": "https://gauswarn.com/lab-report#report",
 
-          "@id": "https://gauswarn.com/lab-report#creativework",
+  "name": "Lab Tested Purity Report – A2 Gir Cow Ghee",
+  "description": "Official laboratory test reports verifying the purity, safety and quality of Gauswarn India A2 Gir Cow Ghee including FSSAI and genetic analysis.",
+  "url": "https://gauswarn.com/lab-report",
 
-          name: "Lab Tested Purity Report – A2 Gir Cow Ghee",
-          description:
-            "Official laboratory test report verifying the purity, safety, and quality of Gauswarn India’s A2 Gir Cow Ghee.",
+  "image": [
+    "https://gauswarn.com/asset/new-img/lap-report/labreport.webp"
+  ],
 
-          url: "https://gauswarn.com/lab-report",
+  "inLanguage": "en-IN",
+  "datePublished": "2024-01-01",
 
-          image: [
-            "https://gauswarn.com/asset/new-img/lap-report/labreport.webp",
-          ],
+  "about": {
+    "@type": "Product",
+    "@id": "https://gauswarn.com/products/a2-gir-cow-ghee",
+    "name": "A2 Gir Cow Ghee",
+    "brand": {
+      "@type": "Brand",
+      "name": "Gauswarn India"
+    }
+  },
 
-          inLanguage: "en-IN",
-          datePublished: "2024-01-01",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gauswarn India",
+    "url": "https://gauswarn.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gauswarn.com/favicon-512x512.png"
+    }
+  }
+}
+`
+  }}
+/>
 
-          about: {
-            "@type": "ProductGroup",
-            "@id": "https://gauswarn.com/products#a2-ghee",
-            name: "A2 Gir Cow Ghee",
-          },
 
-          publisher: {
-            "@type": "Organization",
-            name: "Gauswarn India",
-            url: "https://gauswarn.com",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://gauswarn.com/favicon-512x512.png",
-            },
-          },
-        })}
-      </script>
+      <div className="lab-page">
+        <h1>Laboratory Test Reports</h1>
 
-      <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
-        {/* Center Heading */}
-        <h4
-          style={{
-            textAlign: "center",
-            fontWeight: "bold",
-            marginBottom: "20px",
-            textTransform: "uppercase",
-          }}
-        >
-          Lab Report
-        </h4>
+        <p className="intro">
+          All reports shown below are original laboratory test reports issued by
+          NABL-accredited laboratories. QR codes on reports can be scanned for
+          authenticity.
+        </p>
 
-        {/* Wrapper */}
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-          }}
-          onContextMenu={(e) => e.preventDefault()}
-        >
-          {/* Image - NO pointerEvents (to avoid blur) */}
-          <img
-            src={Image1}
-            alt="Lab Report"
-            style={{
-              width: "100%",
-              height: "auto",
-              display: "block",
-              userSelect: "none",
-            }}
-            draggable="false"
-          />
+        {/* ================= GHEE PURITY REPORT ================= */}
+        <section className="report-section">
+          <h2>Ghee Purity Analysis – FSSAI Compliance</h2>
 
-          {/* Invisible protection layer */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "transparent",
-            }}
-            onContextMenu={(e) => e.preventDefault()}
-          ></div>
-        </div>
+          <div className="report-pages">
+            <img src={GheeReport1} alt="Ghee Purity Report Page 1" />
+            <img src={GheeReport2} alt="Ghee Purity Report Page 2" />
+            <img src={GheeReport3} alt="Ghee Purity Report Page 3" />
+          </div>
+        </section>
+
+        {/* ================= A2 BETA CASEIN REPORT ================= */}
+        <section className="report-section">
+          <h2>A2 Beta Casein Genetic Test (DNA Sequencing)</h2>
+
+          <div className="report-pages">
+            <img src={LabReport} alt="A2 Beta Casein Test Report" />
+          </div>
+        </section>
+
+        {/* ================= TEXTURE REPORT ================= */}
+        <section className="report-section">
+          <h2>Texture Quality Analysis</h2>
+
+          <div className="report-pages">
+            <img src={Texture1} alt="Texture Report Page 1" />
+            <img src={Texture2} alt="Texture Report Page 2" />
+          </div>
+        </section>
       </div>
     </>
   );

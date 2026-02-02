@@ -154,7 +154,7 @@ export default function NewFooter() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/lab" onClick={scrollToTop}>
+                    <Link to="/lab-report" onClick={scrollToTop}>
                       Lab Report
                     </Link>
                   </li>
@@ -164,7 +164,8 @@ export default function NewFooter() {
                     </Link>
                   </li>
                   <li>
-                    <a aria-label="Track your order"
+                    <a
+                      aria-label="Track your order"
                       href="https://panel.shipmozo.com/track-order/LBYfQgGFRljv1A249H87"
                       rel="noopener noreferrer"
                       // target="_blank"
@@ -264,7 +265,7 @@ export default function NewFooter() {
               Powered by
               <b>
                 <a
-                aria-label="Visit Rajlakshmi javiks International website"
+                  aria-label="Visit Rajlakshmi javiks International website"
                   className="ms-1"
                   href="https://rajlakshmijaviks.com/"
                   target="_blank"
