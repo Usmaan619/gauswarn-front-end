@@ -201,6 +201,11 @@ export default function NewFooter() {
                       FAQ
                     </Link>
                   </li>
+                  <li>
+                    <Link to="/careers" onClick={scrollToTop}>
+                      Careers
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>

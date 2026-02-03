@@ -43,6 +43,12 @@
     <priority>0.6</priority>
   </url>
 
+<url>
+  <loc>https://gauswarn.com/careers</loc>
+  <lastmod>2026-01-25</lastmod>
+  <priority>0.5</priority>
+</url>
+
   <url>
     <loc>https://gauswarn.com/track-order</loc>
     <lastmod>2026-01-25</lastmod>

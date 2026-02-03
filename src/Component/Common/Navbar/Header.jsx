@@ -258,6 +258,18 @@ export default function Header() {
         </div>
 
         <div
+          className="new-header-m-nav-link"
+          onClick={() => handleNavClick("/careers")}
+          role="button"
+          tabIndex="0"
+          onKeyPress={(e) => {
+            if (e.key === "Enter") handleNavClick("/careers");
+          }}
+        >
+          Careers
+        </div>
+
+        <div
           className="mobile-cart-btn"
           onClick={() => handleNavClick("/cart")}
           role="button"

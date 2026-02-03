@@ -10,6 +10,7 @@ import NewFooter from "./Component/Common/Footer/Footer.jsx";
 
 import { useCartContext } from "./Component/Context/UserContext.jsx";
 import Seo from "./Component/SEO/Seo.jsx";
+import CareersPage from "./Component/Careers/careers-main-page.jsx";
 
 /* =======================
    LAZY LOAD COMPONENTS
@@ -113,6 +114,8 @@ const HomePage = () => (
   </>
 );
 
+
+
 function App() {
   const { setCart } = useCartContext();
 
@@ -181,7 +184,7 @@ function App() {
 
           <Route path="/faq" element={<FAQMainPage />} />
           <Route path="/lab-report" element={<LabReportMain />} />
-
+          <Route path="/careers" element={<CareersPage />} />
           <Route
             path="*"
             element={
