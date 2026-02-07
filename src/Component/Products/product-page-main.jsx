@@ -156,17 +156,13 @@ const getSessionStorageCart = () => {
 const setSessionStorageCart = (cart) => {
   try {
     sessionStorage.setItem("cart", JSON.stringify(cart));
-  } catch (error) {
-    console.error("Failed to save cart:", error);
-  }
+  } catch (error) {}
 };
 
 const triggerCrossPageToast = (type, message) => {
   try {
     sessionStorage.setItem("toastMessage", JSON.stringify({ type, message }));
-  } catch (error) {
-    console.error("Failed to set toast message:", error);
-  }
+  } catch (error) {}
 };
 
 /* ========================= 
@@ -261,7 +257,7 @@ const ProductPageMain = () => {
 
   // Product data
   const [products, setProducts] = useState([]);
-  console.log("products: ", products);
+
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
@@ -287,6 +283,20 @@ const ProductPageMain = () => {
   );
 
   /* ========================= 
+   META VIEWCONTENT EVENT
+========================= */
+  useEffect(() => {
+    if (window.fbq && selectedProduct) {
+      window.fbq("track", "ViewContent", {
+        content_ids: [selectedProduct.product_id],
+        content_type: "product",
+        value: selectedProduct.product_price,
+        currency: "INR",
+      });
+    }
+  }, [selectedProduct]);
+
+  /* ========================= 
      API FUNCTIONS 
   ========================= */
   const fetchProducts = useCallback(async (attempt = 1) => {
@@ -307,8 +317,6 @@ const ProductPageMain = () => {
         setSelectedVariantIndex(0);
       }
     } catch (error) {
-      console.error(`Product fetch attempt ${attempt} failed:`, error);
-
       if (attempt < API_CONFIG.RETRY_ATTEMPTS) {
         await delay(API_CONFIG.RETRY_DELAY);
         return fetchProducts(attempt + 1);
@@ -335,7 +343,6 @@ const ProductPageMain = () => {
       setReviews(data.reviews || []);
       // setRatingsBreakdown(data.ratingsBreakdown || {});
     } catch (error) {
-      console.error("Error fetching reviews:", error);
     } finally {
       setIsReviewsLoading(false);
     }
@@ -399,6 +406,15 @@ const ProductPageMain = () => {
       if (response.status === 200 || response.status === 201) {
         toast.success("Item added to cart successfully!");
 
+        if (window.fbq && selectedProduct) {
+          window.fbq("track", "AddToCart", {
+            content_ids: [selectedProduct.product_id],
+            content_type: "product",
+            value: selectedProduct.product_price,
+            currency: "INR",
+          });
+        }
+
         let existingCart = getSessionStorageCart();
         existingCart = updateCartItem(cartItem, existingCart);
 
@@ -408,7 +424,6 @@ const ProductPageMain = () => {
         toast.error("Failed to add to cart");
       }
     } catch (error) {
-      console.error("Add to cart error:", error);
       toast.error("Something went wrong");
     }
   }, [
@@ -474,7 +489,6 @@ const ProductPageMain = () => {
           setTimeout(() => setSubmitSuccess(false), 3000);
         }
       } catch (error) {
-        console.error("Review submission error:", error);
         toast.error("Something went wrong");
       }
     },
@@ -534,7 +548,7 @@ const ProductPageMain = () => {
   /* ========================= 
      RENDER 
   ========================= */
-  console.log("selectedProduct: ", selectedProduct);
+
   return (
     <>
       <Seo
@@ -542,64 +556,6 @@ const ProductPageMain = () => {
         description="Order authentic A2 Gir cow ghee made using the traditional bilona method. Free delivery across India."
         url="https://gauswarn.com/products"
       />
-
-      {/* {selectedProduct && (
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-
-            "@id": `https://gauswarn.com/products#a2-ghee-${selectedProduct.product_weight
-              .toLowerCase()
-              .replace(/\s+/g, "")}`,
-
-            name: `GAUSWARN Authentic A2 Bilona Ghee - ${selectedProduct.product_weight}`,
-
-            description:
-              "Pure A2 Gir Cow Ghee made using the traditional bilona method. 100% natural, chemical-free and lab-tested for purity.",
-
-            brand: {
-              "@type": "Brand",
-              name: "Gauswarn India",
-            },
-
-            image: selectedProduct.images?.length
-              ? selectedProduct.images
-              : ["https://gauswarn.com/favicon-512x512.png"],
-
-            sku: `GAUSWARN-A2-${selectedProduct.product_weight}`,
-
-            offers: {
-              "@type": "Offer",
-              url: "https://gauswarn.com/products",
-              priceCurrency: "INR",
-              price: String(selectedProduct.product_price),
-              availability: "https://schema.org/InStock",
-              itemCondition: "https://schema.org/NewCondition",
-            },
-
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: Number(averageRating || 5),
-              reviewCount: Number(totalReviews || 1),
-            },
-
-            review: reviews?.slice(0, 5).map((review) => ({
-              "@type": "Review",
-              author: {
-                "@type": "Person",
-                name: review.name || "Verified Customer",
-              },
-              reviewRating: {
-                "@type": "Rating",
-                ratingValue: Number(review.rating || 5),
-                bestRating: "5",
-              },
-              reviewBody: review.feedback || "Excellent quality ghee.",
-            })),
-          })}
-        </script>
-      )} */}
 
       <div className="product-page">
         <div className="product-container">
@@ -612,7 +568,7 @@ const ProductPageMain = () => {
                 ) : (
                   <img
                     src={productImages[selectedImage]}
-                    alt={`Product image ${selectedImage + '1'}`}
+                    alt={`Product image ${selectedImage + "1"}`}
                     className="responsive-product-img"
                     loading="lazy"
                   />
@@ -706,8 +662,6 @@ const ProductPageMain = () => {
                 </p>
 
                 <div className="rating-section">
-                  {/* <StarRating rating={Math.floor(averageRating)} /> */}
-
                   <Rating
                     initialValue={averageRating}
                     readonly
@@ -794,18 +748,6 @@ const ProductPageMain = () => {
                   <span className="availability-label">Availability:</span>
                   <span className="availability-status">In Stock</span>
                 </div>
-
-                {/* <div className="pricing-section">
-                  <div className="price">
-                    <span className="current-price">
-                      ₹{selectedProduct?.product_price ?? "0"}
-                    </span>
-                    <span className="original-price">
-                      ₹{selectedProduct?.product_del_price ?? "0"}
-                    </span>
-                  </div>
-                  <div className="discount-badge">Save 50%</div>
-                </div> */}
 
                 <div className="pricing-section">
                   <div className="price">
@@ -957,7 +899,6 @@ const ProductPageMain = () => {
                       </div>
                     </div>
                   </div>
-                  {/* <StarRating rating={review.rating} size={14} /> */}
                   <Rating
                     initialValue={review.rating || 0}
                     readonly
@@ -985,14 +926,6 @@ const ProductPageMain = () => {
             <form onSubmit={handleSubmitReview} className="review-form">
               <div className="form-group">
                 <label className="form-label">Give Your Rating *</label>
-                {/* <StarRating
-                  rating={reviewForm.rating}
-                  size={28}
-                  interactive={true}
-                  onRatingChange={(rating) =>
-                    setReviewForm({ ...reviewForm, rating })
-                  }
-                /> */}
 
                 <Rating
                   onClick={(value) =>
@@ -1050,7 +983,11 @@ const ProductPageMain = () => {
               </div>
 
               <div className="form-actions d-flex gap-2">
-                <button aria-label="Submit Review" type="submit" className="submit-review-btn">
+                <button
+                  aria-label="Submit Review"
+                  type="submit"
+                  className="submit-review-btn"
+                >
                   <Send size={18} /> Submit
                 </button>
               </div>
@@ -1060,7 +997,6 @@ const ProductPageMain = () => {
       </div>
 
       <ProductHeroSection />
-      {/* <ProductShowcase showProduct={false} /> */}
       <GheeFeatureProductPage />
     </>
   );

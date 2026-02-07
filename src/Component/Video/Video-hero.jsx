@@ -1,8 +1,5 @@
 import { useState } from "react";
 import styles from "./hero-section.module.css";
-
-// import VideoSource from "../../asset/img/Video/gauswarn.mp4";
-
 import VideoSource from "../../asset/new-img/Video/gauswarn.mp4";
 
 export default function VideoSection() {
@@ -16,23 +13,6 @@ export default function VideoSection() {
       </p>
 
       <section className={styles.hero}>
-        {/* Video Background */}
-        {/* <video
-          className={styles.backgroundVideo}
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src={VideoSource} type="video/mp4" />
-          Your browser does not support the video tag.
-          <track
-            src="captions.vtt"
-            kind="captions"
-            srclang="en"
-            label="English"
-          />
-        </video> */}
         <video
           className={styles.backgroundVideo}
           autoPlay

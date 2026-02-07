@@ -198,6 +198,33 @@ const FinalPaymentMainPage = () => {
             console.log("Payment Validation Response:", result);
 
             if (result.success) {
+              // ===== META PURCHASE EVENT =====
+              try {
+                const cartData = JSON.parse(
+                  sessionStorage.getItem("cart") || "[]",
+                );
+
+                if (window.fbq && cartData.length > 0) {
+                  const contentIds = cartData.map((item) => item.user_id);
+                  const totalValue = cartData.reduce(
+                    (sum, item) =>
+                      sum + item.product_price * item.product_quantity,
+                    0,
+                  );
+
+                  window.fbq("track", "Purchase", {
+                    content_ids: contentIds,
+                    content_type: "product",
+                    value: totalValue,
+                    currency: "INR",
+                  });
+                }
+              } catch (err) {
+                console.error("Purchase pixel error:", err);
+              }
+              // ===== END META EVENT =====
+
+              // Clear cart
               setCart([]);
               setContextCart([]);
               sessionStorage.removeItem("cart");
@@ -236,7 +263,8 @@ const FinalPaymentMainPage = () => {
         <ToastContainer />
         <ShoppingCart size={80} color="#fff" strokeWidth={1.5} />
         <h2 className="new-emptyTitle">Your Cart is Empty</h2>
-        <button aria-label="Start Shopping"
+        <button
+          aria-label="Start Shopping"
           className="new-shopButton"
           onClick={() => navigate("/products")}
         >
@@ -317,7 +345,8 @@ const FinalPaymentMainPage = () => {
                   </div>
                 ))}
 
-                <button aria-label="Proceed to Payment"
+                <button
+                  aria-label="Proceed to Payment"
                   onClick={handleSubmit}
                   className="new-btn-cta new-checkoutBtn"
                   disabled={isLoading || showLoader}
@@ -358,7 +387,7 @@ const FinalPaymentMainPage = () => {
                       {/* QUANTITY CONTROL */}
                       <div className="payment-quantity-section">
                         <div className="payment-quantity-control">
-                          <button 
+                          <button
                             className="payment-quantity-btn payment-decrease-btn"
                             onClick={() => updateQuantity(index, -1)}
                             disabled={
@@ -392,7 +421,8 @@ const FinalPaymentMainPage = () => {
                         ₹{item?.product_price}
                       </div>
 
-                      <button aria-label="Remove item from cart"
+                      <button
+                        aria-label="Remove item from cart"
                         onClick={() => removeFromCart(index)}
                         className="new-deleteButton"
                         disabled={isLoading || showLoader}

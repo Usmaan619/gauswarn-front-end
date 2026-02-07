@@ -1,37 +1,32 @@
-import React, { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { toast } from "react-toastify";
+import { useEffect } from "react";
 import { useCartContext } from "../Context/UserContext";
 import "./payment-success.css";
 
 const PaymentSuccess = () => {
   const { setCart } = useCartContext();
-  // const navigate = useNavigate();
 
-  // const sendInvoice = async () => {
-  //   const order_payload = sessionStorage.getItem("order_payload");
+  useEffect(() => {
+    try {
+      const cart = JSON.parse(sessionStorage.getItem("cart") || "[]");
 
-  //   if (!order_payload) {
-  //     toast.error("Failed to retrieve order details.");
-  //     return;
-  //   }
+      if (window.fbq && cart.length > 0) {
+        const contentIds = cart.map((item) => item.user_id);
+        const totalValue = cart.reduce(
+          (sum, item) => sum + item.product_total_amount,
+          0,
+        );
 
-  //   const orderData = JSON.parse(order_payload);
-  //   const { user_mobile_num, user_total_amount } = orderData;
-  //   const ordeId = sessionStorage.getItem("orderId");
-
-  //   const whatsappApiUrl = `https://bhashsms.com/api/sendmsg.php?user=RAJLAKSHMIBWA&pass=123456&sender=BUZWAP&phone=${user_mobile_num}&text=gauswarn_ghee002&priority=wa&stype=normal&Params=${ordeId},${user_total_amount}&htype=image&url=https://i.ibb.co/p6P86j3J/Whats-App-Image-2025-02-17-at-12-46-41.jpg`;
-
-  //   try {
-  //     await fetch(whatsappApiUrl, { mode: "no-cors" });
-  //     toast.success("Invoice sent successfully!");
-  //     navigate("/");
-  //     localStorage.removeItem("orderId");
-  //   } catch (error) {
-  //     toast.error("Failed to send invoice.");
-  //     localStorage.removeItem("orderId");
-  //   }
-  // };
+        window.fbq("track", "Purchase", {
+          content_ids: contentIds,
+          content_type: "product",
+          value: totalValue,
+          currency: "INR",
+        });
+      }
+    } catch (err) {
+      console.error("Purchase pixel error:", err);
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.removeItem("cart");
@@ -40,7 +35,7 @@ const PaymentSuccess = () => {
 
   return (
     <div className="payment-success">
-      {/* 👆 wrapper for scoped CSS */}
+      {/* wrapper for scoped CSS */}
 
       <div className="payment d-flex align-items-center">
         <div className="container">
@@ -67,16 +62,6 @@ const PaymentSuccess = () => {
 
               <div className="text-center py-2">
                 <p className="fs-2 fw-bold">Payment Successful</p>
-
-                {/* optional button */}
-                {/* 
-                <button
-                  onClick={sendInvoice}
-                  className="px-5 py-2 fw-bold rounded-pill"
-                >
-                  Send Invoice
-                </button> 
-                */}
               </div>
             </div>
           </div>
