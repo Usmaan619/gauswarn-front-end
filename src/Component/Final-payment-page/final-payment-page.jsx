@@ -10,10 +10,26 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../Context/UserContext";
+import { z } from "zod";
 
 const FinalPaymentMainPage = () => {
   const navigate = useNavigate();
   const { setCart: setContextCart } = useCartContext(); // Context ka setCart
+  const checkoutSchema = z.object({
+    user_name: z.string().min(1, "Name is required"),
+    user_email: z.string().min(1, "Email is required").email("Invalid email"),
+    user_mobile_num: z
+      .string()
+      .regex(/^[0-9]{10}$/, "Valid 10-digit mobile number required"),
+    user_house_number: z.string().min(1, "House number is required"),
+    user_landmark: z.string().min(1, "Landmark is required"),
+    user_country: z.string().min(1, "Country is required"),
+    user_state: z.string().min(1, "State is required"),
+    user_city: z.string().min(1, "City is required"),
+    user_pincode: z
+      .string()
+      .regex(/^[0-9]{6}$/, "Valid 6-digit pincode required"),
+  });
 
   // useState se cart manage karo + context ko sync karo
   const [cart, setCart] = useState(
@@ -94,25 +110,19 @@ const FinalPaymentMainPage = () => {
 
   // FORM VALIDATION
   const validateForm = () => {
-    const e = {};
+    const result = checkoutSchema.safeParse(formData);
 
-    if (!formData.user_name.trim()) e.user_name = "Name is required";
-    if (!formData.user_email.trim()) e.user_email = "Email is required";
+    if (!result.success) {
+      const fieldErrors = {};
+      result.error.errors.forEach((err) => {
+        fieldErrors[err.path[0]] = err.message;
+      });
+      setErrors(fieldErrors);
+      return false;
+    }
 
-    if (!/^[0-9]{10}$/.test(formData.user_mobile_num))
-      e.user_mobile_num = "Valid 10-digit mobile number required";
-
-    if (!formData.user_house_number.trim())
-      e.user_house_number = "House number is required";
-    if (!formData.user_landmark.trim())
-      e.user_landmark = "Landmark is required";
-    if (!formData.user_country.trim()) e.user_country = "Country is required";
-    if (!formData.user_state.trim()) e.user_state = "State is required";
-    if (!formData.user_city.trim()) e.user_city = "City is required";
-    if (!formData.user_pincode.trim()) e.user_pincode = "Pincode is required";
-
-    setErrors(e);
-    return Object.keys(e).length === 0;
+    setErrors({});
+    return true;
   };
 
   const reset = () => {
@@ -173,7 +183,7 @@ const FinalPaymentMainPage = () => {
 
       // Rest of Razorpay code remains same...
       const options = {
-        key: "rzp_live_woFUpWK35AZbcn",
+        key: "rzp_test_qcl3EzwXvpMnwS",
         amount: order.amount,
         currency: order.currency,
         name: "Gauswarn",
@@ -203,7 +213,6 @@ const FinalPaymentMainPage = () => {
                 const cartData = JSON.parse(
                   sessionStorage.getItem("cart") || "[]",
                 );
-
                 if (window.fbq && cartData.length > 0) {
                   const contentIds = cartData.map((item) => item.user_id);
                   const totalValue = cartData.reduce(
@@ -301,6 +310,18 @@ const FinalPaymentMainPage = () => {
                   <h2 className="new-formTitle">Checkout Details</h2>
                 </div>
 
+                {/* RED COD NOTICE */}
+                <div
+                  style={{
+                    color: "red",
+                    fontWeight: "bold",
+                    marginBottom: "12px",
+                  }}
+                >
+                  Cash on Delivery not available. Please fill your address
+                  properly.
+                </div>
+
                 {/* BASIC + DELIVERY FIELDS */}
                 {[
                   { name: "user_name", label: "Full Name" },
@@ -326,10 +347,15 @@ const FinalPaymentMainPage = () => {
                         })
                       }
                       maxLength={
-                        field.name === "user_mobile_num" ? 10 : undefined
+                        field.name === "user_mobile_num"
+                          ? 10
+                          : field.name === "user_pincode"
+                            ? 6
+                            : undefined
                       }
                       onKeyPress={(e) =>
-                        field.name === "user_mobile_num" &&
+                        (field.name === "user_mobile_num" ||
+                          field.name === "user_pincode") &&
                         !/[0-9]/.test(e.key) &&
                         e.preventDefault()
                       }
