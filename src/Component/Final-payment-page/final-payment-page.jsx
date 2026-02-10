@@ -182,8 +182,9 @@ const FinalPaymentMainPage = () => {
       const order = res.data.razorpay_order;
 
       // Rest of Razorpay code remains same...
+      // "rzp_test_qcl3EzwXvpMnwS"
       const options = {
-        key: "rzp_test_qcl3EzwXvpMnwS",
+        key: "rzp_live_woFUpWK35AZbcn",
         amount: order.amount,
         currency: order.currency,
         name: "Gauswarn",
