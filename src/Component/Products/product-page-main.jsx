@@ -11,16 +11,16 @@ import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../Context/UserContext";
 
 // Assets
-import secure1 from "../../asset/new-img/product-page-logo/fast.png";
-import secure2 from "../../asset/new-img/product-page-logo/secure.png";
-import secure3 from "../../asset/new-img/product-page-logo/quality.png";
-import secure4 from "../../asset/new-img/product-page-logo/natural.png";
-import paymentLogo1 from "../../asset/new-img/product-page-logo/Visa.png";
-import paymentLogo2 from "../../asset/new-img/product-page-logo/rupay.png";
-import paymentLogo3 from "../../asset/new-img/product-page-logo/master-card.png";
-import paymentLogo4 from "../../asset/new-img/product-page-logo/Bhim.png";
-import paymentLogo5 from "../../asset/new-img/product-page-logo/razor-pay.png";
-import productPlaceholder from "../../asset/new-img/product-imgs/product1.png";
+import secure1 from "../../asset/new-img/product-page-logo/fast.webp";
+import secure2 from "../../asset/new-img/product-page-logo/secure.webp";
+import secure3 from "../../asset/new-img/product-page-logo/quality.webp";
+import secure4 from "../../asset/new-img/product-page-logo/natural.webp";
+import paymentLogo1 from "../../asset/new-img/product-page-logo/Visa.webp";
+import paymentLogo2 from "../../asset/new-img/product-page-logo/rupay.webp";
+import paymentLogo3 from "../../asset/new-img/product-page-logo/master-card.webp";
+import paymentLogo4 from "../../asset/new-img/product-page-logo/Bhim.webp";
+import paymentLogo5 from "../../asset/new-img/product-page-logo/razor-pay.webp";
+import productPlaceholder from "../../asset/new-img/product-imgs/product1.webp";
 
 // Components
 import ProfileSection from "./profileSection";

@@ -1,7 +1,6 @@
 .bilona-product-hero-section {
   position: relative;
-  /* min-height: 80dvh; */
-  background-image: url("../../asset/new-img/bilona-img/bilona.png");
+  background-image: url("../../asset/new-img/bilona-img/bilona.webp");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,16 +9,6 @@
   justify-content: center;
   overflow: hidden;
   height: 80dvh;
-}
-
-.bilona-product-hero-overlay {
-  /* position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; */
-  /* background: rgba(0, 0, 0, 0.4); */
-  /* z-index: 1; */
 }
 
 .bilona-container {
@@ -75,7 +64,8 @@
   transform: translateY(-1px);
 }
 
-@keyframes fadeInUp {
+@keyframes fadeInUp{
+
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -84,17 +74,18 @@
     opacity: 1;
     transform: translateY(0);
   }
+
 }
 
 @media (max-width: 991px) {
   .bilona-product-hero-title {
     font-size: 2.5rem;
   }
-
+  
   .bilona-product-hero-subtitle {
     font-size: 1.25rem;
   }
-
+  
   .bilona-btn-cta {
     font-size: 1.1rem;
     padding: 0.9rem 2.5rem;
@@ -106,21 +97,22 @@
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
-
+  
   .bilona-product-hero-subtitle {
     font-size: 1rem;
     margin-bottom: 2rem;
   }
-
+  
   .bilona-btn-cta {
     font-size: 1rem;
     padding: 0.8rem 2rem;
   }
-
+  
   .bilona-product-hero-content {
     padding: 1rem;
   }
-   .bilona-product-hero-section {
+  
+  .bilona-product-hero-section {
     height: 50dvh;
   }
 }
@@ -129,19 +121,17 @@
   .bilona-product-hero-title {
     font-size: 1.5rem;
   }
-
+  
   .bilona-product-hero-subtitle {
     font-size: 0.9rem;
   }
-
+  
   .bilona-btn-cta {
     font-size: 0.95rem;
     padding: 0.75rem 1.75rem;
   }
-
+  
   .bilona-product-hero-section {
     height: 40dvh;
   }
 }
-
-/* ghee */

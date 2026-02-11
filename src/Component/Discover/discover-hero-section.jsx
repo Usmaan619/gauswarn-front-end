@@ -1,7 +1,7 @@
 import StatsCard from "./discover-stats-card";
 import ChecklistItem from "./discover-checklist-item";
-import image1 from "../../asset/new-img/onwer/onwer.png";
-import image2 from "../../asset/new-img/contact-back-arrow/contact-back-arow.png";
+import image1 from "../../asset/new-img/onwer/onwer.webp";
+import image2 from "../../asset/new-img/contact-back-arrow/contact-back-arow.webp";
 
 import "./discover-hero-section.css";
 import { useNavigate } from "react-router-dom";

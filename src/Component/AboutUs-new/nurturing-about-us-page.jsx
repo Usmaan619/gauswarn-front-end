@@ -1,6 +1,6 @@
 import "./nurturing-about-us-page.css";
 import { useNavigate } from "react-router-dom";
-import cowGif from "../../asset/new-img/about-new-logo/cow.png";
+import cowGif from "../../asset/new-img/about-new-logo/cow.webp";
 
 import { FaEye, FaHandsHelping } from "react-icons/fa";
 import { GiArrowScope } from "react-icons/gi";
@@ -101,7 +101,11 @@ const NurituringAboutUs = () => {
             </div>
 
             {/* CTA */}
-            <button aria-label="View Lab Report" className="nurtring-download-btn" onClick={goToLabReport}>
+            <button
+              aria-label="View Lab Report"
+              className="nurtring-download-btn"
+              onClick={goToLabReport}
+            >
               <span>View Lab Report</span>
             </button>
           </div>
@@ -123,105 +127,3 @@ const NurituringAboutUs = () => {
 };
 
 export default NurituringAboutUs;
-
-// import React from "react";
-// import "./nurturing-about-us-page.css";
-// import aimImg from "../../asset/new-img/about-new-logo/aim.png";
-// import eyeYellowImg from "../../asset/new-img/about-new-logo/eye-yellow.png";
-// import reactImg from "../../asset/new-img/about-new-logo/react.png";
-// import { useNavigate } from "react-router-dom";
-// import cowGif from "../../asset/new-img/about-new-logo/cow.gif";
-
-// const NurituringAboutUs = () => {
-//   const navigate = useNavigate();
-
-//   const goToLabReport = () => navigate("/lab");
-
-//   return (
-//     <div className="nurtring-container">
-//       <div className="nurtring-content-wrapper">
-//         {/* LEFT SECTION */}
-//         <div className="nurtring-left-section">
-//           <h1 className="nurtring-main-heading">
-//             Pure A2 Gir Cow Ghee, Crafted with Care & Tradition
-//           </h1>
-
-//           {/* MISSION */}
-//           <div className="nurtring-card nurtring-mission-card">
-//             <div className="nurtring-icon-wrapper">
-//               <img src={aimImg} className="nurtring-icon" alt="Our Mission" />
-//             </div>
-//             <div className="nurtring-card-content">
-//               <h3 className="nurtring-card-title">Our Mission</h3>
-//               <p className="nurtring-card-text">
-//                 At GAUSWARN, our mission is to deliver 100% pure A2 Gir Cow Ghee
-//                 made using the traditional Bilona method, ensuring natural
-//                 nutrition, rich aroma, and authentic taste for everyday
-//                 wellness.
-//               </p>
-//             </div>
-//           </div>
-
-//           {/* VISION & VALUES */}
-//           <div className="nurtring-cards-row">
-//             {/* VISION */}
-//             <div className="nurtring-card nurtring-small-card">
-//               <div className="nurtring-icon-wrapper">
-//                 <img
-//                   src={eyeYellowImg}
-//                   className="nurtring-icon"
-//                   alt="Our Vision"
-//                 />
-//               </div>
-//               <div className="nurtring-card-content">
-//                 <h3 className="nurtring-card-title">Our Vision</h3>
-//                 <p className="nurtring-card-text">
-//                   To preserve India’s indigenous Gir cow heritage by supporting
-//                   ethical cow rearing and empowering traditional Pashupalak
-//                   communities.
-//                 </p>
-//               </div>
-//             </div>
-
-//             {/* VALUES */}
-//             <div className="nurtring-card nurtring-small-card">
-//               <div className="nurtring-icon-wrapper">
-//                 <img
-//                   src={reactImg}
-//                   className="nurtring-icon"
-//                   alt="Our Values"
-//                 />
-//               </div>
-//               <div className="nurtring-card-content">
-//                 <h3 className="nurtring-card-title">Our Values</h3>
-//                 <p className="nurtring-card-text">
-//                   We stand for purity, sustainability, and trust by producing
-//                   chemical-free Bilona A2 ghee while promoting ethical farming
-//                   and rural community upliftment.
-//                 </p>
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* CTA */}
-//           <button className="nurtring-download-btn" onClick={goToLabReport}>
-//             <span>View Lab Report</span>
-//           </button>
-//         </div>
-
-//         {/* RIGHT SECTION */}
-//         <div className="nurtring-right-section">
-//           <div className="nurtring-image-container">
-//             <img
-//               src={cowGif}
-//               alt="Traditional Indian cow farming and rural sustainability"
-//               className="nurtring-hero-image"
-//             />
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default NurituringAboutUs;

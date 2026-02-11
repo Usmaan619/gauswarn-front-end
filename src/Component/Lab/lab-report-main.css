@@ -50,7 +50,6 @@
   text-align: center;
 }
 
-/* Modal */
 .modal {
   position: fixed;
   inset: 0;
@@ -89,6 +88,7 @@
   height: 36px;
   cursor: pointer;
 }
+
 .lab-page {
   max-width: 1100px;
   margin: auto;
@@ -111,7 +111,6 @@
   margin-bottom: 40px;
 }
 
-/* Section */
 .report-section {
   margin-bottom: 60px;
   border-top: 2px solid #000;
@@ -123,7 +122,6 @@
   margin-bottom: 15px;
 }
 
-/* Summary box */
 .report-summary {
   background: #f7f7f7;
   border: 1px solid #ccc;
@@ -141,7 +139,6 @@
   font-size: 15px;
 }
 
-/* Meta */
 .report-meta {
   font-size: 14px;
   color: #333;
@@ -151,23 +148,21 @@
   gap: 20px;
 }
 
-/* Report pages */
 .report-pages img {
   width: 100%;
   margin-bottom: 20px;
   border: 1px solid #ccc;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .lab-page h1 {
     font-size: 26px;
   }
-
+  
   .report-section h2 {
     font-size: 20px;
   }
-
+  
   .report-meta {
     flex-direction: column;
     gap: 6px;

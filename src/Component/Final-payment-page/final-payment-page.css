@@ -4,38 +4,19 @@
   --text-dark: #222;
 }
 
-/* ---------- GLOBAL WRAPPER ---------- */
-
 .new-paymentContainer {
   min-height: 100vh;
   background: linear-gradient(135deg, #fff 0%, #fff 100%);
   padding: 16px 10px;
 }
 
-@media (min-width: 768px) {
-  .new-paymentContainer {
-    padding: 24px;
-  }
-}
-
-/* 2-column grid on desktop, single column mobile */
-
 .new-paymentWrapper {
   max-width: 1400px;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr; /* mobile: single column */
+  grid-template-columns: 1fr;
   gap: 30px;
 }
-
-@media (min-width: 900px) {
-  .new-paymentWrapper {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); /* form | summary */
-    align-items: flex-start;
-  }
-}
-
-/* ---------- FORM & SUMMARY CARDS ---------- */
 
 .new-formCard,
 .new-summaryCard {
@@ -43,13 +24,6 @@
   border-radius: 20px;
   padding: 24px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-}
-
-@media (min-width: 900px) {
-  .new-formCard,
-  .new-summaryCard {
-    padding: 32px 36px;
-  }
 }
 
 .new-formHeader {
@@ -63,12 +37,6 @@
 .new-formTitle {
   font-size: 20px;
   font-weight: 700;
-}
-
-@media (min-width: 768px) {
-  .new-formTitle {
-    font-size: 24px;
-  }
 }
 
 .new-sectionTitle {
@@ -89,8 +57,6 @@
   background: #4b3109;
   border-radius: 50%;
 }
-
-/* ---------- INPUTS ---------- */
 
 .new-inputGroup {
   margin-bottom: 14px;
@@ -120,8 +86,6 @@
   display: block;
 }
 
-/* 2-column row -> mobile 1-column */
-
 .new-row {
   display: grid;
   grid-template-columns: 1fr;
@@ -129,19 +93,10 @@
   margin: 10px 0px;
 }
 
-@media (min-width: 768px) {
-  .new-row {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-}
-
 .new-halfWidth {
   display: flex;
   flex-direction: column;
 }
-
-/* ---------- CTA BUTTON ---------- */
 
 .new-btn-cta {
   background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
@@ -173,8 +128,6 @@
   opacity: 0.7;
   cursor: not-allowed;
 }
-
-/* ---------- SUMMARY RIGHT SIDE ---------- */
 
 .new-summarySection {
   width: 100%;
@@ -211,15 +164,10 @@
   padding-right: 4px;
 }
 
-/* ---------- CART ITEM ROW (RESPONSIVE) ---------- */
-
-/* Mobile-first: 2-rows layout */
-
 .new-cartItem {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-template-areas:
-    "img info price"
+  grid-template-areas: "img info price"
     "img qty  delete";
   align-items: center;
   background: #f8f9fa;
@@ -254,8 +202,6 @@
   color: #7a7a7a;
 }
 
-/* Quantity block: full width under text on mobile */
-
 .payment-quantity-section {
   grid-area: qty;
   margin-top: 4px;
@@ -267,8 +213,6 @@
   gap: 8px;
   width: fit-content;
 }
-
-/* Price & delete */
 
 .new-itemPrice {
   grid-area: price;
@@ -286,22 +230,6 @@
   cursor: pointer;
   justify-self: flex-end;
 }
-
-/* Tablet/desktop: 1-row 5 columns */
-
-@media (min-width: 768px) {
-  .new-cartItem {
-    grid-template-columns: auto 1.5fr auto auto auto; /* img | details | qty | price | delete */
-    grid-template-areas: "img info qty price delete";
-    align-items: center;
-  }
-
-  .payment-quantity-section {
-    margin-top: 0;
-  }
-}
-
-/* ---------- QUANTITY INPUT STYLES ---------- */
 
 .payment-quantity-btn {
   width: 32px;
@@ -345,8 +273,6 @@
   background-color: #fffbf0;
 }
 
-/* Remove number input spinner */
-
 .payment-quantity-input::-webkit-outer-spin-button,
 .payment-quantity-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -356,8 +282,6 @@
 .payment-quantity-input[type="number"] {
   -moz-appearance: textfield;
 }
-
-/* ---------- SUMMARY TOTAL BOX ---------- */
 
 .new-summaryDetails {
   background: #f0f0ff;
@@ -399,8 +323,6 @@
   margin-top: 8px;
 }
 
-/* ---------- EMPTY CART ---------- */
-
 .new-emptyCart {
   min-height: 100vh;
   background: linear-gradient(135deg, #4b3109 0%, #4b3109 100%);
@@ -416,12 +338,6 @@
   color: #fff;
   font-size: 22px;
   margin-top: 16px;
-}
-
-@media (min-width: 768px) {
-  .new-emptyTitle {
-    font-size: 26px;
-  }
 }
 
 .new-emptyText {
@@ -440,8 +356,57 @@
   max-width: 260px;
 }
 
-/* ---------- LOADER TEXT (LoadingOverlay) ---------- */
-
 _loading_overlay_wrapper {
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .new-paymentContainer {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 900px) {
+  .new-paymentWrapper {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 900px) {
+  .new-formCard,
+    .new-summaryCard {
+    padding: 32px 36px;
+  }
+}
+
+@media (min-width: 768px) {
+  .new-formTitle {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .new-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .new-cartItem {
+    grid-template-columns: auto 1.5fr auto auto auto;
+    grid-template-areas: "img info qty price delete";
+    align-items: center;
+  }
+  
+  .payment-quantity-section {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .new-emptyTitle {
+    font-size: 26px;
+  }
 }

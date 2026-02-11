@@ -19,6 +19,7 @@ export default function VideoSection() {
           loop
           muted
           playsInline
+          preload="none" 
         >
           <source src={VideoSource} type="video/mp4" />
           <track

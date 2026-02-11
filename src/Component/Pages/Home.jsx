@@ -1,45 +1,69 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { Carousel } from "react-responsive-carousel";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  lazy,
+  Suspense,
+} from "react";
+
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 import { getData } from "../../services/api";
 import { toastError } from "../../services/toaster.service";
 
-import banner1Img from "../../asset/new-img/banner-main-page/banner2.png";
-import banner2Img from "../../asset/new-img/banner-main-page/banner1.png";
+import banner1Img from "../../asset/new-img/banner-main-page/banner2.webp";
+import banner2Img from "../../asset/new-img/banner-main-page/banner1.webp";
+
+import "./home.css";
 
 /* =========================
-   INITIAL FALLBACK
+   LAZY LOAD CAROUSEL
+========================= */
+const Carousel = lazy(() =>
+  import("react-responsive-carousel").then((mod) => ({
+    default: mod.Carousel,
+  })),
+);
+
+/* =========================
+   FALLBACK
 ========================= */
 const FALLBACK_BANNERS = [banner1Img, banner2Img];
+
+/* =========================
+   CLOUDINARY OPTIMIZER
+========================= */
+const optimizeImage = (url, width = 1400) => {
+  if (!url) return "";
+  if (url.includes("res.cloudinary.com")) {
+    return url.replace("/upload/", `/upload/f_auto,q_auto,w_${width}/`);
+  }
+  return url;
+};
 
 const Home = () => {
   const [bannerUrls, setBannerUrls] = useState(FALLBACK_BANNERS);
   const [loading, setLoading] = useState(true);
 
   /* =========================
-     FETCH BANNERS (OPTIMIZED)
+     FETCH BANNERS
   ========================= */
   const fetchBanners = useCallback(async () => {
-    setLoading(true);
     try {
       const res = await getData("admin/home-banners");
 
-      if (!res || typeof res !== "object") {
-        throw new Error("Invalid banner response");
-      }
+      const urls = [
+        res?.banner1,
+        res?.banner2,
+        res?.banner3,
+        res?.banner4,
+      ].filter(Boolean);
 
-      // ✅ Direct array - NO object reference issues
-      const urls = [];
-      if (res?.banner1) urls.push(res.banner1);
-      if (res?.banner2) urls.push(res.banner2);
-      if (res?.banner3) urls.push(res.banner3);
-      if (res?.banner4) urls.push(res.banner4);
-
-      setBannerUrls(urls.length > 0 ? urls : FALLBACK_BANNERS);
+      setBannerUrls(urls.length ? urls : FALLBACK_BANNERS);
     } catch (error) {
-      console.error("Failed to fetch banners:", error);
+      console.error("Banner fetch error:", error);
       toastError("Failed to load banners");
       setBannerUrls(FALLBACK_BANNERS);
     } finally {
@@ -52,22 +76,29 @@ const Home = () => {
   }, [fetchBanners]);
 
   /* =========================
-     SLIDES (STABLE)
+     SLIDES
   ========================= */
   const slides = useMemo(
     () =>
       bannerUrls.map((url, index) => ({
-        desktop: url,
-        mobile: url,
+        desktop: optimizeImage(url, 1400),
+        mobile: optimizeImage(url, 768),
         alt: `Banner ${index + 1}`,
       })),
-    [bannerUrls]
+    [bannerUrls],
   );
 
-  const hasSlides = slides.length > 0;
+  /* =========================
+     PRELOAD FIRST IMAGE
+  ========================= */
+  useEffect(() => {
+    if (!slides.length) return;
+    const img = new Image();
+    img.src = slides[0].desktop;
+  }, [slides]);
 
   /* =========================
-     CUSTOM ARROWS (STABLE)
+     ARROWS
   ========================= */
   const renderPrevArrow = useCallback(
     (onClickHandler, hasPrev, label) =>
@@ -82,7 +113,7 @@ const Home = () => {
           <BsChevronLeft />
         </button>
       ),
-    []
+    [],
   );
 
   const renderNextArrow = useCallback(
@@ -98,12 +129,9 @@ const Home = () => {
           <BsChevronRight />
         </button>
       ),
-    []
+    [],
   );
 
-  /* =========================
-     CAROUSEL CONFIG (STABLE)
-  ========================= */
   const carouselProps = useMemo(
     () => ({
       showArrows: false,
@@ -112,7 +140,7 @@ const Home = () => {
       infiniteLoop: true,
       autoPlay: true,
       interval: 6500,
-      transitionTime: 800,
+      transitionTime: 600,
       animationHandler: "fade",
       swipeable: false,
       emulateTouch: false,
@@ -121,69 +149,50 @@ const Home = () => {
       renderArrowNext: renderNextArrow,
       className: "main-carousel fade-carousel",
     }),
-    [renderPrevArrow, renderNextArrow]
+    [renderPrevArrow, renderNextArrow],
   );
 
   /* =========================
-     SKELETON LOADING
+     SKELETON (NO CLS)
   ========================= */
-  if (loading || !hasSlides) {
+  if (loading || !slides.length) {
     return (
       <div className="home">
-        <style>{`
-          @keyframes shimmer {
-            0% {
-              background-position: 100% 0;
-            }
-            100% {
-              background-position: -100% 0;
-            }
-          }
-          .shimmer-bg {
-            background: linear-gradient(
-              90deg,
-              #eeeeee 25%,
-              #f5f5f5 37%,
-              #eeeeee 63%
-            );
-            background-size: 400% 100%;
-            animation: shimmer 1.4s infinite;
-            height: 400px;
-            border-radius: 8px;
-          }
-        `}</style>
-        <div className="carousel-container">
-          <div className="carousel-full-image shimmer-bg" />
-        </div>
+        <div className="carousel-skeleton" />
       </div>
     );
   }
 
   /* =========================
-     MAIN CAROUSEL
+     MAIN
   ========================= */
   return (
     <div className="home">
       <div className="carousel-container">
-        <Carousel {...carouselProps}>
-          {slides.map((item, index) => (
-            <div key={item.alt} className="carousel-slide">
-              <picture>
-                <source media="(max-width: 768px)" srcSet={item.mobile} />
-                <img
-                  src={item.desktop}
-                  alt={item.alt}
-                  className="carousel-full-image"
-                  loading={index === 0 ? "eager" : "lazy"}
-                  onError={(e) => {
-                    e.currentTarget.src = banner1Img;
-                  }}
-                  decoding="async"
-                />
-              </picture>
-            </div>
-          ))}
-        </Carousel>
+        <Suspense fallback={<div className="carousel-skeleton" />}>
+          <Carousel {...carouselProps}>
+            {slides.map((item, index) => (
+              <div key={item.alt}>
+                <picture>
+                  <source media="(max-width: 768px)" srcSet={item.mobile} />
+                  <img
+                    src={item.desktop}
+                    alt={item.alt}
+                    width="1262"
+                    height="508"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchpriority={index === 0 ? "high" : "auto"}
+                    decoding="async"
+                    className="carousel-image"
+                    onError={(e) => {
+                      e.currentTarget.src = banner1Img;
+                    }}
+                  />
+                </picture>
+              </div>
+            ))}
+          </Carousel>
+        </Suspense>
       </div>
     </div>
   );

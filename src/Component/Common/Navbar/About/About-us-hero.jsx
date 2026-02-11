@@ -1,4 +1,5 @@
-import about1 from "../../../../asset/new-img/about-main/about1.jpeg";
+import { Helmet } from "react-helmet-async";
+import about1 from "../../../../asset/new-img/about-main/about1.webp";
 import "./AboutUsHero.css"; // Separate CSS file
 import { useNavigate } from "react-router-dom";
 
@@ -9,14 +10,28 @@ export default function AboutUsHero() {
 
   return (
     <section className="aboutUsHero">
+      {/* Preload LCP image */}
+      <Helmet>
+        <link rel="preload" as="image" href={about1} />
+      </Helmet>
       <div className="containerCustom">
         <div className="aboutWrapper">
           {/* Left - Full Image Section */}
           <div className="aboutLeft">
             <img
               src={about1}
+              srcSet={`
+    ${about1} 300w,
+    ${about1} 600w,
+    ${about1} 1200w
+  `}
+              sizes="(max-width: 768px) 90vw, 412px"
               alt="Pure A2 Gir Cow Ghee jar by Gauswarn India"
               className="aboutMainImg"
+              width="412"
+              height="481"
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
 
@@ -110,7 +125,11 @@ export default function AboutUsHero() {
             </ul>
 
             {/* CTA Button */}
-            <button aria-label="Learn more about Gauswarn" className="ctaButton" onClick={learnMoreAbout}>
+            <button
+              aria-label="Learn more about Gauswarn"
+              className="ctaButton"
+              onClick={learnMoreAbout}
+            >
               Learn More About Gauswarn
               <svg
                 className="arrowSvg"

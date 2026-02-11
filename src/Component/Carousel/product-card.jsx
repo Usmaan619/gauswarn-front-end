@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useCartContext } from "../Context/UserContext";
 
-import productPlaceholder from "../../asset/new-img/product-imgs/product1.png";
+import productPlaceholder from "../../asset/new-img/product-imgs/product1.webp";
 import "./product-card.css";
 
 const ProductCard = ({ product }) => {

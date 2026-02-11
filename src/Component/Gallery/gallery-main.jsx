@@ -1,21 +1,21 @@
 import React from "react";
 import "./gallery-main.css";
 import ProductHeroSection from "../Products/product-hero-section";
-import gallery1 from "../../asset/new-img/gallery/gallery1.jpeg";
+import gallery1 from "../../asset/new-img/gallery/gallery1.webp";
 
-import gallery2 from "../../asset/new-img/gallery/gallery2.png";
-import gallery3 from "../../asset/new-img/gallery/gallery3.png";
-import gallery4 from "../../asset/new-img/gallery/gallery4.jpeg";
-import gallery5 from "../../asset/new-img/gallery/gallery5.jpeg";
+import gallery2 from "../../asset/new-img/gallery/gallery2.webp";
+import gallery3 from "../../asset/new-img/gallery/gallery3.webp";
+import gallery4 from "../../asset/new-img/gallery/gallery4.webp";
+import gallery5 from "../../asset/new-img/gallery/gallery5.webp";
 
-import gallery6 from "../../asset/new-img/gallery/gallery6.jpeg";
-import gallery7 from "../../asset/new-img/gallery/gallery7.jpeg";
-import gallery8 from "../../asset/new-img/gallery/gallery8.jpeg";
+import gallery6 from "../../asset/new-img/gallery/gallery6.webp";
+import gallery7 from "../../asset/new-img/gallery/gallery7.webp";
+import gallery8 from "../../asset/new-img/gallery/gallery8.webp";
 
-import gallery9 from "../../asset/new-img/gallery/gallery9.jpeg";
+import gallery9 from "../../asset/new-img/gallery/gallery9.webp";
 
-import gallery10 from "../../asset/new-img/gallery/gallery10.jpeg";
-import gallery11 from "../../asset/new-img/gallery/gallery11.jpeg";
+import gallery10 from "../../asset/new-img/gallery/gallery10.webp";
+import gallery11 from "../../asset/new-img/gallery/gallery11.webp";
 import Seo from "../SEO/Seo";
 
 const GheeShowcase = () => {

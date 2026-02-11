@@ -1,13 +1,13 @@
 import React from "react";
 import "./ghee-purity.css";
 
-import ghee1Img from "../../asset/new-img/bilona-img/labbottle.png";
-import ghee2Img from "../../asset/new-img/bilona-img/cow-green.png";
-import ghee3Img from "../../asset/new-img/bilona-img/leaves-icon.png";
-import ghee4Img from "../../asset/new-img/bilona-img/green-dot-big-small.png";
-import ghee5Img from "../../asset/new-img/bilona-img/magic-star.png";
+import ghee1Img from "../../asset/new-img/bilona-img/labbottle.webp";
+import ghee2Img from "../../asset/new-img/bilona-img/cow-green.webp";
+import ghee3Img from "../../asset/new-img/bilona-img/leaves-icon.webp";
+import ghee4Img from "../../asset/new-img/bilona-img/green-dot-big-small.webp";
+import ghee5Img from "../../asset/new-img/bilona-img/magic-star.webp";
 
-import gheeBottleImg from "../../asset/new-img/about-main/bottle-about.png";
+import gheeBottleImg from "../../asset/new-img/about-main/bottle-about.webp";
 
 const leftFeatures = [
   {

@@ -1,7 +1,3 @@
-/* ===============================
-   Payment Failed Page
-   =============================== */
-
 .payment-failed .payment-fail {
   min-height: 100vh;
   display: flex;
@@ -20,10 +16,6 @@
   padding: 40px 30px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
-
-/* ===============================
-   Error Icon
-   =============================== */
 
 .payment-failed .check_mark {
   display: flex;
@@ -61,10 +53,6 @@
   transform: rotate(-45deg);
 }
 
-/* ===============================
-   Text & Button
-   =============================== */
-
 .payment-failed p {
   color: #c62828;
   margin-bottom: 20px;
@@ -87,11 +75,8 @@
   transform: scale(0.97);
 }
 
-/* ===============================
-   Animation
-   =============================== */
+@keyframes scaleIn{
 
-@keyframes scaleIn {
   0% {
     transform: scale(0.8);
     opacity: 0;
@@ -100,22 +85,19 @@
     transform: scale(1);
     opacity: 1;
   }
-}
 
-/* ===============================
-   Responsive
-   =============================== */
+}
 
 @media (max-width: 576px) {
   .payment-failed .col-lg-12 {
     padding: 30px 20px;
   }
-
+  
   .payment-failed .sa-icon.sa-error {
     width: 70px;
     height: 70px;
   }
-
+  
   .payment-failed p {
     font-size: 20px;
   }

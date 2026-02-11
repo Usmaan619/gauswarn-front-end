@@ -3,7 +3,6 @@
   min-height: 100vh;
 }
 
-/* Hero Section */
 .blog-hero {
   width: 100%;
   height: 500px;
@@ -18,7 +17,6 @@
   opacity: 0.9;
 }
 
-/* Content Wrapper */
 .blog-content-wrapper {
   max-width: 1400px;
   margin: -80px auto 0;
@@ -29,7 +27,6 @@
   position: relative;
 }
 
-/* Main Article */
 .blog-article {
   background: white;
   border-radius: 16px;
@@ -68,7 +65,6 @@
   font-weight: 700;
 }
 
-/* Author Info */
 .author-info {
   display: flex;
   align-items: center;
@@ -102,7 +98,6 @@
   font-size: 0.9rem;
 }
 
-/* Article Content */
 .article-content {
   color: #44403c;
   line-height: 1.8;
@@ -133,7 +128,6 @@
   margin: 30px 0;
 }
 
-/* Benefits Grid */
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -167,7 +161,6 @@
   margin-bottom: 0;
 }
 
-/* Diet Tips List */
 .diet-tips {
   background-color: #fef3c7;
   padding: 30px 30px 30px 50px;
@@ -190,7 +183,6 @@
   font-weight: 700;
 }
 
-/* Highlight Box */
 .highlight-box {
   background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
   padding: 30px;
@@ -210,7 +202,6 @@
   margin-bottom: 0;
 }
 
-/* CTA Section */
 .cta-section {
   background: linear-gradient(135deg, #8b6f47 0%, #a0826d 100%);
   padding: 50px;
@@ -251,7 +242,6 @@
   box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
 }
 
-/* Tags */
 .blog-tags {
   display: flex;
   flex-wrap: wrap;
@@ -276,7 +266,6 @@
   color: #1c1917;
 }
 
-/* Share Section */
 .share-section {
   margin-top: 40px;
   padding-top: 30px;
@@ -330,7 +319,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Sidebar */
 .blog-sidebar {
   position: sticky;
   top: 20px;
@@ -386,7 +374,6 @@
   color: #78716c;
 }
 
-/* Newsletter */
 .sidebar-card.newsletter {
   background: linear-gradient(135deg, #8b6f47 0%, #a0826d 100%);
   color: white;
@@ -432,13 +419,12 @@
   background-color: #f59e0b;
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
   .blog-content-wrapper {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-
+  
   .blog-sidebar {
     position: static;
     display: grid;
@@ -451,33 +437,33 @@
   .blog-hero {
     height: 350px;
   }
-
+  
   .blog-content-wrapper {
     margin-top: -60px;
     padding: 0 15px 40px;
   }
-
+  
   .blog-article {
     padding: 30px 25px;
   }
-
+  
   .blog-title {
     font-size: 2rem;
   }
-
+  
   .article-content h2 {
     font-size: 1.6rem;
   }
-
+  
   .benefits-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-
+  
   .blog-sidebar {
     grid-template-columns: 1fr;
   }
-
+  
   .cta-section {
     padding: 35px 25px;
   }
@@ -487,40 +473,40 @@
   .blog-hero {
     height: 250px;
   }
-
+  
   .blog-article {
     padding: 25px 20px;
   }
-
+  
   .blog-title {
     font-size: 1.6rem;
   }
-
+  
   .lead-paragraph {
     font-size: 1.1rem;
   }
-
+  
   .article-content {
     font-size: 1rem;
   }
-
+  
   .article-content h2 {
     font-size: 1.4rem;
     margin-top: 35px;
   }
-
+  
   .benefit-card {
     padding: 20px;
   }
-
+  
   .diet-tips {
     padding: 20px 20px 20px 35px;
   }
-
+  
   .share-buttons {
     flex-direction: column;
   }
-
+  
   .share-btn {
     width: 100%;
   }

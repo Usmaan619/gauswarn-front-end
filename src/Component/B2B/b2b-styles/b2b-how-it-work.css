@@ -1,8 +1,6 @@
 .b2b-how-partner-section {
   width: 100%;
   min-height: 50vh;
-  /* background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%); */
-  /* background: #fff; */
   padding: 60px 20px;
   display: flex;
   align-items: center;
@@ -106,93 +104,89 @@
   z-index: 1;
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
   .b2b-how-partner-section {
     padding: 50px 20px;
   }
-
+  
   .b2b-how-partner-title {
     margin-bottom: 50px;
   }
-
+  
   .b2b-how-features-grid {
     gap: 20px;
   }
-
+  
   .b2b-how-feature-card {
     padding: 36px 28px;
   }
 }
 
-/* Mobile Large */
 @media (max-width: 768px) {
   .b2b-how-partner-section {
     padding: 40px 16px;
   }
-
+  
   .b2b-how-partner-title {
     margin-bottom: 40px;
   }
-
+  
   .b2b-how-features-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-
+  
   .b2b-how-feature-card {
     padding: 32px 24px;
   }
-
+  
   .b2b-how-feature-title {
     font-size: 22px;
   }
-
+  
   .b2b-how-feature-description {
     font-size: 15px;
   }
 }
 
-/* Mobile Small */
 @media (max-width: 480px) {
   .b2b-how-partner-section {
     padding: 32px 16px;
   }
-
+  
   .b2b-how-partner-title {
     margin-bottom: 32px;
   }
-
+  
   .b2b-how-feature-card {
     padding: 28px 20px;
   }
-
+  
   .b2b-how-icon-wrapper {
     width: 56px;
     height: 56px;
     margin-bottom: 20px;
   }
-
+  
   .b2b-how-feature-title {
     font-size: 20px;
     margin-bottom: 12px;
   }
-
+  
   .b2b-how-feature-description {
     font-size: 14px;
   }
 }
 
-/* Extra Small Devices */
 @media (max-width: 360px) {
   .b2b-how-partner-section {
     padding: 24px 12px;
   }
-
+  
   .b2b-how-feature-card {
     padding: 24px 16px;
   }
-
+  
   .b2b-how-icon-wrapper {
     width: 52px;
     height: 52px;

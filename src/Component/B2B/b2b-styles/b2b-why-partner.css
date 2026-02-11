@@ -1,7 +1,6 @@
 .partner-section {
   width: 100%;
   min-height: 50vh;
-  /* background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%); */
   background: #fff;
   padding: 60px 20px;
   display: flex;
@@ -106,93 +105,89 @@
   z-index: 1;
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
   .partner-section {
     padding: 50px 20px;
   }
-
+  
   .partner-title {
     margin-bottom: 50px;
   }
-
+  
   .features-grid {
     gap: 20px;
   }
-
+  
   .feature-card {
     padding: 36px 28px;
   }
 }
 
-/* Mobile Large */
 @media (max-width: 768px) {
   .partner-section {
     padding: 40px 16px;
   }
-
+  
   .partner-title {
     margin-bottom: 40px;
   }
-
+  
   .features-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-
+  
   .feature-card {
     padding: 32px 24px;
   }
-
+  
   .feature-title {
     font-size: 22px;
   }
-
+  
   .feature-description {
     font-size: 15px;
   }
 }
 
-/* Mobile Small */
 @media (max-width: 480px) {
   .partner-section {
     padding: 32px 16px;
   }
-
+  
   .partner-title {
     margin-bottom: 32px;
   }
-
+  
   .feature-card {
     padding: 28px 20px;
   }
-
+  
   .icon-wrapper {
     width: 56px;
     height: 56px;
     margin-bottom: 20px;
   }
-
+  
   .feature-title {
     font-size: 20px;
     margin-bottom: 12px;
   }
-
+  
   .feature-description {
     font-size: 14px;
   }
 }
 
-/* Extra Small Devices */
 @media (max-width: 360px) {
   .partner-section {
     padding: 24px 12px;
   }
-
+  
   .feature-card {
     padding: 24px 16px;
   }
-
+  
   .icon-wrapper {
     width: 52px;
     height: 52px;

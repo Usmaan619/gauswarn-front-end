@@ -114,109 +114,106 @@
   color: #2e7d32;
 }
 
-/* Tablet Styles */
 @media (max-width: 1024px) {
   .b2b-contact-info-section {
     padding: 40px 35px;
   }
-
+  
   .b2b-contact-title {
     font-size: 2rem;
   }
-
+  
   .b2b-locations-title {
     font-size: 1.5rem;
   }
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .b2b-contact-container {
     flex-direction: column;
   }
-
+  
   .b2b-map-section {
     min-height: 400px;
     order: 2;
   }
-
+  
   .b2b-contact-info-section {
     order: 1;
     padding: 30px 20px;
   }
-
+  
   .b2b-contact-title {
     font-size: 1.75rem;
     margin-bottom: 30px;
   }
-
+  
   .b2b-contact-item {
     margin-bottom: 25px;
   }
-
+  
   .b2b-icon-wrapper {
     width: 45px;
     height: 45px;
   }
-
+  
   .b2b-contact-label {
     font-size: 1.1rem;
   }
-
+  
   .b2b-contact-value {
     font-size: 0.95rem;
   }
-
+  
   .b2b-locations-title {
     font-size: 1.35rem;
   }
-
+  
   .b2b-location-heading {
     font-size: 1rem;
   }
-
+  
   .b2b-location-address {
     font-size: 0.9rem;
   }
 }
 
-/* Small Mobile Styles */
 @media (max-width: 480px) {
   .b2b-contact-info-section {
     padding: 25px 15px;
   }
-
+  
   .b2b-contact-title {
     font-size: 1.5rem;
     margin-bottom: 25px;
   }
-
+  
   .b2b-contact-item {
     gap: 15px;
   }
-
+  
   .b2b-icon-wrapper {
     width: 40px;
     height: 40px;
   }
-
+  
   .b2b-contact-label {
     font-size: 1rem;
   }
-
+  
   .b2b-contact-value {
     font-size: 0.875rem;
   }
-
+  
   .b2b-map-locations {
     margin-top: 35px;
   }
-
+  
   .b2b-locations-title {
     font-size: 1.2rem;
     margin-bottom: 20px;
   }
-
+  
   .b2b-location-block {
     margin-bottom: 25px;
   }

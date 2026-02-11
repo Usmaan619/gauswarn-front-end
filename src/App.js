@@ -114,8 +114,6 @@ const HomePage = () => (
   </>
 );
 
-
-
 function App() {
   const { setCart } = useCartContext();
 
@@ -136,7 +134,7 @@ function App() {
     try {
       const cart = JSON.parse(sessionStorage.getItem("cart") || "[]");
       setCart(cart);
-    } catch {
+    } catch (error) {
       setCart([]);
     }
   }, [setCart]);

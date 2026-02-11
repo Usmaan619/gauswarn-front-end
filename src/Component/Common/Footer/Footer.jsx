@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./footer.css";
-import logo from "../../../asset/new-img/logo/gauswarn-white-logo.png";
-import amazonlogo from "../../../asset/new-img/ecommerce/amazon.png";
-import flipkartlogo from "../../../asset/new-img/ecommerce/flipkart.png";
+import logo from "../../../asset/new-img/logo/gauswarn-white-logo.webp";
+import amazonlogo from "../../../asset/new-img/ecommerce/amazon.webp";
+import flipkartlogo from "../../../asset/new-img/ecommerce/flipkart.webp";
 import { Link } from "react-router-dom";
 import { postData } from "../../../services/api";
 import { toastError, toastSuccess } from "../../../services/toaster.service";

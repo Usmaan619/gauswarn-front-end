@@ -1,12 +1,11 @@
-
 import BenefitCard from "./benefit-card";
 import "./health-benefits-grid.css";
-import image1 from "../../asset/new-img/banefit/lowers.png";
-import image2 from "../../asset/new-img/banefit/brain.png";
-import image3 from "../../asset/new-img/banefit/muscel.png";
-import image4 from "../../asset/new-img/banefit/heart.png";
-import image5 from "../../asset/new-img/banefit/bad.png";
-import image6 from "../../asset/new-img/banefit/hand-eye.png";
+import image1 from "../../asset/new-img/banefit/lowers.webp";
+import image2 from "../../asset/new-img/banefit/brain.webp";
+import image3 from "../../asset/new-img/banefit/muscel.webp";
+import image4 from "../../asset/new-img/banefit/heart.webp";
+import image5 from "../../asset/new-img/banefit/bad.webp";
+import image6 from "../../asset/new-img/banefit/hand-eye.webp";
 
 const benefits = [
   {

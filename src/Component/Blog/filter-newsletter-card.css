@@ -2,12 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
-  margin-top: 1.5rem; /* mt-4 approx */
-  margin-left: 1.5rem; /* me-5 approx, optional */
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
 }
 
-/* FILTER CARD */
 .filter-card {
   background: #ffffff;
   border-radius: 18px;
@@ -18,7 +16,6 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-/* HEADER */
 .filter-card-header {
   display: flex;
   align-items: center;
@@ -32,7 +29,6 @@
   color: #222;
 }
 
-/* FILTER SECTION */
 .filter-section {
   margin-bottom: 22px;
 }
@@ -45,7 +41,6 @@
   margin-bottom: 8px;
 }
 
-/* SORT SELECT */
 .sort-select {
   width: 100%;
   padding: 12px 14px;
@@ -73,7 +68,6 @@
   }
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
   .filter-card {
     max-width: 360px;
@@ -87,15 +81,15 @@
     padding: 14px 12px;
     border-radius: 14px;
   }
-
+  
   .filter-card-title {
     font-size: 18px;
   }
-
+  
   .filter-label {
     font-size: 13px;
   }
-
+  
   .sort-select {
     font-size: 13px;
     padding: 11px 12px;

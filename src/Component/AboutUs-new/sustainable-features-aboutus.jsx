@@ -1,10 +1,10 @@
 import React from "react";
 import "./sustainable-features-aboutus.css";
-import SustainableFeaturesAboutusImg1 from "../../asset/new-img/sustainable-features-aboutus/sustainable-features-aboutus1.png";
-import SustainableFeaturesAboutusImg2 from "../../asset/new-img/sustainable-features-aboutus/sustainable-features-aboutus2.png";
-import SustainableFeaturesAboutusImg3 from "../../asset/new-img/sustainable-features-aboutus/sustainable-features-aboutus3.png";
-import SustainableFeaturesAboutusImg4 from "../../asset/new-img/sustainable-features-aboutus/sustainable-features-aboutus4.png";
-import SustainableFeaturesAboutusImg5 from "../../asset/new-img/sustainable-features-aboutus/sustainable-features-aboutus5.png";
+import SustainableFeaturesAboutusImg1 from "../../asset/new-img/sustainable-features-aboutus/sustainable-features-aboutus1.webp";
+import SustainableFeaturesAboutusImg2 from "../../asset/new-img/sustainable-features-aboutus/sustainable-features-aboutus2.webp";
+import SustainableFeaturesAboutusImg3 from "../../asset/new-img/sustainable-features-aboutus/sustainable-features-aboutus3.webp";
+import SustainableFeaturesAboutusImg4 from "../../asset/new-img/sustainable-features-aboutus/sustainable-features-aboutus4.webp";
+import SustainableFeaturesAboutusImg5 from "../../asset/new-img/sustainable-features-aboutus/sustainable-features-aboutus5.webp";
 
 const SustainableFeaturesAboutus = () => {
   const features = [

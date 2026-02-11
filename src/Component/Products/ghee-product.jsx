@@ -1,9 +1,9 @@
 import React from "react";
-import gheeFeture1 from "../../asset/new-img/product-hero-section-img/Mask-1.png";
-import gheeFeture2 from "../../asset/new-img/product-hero-section-img/Mask-2.png";
-import gheeFeture3 from "../../asset/new-img/product-hero-section-img/Mask-3.png";
-import gheeFeture4 from "../../asset/new-img/product-hero-section-img/Mask-4.png";
-import gheeFeture5 from "../../asset/new-img/product-hero-section-img/Mask-5.png";
+import gheeFeture1 from "../../asset/new-img/product-hero-section-img/Mask-1.webp";
+import gheeFeture2 from "../../asset/new-img/product-hero-section-img/Mask-2.webp";
+import gheeFeture3 from "../../asset/new-img/product-hero-section-img/Mask-3.webp";
+import gheeFeture4 from "../../asset/new-img/product-hero-section-img/Mask-4.webp";
+import gheeFeture5 from "../../asset/new-img/product-hero-section-img/Mask-5.webp";
 
 import "./ghee-product.css";
 const features = [

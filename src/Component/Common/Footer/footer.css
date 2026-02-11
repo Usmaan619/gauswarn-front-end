@@ -78,10 +78,6 @@
   border-radius: 50%;
 }
 
-.footer-facebook-bg {
-  /* background: #3b5998; */
-}
-
 .footer-twitter-bg {
   background: #55acee;
 }
@@ -186,7 +182,6 @@
   color: #fed525;
 }
 
-/* Mobile Responsiveness */
 .carousel-container {
   width: 100%;
   max-width: 100%;
@@ -204,22 +199,9 @@
   object-fit: cover;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .carousel-full-image {
-    object-fit: cover;
-    width: 100%;
-    height: auto !important;
-  }
-}
-
 .container-xxl {
   max-width: 1690px !important;
 }
-
-/* ===============================
-   FOOTER BOTTOM BAR
-================================ */
 
 .footer-bottom-bar {
   display: flex;
@@ -234,53 +216,50 @@
 .footer-bottom-center,
 .footer-bottom-right {
   font-size: 12px;
-  /* color: #ffffff; */
 }
 
-/* Powered By Rajlaxmi (NO hover) */
 .footer-bottom-center a {
-  /* color: #fed525; */
   font-weight: 600;
   text-decoration: none;
   pointer-events: auto;
 }
 
-/* Social Icons */
 .footer-bottom-right {
   display: flex;
   gap: 12px;
 }
 
 .footer-bottom-right .social-icon {
-  /* color: #ffffff; */
   font-size: 14px;
 }
 
-/* ===============================
-   MOBILE CENTER PERFECT
-================================ */
+@media (max-width: 768px) {
+  .carousel-full-image {
+    object-fit: cover;
+    width: 100%;
+    height: auto !important;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-bottom-bar {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    gap: 0;
   }
-
+  
   .footer-bottom-left,
-  .footer-bottom-center,
-  .footer-bottom-right {
+    .footer-bottom-center,
+    .footer-bottom-right {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
+  
   .footer-bottom-center {
     margin: 6px 0;
-  }
-
-  .footer-bottom-bar {
-    gap: 0;
   }
 }

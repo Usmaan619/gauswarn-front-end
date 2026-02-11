@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./profileSection.css";
-import tab1 from "../../asset/new-img/tabs/tabs1.jpg";
+import tab1 from "../../asset/new-img/tabs/tabs1.webp";
 
 const data = [
   {

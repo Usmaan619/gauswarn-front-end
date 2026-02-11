@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import mainLogo from "../../../asset/new-img/logo/gauswarn-main-logo.png";
+import mainLogo from "../../../asset/new-img/logo/gauswarn-main-logo.webp";
 import "./header-main.css";
 import { useCartContext } from "../../Context/UserContext";
 
