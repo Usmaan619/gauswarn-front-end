@@ -1,6 +1,3 @@
-import React from "react";
-
-// Images
 import FssaiLogo from "../../asset/new-img/certified/FSSAI.webp";
 import IndiaOrganicLogo from "../../asset/new-img/certified/Natural-icon.webp";
 import Usda from "../../asset/new-img/certified/Orignal-icon.webp";

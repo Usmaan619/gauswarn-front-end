@@ -166,82 +166,6 @@ const triggerCrossPageToast = (type, message) => {
 };
 
 /* ========================= 
-   STAR RATING COMPONENT 
-========================= */
-/* ========================= 
-   INTERACTIVE STAR RATING COMPONENT 
-========================= */
-// const StarRating = ({
-//   rating = 0,
-//   totalStars = 5,
-//   size = 20,
-//   interactive = false,
-//   onRatingChange,
-// }) => {
-//   const handleStarClick = (starIndex) => {
-//     if (interactive && onRatingChange) {
-//       onRatingChange(starIndex + 1); // 1-5 rating
-//     }
-//   };
-
-//   const handleStarHover = (starIndex) => {
-//     if (interactive) {
-//       // Hover effect add kar sakte ho future mein
-//     }
-//   };
-
-//   const fullStars = Math.floor(rating);
-//   const hasHalfStar = rating % 1 !== 0;
-//   const emptyStars = totalStars - fullStars - (hasHalfStar ? 1 : 0);
-
-//   return (
-//     <div
-//       className="star-rating"
-//       style={{
-//         display: "flex",
-//         gap: "2px",
-//         cursor: interactive ? "pointer" : "default",
-//       }}
-//     >
-//       {Array(totalStars)
-//         .fill()
-//         .map((_, i) => {
-//           const starValue = i + 1;
-//           const isFull = starValue <= fullStars;
-//           const isHalf = starValue === fullStars + 1 && hasHalfStar;
-//           const isActive = interactive ? starValue <= rating : false;
-
-//           return (
-//             <div
-//               key={i}
-//               className={`star ${interactive ? "interactive" : ""}`}
-//               onClick={() => handleStarClick(i)}
-//               onMouseEnter={() => handleStarHover(i)}
-//               style={{ cursor: interactive ? "pointer" : "default" }}
-//               title={
-//                 interactive
-//                   ? `Rate ${starValue} star${starValue > 1 ? "s" : ""}`
-//                   : ""
-//               }
-//             >
-//               {isFull || isActive ? (
-//                 <FaStar color="gold" size={size} />
-//               ) : isHalf ? (
-//                 <FaStarHalfAlt color="gold" size={size} />
-//               ) : (
-//                 <FaRegStar
-//                   color={interactive ? "#ffd700" : "#ddd"}
-//                   size={size}
-//                 />
-//               )}
-//             </div>
-//           );
-//         })}
-//     </div>
-//   );
-// };
-
-/* ========================= 
    MAIN COMPONENT 
 ========================= */
 const ProductPageMain = () => {
@@ -309,7 +233,12 @@ const ProductPageMain = () => {
       );
 
       const apiProducts = response?.data?.products || [];
-      const normalizedProducts = apiProducts.map(normalizeProduct);
+      const normalizedProducts = apiProducts
+        .map(normalizeProduct)
+        .sort(
+          (a, b) =>
+            getWeightValue(a.product_weight) - getWeightValue(b.product_weight),
+        );
 
       setProducts(normalizedProducts);
 
@@ -530,6 +459,16 @@ const ProductPageMain = () => {
     () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1)),
     [],
   );
+
+  const getWeightValue = (weight) => {
+    if (!weight) return 0;
+
+    const value = parseFloat(weight);
+    if (weight.toLowerCase().includes("kg")) {
+      return value * 1000; // convert kg to ml/g equivalent
+    }
+    return value;
+  };
 
   /* ========================= 
      EFFECTS 
