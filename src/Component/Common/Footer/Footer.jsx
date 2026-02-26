@@ -6,6 +6,8 @@ import flipkartlogo from "../../../asset/new-img/ecommerce/flipkart.webp";
 import { Link } from "react-router-dom";
 import { postData } from "../../../services/api";
 import { toastError, toastSuccess } from "../../../services/toaster.service";
+import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
 
 export default function NewFooter() {
   const [email, setEmail] = useState("");
@@ -238,13 +240,11 @@ export default function NewFooter() {
                       type="submit"
                       disabled={loading}
                     >
-                      <i
-                        className={
-                          loading
-                            ? "fas fa-spinner fa-spin"
-                            : "fab fa-telegram-plane"
-                        }
-                      ></i>
+                      {loading ? (
+                        <Loader2 size={18} className="newsletter-spin" />
+                      ) : (
+                        <Send size={18} />
+                      )}
                     </button>
                   </form>
                 </div>
@@ -282,7 +282,40 @@ export default function NewFooter() {
             </div>
 
             {/* Right */}
+
             <div className="footer-bottom-right">
+              <a
+                href="https://www.facebook.com/profile.php?id=61577996747357"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-icon facebook"
+                aria-label="Visit our Facebook page"
+              >
+                <Facebook size={16} />
+              </a>
+
+              <a
+                href="https://www.instagram.com/gauswarn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-icon instagram"
+                aria-label="Visit our Instagram page"
+              >
+                <Instagram size={16} />
+              </a>
+
+              <a
+                href="https://www.youtube.com/@gauswarngircowghee-2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-icon youtube"
+                aria-label="Visit our YouTube channel"
+              >
+                <Youtube size={16} />
+              </a>
+            </div>
+
+            {/* <div className="footer-bottom-right">
               <a
                 href="https://www.facebook.com/profile.php?id=61577996747357"
                 target="_blank"
@@ -310,7 +343,7 @@ export default function NewFooter() {
               >
                 <i className="fab fa-youtube"></i>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

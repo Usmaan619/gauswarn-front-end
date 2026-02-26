@@ -1,6 +1,7 @@
 import { FiMail, FiPhoneCall } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { getData } from "../../../services/api";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 
 export default function TopBanner() {
   const [offers, setOffers] = useState([
@@ -155,7 +156,40 @@ export default function TopBanner() {
           </div>
 
           {/* Right Section - Social Icons */}
-          <div className="social-section">
+
+          <div className="footer-bottom-right">
+            <a
+              href="https://www.facebook.com/profile.php?id=61577996747357"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon facebook"
+              aria-label="Visit our Facebook page"
+            >
+              <Facebook size={16} />
+            </a>
+
+            <a
+              href="https://www.instagram.com/gauswarn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon instagram"
+              aria-label="Visit our Instagram page"
+            >
+              <Instagram size={16} />
+            </a>
+
+            <a
+              href="https://www.youtube.com/@gauswarngircowghee-2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon youtube"
+              aria-label="Visit our YouTube channel"
+            >
+              <Youtube size={16} />
+            </a>
+          </div>
+
+          {/* <div className="social-section">
             <a
               href="https://www.facebook.com/profile.php?id=61577996747357"
               className="social-icon facebook"
@@ -183,7 +217,7 @@ export default function TopBanner() {
             >
               <i className="fab fa-youtube"></i>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

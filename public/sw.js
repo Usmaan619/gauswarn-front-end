@@ -2,7 +2,7 @@
    Gauswarn PWA Service Worker
    =============================== */
 
-const CACHE_NAME = "gauswarn-v5";
+const CACHE_NAME = "gauswarn-v6";
 
 const urlsToCache = ["/", "/index.html", "/manifest.json", "/favicon.ico"];
 

@@ -231,6 +231,18 @@
 
 .footer-bottom-right .social-icon {
   font-size: 14px;
+  /* color: #ffffff; */
+}
+
+.newsletter-spin {
+  animation: spin 1s linear infinite;
+  color: #fff;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 768px) {
@@ -249,16 +261,16 @@
     text-align: center;
     gap: 0;
   }
-  
+
   .footer-bottom-left,
-    .footer-bottom-center,
-    .footer-bottom-right {
+  .footer-bottom-center,
+  .footer-bottom-right {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   .footer-bottom-center {
     margin: 6px 0;
   }
