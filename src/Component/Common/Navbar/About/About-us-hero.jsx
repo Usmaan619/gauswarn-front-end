@@ -31,7 +31,7 @@ export default function AboutUsHero() {
               width="412"
               height="481"
               loading="eager"
-              fetchPriority="high"
+              fetchpriority="high"
             />
           </div>
 

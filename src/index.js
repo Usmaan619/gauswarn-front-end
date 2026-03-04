@@ -15,11 +15,16 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <HelmetProvider>
     <UserProvider>
-      <BrowserRouter>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         <App />
       </BrowserRouter>
     </UserProvider>
-  </HelmetProvider>
+  </HelmetProvider>,
 );
 
 reportWebVitals();

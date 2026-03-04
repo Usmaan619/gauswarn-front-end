@@ -2,7 +2,7 @@
    Gauswarn PWA Service Worker
    =============================== */
 
-const CACHE_NAME = "gauswarn-v6";
+const CACHE_NAME = "gauswarn-v7";
 
 const urlsToCache = ["/", "/index.html", "/manifest.json", "/favicon.ico"];
 
@@ -68,6 +68,8 @@ self.addEventListener("fetch", (event) => {
           if (event.request.mode === "navigate") {
             return caches.match("/index.html");
           }
+          // Fix: return a generic response or let it fail naturally for non-navigate requests
+          return new Response("", { status: 404, statusText: "Not Found" });
         });
     }),
   );

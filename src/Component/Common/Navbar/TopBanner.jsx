@@ -157,7 +157,7 @@ export default function TopBanner() {
 
           {/* Right Section - Social Icons */}
 
-          <div className="footer-bottom-right">
+          <div className="social-section">
             <a
               href="https://www.facebook.com/profile.php?id=61577996747357"
               target="_blank"
