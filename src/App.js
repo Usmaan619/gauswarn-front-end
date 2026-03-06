@@ -11,6 +11,8 @@ import NewFooter from "./Component/Common/Footer/Footer.jsx";
 import { useCartContext } from "./Component/Context/UserContext.jsx";
 import Seo from "./Component/SEO/Seo.jsx";
 import CareersPage from "./Component/Careers/careers-main-page.jsx";
+import axios from "axios";
+import { getData } from "./services/api.jsx";
 
 /* =======================
    LAZY LOAD COMPONENTS
@@ -138,6 +140,19 @@ function App() {
       setCart([]);
     }
   }, [setCart]);
+
+  useEffect(() => {
+    getFacebookUser();
+  }, []);
+
+  const getFacebookUser = async () => {
+    try {
+      const res = await getData("api/branded-content");
+      console.log("getFacebookUser", res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
