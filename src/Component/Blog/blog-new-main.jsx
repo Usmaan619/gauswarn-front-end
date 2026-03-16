@@ -131,6 +131,28 @@ const BlogMainPageNew = () => {
     });
   }, [blogs, sortOrder]);
 
+  /* ===== STRUCTURED DATA ===== */
+  const generateBlogSchema = () => {
+    return {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Gauswarn India - A2 Ghee & Wellness Blog",
+      "description": "Read expert articles on A2 ghee benefits, ayurveda, digestion, and healthy living.",
+      "url": "https://gauswarn.com/blog",
+      "blogPost": sortedBlogs.slice(0, 10).map((post) => ({
+        "@type": "BlogPosting",
+        "headline": post?.title,
+        "description": truncateText(post?.content || post?.description, 160),
+        "image": post?.image_url || post?.image,
+        "datePublished": post?.created_at || post?.date,
+        "author": {
+          "@type": "Organization",
+          "name": "Gauswarn India"
+        }
+      }))
+    };
+  };
+
   /* ===== ERROR STATE ===== */
   if (error) {
     return (
@@ -154,7 +176,7 @@ const BlogMainPageNew = () => {
     <>
       {/* SEO SUPPORTING CONTENT (Google-safe) */}
       <section className="sr-only">
-        <h1>A2 Ghee Benefits, Ayurveda & Healthy Living Blog</h1>
+        <h1>A2 Ghee Benefits, Ayurveda & Healthy Living Blog | Gauswarn India</h1>
 
         <p>
           Welcome to the Gauswarn India blog where we share expert knowledge on
@@ -162,19 +184,13 @@ const BlogMainPageNew = () => {
           digestion, immunity, and natural wellness. Our articles focus on the
           health benefits of A2 desi cow ghee made from indigenous Gir cows.
         </p>
-
-        <p>
-          Learn how A2 ghee supports gut health, boosts immunity, improves
-          metabolism, and fits into a modern healthy lifestyle. We also cover
-          organic living, natural food habits, and ancient Indian traditions
-          backed by Ayurveda.
-        </p>
       </section>
 
       <Seo
-        title="A2 Ghee Benefits & Ayurveda | Gauswarn Blog"
-        description="Read expert articles on A2 ghee benefits, ayurveda, digestion, immunity and healthy living."
+        title="A2 Ghee Benefits & Ayurveda Blog | Gauswarn Pure Bilona Ghee"
+        description="Read expert articles on Pure A2 Gir Cow Ghee benefits, traditional bilona method, ayurveda, and healthy living by Gauswarn India."
         url="https://gauswarn.com/blog"
+        structuredData={generateBlogSchema()}
       />
       <ProductHeroSection />
 
@@ -185,15 +201,35 @@ const BlogMainPageNew = () => {
               Array.from({ length: 6 }).map((_, i) => <BlogSkeleton key={i} />)
             ) : sortedBlogs.length > 0 ? (
               sortedBlogs.map((post) => (
-                <BlogCard
-                  key={post?.id || post?._id}
-                  image={post?.image_url || post?.image}
-                  title={post?.title}
-                  description={post?.content || post?.description}
-                  date={formatDate(post?.created_at || post?.date)}
-                  category={post?.category?.name || post?.category}
-                  slug={post?.slug || post?.id}
-                />
+                <Link 
+                  key={post?.id || post?._id} 
+                  to={`/blog/${formatSlug(post?.slug || post?.id)}`} 
+                  className="blog-card-link"
+                  aria-label={`Read full article: ${post?.title}`}
+                >
+                  <div className="blog-card">
+                    <div className="blog-image">
+                      <img
+                        src={post?.image_url || post?.image || "/default-blog-image.jpg"}
+                        alt={`Blog: ${post?.title}`}
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <div className="blog-content">
+                      <div className="blog-meta">
+                        <span className="tag">{post?.category?.name || post?.category || "Blog"}</span>
+                        <span className="blog-date">{formatDate(post?.created_at || post?.date)}</span>
+                      </div>
+
+                      <h3 className="blog-title">{post?.title || "Untitled"}</h3>
+
+                      <p className="blog-description">{truncateText(post?.content || post?.description)}</p>
+
+                      <span className="read-more-btn">Read Full Article →</span>
+                    </div>
+                  </div>
+                </Link>
               ))
             ) : (
               <div className="no-blogs">

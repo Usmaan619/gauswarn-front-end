@@ -27,13 +27,10 @@ export default function VideoSection() {
   return (
     <>
       <Seo
-        title="How A2 Gir Cow Ghee is Made | Gauswarn India"
-        description="Watch how Gauswarn prepares pure A2 Gir Cow Ghee using the traditional Bilona method."
+        title="How A2 Gir Cow Ghee is Made | Gauswarn India - Bilona Process"
+        description="Watch our video to see how Gauswarn India prepares pure A2 Gir Cow Ghee using the traditional Bilona method in our own Gaushala."
         url="https://gauswarn.com"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
+        structuredData={videoSchema}
       />
       <p className="sr-only">
         Watch how Gauswarn India prepares pure A2 Gir Cow Ghee using the
