@@ -12,7 +12,7 @@ import { useCartContext } from "./Component/Context/UserContext.jsx";
 import Seo from "./Component/SEO/Seo.jsx";
 import CareersPage from "./Component/Careers/careers-main-page.jsx";
 import axios from "axios";
-import { getData } from "./services/api.jsx";
+import { getData, postData } from "./services/api.jsx";
 
 /* =======================
    LAZY LOAD COMPONENTS
@@ -143,7 +143,19 @@ function App() {
 
   useEffect(() => {
     getFacebookUser();
+    trackVisitor();
   }, []);
+
+  const trackVisitor = async () => {
+    try {
+      await postData("/api/track-visitor", {
+        page_url: window.location.href,
+      });
+    } catch (error) {
+      // Silently fail if tracking fails to not disrupt user experience
+      console.log("Visitor tracking failed");
+    }
+  };
 
   const getFacebookUser = async () => {
     try {
