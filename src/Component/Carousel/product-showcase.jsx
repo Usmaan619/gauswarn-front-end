@@ -7,6 +7,7 @@ import { environment } from "../../environment/environment";
 import ProductCard from "./product-card";
 import { getData } from "../../services/api";
 import CarouselCard from "./carousel-card";
+import YoutubeVideosSection from "../Youtube-video/Youtube";
 
 const ProductShowcaseComplete = () => {
   const [reels, setReels] = useState([]);
@@ -41,16 +42,6 @@ const ProductShowcaseComplete = () => {
     }),
     [],
   );
-
-  const loadReels = useCallback(async () => {
-    try {
-      const res = await getData("admin/reels/all");
-      if (res.success) setReels(res.reels || []);
-    } catch (err) {
-      console.error("Reels fetch error:", err);
-      setReels([]);
-    }
-  }, []);
 
   const loadProducts = useCallback(async () => {
     try {
@@ -93,11 +84,11 @@ const ProductShowcaseComplete = () => {
     const loadData = async () => {
       setLoading(true);
       setError(null);
-      await Promise.all([loadReels(), loadProducts()]);
+      await Promise.all([loadProducts()]);
       setLoading(false);
     };
     loadData();
-  }, [loadReels, loadProducts]);
+  }, [loadProducts]);
 
   if (loading) {
     return (
@@ -160,24 +151,12 @@ const ProductShowcaseComplete = () => {
       {/* REELS SECTION */}
       <section className="instagram-reels-section">
         <div className="section-header">
-          <span className="subtitle">Life at the Farm</span>
-          <h2 className="main-title">Instagram Stories</h2>
+          <span className="subtitle">Watch our latest videos and updates</span>
+          <h2 className="main-title">Our YouTube Shorts</h2>
+
           <div className="title-underline"></div>
         </div>
-
-        <div className="reels-carousel-container">
-          {reels.length > 0 ? (
-            <Slider {...reelSettings} className="reels-slider">
-              {reels.map((reel) => (
-                <div key={reel.id || reel.reel_id} className="reel-slide">
-                  <CarouselCard reelId={reel.reel_id} />
-                </div>
-              ))}
-            </Slider>
-          ) : (
-            <div className="no-data">Stay tuned for more updates!</div>
-          )}
-        </div>
+        <YoutubeVideosSection />
       </section>
 
       <style>{`
@@ -243,13 +222,13 @@ const ProductShowcaseComplete = () => {
 
         .instagram-reels-section {
           margin-top: 100px;
-          background: #4b3109;
+          background: #ffffff;
           padding: 100px 0;
           color: #fff;
         }
 
         .instagram-reels-section .main-title {
-          color: #fff;
+          color: #2c1810;
         }
 
         .reels-carousel-container {

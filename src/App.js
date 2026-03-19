@@ -12,6 +12,7 @@ import { useCartContext } from "./Component/Context/UserContext.jsx";
 import Seo from "./Component/SEO/Seo.jsx";
 import CareersPage from "./Component/Careers/careers-main-page.jsx";
 import { getData, postData } from "./services/api.jsx";
+import YoutubeVideosSection from "./Component/Youtube-video/Youtube.jsx";
 
 /* =======================
    LAZY LOAD COMPONENTS
@@ -136,8 +137,9 @@ const HomePage = () => {
       <Home />
       <Certified />
       <ProductShowcase />
+      {/* <YoutubeVideosSection /> */}
+
       <AboutUsHero />
-      <VideoSection />
       <GheePurity />
       <HealthProductShowcase />
       <DiscoverHeroSection />

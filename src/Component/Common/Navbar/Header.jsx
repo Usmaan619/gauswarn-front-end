@@ -81,7 +81,7 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
               aria-label="Go to Gauswarn A2 Gir Cow Ghee Home"
             >
-              Gauswarn Home
+              Home
             </NavLink>
             <NavLink
               to="/products"
@@ -89,7 +89,7 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
               aria-label="Buy A2 Cow Ghee Online"
             >
-              Buy A2 Cow Ghee
+              Shop Now
             </NavLink>
 
             <a
@@ -109,7 +109,7 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
               aria-label="View Gauswarn Ghee Gallery"
             >
-              Ghee Gallery
+              Gallery
             </NavLink>
             <NavLink
               to="/b2b"
@@ -117,7 +117,7 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
               aria-label="Gauswarn Bulk A2 Ghee for Businesses"
             >
-              Bulk A2 Ghee
+              B2B
             </NavLink>
             <NavLink
               to="/blog"
@@ -125,7 +125,7 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
               aria-label="Read Blogs about Pure Bilona Ghee"
             >
-              Ghee Blogs
+              Blogs
             </NavLink>
             <NavLink
               to="/about"
@@ -133,7 +133,7 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
               aria-label="Learn About Gauswarn's Desi Gir Cow Ghee"
             >
-              About Gauswarn
+              About Us
             </NavLink>
             <NavLink
               to="/contact"
@@ -141,7 +141,7 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
               aria-label="Contact Gauswarn Support"
             >
-              Contact Support
+              Contact Us
             </NavLink>
           </nav>
 

@@ -154,7 +154,7 @@ export default function NewFooter() {
                       onClick={scrollToTop}
                       aria-label="A2 Gir Cow Ghee Home"
                     >
-                      A2 Gir Cow Ghee Home
+                      Home
                     </Link>
                   </li>
                   <li>
@@ -163,7 +163,7 @@ export default function NewFooter() {
                       onClick={scrollToTop}
                       aria-label="About Gauswarn Ghee"
                     >
-                      About Gauswarn Ghee
+                      About Us
                     </Link>
                   </li>
                   <li>
@@ -172,7 +172,7 @@ export default function NewFooter() {
                       onClick={scrollToTop}
                       aria-label="Ghee Purity Lab Report"
                     >
-                      Ghee Purity Report
+                      Lab Report
                     </Link>
                   </li>
                   <li>
@@ -181,7 +181,7 @@ export default function NewFooter() {
                       onClick={scrollToTop}
                       aria-label="Buy A2 Cow Ghee Online"
                     >
-                      Buy A2 Cow Ghee Online
+                      Shop Now
                     </Link>
                   </li>
                   <li>
@@ -193,7 +193,7 @@ export default function NewFooter() {
 
                       onClick={scrollToTop}
                     >
-                      Track Ghee Order
+                      Track Order
                     </a>
                   </li>
 
@@ -239,7 +239,7 @@ export default function NewFooter() {
                       onClick={scrollToTop}
                       aria-label="Pure Ghee FAQs"
                     >
-                      Pure Ghee FAQs
+                      FAQs
                     </Link>
                   </li>
                   <li>
@@ -248,7 +248,7 @@ export default function NewFooter() {
                       onClick={scrollToTop}
                       aria-label="Careers at Gauswarn"
                     >
-                      Gauswarn Careers
+                      Careers
                     </Link>
                   </li>
                 </ul>
