@@ -2,6 +2,7 @@ import FssaiLogo from "../../asset/new-img/certified/FSSAI.webp";
 import IndiaOrganicLogo from "../../asset/new-img/certified/Natural-icon.webp";
 import Usda from "../../asset/new-img/certified/Orignal-icon.webp";
 import Apeda from "../../asset/new-img/certified/apeda-seeklogo.com.webp";
+import Nabl from "../../asset/new-img/certified/nabl.webp";
 
 const Certified = () => {
   return (
@@ -30,6 +31,10 @@ const Certified = () => {
                 {
                   src: Apeda,
                   alt: "APEDA certified Indian ghee exporter Gauswarn India",
+                },
+                {
+                  src: Nabl,
+                  alt: "NABL certified Indian ghee exporter Gauswarn India",
                 },
               ].map((logo, index) => (
                 <div

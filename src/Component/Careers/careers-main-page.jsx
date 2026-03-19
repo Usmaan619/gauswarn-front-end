@@ -38,30 +38,79 @@ const Internship = () => {
       toast.error(" Try again");
     }
   };
+  const jobSchema = {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: "Sales & Marketing Internship",
+    description:
+      "3-6 months Sales & Marketing Internship at Gauswarn India. Stipend upto ₹12,000/month, certificate and real work experience.",
 
+    datePosted: "2026-03-10",
+    validThrough: "2026-12-31T23:59",
+
+    employmentType: "INTERN",
+
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "Gauswarn India",
+      sameAs: "https://gauswarn.com",
+      logo: "https://gauswarn.com/logo.png",
+    },
+
+    industry: "Food & Dairy Products",
+
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Bhopal",
+        addressRegion: "Madhya Pradesh",
+        addressCountry: "IN",
+      },
+    },
+
+    applicantLocationRequirements: {
+      "@type": "Country",
+      name: "India",
+    },
+
+    educationRequirements: "BBA, B.Com, MBA or any Graduate",
+
+    jobBenefits: [
+      "Monthly stipend upto ₹12,000",
+      "Internship certificate",
+      "Real marketing experience",
+      "Free A2 Gir Cow Ghee products",
+      "Placement assistance",
+    ],
+
+    directApply: true,
+
+    baseSalary: {
+      "@type": "MonetaryAmount",
+      currency: "INR",
+      value: {
+        "@type": "QuantitativeValue",
+        minValue: 5000,
+        maxValue: 12000,
+        unitText: "MONTH",
+      },
+    },
+  };
   return (
     <>
       <Seo
         title="Sales & Marketing Internship at Gauswarn India | 3-6 Months"
-        description="Apply for Sales & Marketing Internship at India's No.1 A2 Gir Cow Ghee brand. Stipend Upto ₹12k/month + Free Products + Certificate + Real Experience."
-        url="https://gauswarn.com/internship"
+        description="Apply for Sales & Marketing Internship with stipend upto ₹12k/month, certificate and real experience."
+        url="https://gauswarn.com/careers"
       />
 
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "JobPosting",
-          title: "Sales & Marketing Internship",
-          description:
-            "3-6 months internship in Sales & Marketing with stipend, certificate and real work experience.",
-          employmentType: "INTERN",
-          hiringOrganization: {
-            "@type": "Organization",
-            name: "Gauswarn India",
-            url: "https://gauswarn.com",
-          },
-        })}
-      </script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
+      />
+
+      {/* Page Content */}
 
       {/* HERO SECTION */}
       <section className="careers-hero-section">

@@ -487,12 +487,44 @@ const ProductPageMain = () => {
   /* ========================= 
      RENDER 
   ========================= */
+  // const generateProductSchema = () => {
+  //   if (!selectedProduct) return null;
+
+  //   return {
+  //     "@context": "https://schema.org/",
+  //     "@type": "Product",
+  //     "name": "GAUSWARN Authentic A2 Bilona Gir Cow Ghee",
+  //     "image": productImages,
+  //     "description":
+  //       "Traditionally made A2 Gir Cow Ghee using the Bilona method. 100% natural, lab-tested, and rich in nutrition.",
+  //     "brand": {
+  //       "@type": "Brand",
+  //       "name": "Gauswarn",
+  //     },
+  //     "offers": {
+  //       "@type": "AggregateOffer",
+  //       "url": "https://gauswarn.com/products",
+  //       "priceCurrency": "INR",
+  //       "lowPrice":
+  //         products.length > 0 ? Math.min(...products.map((p) => p.product_price)) : 0,
+  //       "highPrice":
+  //         products.length > 0 ? Math.max(...products.map((p) => p.product_price)) : 0,
+  //       "offerCount": products.length,
+  //       "availability": "https://schema.org/InStock",
+  //     },
+  //     "aggregateRating": {
+  //       "@type": "AggregateRating",
+  //       "ratingValue": averageRating || 5,
+  //       "reviewCount": totalReviews || 1,
+  //     },
+  //   };
+  // };
 
   return (
     <>
       <Seo
-        title="Buy Pure A2 Gir Cow Ghee Online | Gauswarn"
-        description="Order authentic A2 Gir cow ghee made using the traditional bilona method. Free delivery across India."
+        title="Buy Pure A2 Gir Cow Ghee Online | Gauswarn Authentic Bilona Ghee"
+        description="Order authentic A2 Gir cow ghee made using the traditional bilona method. Lab tested, pure, and delivered fresh across India."
         url="https://gauswarn.com/products"
       />
 
@@ -507,7 +539,7 @@ const ProductPageMain = () => {
                 ) : (
                   <img
                     src={productImages[selectedImage]}
-                    alt={`Product image ${selectedImage + "1"}`}
+                    alt={`Gauswarn A2 Bilona Ghee - Product View ${selectedImage + 1}`}
                     className="responsive-product-img"
                     loading="lazy"
                   />
@@ -519,14 +551,14 @@ const ProductPageMain = () => {
                   <button
                     className="arrow-btn prev-btn"
                     onClick={handlePrevImage}
-                    aria-label="Previous image"
+                    aria-label="Previous product image"
                   >
                     <ChevronLeft size={18} color="#fff" />
                   </button>
                   <button
                     className="arrow-btn next-btn"
                     onClick={handleNextImage}
-                    aria-label="Next image"
+                    aria-label="Next product image"
                   >
                     <ChevronRight size={18} color="#fff" />
                   </button>
@@ -549,12 +581,12 @@ const ProductPageMain = () => {
                       selectedImage === idx ? "active" : ""
                     }`}
                     onClick={() => setSelectedImage(idx)}
-                    aria-label={`Show image ${idx + 1}`}
+                    aria-label={`View Gauswarn A2 Ghee image ${idx + 1}`}
                     role="listitem"
                   >
                     <img
                       src={img}
-                      alt={`Thumbnail ${idx + 1}`}
+                      alt={`Gauswarn Ghee Thumbnail ${idx + 1}`}
                       loading="lazy"
                     />
                   </button>
@@ -597,7 +629,8 @@ const ProductPageMain = () => {
                 </h1>
 
                 <p className="product-description">
-                  Traditionally made. Naturally pure. Rich in aroma & nutrition.
+                  Traditionally made Pure Bilona Ghee. Naturally pure and rich
+                  in aroma & nutrition.
                 </p>
 
                 <div className="rating-section">

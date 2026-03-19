@@ -11,32 +11,37 @@ const features = [
     icon: gheeFeture1,
     title: "Crafted with Tradition",
     description:
-      "Made using the ancient Bilona method to preserve purity, aroma, and nutrition.",
+      "Made using the ancient Bilona method to preserve the purity and rich aroma of A2 Gir Cow Ghee.",
+    alt: "Traditional Bilona Method Churning Ghee",
   },
   {
     icon: gheeFeture2,
     title: "100% Natural Goodness",
     description:
-      "Free from preservatives, colors, or additives — just pure ghee as nature intended.",
+      "Pure Desi Cow Ghee free from preservatives or additives — just natural goodness in every drop.",
     featured: true,
+    alt: "100% Natural Pure Desi Cow Ghee",
   },
   {
     icon: gheeFeture3,
     title: "From Happy Gir Cows",
     description:
-      "Sourced ethically from grass-fed Gir cows nurtured with love and care.",
+      "Ethically sourced from grass-fed indigenous Gir cows nurtured with love in our gaushala.",
+    alt: "Indigenous Gir Cows for A2 Milk",
   },
   {
     icon: gheeFeture4,
     title: "Health in Every Spoon",
     description:
-      "Boosts digestion, energy, and immunity — a perfect daily wellness essential.",
+      "Boosts digestion and immunity — a perfect Ayurvedic wellness essential for your family.",
+    alt: "Ayurvedic Health Benefits of A2 Ghee",
   },
   {
     icon: gheeFeture5,
     title: "Taste of Purity",
     description:
-      "Rich golden texture and traditional flavor that brings warmth to every meal.",
+      "Rich golden texture and authentic flavor that brings the warmth of pure ghee to every meal.",
+    alt: "Golden Texture of Pure A2 Ghee",
   },
 ];
 const GheeFeatureProductPage = () => {
@@ -54,7 +59,8 @@ const GheeFeatureProductPage = () => {
                 <img
                   src={feature.icon}
                   className="ghee-feature-icon"
-                  alt="ghee-feature-icon"
+                  alt={feature.alt}
+                  loading="lazy"
                 />
                 <h3 className="ghee-feature-title">{feature.title}</h3>
                 <p className="ghee-feature-description">

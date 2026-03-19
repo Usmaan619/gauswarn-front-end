@@ -1,12 +1,37 @@
 import { useState } from "react";
 import styles from "./hero-section.module.css";
 import VideoSource from "../../asset/new-img/Video/gauswarn.mp4";
+import Seo from "../SEO/Seo";
 
 export default function VideoSection() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-
+  const videoSchema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: "How Gauswarn A2 Gir Cow Ghee is Made",
+    description:
+      "Watch how Gauswarn India prepares pure A2 Gir Cow Ghee using the traditional Bilona method in our Gaushala.",
+    thumbnailUrl: "https://gauswarn.com/images/ghee-video-thumbnail.jpg",
+    uploadDate: "2026-01-10",
+    contentUrl: "https://gauswarn.com/static/media/gauswarn.mp4",
+    embedUrl: "https://gauswarn.com/",
+    publisher: {
+      "@type": "Organization",
+      name: "Gauswarn India",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://gauswarn.com/logo.png",
+      },
+    },
+  };
   return (
     <>
+      <Seo
+        title="How A2 Gir Cow Ghee is Made | Gauswarn India - Bilona Process"
+        description="Watch our video to see how Gauswarn India prepares pure A2 Gir Cow Ghee using the traditional Bilona method in our own Gaushala."
+        url="https://gauswarn.com"
+        structuredData={videoSchema}
+      />
       <p className="sr-only">
         Watch how Gauswarn India prepares pure A2 Gir Cow Ghee using the
         traditional Bilona method in our Gaushala.
@@ -19,7 +44,7 @@ export default function VideoSection() {
           loop
           muted
           playsInline
-          preload="none" 
+          preload="none"
         >
           <source src={VideoSource} type="video/mp4" />
           <track

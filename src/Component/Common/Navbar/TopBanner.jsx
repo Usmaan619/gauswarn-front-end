@@ -73,7 +73,7 @@ export default function TopBanner() {
               <a
                 href="https://www.facebook.com/profile.php?id=61577996747357"
                 className="social-icon facebook"
-                aria-label="Facebook"
+                aria-label="Follow Gauswarn on Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -83,7 +83,7 @@ export default function TopBanner() {
                 href="https://www.instagram.com/gauswarn/"
                 className="social-icon instagram"
                 target="_blank"
-                aria-label="Visit our Instagram page"
+                aria-label="Follow Gauswarn on Instagram"
                 rel="noopener noreferrer"
               >
                 <i className="fab fa-instagram"></i>
@@ -92,7 +92,7 @@ export default function TopBanner() {
                 href="https://www.youtube.com/@gauswarngircowghee-2"
                 className="social-icon youtube"
                 target="_blank"
-                aria-label="Visit our YouTube channel"
+                aria-label="Subscribe to Gauswarn on YouTube"
                 rel="noopener noreferrer"
               >
                 <i className="fab fa-youtube"></i>
@@ -163,7 +163,7 @@ export default function TopBanner() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon facebook"
-              aria-label="Visit our Facebook page"
+              aria-label="Follow Gauswarn on Facebook"
             >
               <Facebook size={16} />
             </a>
@@ -173,7 +173,7 @@ export default function TopBanner() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon instagram"
-              aria-label="Visit our Instagram page"
+              aria-label="Follow Gauswarn on Instagram"
             >
               <Instagram size={16} />
             </a>
@@ -183,7 +183,7 @@ export default function TopBanner() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon youtube"
-              aria-label="Visit our YouTube channel"
+              aria-label="Subscribe to Gauswarn on YouTube"
             >
               <Youtube size={16} />
             </a>

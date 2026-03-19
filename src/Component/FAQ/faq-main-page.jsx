@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Seo from "../SEO/Seo";
 import "./faq-main-page.css";
 
 const FAQMainPage = () => {
@@ -40,76 +41,31 @@ const FAQMainPage = () => {
     },
   ];
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "Does Gir Cow Ghee have a shelf life?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Unopened Gir Cow Ghee lasts 6–12 months. Once opened, consume within 3–6 months.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Is Gir Cow Ghee suitable for vegans?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "No, Gir Cow Ghee is made from cow's milk, so it is not vegan.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Is Gir Cow Ghee safe for lactose intolerant people?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. During the ghee-making process, lactose and milk solids are removed.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How should Gir Cow Ghee be stored?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Store in a cool, dry place away from sunlight. Keep the jar sealed.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Do you deliver at my location?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Enter your pincode on our website to check service availability.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How can I track my order?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Enter your order number and delivery pincode for real-time updates.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How can I update or cancel my order?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Contact customer support immediately. Changes may not be possible after shipping.",
-              },
-            },
-          ],
-        })}
-      </script>
+      <Seo
+        title="Pure A2 Ghee FAQ | Storage, Benefits & Shipping - Gauswarn India"
+        description="Find answers to common questions about Pure A2 Gir Cow Ghee storage, health benefits, lactose content, and order tracking."
+        url="https://gauswarn.com/faq"
+        structuredData={faqSchema}
+      />
 
       <div className="faq-container">
         <div className="faq-header">

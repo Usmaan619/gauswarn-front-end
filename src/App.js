@@ -11,8 +11,7 @@ import NewFooter from "./Component/Common/Footer/Footer.jsx";
 import { useCartContext } from "./Component/Context/UserContext.jsx";
 import Seo from "./Component/SEO/Seo.jsx";
 import CareersPage from "./Component/Careers/careers-main-page.jsx";
-import axios from "axios";
-import { getData } from "./services/api.jsx";
+import { getData, postData } from "./services/api.jsx";
 
 /* =======================
    LAZY LOAD COMPONENTS
@@ -88,33 +87,63 @@ const PaymentSuccess = lazy(
 /* =======================
    HOME PAGE GROUP
 ======================= */
-const HomePage = () => (
-  <>
-    <Seo
-      title="Buy Pure A2 Gir Cow Ghee in India – Gauswarn India"
-      description="Buy 100% pure, bilona-made A2 Gir cow ghee from Gauswarn India. Farm fresh, lab tested, rich in nutrients and delivered across India."
-      url="https://gauswarn.com/"
-    />
+const HomePage = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Gauswarn India",
+    "url": "https://gauswarn.com/",
+    "logo": "https://gauswarn.com/favicon-512x512.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-74709-15905",
+      "contactType": "customer service",
+      "areaServed": "IN",
+      "availableLanguage": ["en", "Hindi"],
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61577996747357",
+      "https://www.instagram.com/gauswarn/",
+      "https://www.youtube.com/@gauswarngircowghee-2",
+    ],
+  };
 
-    <h1 className="sr-only">
-      Pure A2 Gir Cow Ghee is a premium Indian desi ghee prepared using the
-      traditional Bilona method. Made from the milk of indigenous Gir cows, this
-      A2 cow ghee contains natural nutrients and rich aroma. Gauswarn India
-      provides 100% pure, chemical-free, preservative-free A2 Gir Cow Ghee
-      suitable for healthy cooking, Ayurveda, puja rituals, and daily
-      consumption.
-    </h1>
+  const websiteData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Gauswarn",
+    "url": "https://gauswarn.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://gauswarn.com/products?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
 
-    <Home />
-    <Certified />
-    <AboutUsHero />
-    <ProductShowcase />
-    <VideoSection />
-    <GheePurity />
-    <HealthProductShowcase />
-    <DiscoverHeroSection />
-  </>
-);
+  return (
+    <>
+      <Seo
+        title="Buy Pure A2 Gir Cow Ghee in India – Gauswarn India"
+        description="Buy 100% pure, bilona-made A2 Gir cow ghee from Gauswarn India. Farm fresh, lab tested, rich in nutrients and delivered across India."
+        url="https://gauswarn.com/"
+        structuredData={[structuredData, websiteData]}
+      />
+
+      <h1 className="sr-only">
+        Gauswarn India - Authentic A2 Gir Cow Ghee & Pure Bilona Ghee
+      </h1>
+
+      <Home />
+      <Certified />
+      <AboutUsHero />
+      <ProductShowcase />
+      <VideoSection />
+      <GheePurity />
+      <HealthProductShowcase />
+      <DiscoverHeroSection />
+    </>
+  );
+};
 
 function App() {
   const { setCart } = useCartContext();
@@ -143,7 +172,19 @@ function App() {
 
   useEffect(() => {
     getFacebookUser();
+    trackVisitor();
   }, []);
+
+  const trackVisitor = async () => {
+    try {
+      await postData("/api/track-visitor", {
+        page_url: window.location.href,
+      });
+    } catch (error) {
+      // Silently fail if tracking fails to not disrupt user experience
+      console.log("Visitor tracking failed");
+    }
+  };
 
   const getFacebookUser = async () => {
     try {
