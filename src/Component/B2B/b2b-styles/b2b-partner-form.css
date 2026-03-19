@@ -66,7 +66,6 @@
   background-color: #ffffff;
   color: #3d2817;
   transition: all 0.3s ease;
-  font-family: inherit;
 }
 
 .b2b-form-group input::placeholder,
@@ -131,17 +130,17 @@
   .b2b-form-header h1 {
     font-size: 2rem;
   }
-  
+
   .b2b-inquiry-form {
     padding: 35px 25px;
   }
-  
+
   .b2b-form-row {
     grid-template-columns: 1fr;
     gap: 25px;
     margin-bottom: 25px;
   }
-  
+
   .b2b-form-group.full-width {
     margin-bottom: 25px;
   }
@@ -151,35 +150,35 @@
   .b2b-form-container {
     padding: 30px 15px;
   }
-  
+
   .b2b-form-header {
     margin-bottom: 30px;
   }
-  
+
   .b2b-form-header h1 {
     font-size: 1.75rem;
   }
-  
+
   .b2b-form-header p {
     font-size: 0.9rem;
   }
-  
+
   .b2b-inquiry-form {
     padding: 25px 20px;
     border-radius: 15px;
   }
-  
+
   .b2b-form-group label {
     font-size: 0.9rem;
   }
-  
+
   .b2b-form-group input,
-    .b2b-form-group select,
-    .b2b-form-group textarea {
+  .b2b-form-group select,
+  .b2b-form-group textarea {
     padding: 12px 15px;
     font-size: 0.9rem;
   }
-  
+
   .b2b-submit-btn {
     padding: 15px;
     font-size: 1rem;
@@ -190,7 +189,7 @@
   .b2b-form-header h1 {
     font-size: 1.5rem;
   }
-  
+
   .b2b-inquiry-form {
     padding: 20px 15px;
   }

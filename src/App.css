@@ -456,8 +456,19 @@ body {
 }
 
 .img-fluid {
-  max-width: 150px !important;
-  height: 100px !important;
+  max-width: 100%;
+  height: auto;
+}
+
+.certified-logo .img-fluid {
+  max-width: 90px;
+  height: auto;
+}
+
+@media (max-width: 576px) {
+  .certified-logo .img-fluid {
+    max-width: 25px;
+  }
 }
 
 .about-us-hero {
@@ -2372,11 +2383,5 @@ body {
 
   .navbar-wrapper.banner-hide {
     transform: translateY(-32px);
-  }
-}
-
-@media (max-width: 576px) {
-  .certified-logo img {
-    max-width: 70px;
   }
 }

@@ -14,7 +14,7 @@ const Certified = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <div className="d-flex justify-content-between my-4 my-sm-3 my-md-4 my-xl-4 flex-wrap gap-4">
+            <div className="d-flex justify-content-around my-4 my-sm-3 my-md-4 my-xl-4 flex-nowrap overflow-auto gap-3 pb-2 no-scrollbar">
               {[
                 {
                   src: FssaiLogo,
@@ -39,7 +39,7 @@ const Certified = () => {
               ].map((logo, index) => (
                 <div
                   key={index}
-                  className="d-flex justify-content-center mb-3 certified-logo"
+                  className="d-flex justify-content-center mb-3 certified-logo flex-shrink-0"
                 >
                   <img
                     src={logo.src}

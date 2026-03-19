@@ -8,44 +8,34 @@ import ProductCard from "./product-card";
 import { getData } from "../../services/api";
 import CarouselCard from "./carousel-card";
 
-const ProductShowcaseComplete = ({ showProduct = true }) => {
+const ProductShowcaseComplete = () => {
   const [reels, setReels] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const settings = useMemo(
+  const reelSettings = useMemo(
     () => ({
       dots: true,
-      infinite: false,
-      speed: 400,
-      slidesToShow: 3,
+      infinite: true,
+      speed: 800,
+      slidesToShow: 4,
       slidesToScroll: 1,
-      swipeToSlide: true,
-      adaptiveHeight: false,
-      arrows: false,
-      touchThreshold: 10,
-      draggable: true,
-      variableWidth: false,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      pauseOnHover: true,
       responsive: [
         {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            swipeToSlide: true,
-            dots: true,
-          },
+          breakpoint: 1200,
+          settings: { slidesToShow: 3 },
         },
         {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            swipeToSlide: true,
-            dots: true,
-            centerMode: false,
-          },
+          breakpoint: 992,
+          settings: { slidesToShow: 2 },
+        },
+        {
+          breakpoint: 480,
+          settings: { slidesToShow: 1 },
         },
       ],
     }),
@@ -73,405 +63,255 @@ const ProductShowcaseComplete = ({ showProduct = true }) => {
           },
         },
       );
-      setProducts(res?.data?.products || []);
+
+      let productsList = res?.data?.products || [];
+
+      // ✅ SORTING BY WEIGHT (250ml < 500ml < 1000ml < 5kg < 15kg)
+      const weightMap = (weightStr) => {
+        if (!weightStr) return 0;
+        const lowerWeight = weightStr.toLowerCase();
+        let val = parseFloat(lowerWeight.match(/\d+/)?.[0] || 0);
+
+        if (lowerWeight.includes("kg")) {
+          return val * 1000;
+        }
+        return val;
+      };
+
+      productsList.sort(
+        (a, b) => weightMap(a.product_weight) - weightMap(b.product_weight),
+      );
+
+      setProducts(productsList);
     } catch (err) {
       console.error("Product fetch error", err);
       setProducts([]);
     }
   }, []);
 
-  const handleRefresh = useCallback(async () => {
-    setError(null);
-    setLoading(true);
-    await Promise.all([loadReels(), loadProducts()]);
-    setLoading(false);
-  }, [loadReels, loadProducts]);
-
   useEffect(() => {
     const loadData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        await Promise.all([loadReels(), loadProducts()]);
-      } catch (err) {
-        console.error("Load error:", err);
-        setError("Failed to load content");
-      } finally {
-        setLoading(false);
-      }
+      setLoading(true);
+      setError(null);
+      await Promise.all([loadReels(), loadProducts()]);
+      setLoading(false);
     };
     loadData();
   }, [loadReels, loadProducts]);
 
-  const memoizedReelsList = useMemo(
-    () =>
-      reels.map((item) => (
-        <CarouselCard key={item.id || item.reel_id} reelId={item.reel_id} />
-      )),
-    [reels],
-  );
-
-  if (error && !loading) {
+  if (loading) {
     return (
-      <div className="product-showcase">
-        <div className="showcase-container">
-          <h2 className="showcase-title">Our Product</h2>
-          <div className="error-message">
-            <span>{error}</span>
-            <button
-              aria-label="Retry loading content"
-              onClick={handleRefresh}
-              className="refresh-btn"
-            >
-              🔄 Retry
-            </button>
-          </div>
+      <div className="product-showcase-loading">
+        <div className="loader-container">
+          <div className="custom-loader"></div>
+          <p>Harvesting Pure Ghee for you...</p>
         </div>
         <style>{`
-          .error-message {
-            text-align: center;
-            padding: 80px 20px;
-            color: #e74c3c;
-            font-size: 1.2rem;
+          .product-showcase-loading {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
-          .refresh-btn {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            margin-left: 12px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s;
+          .custom-loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #d4af37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
           }
-          .refresh-btn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-          }
+          @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         `}</style>
       </div>
     );
   }
 
-  if (loading) {
-    return (
-      <div className="product-showcase">
-        <div className="showcase-container">
-          <h1 className="showcase-title">Our Product</h1>
-          <div className="shimmer-container">
-            <div className="shimmer-product"></div>
-            <div className="shimmer-carousel">
-              <div className="shimmer-slide"></div>
-              <div className="shimmer-slide"></div>
-              <div className="shimmer-slide"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="product-showcase">
-      <p className="sr-only">
-        Explore our range of pure A2 Gir Cow Ghee products, crafted using the
-        traditional Bilona method and sourced from our Gaushala.
-      </p>
-
-      <div className="showcase-container">
-        <h1 className="showcase-title">Our Product</h1>
-
-        <div className="showcase-content">
-          {showProduct && products.length > 0 && (
-            <div className="product-section">
-              <ProductCard product={products} />
-            </div>
-          )}
-
-          <div className="carousel-section">
-            {reels.length > 0 ? (
-              <Slider {...settings} className="products-carousel">
-                {memoizedReelsList}
-              </Slider>
-            ) : (
-              <div className="no-reels">
-                No reels available
-                <button
-                  aria-label="Refresh reels"
-                  onClick={loadReels}
-                  className="refresh-btn"
-                >
-                  🔄 Refresh
-                </button>
-              </div>
-            )}
-          </div>
+    <div className="showcase-wrapper">
+      {/* PRODUCTS SECTION */}
+      <section className="products-grid-section">
+        <div className="section-header">
+          <span className="subtitle">Premium Quality</span>
+          <h2 className="main-title">A2 Gir Cow Bilona Ghee</h2>
+          <div className="title-underline"></div>
+          <p className="description">
+            Experience the purity of traditional Bilona method ghee, available
+            in various sizes to suit your family's needs.
+          </p>
         </div>
-      </div>
+
+        <div className="variants-container">
+          {products.length > 0 ? (
+            <div className="variants-grid">
+              {products.map((product) => (
+                <div key={product.id} className="variant-item">
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="no-data">No products found.</div>
+          )}
+        </div>
+      </section>
+
+      {/* REELS SECTION */}
+      <section className="instagram-reels-section">
+        <div className="section-header">
+          <span className="subtitle">Life at the Farm</span>
+          <h2 className="main-title">Instagram Stories</h2>
+          <div className="title-underline"></div>
+        </div>
+
+        <div className="reels-carousel-container">
+          {reels.length > 0 ? (
+            <Slider {...reelSettings} className="reels-slider">
+              {reels.map((reel) => (
+                <div key={reel.id || reel.reel_id} className="reel-slide">
+                  <CarouselCard reelId={reel.reel_id} />
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <div className="no-data">Stay tuned for more updates!</div>
+          )}
+        </div>
+      </section>
 
       <style>{`
-        .product-showcase {
-          width: 100%;
-          padding: 40px 20px;
-          // background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-          min-height: 100vh;
+        .showcase-wrapper {
+          padding: 0 0;
+          background-color: #ffffff;
+          overflow: hidden;
         }
 
-        .showcase-container {
-          max-width: 1500px;
-          margin: 0 auto;
-        }
-
-        .showcase-title {
-          font-size: 2.8rem;
-          font-weight: 800;
+        .section-header {
           text-align: center;
-          margin-bottom: 50px;
-          color: #2c3e50;
-          background: linear-gradient(135deg, #402405 0%, #402405 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          max-width: 800px;
+          margin: 0 auto 50px;
+          padding: 0 20px;
         }
 
-        .showcase-content {
-          display: flex;
-          gap: 40px;
-          align-items: flex-start;
+        .subtitle {
+          color: #d4af37;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          font-weight: 700;
+          font-size: 0.85rem;
+          display: block;
+          margin-bottom: 10px;
         }
 
-        .product-section {
-          flex: 0 0 400px;
-          max-width: 400px;
+        .main-title {
+          font-size: 3rem;
+          color: #2c1a0a;
+          margin-bottom: 20px;
+          font-weight: 700;
         }
 
-        .carousel-section {
-          flex: 1;
-          min-width: 0;
+        .title-underline {
+          width: 80px;
+          height: 4px;
+          background: #d4af37;
+          margin: 0 auto 25px;
+          border-radius: 2px;
         }
 
-        .products-carousel {
-          width: 100%;
+        .description {
+          color: #666;
+          font-size: 1.1rem;
+          line-height: 1.6;
         }
 
-        .carousel-card-wrapper {
-          width: 100%;
-          height: 620px;
-          overflow: hidden;
-          border-radius: 20px;
-          background: #fff;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .variants-container {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 20px;
         }
 
-        .carousel-card-wrapper:hover {
-          transform: translateY(-12px) scale(1.02);
-          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        .variants-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 25px;
         }
 
-        :global(.product-card-main) {
-          width: 100%;
-          overflow: hidden;
-          border-radius: 20px;
-          background: #fff;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        :global(.product-card-main:hover) {
-          transform: translateY(-8px) scale(1.02);
-          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-        }
-
-        :global(.products-carousel .slick-slide) {
-          padding: 0 12px;
-          box-sizing: border-box;
-          height: 620px;
-        }
-
-        :global(.products-carousel .slick-slide > div) {
+        .variant-item {
           height: 100%;
         }
 
-        :global(.products-carousel .slick-track) {
-          display: flex !important;
-          align-items: stretch;
+        .instagram-reels-section {
+          margin-top: 100px;
+          background: #4b3109;
+          padding: 100px 0;
+          color: #fff;
         }
 
-        :global(.products-carousel .slick-list) {
-          overflow: hidden;
-          margin: 0 -12px;
-          touch-action: pan-y pinch-zoom;
+        .instagram-reels-section .main-title {
+          color: #fff;
         }
 
-        :global(.products-carousel .slick-dots) {
-          bottom: -45px;
-          display: flex !important;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
+        .reels-carousel-container {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 40px;
         }
 
-        :global(.products-carousel .slick-dots li) {
-          width: 12px;
-          height: 12px;
-          margin: 0;
+        .reels-slider .slick-slide {
+          padding: 0 10px;
         }
 
-        :global(.products-carousel .slick-dots li button) {
-          width: 12px;
-          height: 12px;
-          padding: 0;
+        .reels-slider .slick-dots li button:before {
+          color: #fff;
         }
 
-        :global(.products-carousel .slick-dots li button:before) {
-          width: 12px;
-          height: 12px;
-          font-size: 12px;
-          line-height: 12px;
-          color: #ddd;
-          opacity: 1;
+        .reels-slider .slick-dots li.slick-active button:before {
+          color: #d4af37;
         }
 
-        :global(.products-carousel .slick-dots li.slick-active button:before) {
-          color: #2c3e50;
-          opacity: 1;
-        }
-
-        .shimmer-container {
-          display: flex;
-          flex-direction: column;
-          gap: 40px;
-        }
-
-        .shimmer-product,
-        .shimmer-slide {
-          background: linear-gradient(
-            90deg,
-            #f0f0f0 25%,
-            #e0e0e0 50%,
-            #f0f0f0 75%
-          );
-          background-size: 200% 100%;
-          animation: shimmer 1.5s infinite;
-          border-radius: 20px;
-        }
-
-        .shimmer-product {
-          height: 400px;
-        }
-
-        .shimmer-carousel {
-          display: flex;
-          gap: 24px;
-          padding: 0 12px;
-        }
-
-        .shimmer-slide {
-          flex: 1;
-          height: 620px;
-        }
-
-        @keyframes shimmer {
-          0% {
-            background-position: 200% 0;
+        @media (max-width: 1200px) {
+          .variants-grid {
+            grid-template-columns: repeat(3, 1fr);
           }
-          100% {
-            background-position: -200% 0;
-          }
-        }
-
-        .no-reels {
-          text-align: center;
-          padding: 80px 20px;
-          color: #7f8c8d;
-          font-size: 1.2rem;
-          background: rgba(255, 255, 255, 0.8);
-          border-radius: 20px;
-          backdrop-filter: blur(10px);
-        }
-
-        .refresh-btn {
-          background: linear-gradient(135deg, #27ae60, #2ecc71);
-          color: white;
-          border: none;
-          padding: 12px 24px;
-          border-radius: 12px;
-          margin-left: 12px;
-          cursor: pointer;
-          font-size: 1rem;
-          font-weight: 600;
-          transition: all 0.3s;
-          box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
-        }
-
-        .refresh-btn:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6);
-        }
-
-        @media (max-width: 1024px) {
-          .showcase-content {
-            flex-direction: column;
-            gap: 40px;
-          }
-          .product-section {
-            max-width: none;
-            flex: none;
-          }
-          .carousel-section {
-            min-width: auto;
+          .main-title {
+            font-size: 2.5rem;
           }
         }
 
         @media (max-width: 768px) {
-          .product-showcase {
-            padding: 30px 15px;
+          .variants-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
           }
-          .showcase-title {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
+          .main-title {
+            font-size: 2rem;
           }
-          .product-section {
-            max-width: 100%;
+          .showcase-wrapper {
+            padding: 50px 0;
           }
-          .carousel-card-wrapper,
-          :global(.products-carousel .slick-slide) {
-            height: 400px;
-          }
-          .shimmer-slide {
-            height: 400px;
-          }
-          :global(.products-carousel .slick-slide) {
-            padding: 0 8px;
-          }
-          :global(.products-carousel .slick-list) {
-            margin: 0 -8px;
+          .reels-carousel-container {
+            padding: 0 20px;
           }
         }
 
         @media (max-width: 480px) {
-          .product-showcase {
-            padding: 20px 10px;
+          .variants-grid {
+            grid-template-columns: repeat(1, 1fr);
           }
-          .showcase-title {
+          .main-title {
             font-size: 1.8rem;
-            margin-bottom: 25px;
           }
-          .carousel-card-wrapper,
-          :global(.products-carousel .slick-slide) {
-            height: 350px;
+          .instagram-reels-section {
+            padding: 60px 0;
           }
-          .shimmer-slide {
-            height: 350px;
-          }
-          :global(.products-carousel .slick-slide) {
-            padding: 0 5px;
-          }
-          :global(.products-carousel .slick-list) {
-            margin: 0 -5px;
-          }
+        }
+
+        .no-data {
+          text-align: center;
+          padding: 40px;
+          color: #888;
+          font-style: italic;
         }
       `}</style>
     </div>

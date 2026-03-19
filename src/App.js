@@ -91,17 +91,17 @@ const HomePage = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Gauswarn India",
-    "url": "https://gauswarn.com/",
-    "logo": "https://gauswarn.com/favicon-512x512.png",
-    "contactPoint": {
+    name: "Gauswarn India",
+    url: "https://gauswarn.com/",
+    logo: "https://gauswarn.com/favicon-512x512.png",
+    contactPoint: {
       "@type": "ContactPoint",
-      "telephone": "+91-74709-15905",
-      "contactType": "customer service",
-      "areaServed": "IN",
-      "availableLanguage": ["en", "Hindi"],
+      telephone: "+91-74709-15905",
+      contactType: "customer service",
+      areaServed: "IN",
+      availableLanguage: ["en", "Hindi"],
     },
-    "sameAs": [
+    sameAs: [
       "https://www.facebook.com/profile.php?id=61577996747357",
       "https://www.instagram.com/gauswarn/",
       "https://www.youtube.com/@gauswarngircowghee-2",
@@ -111,11 +111,11 @@ const HomePage = () => {
   const websiteData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Gauswarn",
-    "url": "https://gauswarn.com/",
-    "potentialAction": {
+    name: "Gauswarn",
+    url: "https://gauswarn.com/",
+    potentialAction: {
       "@type": "SearchAction",
-      "target": "https://gauswarn.com/products?q={search_term_string}",
+      target: "https://gauswarn.com/products?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };
@@ -135,8 +135,8 @@ const HomePage = () => {
 
       <Home />
       <Certified />
-      <AboutUsHero />
       <ProductShowcase />
+      <AboutUsHero />
       <VideoSection />
       <GheePurity />
       <HealthProductShowcase />

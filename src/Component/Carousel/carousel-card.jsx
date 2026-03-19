@@ -18,7 +18,7 @@ const CarouselCard = ({ reelId }) => {
         if (!iframeDoc) return;
 
         const playBtn = iframeDoc.querySelector(
-          '.fXIG0, [data-testid="play-button"], button[aria-label*="play"], .wpO6b'
+          '.fXIG0, [data-testid="play-button"], button[aria-label*="play"], .wpO6b',
         );
 
         if (playBtn) playBtn.click();
@@ -30,7 +30,6 @@ const CarouselCard = ({ reelId }) => {
     return () => clearTimeout(timer);
   }, [reelId, loaded]);
 
-  // ❌ Yahan se pehle koi hook nahi hona chahiye
   if (!reelId) return null;
 
   return (

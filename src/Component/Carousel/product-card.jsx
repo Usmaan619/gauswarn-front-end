@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from "react";
-import { ChevronDown, ShoppingCart } from "lucide-react";
-import { TiStarFullOutline } from "react-icons/ti";
+import React from "react";
+import { ShoppingCart, Star } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
+import { environment } from "../../environment/environment";
 import { useCartContext } from "../Context/UserContext";
 
 import productPlaceholder from "../../asset/new-img/product-imgs/product1.webp";
@@ -13,30 +14,28 @@ const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const { setCart } = useCartContext();
 
-  const variants = useMemo(() => {
-    if (!product) return [];
-    return Array.isArray(product) ? product : [product];
-  }, [product]);
-
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const selectedVariant = variants[selectedIndex];
-
-  const images = useMemo(() => {
-    if (!selectedVariant?.product_images) return [productPlaceholder];
+  const images = React.useMemo(() => {
+    if (!product?.product_images) return [productPlaceholder];
     try {
-      const parsed = JSON.parse(selectedVariant.product_images);
+      // If product_images is already an array, use it, otherwise parse it
+      const parsed = Array.isArray(product.product_images)
+        ? product.product_images
+        : typeof product.product_images === "string"
+          ? JSON.parse(product.product_images)
+          : [productPlaceholder];
+
       return parsed?.map((img) =>
         typeof img === "string" ? img : img?.url || img?.src,
       );
     } catch {
       return [productPlaceholder];
     }
-  }, [selectedVariant]);
+  }, [product]);
 
-  // ✅ BUY NOW LOGIC (same as ProductPageMain)
-  const handleBuyNow = () => {
-    if (!selectedVariant) {
-      toast.error("Please select a variant");
+  const handleBuyNow = (e) => {
+    e.stopPropagation();
+    if (!product) {
+      toast.error("Product data unavailable");
       return;
     }
 
@@ -45,13 +44,13 @@ const ProductCard = ({ product }) => {
 
     const cartItem = {
       product_id: pId,
-      user_id: selectedVariant.product_id,
-      product_weight: selectedVariant.product_weight,
+      user_id: product.product_id,
+      product_weight: product.product_weight,
       product_quantity: 1,
-      quantity: 1, // ✅ header cart count
-      product_price: selectedVariant.product_price,
-      product_total_amount: selectedVariant.product_price,
-      purchase_price: selectedVariant.product_purchase_price,
+      quantity: 1, // header cart count
+      product_price: product.product_price,
+      product_total_amount: product.product_price,
+      purchase_price: product.product_purchase_price,
       product_image: images[0] || productPlaceholder,
     };
 
@@ -59,8 +58,8 @@ const ProductCard = ({ product }) => {
 
     const foundIndex = existingCart.findIndex(
       (it) =>
-        it.user_id === selectedVariant.product_id &&
-        it.product_weight === selectedVariant.product_weight,
+        it.user_id === product.product_id &&
+        it.product_weight === product.product_weight,
     );
 
     if (foundIndex !== -1) {
@@ -74,69 +73,149 @@ const ProductCard = ({ product }) => {
     }
 
     sessionStorage.setItem("cart", JSON.stringify(existingCart));
-    setCart(existingCart); // ✅ update context
+    setCart(existingCart);
 
-    toast.success("Item added to cart");
+    toast.success(`${product.product_weight} Ghee added to cart`);
     navigate("/cart");
   };
 
+  const handleAddToCart = async (e) => {
+    e.stopPropagation();
+    if (!product) {
+      toast.error("Product data unavailable");
+      return;
+    }
+
+    let pId = sessionStorage.getItem("product_id") || uuidv4();
+    sessionStorage.setItem("product_id", pId);
+
+    const cartItem = {
+      product_id: pId,
+      user_id: product.product_id,
+      product_weight: product.product_weight,
+      product_quantity: 1,
+      quantity: 1,
+      product_price: product.product_price,
+      product_total_amount: product.product_price,
+      purchase_price: product.product_purchase_price,
+      product_image: images[0] || productPlaceholder,
+    };
+
+    try {
+      const response = await axios.post(
+        `${environment?.API_BASE_URL}/users/login/addtocart`,
+        cartItem,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+          },
+        },
+      );
+
+      if (response.status === 200 || response.status === 201) {
+        toast.success(`${product.product_weight} added to cart!`);
+
+        let existingCart = JSON.parse(sessionStorage.getItem("cart") || "[]");
+        const foundIndex = existingCart.findIndex(
+          (it) =>
+            it.user_id === product.product_id &&
+            it.product_weight === product.product_weight,
+        );
+
+        if (foundIndex !== -1) {
+          existingCart[foundIndex].product_quantity += 1;
+          existingCart[foundIndex].quantity += 1;
+          existingCart[foundIndex].product_total_amount =
+            existingCart[foundIndex].product_price *
+            existingCart[foundIndex].product_quantity;
+        } else {
+          existingCart.push(cartItem);
+        }
+
+        sessionStorage.setItem("cart", JSON.stringify(existingCart));
+        setCart(existingCart);
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
+  };
+
+  const handleViewDetails = (e) => {
+    e.stopPropagation();
+    if (product?.product_id) {
+      sessionStorage.setItem("selected_variant_id", product.product_id);
+    }
+    navigate("/products");
+  };
+
+  const calculateDiscount = (original, current) => {
+    const orig = parseFloat(original) || 0;
+    const curr = parseFloat(current) || 0;
+    if (!orig || !curr || orig <= curr) return null;
+    return Math.round(((orig - curr) / orig) * 100);
+  };
+
+  const discount = calculateDiscount(
+    product?.product_del_price,
+    product?.product_price,
+  );
+
   return (
-    <div className="featured-product">
-      <div className="product-image-container">
+    <div className="premium-product-card" onClick={handleViewDetails}>
+      {discount ? (
+        <div className="product-card-badge discount-mode">OFF {discount}%</div>
+      ) : (
+        <div></div>
+      )}
+
+      <div className="product-image-box">
         <img
           src={images[0] || productPlaceholder}
-          alt={selectedVariant?.product_name}
-          className="product-image"
+          alt={product?.product_name}
+          className="product-img-main"
         />
+        <div className="image-overlay">
+          <button className="quick-view-btn">View Details</button>
+        </div>
       </div>
 
-      <div className="product-info">
-        <h2 className="product-name">{"GAUSWARN A2 Bilona Ghee"}</h2>
+      <div className="product-details">
+        <h3 className="product-title">
+          A2 Gir Cow Ghee {product?.product_weight || "Weight Not Specified"}
+        </h3>
 
-        <p className="product-description">
-          {selectedVariant?.product_description || "Natural Product"}
-        </p>
-
-        {/* PRICE */}
-        <div className="product-pricing">
-          <span className="price-current">
-            ₹{selectedVariant?.product_price}
-          </span>
-
-          {selectedVariant?.product_del_price && (
-            <span className="price-original">
-              ₹{selectedVariant.product_del_price}
-            </span>
-          )}
-
-          <TiStarFullOutline size={18} fill="#fed525" />
-          <span className="rating-value">4.5</span>
-        </div>
-
-        {/* VARIANT SELECT */}
-        <div className="product-quantity">
-          <select
-            aria-label="Select product variant"
-            value={selectedIndex}
-            onChange={(e) => setSelectedIndex(Number(e.target.value))}
-            className="quantity-select"
-          >
-            {variants.map((v, idx) => (
-              <option key={idx} value={idx}>
-                {v.product_weight || "Variant"}
-              </option>
+        <div className="rating-row">
+          <div className="stars">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                size={14}
+                fill={i < 4 ? "#d4af37" : "transparent"}
+                color="#d4af37"
+              />
             ))}
-          </select>
-          <ChevronDown size={16} className="chevron-icon" />
+          </div>
+          <span className="review-count">(120+)</span>
         </div>
 
-        {/* BUY NOW */}
-        <button
-          aria-label="Buy Now"
-          className="add-to-cart-btn mt-3 product-action-buttons-bg"
-          onClick={handleBuyNow}
-        >
-          <ShoppingCart size={18} />
+        <div className="price-row">
+          <div className="price-container">
+            <span className="current-price">₹{product?.product_price}</span>
+            {product?.product_del_price && (
+              <span className="old-price">₹{product.product_del_price}</span>
+            )}
+          </div>
+          <button
+            className="add-to-cart-icon-btn"
+            onClick={handleAddToCart}
+            aria-label="Add to cart"
+          >
+            <ShoppingCart size={20} />
+          </button>
+        </div>
+
+        <button className="buy-btn-full" onClick={handleBuyNow}>
           Buy Now
         </button>
       </div>
