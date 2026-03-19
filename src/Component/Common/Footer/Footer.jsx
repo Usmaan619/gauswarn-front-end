@@ -93,8 +93,11 @@ export default function NewFooter() {
             <div className="col-xl-4 col-lg-4 mb-50">
               <div className="footer-widget">
                 <div className="footer-logo">
-                  <a href="/" aria-label="Gauswarn Home">
-                    <img src={logo} alt="logo" />
+                  <a
+                    href="/"
+                    aria-label="Gauswarn A2 Gir Cow Ghee - Return to Homepage"
+                  >
+                    <img src={logo} alt="Gauswarn A2 Gir Cow Ghee Logo" />
                   </a>
                 </div>
 
@@ -109,7 +112,7 @@ export default function NewFooter() {
                   <span>Also available on</span>
 
                   <a
-                    aria-label="Visit our Amazon store"
+                    aria-label="Buy Gauswarn A2 Gir Cow Ghee on Amazon"
                     href="https://amzn.in/d/h5EBdP1"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -117,12 +120,12 @@ export default function NewFooter() {
                     <img
                       src={amazonlogo}
                       className="footer-facebook-bg-img"
-                      alt="amazonlogo"
+                      alt="Amazon Logo - Buy Pure Bilona Ghee"
                     />
                   </a>
 
                   <a
-                    aria-label="Visit our Flipkart store"
+                    aria-label="Buy Gauswarn A2 Gir Cow Ghee on Flipkart"
                     target="_blank"
                     rel="noopener noreferrer"
                     href="https://www.flipkart.com/gau-swarn-a2-gir-cow-ghee-glass-bottle/p/itm48ba9c417cecd"
@@ -130,7 +133,7 @@ export default function NewFooter() {
                     <img
                       src={flipkartlogo}
                       className="footer-facebook-bg-img"
-                      alt="flipkartlogo"
+                      alt="Flipkart Logo - Desi Gir Cow Ghee"
                     />
                   </a>
                 </div>
@@ -146,66 +149,106 @@ export default function NewFooter() {
 
                 <ul className="footer-ul">
                   <li>
-                    <Link to="/" onClick={scrollToTop}>
-                      Home
+                    <Link
+                      to="/"
+                      onClick={scrollToTop}
+                      aria-label="A2 Gir Cow Ghee Home"
+                    >
+                      A2 Gir Cow Ghee Home
                     </Link>
                   </li>
                   <li>
-                    <Link to="/about" onClick={scrollToTop}>
-                      About Us
+                    <Link
+                      to="/about"
+                      onClick={scrollToTop}
+                      aria-label="About Gauswarn Ghee"
+                    >
+                      About Gauswarn Ghee
                     </Link>
                   </li>
                   <li>
-                    <Link to="/lab-report" onClick={scrollToTop}>
-                      Lab Report
+                    <Link
+                      to="/lab-report"
+                      onClick={scrollToTop}
+                      aria-label="Ghee Purity Lab Report"
+                    >
+                      Ghee Purity Report
                     </Link>
                   </li>
                   <li>
-                    <Link to="/products" onClick={scrollToTop}>
-                      Shop Now
+                    <Link
+                      to="/products"
+                      onClick={scrollToTop}
+                      aria-label="Buy A2 Cow Ghee Online"
+                    >
+                      Buy A2 Cow Ghee Online
                     </Link>
                   </li>
                   <li>
                     <a
-                      aria-label="Track your order"
+                      aria-label="Track your Pure Bilona Ghee order"
                       href="https://panel.shipmozo.com/track-order/LBYfQgGFRljv1A249H87"
                       rel="noopener noreferrer"
                       // target="_blank"
 
                       onClick={scrollToTop}
                     >
-                      Track Order
+                      Track Ghee Order
                     </a>
                   </li>
 
                   <li>
-                    <Link to="/refund" onClick={scrollToTop}>
+                    <Link
+                      to="/refund"
+                      onClick={scrollToTop}
+                      aria-label="Gauswarn Refund Policy"
+                    >
                       Refund Policy
                     </Link>
                   </li>
                   <li>
-                    <Link to="/privacy" onClick={scrollToTop}>
+                    <Link
+                      to="/privacy"
+                      onClick={scrollToTop}
+                      aria-label="Gauswarn Privacy Policy"
+                    >
                       Privacy Policy
                     </Link>
                   </li>
                   <li>
-                    <Link to="/shipping" onClick={scrollToTop}>
-                      Shipping & Delivery Policy
+                    <Link
+                      to="/shipping"
+                      onClick={scrollToTop}
+                      aria-label="Ghee Shipping and Delivery Policy"
+                    >
+                      Shipping & Delivery
                     </Link>
                   </li>
                   <li>
-                    <Link to="/terms" onClick={scrollToTop}>
-                      Term & Condition
+                    <Link
+                      to="/terms"
+                      onClick={scrollToTop}
+                      aria-label="Gauswarn Terms and Conditions"
+                    >
+                      Terms & Conditions
                     </Link>
                   </li>
                   <li>
-                    <Link to="/faq" onClick={scrollToTop}>
-                      FAQ
+                    <Link
+                      to="/faq"
+                      onClick={scrollToTop}
+                      aria-label="Pure Ghee FAQs"
+                    >
+                      Pure Ghee FAQs
                     </Link>
                   </li>
                   <li>
-                    <Link to="/careers" onClick={scrollToTop}>
-                      Careers
+                    <Link
+                      to="/careers"
+                      onClick={scrollToTop}
+                      aria-label="Careers at Gauswarn"
+                    >
+                      Gauswarn Careers
                     </Link>
                   </li>
                 </ul>
@@ -231,12 +274,13 @@ export default function NewFooter() {
                       type="email"
                       placeholder="Email Address"
                       required
+                      aria-label="Enter your email for newsletter"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <button
-                      aria-label="Subscribe to newsletter"
+                      aria-label="Subscribe to Gauswarn newsletter"
                       type="submit"
                       disabled={loading}
                     >
@@ -289,7 +333,7 @@ export default function NewFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon facebook"
-                aria-label="Visit our Facebook page"
+                aria-label="Follow Gauswarn on Facebook"
               >
                 <Facebook size={16} />
               </a>
@@ -299,7 +343,7 @@ export default function NewFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon instagram"
-                aria-label="Visit our Instagram page"
+                aria-label="Follow Gauswarn on Instagram"
               >
                 <Instagram size={16} />
               </a>
@@ -309,7 +353,7 @@ export default function NewFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon youtube"
-                aria-label="Visit our YouTube channel"
+                aria-label="Subscribe to Gauswarn on YouTube"
               >
                 <Youtube size={16} />
               </a>

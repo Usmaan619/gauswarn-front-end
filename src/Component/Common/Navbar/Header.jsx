@@ -58,24 +58,20 @@ export default function Header() {
       <div className="container-fluid px-4 px-md-3">
         <div className="d-flex align-items-center justify-content-between py-3 py-md-2 header-content">
           {/* Logo Section */}
-          <div
+          <NavLink
+            to="/"
             className="logo-wrapper"
             onClick={() => handleNavClick("/")}
-            style={{ cursor: "pointer" }}
-            role="button"
-            tabIndex="0"
-            onKeyPress={(e) => {
-              if (e.key === "Enter") handleNavClick("/");
-            }}
+            aria-label="Gauswarn A2 Gir Cow Ghee - Return to Homepage"
           >
             <img
               src={mainLogo}
-              alt="Gauswarn Logo"
+              alt="Gauswarn A2 Gir Cow Ghee Logo"
               className="logo-image"
               // loading="lazy"
               fetchpriority="high"
             />
-          </div>
+          </NavLink>
 
           {/* Desktop Navigation */}
           <nav className="desktop-nav">
@@ -83,19 +79,21 @@ export default function Header() {
               to="/"
               className="nav-link"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Go to Gauswarn A2 Gir Cow Ghee Home"
             >
-              Home
+              Gauswarn Home
             </NavLink>
             <NavLink
               to="/products"
               className="nav-link"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Buy A2 Cow Ghee Online"
             >
-              Shop Now
+              Buy A2 Cow Ghee
             </NavLink>
 
             <a
-              aria-label="Track your order"
+              aria-label="Track your Pure Bilona Ghee order"
               href="https://panel.shipmozo.com/track-order/LBYfQgGFRljv1A249H87"
               rel="noopener noreferrer"
               // target="_blank"
@@ -109,36 +107,41 @@ export default function Header() {
               to="/gallery"
               className="nav-link"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="View Gauswarn Ghee Gallery"
             >
-              Gallery
+              Ghee Gallery
             </NavLink>
             <NavLink
               to="/b2b"
               className="nav-link"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Gauswarn Bulk A2 Ghee for Businesses"
             >
-              B2B
+              Bulk A2 Ghee
             </NavLink>
             <NavLink
               to="/blog"
               className="nav-link"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Read Blogs about Pure Bilona Ghee"
             >
-              Blog
+              Ghee Blogs
             </NavLink>
             <NavLink
               to="/about"
               className="nav-link"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Learn About Gauswarn's Desi Gir Cow Ghee"
             >
-              About Us
+              About Gauswarn
             </NavLink>
             <NavLink
               to="/contact"
               className="nav-link"
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Contact Gauswarn Support"
             >
-              Contact Us
+              Contact Support
             </NavLink>
           </nav>
 
@@ -147,7 +150,7 @@ export default function Header() {
             <button
               className="cart-button"
               onClick={() => handleNavClick("/cart")}
-              aria-label={`Cart with ${cartCount} items`}
+              aria-label={`View your shopping cart with ${cartCount} items of A2 Ghee`}
             >
               Cart ({cartCount})
             </button>
@@ -178,6 +181,7 @@ export default function Header() {
           onClick={() => handleNavClick("/")}
           role="button"
           tabIndex="0"
+          aria-label="Gauswarn A2 Gir Cow Ghee Homepage"
           onKeyPress={(e) => {
             if (e.key === "Enter") handleNavClick("/");
           }}
@@ -190,6 +194,7 @@ export default function Header() {
           onClick={() => handleNavClick("/products")}
           role="button"
           tabIndex="0"
+          aria-label="Buy A2 Cow Ghee Online"
           onKeyPress={(e) => {
             if (e.key === "Enter") handleNavClick("/products");
           }}
@@ -202,6 +207,7 @@ export default function Header() {
           onClick={() => handleNavClick("/gallery")}
           role="button"
           tabIndex="0"
+          aria-label="Pure Bilona Ghee Gallery"
           onKeyPress={(e) => {
             if (e.key === "Enter") handleNavClick("/gallery");
           }}
@@ -214,6 +220,7 @@ export default function Header() {
           onClick={() => handleNavClick("/b2b")}
           role="button"
           tabIndex="0"
+          aria-label="B2B Bulk Ghee Inquiry"
           onKeyPress={(e) => {
             if (e.key === "Enter") handleNavClick("/b2b");
           }}
@@ -226,6 +233,7 @@ export default function Header() {
           onClick={() => handleNavClick("/blog")}
           role="button"
           tabIndex="0"
+          aria-label="Read Pure Ghee Blogs"
           onKeyPress={(e) => {
             if (e.key === "Enter") handleNavClick("/blog");
           }}
@@ -238,6 +246,7 @@ export default function Header() {
           onClick={() => handleNavClick("/about")}
           role="button"
           tabIndex="0"
+          aria-label="About Gauswarn Ghee"
           onKeyPress={(e) => {
             if (e.key === "Enter") handleNavClick("/about");
           }}
@@ -250,6 +259,7 @@ export default function Header() {
           onClick={() => handleNavClick("/contact")}
           role="button"
           tabIndex="0"
+          aria-label="Contact Gauswarn Support"
           onKeyPress={(e) => {
             if (e.key === "Enter") handleNavClick("/contact");
           }}
@@ -262,6 +272,7 @@ export default function Header() {
           onClick={() => handleNavClick("/careers")}
           role="button"
           tabIndex="0"
+          aria-label="Careers at Gauswarn"
           onKeyPress={(e) => {
             if (e.key === "Enter") handleNavClick("/careers");
           }}
@@ -274,6 +285,7 @@ export default function Header() {
           onClick={() => handleNavClick("/cart")}
           role="button"
           tabIndex="0"
+          aria-label={`View cart with ${cartCount} items`}
           onKeyPress={(e) => {
             if (e.key === "Enter") handleNavClick("/cart");
           }}

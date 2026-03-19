@@ -526,6 +526,7 @@ const ProductPageMain = () => {
         title="Buy Pure A2 Gir Cow Ghee Online | Gauswarn Authentic Bilona Ghee"
         description="Order authentic A2 Gir cow ghee made using the traditional bilona method. Lab tested, pure, and delivered fresh across India."
         url="https://gauswarn.com/products"
+        structuredData={generateProductSchema()}
       />
 
       <div className="product-page">
