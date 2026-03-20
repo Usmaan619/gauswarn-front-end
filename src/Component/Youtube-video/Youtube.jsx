@@ -8,19 +8,42 @@ import React, {
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ExternalLink, Heart, ChevronLeft, ChevronRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { getData } from "../../services/api";
-import { useCartContext } from "../Context/UserContext";
 import "./youtube-video.css";
 
 const VideoProductCard = ({ product, isActive, onOpenModal }) => {
+  const cardRef = useRef(null);
   const videoRef = useRef(null);
-  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFocusable, setIsFocusable] = useState(true);
+
+  // accessibility: watch for aria-hidden on parent slick-slide
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+
+    const slideWrapper = el.closest(".slick-slide");
+    if (!slideWrapper) return;
+
+    const checkVisibility = () => {
+      const isHidden = slideWrapper.getAttribute("aria-hidden") === "true";
+      setIsFocusable(!isHidden);
+    };
+
+    // Initial check
+    checkVisibility();
+
+    // Observe changes to aria-hidden attribute by slick-carousel
+    const observer = new MutationObserver(checkVisibility);
+    observer.observe(slideWrapper, {
+      attributes: true,
+      attributeFilter: ["aria-hidden"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   // YouTube ID extractor
   const getYoutubeId = (url) => {
@@ -56,24 +79,29 @@ const VideoProductCard = ({ product, isActive, onOpenModal }) => {
     }
   }, [isPlaying, isYoutube]);
 
-  const handleToggleWishlist = (e) => {
-    e.stopPropagation();
-    setIsFavorite(!isFavorite);
-    toast.success(!isFavorite ? "Added to Wishlist" : "Removed from Wishlist");
-  };
-
   const handleCardClick = (e) => {
     if (isActive) {
       onOpenModal(product);
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      handleCardClick(e);
+    }
+  };
+
   return (
     <div
+      ref={cardRef}
       onClick={handleCardClick}
+      onKeyDown={handleKeyDown}
       className={`video-product-card-v2 ${isActive ? "active" : "inactive"}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      role="button"
+      tabIndex={isFocusable && isActive ? 0 : -1}
+      aria-label={`View video: ${product.name}`}
     >
       {/* Media Content */}
       <div className="media-container">
@@ -94,6 +122,7 @@ const VideoProductCard = ({ product, isActive, onOpenModal }) => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               title={product.name}
+              tabIndex="-1" // Prevent focus on iframe inside carousel
             />
           )
         ) : (
@@ -116,29 +145,11 @@ const VideoProductCard = ({ product, isActive, onOpenModal }) => {
             onOpenModal(product);
           }}
           aria-label="View Full Screen"
+          tabIndex={isFocusable ? 0 : -1}
         >
           <ExternalLink size={18} />
         </button>
-
-        {/* Wishlist icon */}
       </div>
-
-      {/* Info Floating Box */}
-      {/* <div className="product-info-box" onClick={(e) => e.stopPropagation()}>
-        <div className="info-main">
-          <img src={product.thumbnail} alt="" className="mini-thumb" />
-          <div className="text-info">
-            <h3 className="name">{product.name}</h3>
-            <p className="price">₹{product.price}.00</p>
-          </div>
-        </div>
-        <button
-          className="view-details-btn"
-          onClick={() => navigate("/products")}
-        >
-          VIEW DETAILS
-        </button>
-      </div> */}
     </div>
   );
 };

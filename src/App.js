@@ -11,8 +11,7 @@ import NewFooter from "./Component/Common/Footer/Footer.jsx";
 import { useCartContext } from "./Component/Context/UserContext.jsx";
 import Seo from "./Component/SEO/Seo.jsx";
 import CareersPage from "./Component/Careers/careers-main-page.jsx";
-import { getData, postData } from "./services/api.jsx";
-import YoutubeVideosSection from "./Component/Youtube-video/Youtube.jsx";
+import { postData } from "./services/api.jsx";
 
 /* =======================
    LAZY LOAD COMPONENTS
@@ -137,9 +136,9 @@ const HomePage = () => {
       <Home />
       <Certified />
       <ProductShowcase />
-      {/* <YoutubeVideosSection /> */}
 
       <AboutUsHero />
+      <VideoSection />
       <GheePurity />
       <HealthProductShowcase />
       <DiscoverHeroSection />
@@ -173,7 +172,6 @@ function App() {
   }, [setCart]);
 
   useEffect(() => {
-    getFacebookUser();
     trackVisitor();
   }, []);
 
@@ -185,15 +183,6 @@ function App() {
     } catch (error) {
       // Silently fail if tracking fails to not disrupt user experience
       console.log("Visitor tracking failed");
-    }
-  };
-
-  const getFacebookUser = async () => {
-    try {
-      const res = await getData("api/branded-content");
-      console.log("getFacebookUser", res.data);
-    } catch (error) {
-      console.log(error);
     }
   };
 

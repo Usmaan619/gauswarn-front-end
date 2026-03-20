@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./carousel-card-wrapper.css";
 
-const CarouselCard = ({ reelId }) => {
+const CarouselCard = ({ reelId, isVisible = true }) => {
   const [loaded, setLoaded] = useState(false);
   const iframeRef = useRef(null);
 
+  // accessibility: disable focus on hidden cards
+  const tabIndex = isVisible ? "0" : "-1";
+
   // ✅ Hook always called
   useEffect(() => {
-    if (!reelId || !loaded || !iframeRef.current) return;
+    if (!reelId || !loaded || !iframeRef.current || !isVisible) return;
 
     const timer = setTimeout(() => {
       try {
@@ -28,7 +31,7 @@ const CarouselCard = ({ reelId }) => {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [reelId, loaded]);
+  }, [reelId, loaded, isVisible]);
 
   if (!reelId) return null;
 
@@ -47,6 +50,7 @@ const CarouselCard = ({ reelId }) => {
           onLoad={() => setLoaded(true)}
           onError={() => setLoaded(true)}
           className="reel-iframe"
+          tabIndex={tabIndex}
         />
       </div>
     </div>

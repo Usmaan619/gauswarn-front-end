@@ -100,17 +100,41 @@
 }
 
 @media (max-width: 480px) {
+  .new-ghee-purity {
+    padding: 40px 15px;
+  }
+
   .new-ghee-purity-title {
-    font-size: 24px;
+    font-size: 20px;
+    margin-bottom: 30px;
   }
 
   .new-ghee-bottle-wrapper {
-    width: 260px;
-    height: 360px;
+    width: 240px;
+    height: 320px;
+    margin-bottom: 20px;
   }
 
   .new-ghee-bottle {
-    max-width: 320px;
-    max-height: 390px;
+    max-width: 200px;
+    max-height: 280px;
+  }
+
+  .new-ghee-feature-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .new-ghee-feature-title {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .new-ghee-feature-desc {
+    font-size: 12px;
+  }
+
+  .new-ghee-column {
+    gap: 20px;
   }
 }

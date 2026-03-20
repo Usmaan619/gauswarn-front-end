@@ -1,47 +1,13 @@
-import { useEffect, useState, useMemo, useCallback } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { environment } from "../../environment/environment";
 import ProductCard from "./product-card";
-import { getData } from "../../services/api";
-import CarouselCard from "./carousel-card";
 import YoutubeVideosSection from "../Youtube-video/Youtube";
 
 const ProductShowcaseComplete = () => {
-  const [reels, setReels] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const reelSettings = useMemo(
-    () => ({
-      dots: true,
-      infinite: true,
-      speed: 800,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      pauseOnHover: true,
-      responsive: [
-        {
-          breakpoint: 1200,
-          settings: { slidesToShow: 3 },
-        },
-        {
-          breakpoint: 992,
-          settings: { slidesToShow: 2 },
-        },
-        {
-          breakpoint: 480,
-          settings: { slidesToShow: 1 },
-        },
-      ],
-    }),
-    [],
-  );
 
   const loadProducts = useCallback(async () => {
     try {
@@ -276,7 +242,8 @@ const ProductShowcaseComplete = () => {
 
         @media (max-width: 480px) {
           .variants-grid {
-            grid-template-columns: repeat(1, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
           }
           .main-title {
             font-size: 1.8rem;

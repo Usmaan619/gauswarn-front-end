@@ -38,15 +38,20 @@ const CustomCarousel = ({ products = [], slidesToShow = 3 }) => {
             transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)`,
           }}
         >
-          {products.map((item, index) => (
-            <div
-              key={item.id || index}
-              className="carousel-item"
-              style={{ flex: `0 0 ${100 / itemsToShow}%` }}
-            >
-              <CarouselCard reelId={item.reelId} />
-            </div>
-          ))}
+          {products.map((item, index) => {
+            const isVisible =
+              index >= currentIndex && index < currentIndex + itemsToShow;
+            return (
+              <div
+                key={item.id || index}
+                className="carousel-item"
+                style={{ flex: `0 0 ${100 / itemsToShow}%` }}
+                aria-hidden={!isVisible}
+              >
+                <CarouselCard reelId={item.reelId} isVisible={isVisible} />
+              </div>
+            );
+          })}
         </div>
       </div>
 

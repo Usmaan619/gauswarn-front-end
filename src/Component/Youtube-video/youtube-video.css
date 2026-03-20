@@ -334,8 +334,12 @@
 
 /* Responsiveness */
 @media (max-width: 1200px) {
-  .premium-nav-btn.prev { left: 0; }
-  .premium-nav-btn.next { right: 0; }
+  .premium-nav-btn.prev {
+    left: 0;
+  }
+  .premium-nav-btn.next {
+    right: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -343,7 +347,7 @@
     width: 260px;
     height: 440px;
   }
-  
+
   .premium-carousel-wrapper {
     padding: 0 10px;
   }
@@ -354,7 +358,7 @@
     width: 240px;
     height: 400px;
   }
-  
+
   .premium-nav-btn {
     display: none;
   }
