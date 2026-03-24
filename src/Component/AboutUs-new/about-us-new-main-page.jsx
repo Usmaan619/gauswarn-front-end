@@ -1,9 +1,9 @@
 // import AboutUsHero from "../Common/Navbar/About/About-us-hero";
 import DiscoverHeroSection from "../Discover/discover-hero-section";
 import Certified from "../Pages/Certified";
+import VideoPage from "../Pages/VideoPage";
 import ProductHeroSection from "../Products/product-hero-section";
 import Seo from "../SEO/Seo";
-import VideoSection from "../Video/Video-hero";
 import BilonaAboutUsSection from "./bilona-aboutus";
 import GheePurity from "./ghee-purity";
 import NurituringAboutUs from "./nurturing-about-us-page";
@@ -24,7 +24,7 @@ export default function AboutUsHeroMain() {
       <NurituringAboutUs />
       <GheePurity />
       <BilonaAboutUsSection />
-      <VideoSection />
+      <VideoPage />
       <SustainableFeaturesAboutus />
     </>
   );

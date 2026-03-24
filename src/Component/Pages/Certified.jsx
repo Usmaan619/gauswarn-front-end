@@ -47,7 +47,7 @@ const Certified = () => {
                     loading="lazy"
                     decoding="async"
                     className="img-fluid"
-                    style={{ maxHeight: "60px", objectFit: "contain" }}
+                    style={{ maxHeight: "50px", objectFit: "contain" }}
                   />
                 </div>
               ))}

@@ -38,65 +38,118 @@ const Internship = () => {
       toast.error(" Try again");
     }
   };
-  const jobSchema = {
-    "@context": "https://schema.org",
-    "@type": "JobPosting",
-    title: "Sales & Marketing Internship",
-    description:
-      "3-6 months Sales & Marketing Internship at Gauswarn India. Stipend upto ₹12,000/month, certificate and real work experience.",
+ const jobSchema = {
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
 
-    datePosted: "2026-03-10",
-    validThrough: "2026-12-31T23:59",
+  title: "Sales & Marketing Internship",
 
-    employmentType: "INTERN",
+  description: `
+3-6 months Sales & Marketing Internship at Gauswarn India.
 
-    hiringOrganization: {
-      "@type": "Organization",
-      name: "Gauswarn India",
-      sameAs: "https://gauswarn.com",
-      logo: "https://gauswarn.com/logo.png",
+Responsibilities:
+- Social media marketing (Instagram Reels, WhatsApp marketing)
+- Sales support (customer calls, order follow-ups)
+- Market research & competitor analysis
+- Field work & local promotions
+
+Benefits:
+- Monthly stipend upto ₹12,000
+- Internship certificate
+- Real work experience
+- Free A2 Gir Cow Ghee products
+- Placement assistance
+  `,
+
+  identifier: {
+    "@type": "PropertyValue",
+    name: "Gauswarn India",
+    value: "GAUSWARN-SALES-INTERNSHIP-2026",
+  },
+
+  datePosted: "2026-03-10",
+
+  validThrough: "2026-12-31T23:59",
+
+  employmentType: ["INTERN"],
+
+  hiringOrganization: {
+    "@type": "Organization",
+    name: "Gauswarn India",
+    sameAs: "https://gauswarn.com",
+    logo: "https://gauswarn.com/logo.png",
+  },
+
+  industry: "Food & Dairy Products",
+
+  jobLocation: {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "11, Manisg Bagh, Near Vikram Tower Sapna Sangeeta Road",
+      addressLocality: "Indore",
+      addressRegion: "Madhya Pradesh",
+      postalCode: "452001",
+      addressCountry: "IN",
     },
+  },
 
-    industry: "Food & Dairy Products",
+  jobLocationType: "OnSite",
 
-    jobLocation: {
-      "@type": "Place",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Bhopal",
-        addressRegion: "Madhya Pradesh",
-        addressCountry: "IN",
-      },
+  applicantLocationRequirements: {
+    "@type": "Country",
+    name: "India",
+  },
+
+  educationRequirements: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "bachelor degree",
+  },
+
+  experienceRequirements: {
+    "@type": "OccupationalExperienceRequirements",
+    monthsOfExperience: 0,
+  },
+
+  skills: [
+    "Sales",
+    "Marketing",
+    "Social Media Marketing",
+    "Communication",
+    "Market Research",
+  ],
+
+  responsibilities: [
+    "Manage social media campaigns",
+    "Handle customer communication",
+    "Assist in sales operations",
+    "Conduct market research",
+    "Participate in field marketing activities",
+  ],
+
+  jobBenefits: [
+    "Monthly stipend upto ₹12,000",
+    "Internship certificate",
+    "Real work experience",
+    "Free A2 Gir Cow Ghee products",
+    "Placement assistance",
+  ],
+
+  workHours: "10:00-18:00",
+
+  directApply: true,
+
+  baseSalary: {
+    "@type": "MonetaryAmount",
+    currency: "INR",
+    value: {
+      "@type": "QuantitativeValue",
+      minValue: 5000,
+      maxValue: 12000,
+      unitText: "MONTH",
     },
-
-    applicantLocationRequirements: {
-      "@type": "Country",
-      name: "India",
-    },
-
-    educationRequirements: "BBA, B.Com, MBA or any Graduate",
-
-    jobBenefits: [
-      "Monthly stipend upto ₹12,000",
-      "Internship certificate",
-      "Real marketing experience",
-      "Free A2 Gir Cow Ghee products",
-      "Placement assistance",
-    ],
-
-    directApply: true,
-
-    baseSalary: {
-      "@type": "MonetaryAmount",
-      currency: "INR",
-      value: {
-        "@type": "QuantitativeValue",
-        minValue: 5000,
-        maxValue: 12000,
-        unitText: "MONTH",
-      },
-    },
-  };
+  },
+};
   return (
     <>
       <Seo

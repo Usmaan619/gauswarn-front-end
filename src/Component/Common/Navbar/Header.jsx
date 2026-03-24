@@ -112,6 +112,14 @@ export default function Header() {
               Gallery
             </NavLink>
             <NavLink
+              to="/video"
+              className="nav-link"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Watch Gauswarn Ghee Story"
+            >
+              Video Story
+            </NavLink>
+            <NavLink
               to="/b2b"
               className="nav-link"
               onClick={() => setIsMenuOpen(false)}
@@ -213,6 +221,18 @@ export default function Header() {
           }}
         >
           Gallery
+        </div>
+        <div
+          className="new-header-m-nav-link"
+          onClick={() => handleNavClick("/video")}
+          role="button"
+          tabIndex="0"
+          aria-label="Watch Gauswarn Ghee Story"
+          onKeyPress={(e) => {
+            if (e.key === "Enter") handleNavClick("/video");
+          }}
+        >
+          Video Story
         </div>
 
         <div

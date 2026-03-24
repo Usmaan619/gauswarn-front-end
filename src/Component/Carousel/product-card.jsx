@@ -223,4 +223,5 @@ const ProductCard = ({ product }) => {
   );
 };
 
+export { ProductCard };
 export default ProductCard;

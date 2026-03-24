@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { environment } from "../../environment/environment";
-import ProductCard from "./product-card";
-import YoutubeVideosSection from "../Youtube-video/Youtube";
+import { environment } from "../../environment/environment.jsx";
+import { ProductCard } from "./product-card.jsx";
+import { YoutubeVideosSection } from "../Youtube-video/Youtube.jsx";
 
 const ProductShowcaseComplete = () => {
   const [products, setProducts] = useState([]);

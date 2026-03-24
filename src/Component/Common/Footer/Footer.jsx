@@ -185,6 +185,15 @@ export default function NewFooter() {
                     </Link>
                   </li>
                   <li>
+                    <Link
+                      to="/video"
+                      onClick={scrollToTop}
+                      aria-label="Watch Gauswarn Ghee Story"
+                    >
+                      Video Story
+                    </Link>
+                  </li>
+                  <li>
                     <a
                       aria-label="Track your Pure Bilona Ghee order"
                       href="https://panel.shipmozo.com/track-order/LBYfQgGFRljv1A249H87"

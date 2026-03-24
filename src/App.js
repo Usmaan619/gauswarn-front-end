@@ -26,7 +26,6 @@ const AboutUsHero = lazy(
 const ProductShowcase = lazy(
   () => import("./Component/Carousel/product-showcase.jsx"),
 );
-const VideoSection = lazy(() => import("./Component/Video/Video-hero.jsx"));
 const GheePurity = lazy(
   () => import("./Component/AboutUs-new/ghee-purity.jsx"),
 );
@@ -75,6 +74,7 @@ const TermsConditions = lazy(
   () => import("./Component/Terms-And-Conditions/terms-and-condition.jsx"),
 );
 const LabReportMain = lazy(() => import("./Component/Lab/lab-report-main.jsx"));
+const VideoPage = lazy(() => import("./Component/Pages/VideoPage.jsx"));
 
 // Payment
 const PaymentFailed = lazy(
@@ -138,7 +138,7 @@ const HomePage = () => {
       <ProductShowcase />
 
       <AboutUsHero />
-      <VideoSection />
+      <VideoPage />
       <GheePurity />
       <HealthProductShowcase />
       <DiscoverHeroSection />
@@ -229,6 +229,7 @@ function App() {
 
           <Route path="/faq" element={<FAQMainPage />} />
           <Route path="/lab-report" element={<LabReportMain />} />
+          <Route path="/video" element={<VideoPage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route
             path="*"

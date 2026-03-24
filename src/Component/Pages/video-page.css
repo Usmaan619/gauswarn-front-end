@@ -1,0 +1,239 @@
+.video-page-container {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+.video-hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.video-background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.bg-video-iframe {
+  width: 100vw;
+  height: 56.25vw;
+  min-height: 100vh;
+  min-width: 177.77vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: blur(5px) scale(1.1);
+  opacity: 0.6;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.9) 100%);
+  z-index: 2;
+}
+
+.video-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.video-title {
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -3px;
+}
+
+.video-title .highlight {
+  color: #116931; /* Brand green from conversation history */
+  text-shadow: 0 0 30px rgba(17, 105, 49, 0.5);
+}
+
+.video-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.play-btn-large {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.play-btn-large:hover {
+  transform: translateY(-5px);
+}
+
+.play-icon-wrapper {
+  width: 110px;
+  height: 110px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.play-icon-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 1px solid rgba(17, 105, 49, 0.4);
+  animation: pulse 2.5s infinite;
+}
+
+.play-btn-large:hover .play-icon-wrapper {
+  background: #116931;
+  border-color: #116931;
+  box-shadow: 0 0 40px rgba(17, 105, 49, 0.6);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.play-icon-wrapper svg {
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  margin-left: 6px;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+}
+
+.play-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #fff;
+}
+
+/* Modal */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.98);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(15px);
+  animation: modalEnter 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.modal-inner {
+  position: relative;
+  width: 92%;
+  max-width: 1400px;
+  aspect-ratio: 16/9;
+  transform-origin: center;
+}
+
+.iframe-wrapper {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 100px rgba(0,0,0,1);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+.iframe-wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.close-btn {
+  position: absolute;
+  top: -60px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 3.5rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #116931;
+  transform: rotate(90deg);
+}
+
+@keyframes modalEnter {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .video-title {
+    font-size: 3.5rem;
+    letter-spacing: -2px;
+  }
+  
+  .play-icon-wrapper {
+    width: 90px;
+    height: 90px;
+  }
+
+  .close-btn {
+    top: -50px;
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-title {
+    font-size: 2.8rem;
+  }
+  
+  .play-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+}

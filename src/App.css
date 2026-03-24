@@ -1546,8 +1546,8 @@ body {
 
 @media (max-width: 476px) {
   .img-fluid {
-    max-width: "80px" !important;
-    height: "30px" !important;
+    max-width: "70px" !important;
+    height: "25px" !important;
   }
 }
 

@@ -80,13 +80,14 @@
 @media (min-width: 992px) {
   .desktop-nav {
     display: flex;
-    gap: 18px;
+    align-items: center;
+    gap: 25px;
   }
-  
+
   .new-header-hamburger {
     display: none;
   }
-  
+
   .new-header-mobile-menu {
     display: none;
   }

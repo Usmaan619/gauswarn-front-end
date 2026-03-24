@@ -9,7 +9,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import { getData } from "../../services/api";
+import { getData } from "../../services/api.jsx";
 import "./youtube-video.css";
 
 const VideoProductCard = ({ product, isActive, onOpenModal }) => {
@@ -320,4 +320,5 @@ const YoutubeVideosSection = () => {
   );
 };
 
+export { YoutubeVideosSection };
 export default YoutubeVideosSection;

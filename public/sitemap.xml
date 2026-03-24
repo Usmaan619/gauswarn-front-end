@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
   <url>
     <loc>https://gauswarn.com/</loc>
-    <lastmod>2026-01-25</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -93,8 +94,20 @@
 
   <url>
     <loc>https://gauswarn.com/lab-report</loc>
-    <lastmod>2026-01-25</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://gauswarn.com/video</loc>
+    <lastmod>2026-03-24</lastmod>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/GHzgddV5Jrc/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Pure A2 Gir Cow Ghee - Gauswarn India</video:title>
+      <video:description>Healthy Desi Ghee - Watch the traditional Bilona process of making pure A2 Gir Cow Ghee.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/GHzgddV5Jrc</video:player_loc>
+    </video:video>
   </url>
 
 </urlset>
