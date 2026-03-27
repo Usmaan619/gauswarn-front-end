@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../Context/UserContext";
 import { z } from "zod";
+import CouponBox from "../Common/CouponBox";
 
 const FinalPaymentMainPage = () => {
   const navigate = useNavigate();
@@ -66,6 +67,8 @@ const FinalPaymentMainPage = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
+  const [discount, setDiscount] = useState(0);
+  const [appliedCoupon, setAppliedCoupon] = useState("");
 
   // UPDATE QUANTITY - ab context automatically update hoga
   const updateQuantity = async (index, change) => {
@@ -133,6 +136,16 @@ const FinalPaymentMainPage = () => {
     return true;
   };
 
+  const handleCouponApply = (discountValue, finalPrice, couponCode) => {
+    setDiscount(discountValue);
+    setAppliedCoupon(couponCode);
+  };
+
+  const handleCouponRemove = () => {
+    setDiscount(0);
+    setAppliedCoupon("");
+  };
+
   const reset = () => {
     setFormData({
       user_name: "",
@@ -162,15 +175,21 @@ const FinalPaymentMainPage = () => {
       );
 
       //  FIXED: Include FULL cart array in payload
+      const finalAmount = subtotal - discount;
+
       const payload = {
         ...formData,
-        user_total_amount: subtotal,
-        purchase_price: cart[0]?.product_price || 0, // Use first item's price
+        user_total_amount: finalAmount, // Amount to be charged
+        subtotal_amount: subtotal,     // Original amount for record
+        purchase_price: cart[0]?.product_price || 0,
         product_quantity: cart.reduce(
           (acc, item) => acc + item.product_quantity,
           0,
-        ), // Total quantity
-        cart: cart, //  THIS WAS MISSING!
+        ),
+        cart: cart,
+        coupon_code: appliedCoupon,
+        discount_amount: discount,
+        final_payable_amount: finalAmount,
       };
 
       console.log(" Payment Payload:", payload); // Debug log
@@ -468,6 +487,12 @@ const FinalPaymentMainPage = () => {
                   ))}
                 </div>
 
+                <CouponBox
+                  cartTotal={subtotal}
+                  onApply={handleCouponApply}
+                  onRemove={handleCouponRemove}
+                />
+
                 <div className="new-summaryDetails">
                   <div className="new-summaryRow">
                     <span>Subtotal</span>
@@ -484,9 +509,14 @@ const FinalPaymentMainPage = () => {
                     <span className="new-freeShipping">Free</span>
                   </div>
 
+                  <div className="new-summaryRow">
+                    <span>Discount</span>
+                    <span style={{ color: "#116931" }}>-₹{discount}</span>
+                  </div>
+
                   <div className="new-totalRow">
                     <span>Total</span>
-                    <span>₹{subtotal}</span>
+                    <span>₹{subtotal - discount}</span>
                   </div>
 
                   <div className="new-taxNote">
