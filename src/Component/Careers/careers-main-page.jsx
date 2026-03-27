@@ -94,7 +94,6 @@ Benefits:
     },
   },
 
-  jobLocationType: "OnSite",
 
   applicantLocationRequirements: {
     "@type": "Country",
@@ -108,7 +107,7 @@ Benefits:
 
   experienceRequirements: {
     "@type": "OccupationalExperienceRequirements",
-    monthsOfExperience: 0,
+    monthsOfExperience: 1,
   },
 
   skills: [
