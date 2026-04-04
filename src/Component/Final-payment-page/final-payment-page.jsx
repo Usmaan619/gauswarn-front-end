@@ -67,8 +67,7 @@ const FinalPaymentMainPage = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
-  const [discount, setDiscount] = useState(0);
-  const [appliedCoupon, setAppliedCoupon] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState(null); // { code, discountRate }
 
   // UPDATE QUANTITY - ab context automatically update hoga
   const updateQuantity = async (index, change) => {
@@ -137,13 +136,17 @@ const FinalPaymentMainPage = () => {
   };
 
   const handleCouponApply = (discountValue, finalPrice, couponCode) => {
-    setDiscount(discountValue);
-    setAppliedCoupon(couponCode);
+    // Store the discount RATE (%) so it scales with cart changes
+    const currentSubtotal = cart.reduce(
+      (acc, item) => acc + item.product_price * item.product_quantity,
+      0,
+    );
+    const discountRate = currentSubtotal > 0 ? (discountValue / currentSubtotal) * 100 : 0;
+    setAppliedCoupon({ code: couponCode, discountRate });
   };
 
   const handleCouponRemove = () => {
-    setDiscount(0);
-    setAppliedCoupon("");
+    setAppliedCoupon(null);
   };
 
   const reset = () => {
@@ -187,7 +190,7 @@ const FinalPaymentMainPage = () => {
           0,
         ),
         cart: cart,
-        coupon_code: appliedCoupon,
+        coupon_code: appliedCoupon?.code || "",
         discount_amount: discount,
         final_payable_amount: finalAmount,
       };
@@ -317,6 +320,11 @@ const FinalPaymentMainPage = () => {
     0,
   );
   const totalItems = cart.reduce((acc, item) => acc + item.product_quantity, 0);
+
+  // Recalculate discount live from subtotal whenever cart changes
+  const discount = appliedCoupon
+    ? parseFloat(((appliedCoupon.discountRate / 100) * subtotal).toFixed(2))
+    : 0;
 
   // UI
   return (
@@ -491,6 +499,7 @@ const FinalPaymentMainPage = () => {
                   cartTotal={subtotal}
                   onApply={handleCouponApply}
                   onRemove={handleCouponRemove}
+                  liveDiscount={discount}
                 />
 
                 <div className="new-summaryDetails">

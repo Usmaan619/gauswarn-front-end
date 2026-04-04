@@ -4,7 +4,7 @@ import { environment } from "../../environment/environment";
 import { toast } from "react-toastify";
 import { Tag, X, CheckCircle } from "lucide-react";
 
-const CouponBox = ({ cartTotal, onApply, onRemove }) => {
+const CouponBox = ({ cartTotal, onApply, onRemove, liveDiscount }) => {
   const [couponCode, setCouponCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [appliedCoupon, setAppliedCoupon] = useState(null);
@@ -73,7 +73,7 @@ const CouponBox = ({ cartTotal, onApply, onRemove }) => {
           <div className="applied-info">
             <CheckCircle size={18} color="#4b3109" />
             <span className="applied-text">
-              <strong>{appliedCoupon.code}</strong> Applied (-₹{appliedCoupon.discount})
+              <strong>{appliedCoupon.code}</strong> Applied (-₹{liveDiscount ?? appliedCoupon.discount})
             </span>
           </div>
           <button onClick={handleRemove} className="coupon-remove-btn">
