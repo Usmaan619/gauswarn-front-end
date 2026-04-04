@@ -5,13 +5,50 @@ import "./final-payment-page.css";
 
 import axios from "axios";
 import { environment } from "../../environment/environment";
-import LoadingOverlay from "react-loading-overlay";
-import { toast, ToastContainer } from "react-toastify";
+
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../Context/UserContext";
 import { z } from "zod";
 import CouponBox from "../Common/CouponBox";
+
+/* Custom loading overlay — replaces broken react-loading-overlay (React 18 incompatible) */
+const LoadingOverlay = ({ active, children }) => (
+  <div style={{ position: "relative" }}>
+    {active && (
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          background: "rgba(0,0,0,0.55)",
+          zIndex: 9999,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 16,
+        }}
+      >
+        <div
+          style={{
+            width: 52,
+            height: 52,
+            border: "5px solid rgba(255,255,255,0.3)",
+            borderTop: "5px solid #fff",
+            borderRadius: "50%",
+            animation: "loSpin 0.9s linear infinite",
+          }}
+        />
+        <span style={{ color: "#fff", fontSize: 15, fontWeight: 500 }}>
+          Processing Payment...
+        </span>
+        <style>{`@keyframes loSpin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    )}
+    {children}
+  </div>
+);
 
 const FinalPaymentMainPage = () => {
   const navigate = useNavigate();
@@ -300,7 +337,6 @@ const FinalPaymentMainPage = () => {
   if (cart.length === 0) {
     return (
       <div className="new-emptyCart">
-        <ToastContainer />
         <ShoppingCart size={80} color="#fff" strokeWidth={1.5} />
         <h2 className="new-emptyTitle">Your Cart is Empty</h2>
         <button
@@ -329,13 +365,8 @@ const FinalPaymentMainPage = () => {
   // UI
   return (
     <>
-      <ToastContainer />
 
-      <LoadingOverlay
-        active={isLoading || showLoader}
-        spinner
-        text="Processing Payment..."
-      >
+      <LoadingOverlay active={isLoading || showLoader}>
         <div className="new-paymentContainer">
           <div className="new-paymentWrapper">
             {/* LEFT SIDE FORM */}

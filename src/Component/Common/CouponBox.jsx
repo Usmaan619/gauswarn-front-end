@@ -82,7 +82,7 @@ const CouponBox = ({ cartTotal, onApply, onRemove, liveDiscount }) => {
         </div>
       )}
 
-      <style jsx>{`
+      <style>{`
         .coupon-box-container {
           margin: 15px 0;
           padding: 10px 0;
