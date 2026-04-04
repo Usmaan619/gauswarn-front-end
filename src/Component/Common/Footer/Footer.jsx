@@ -55,7 +55,7 @@ export default function NewFooter() {
               <div className="footer-single-cta">
                 <i className="fas fa-map-marker-alt"></i>
                 <div className="footer-cta-text">
-                  <h4>Find us</h4>
+                  <span className="footer-cta-heading">Find us</span>
                   <span>
                     11, Manish Baag Sapna Sangeeta Road Indore Madhya Pradesh
                     452001
@@ -68,7 +68,7 @@ export default function NewFooter() {
               <div className="footer-single-cta">
                 <i className="fas fa-phone"></i>
                 <div className="footer-cta-text">
-                  <h4>Call us</h4>
+                  <span className="footer-cta-heading">Call us</span>
                   <span>+91-74709 15905</span>
                 </div>
               </div>
@@ -78,7 +78,7 @@ export default function NewFooter() {
               <div className="footer-single-cta">
                 <i className="far fa-envelope-open"></i>
                 <div className="footer-cta-text">
-                  <h4>Mail us</h4>
+                  <span className="footer-cta-heading">Mail us</span>
                   <span>info@gauswarn.com</span>
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default function NewFooter() {
                     href="/"
                     aria-label="Gauswarn A2 Gir Cow Ghee - Return to Homepage"
                   >
-                    <img src={logo} alt="Gauswarn A2 Gir Cow Ghee Logo" />
+                    <img src={logo} alt="Gauswarn A2 Gir Cow Ghee Logo" width="300" height="60" loading="lazy" />
                   </a>
                 </div>
 
@@ -121,6 +121,9 @@ export default function NewFooter() {
                       src={amazonlogo}
                       className="footer-facebook-bg-img"
                       alt="Amazon Logo - Buy Pure Bilona Ghee"
+                      width="35"
+                      height="35"
+                      loading="lazy"
                     />
                   </a>
 
@@ -134,6 +137,9 @@ export default function NewFooter() {
                       src={flipkartlogo}
                       className="footer-facebook-bg-img"
                       alt="Flipkart Logo - Desi Gir Cow Ghee"
+                      width="35"
+                      height="35"
+                      loading="lazy"
                     />
                   </a>
                 </div>

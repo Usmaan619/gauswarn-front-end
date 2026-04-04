@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Seo from "../../Component/SEO/Seo";
 import "./video-page.css";
 
-const VideoPage = () => {
+const VideoPage = ({ isEmbedded = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const videoId = "GHzgddV5Jrc";
 
@@ -33,12 +33,14 @@ const VideoPage = () => {
 
   return (
     <div className="video-page-container">
-      <Seo
-        title="Our Story in Motion | Pure A2 Gir Cow Ghee - Gauswarn India"
-        description="Watch the journey of Gauswarn's A2 Gir Cow Ghee. Traditional Bilona method, pure Vedic process, and farm-fresh goodness in every drop."
-        url="https://gauswarn.com/video"
-        structuredData={videoSchema}
-      />
+      {!isEmbedded && (
+        <Seo
+          title="Our Story in Motion | Pure A2 Gir Cow Ghee - Gauswarn India"
+          description="Watch the journey of Gauswarn's A2 Gir Cow Ghee. Traditional Bilona method, pure Vedic process, and farm-fresh goodness in every drop."
+          url="https://gauswarn.com/video"
+          structuredData={videoSchema}
+        />
+      )}
 
       <section className="video-hero">
         <div className="video-background-container">

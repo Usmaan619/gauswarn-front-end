@@ -24,11 +24,12 @@
   display: inline-block;
 }
 
-.footer-cta-text h4 {
+.footer-cta-heading {
   color: #fff;
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 2px;
+  display: block;
 }
 
 .footer-cta-text span {

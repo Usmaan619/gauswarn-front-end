@@ -174,6 +174,9 @@ const ProductCard = ({ product }) => {
           src={images[0] || productPlaceholder}
           alt={product?.product_name}
           className="product-img-main"
+          width="300"
+          height="300"
+          loading="lazy"
         />
         <div className="image-overlay">
           <button className="quick-view-btn">View Details</button>

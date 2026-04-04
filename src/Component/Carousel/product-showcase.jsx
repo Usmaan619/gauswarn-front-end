@@ -140,7 +140,7 @@ const ProductShowcaseComplete = () => {
         }
 
         .subtitle {
-          color: #d4af37;
+          color: #8a7121;
           text-transform: uppercase;
           letter-spacing: 3px;
           font-weight: 700;
@@ -190,7 +190,7 @@ const ProductShowcaseComplete = () => {
           margin-top: 100px;
           background: #ffffff;
           padding: 100px 0;
-          color: #fff;
+          color: #2c1a0a;
         }
 
         .instagram-reels-section .main-title {

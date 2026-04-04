@@ -57,6 +57,9 @@ const FeatureItem = ({ icon, title, description }) => (
       src={icon}
       alt={`${title} – Gauswarn A2 Gir Cow Ghee`}
       className="new-ghee-feature-icon"
+      width="48"
+      height="48"
+      loading="lazy"
     />
     <div>
       <h3 className="new-ghee-feature-title">{title}</h3>
@@ -88,6 +91,8 @@ const GheePurity = () => {
             alt="Pure A2 Gir Cow Ghee bottle by Gauswarn India"
             className="new-ghee-bottle"
             loading="lazy"
+            width="300"
+            height="400"
           />
         </div>
 

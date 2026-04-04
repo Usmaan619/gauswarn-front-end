@@ -111,6 +111,8 @@ const VideoProductCard = ({ product, isActive, onOpenModal }) => {
           alt={product.name}
           className="thumbnail-bg"
           loading="lazy"
+          width="320"
+          height="180"
         />
 
         {/* Video Overlay (Preview) */}

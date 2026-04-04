@@ -159,7 +159,7 @@
 
 .review-count {
   font-size: 0.8rem;
-  color: #888;
+  color: #595959;
 }
 
 .price-row {
@@ -184,7 +184,7 @@
 .old-price {
   font-size: 0.9rem;
   text-decoration: line-through;
-  color: #999;
+  color: #595959;
 }
 
 .add-to-cart-icon-btn {

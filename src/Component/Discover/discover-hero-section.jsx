@@ -26,6 +26,9 @@ export default function DiscoverHeroSection() {
               src={image1}
               alt="Founder and ghee artisan at Gauswarn India Gaushala"
               className="discover-hero-image"
+              width="450"
+              height="450"
+              loading="lazy"
             />
           </div>
         </div>
@@ -96,7 +99,9 @@ No chemicals, no additives — only pure, trustworthy Desi ghee."
             <img
               src={image2}
               className="discover-button-icon"
-              alt="Founder and ghee artisan at Gauswarn India Gaushala"
+              alt="Contact arrow icon"
+              width="21"
+              height="21"
             />
           </button>
         </div>

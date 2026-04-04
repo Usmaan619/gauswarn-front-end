@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#f5e1a4" />
 
     <!-- ================= CANONICAL ================= -->
-    <link rel="canonical" href="https://gauswarn.com/" />
+    <!-- Canonical is managed dynamically per route via React Helmet -->
 
     <!-- ================= ICONS & PWA ================= -->
     <link rel="icon" href="/favicon.ico" />
@@ -28,8 +28,16 @@
 
     <!-- ================= PERFORMANCE ================= -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="/static/media/Montserrat-Regular.ttf"
+      crossorigin
+    />
 
     <!-- ================= OPEN GRAPH ================= -->
     <meta property="og:type" content="website" />
@@ -399,6 +407,7 @@
           t = b.createElement(e);
           t.async = !0;
           t.src = v;
+          t.onerror = function() { console.warn('Meta Pixel failed to load'); };
           s = b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t, s);
         })(
@@ -408,8 +417,10 @@
           "https://connect.facebook.net/en_US/fbevents.js",
         );
 
-        fbq("init", "1279255683997525");
-        fbq("track", "PageView");
+        if (typeof fbq === 'function') {
+          fbq("init", "1279255683997525");
+          fbq("track", "PageView");
+        }
       }, 3000);
     </script>
 
