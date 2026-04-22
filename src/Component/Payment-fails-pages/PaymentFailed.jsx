@@ -8,7 +8,7 @@ const PaymentFailed = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.removeItem("cart");
+    sessionStorage.removeItem("cart");
     setCart([]);
   }, [setCart]);
 
@@ -30,7 +30,7 @@ const PaymentFailed = () => {
 
                 <button aria-label="Try Again"
                   className="px-5 py-2 fw-bold rounded-pill"
-                  onClick={() => navigate("/checkout")}
+                  onClick={() => navigate("/cart")}
                 >
                   Try Again
                 </button>

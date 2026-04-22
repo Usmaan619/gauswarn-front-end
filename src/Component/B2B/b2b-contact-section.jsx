@@ -1,67 +1,11 @@
 import React from "react";
 import { Phone, Mail, Clock } from "lucide-react";
 import "./b2b-styles/b2b-contact-section.css";
-import Seo from "../SEO/Seo";
 
 const ContactPage = () => {
   return (
     <>
       <Seo
-        title="B2B & Wholesale A2 Gir Cow Ghee | Gauswarn India"
-        description="Partner with Gauswarn India for bulk and wholesale A2 Gir Cow Ghee. Ethical sourcing, bilona process and pan-India supply."
-        url="https://gauswarn.com/b2b"
-      >
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "@id": "https://gauswarn.com/#b2b",
-            name: "Gauswarn India",
-            url: "https://gauswarn.com/b2b",
-            logo: "https://gauswarn.com/favicon-512x512.png",
-            image: "https://gauswarn.com/favicon-512x512.png",
-            description:
-              "Gauswarn India is a trusted supplier of bulk and wholesale A2 Gir Cow Ghee for retailers, distributors and corporate buyers across India.",
-            telephone: "+91-7470915905",
-            email: "info@gauswarn.com",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "11 Manish Baag, Sapna Sangeeta Road",
-              addressLocality: "Indore",
-              addressRegion: "MP",
-              postalCode: "452001",
-              addressCountry: "IN",
-            },
-            areaServed: {
-              "@type": "Country",
-              name: "India",
-            },
-            openingHoursSpecification: [
-              {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday",
-                ],
-                opens: "10:00",
-                closes: "20:00",
-              },
-            ],
-            contactPoint: {
-              "@type": "ContactPoint",
-              telephone: "+91-7470915905",
-              contactType: "B2B Sales",
-              areaServed: "IN",
-              availableLanguage: ["English", "Hindi"],
-            },
-          })}
-        </script>
-      </Seo>
-
       <div className="b2b-contact-container">
         <div className="b2b-map-section">
           <iframe

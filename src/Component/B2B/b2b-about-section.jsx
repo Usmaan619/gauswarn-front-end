@@ -10,54 +10,6 @@ const B2bAboutSection = ({ onQuoteClick }) => {
         bulk A2 Gir Cow Ghee supply across India.
       </p>
 
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "Do you provide wholesale A2 Gir Cow Ghee?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes, Gauswarn India supplies bulk and wholesale A2 Gir Cow Ghee to retailers, distributors, and corporate partners across India.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "What is the minimum order quantity for B2B partners?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Minimum order quantity depends on packaging and location. Our team provides flexible MOQ options for distributors and retailers.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Is your ghee certified and lab tested?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes, our A2 Gir Cow Ghee is lab-tested and certified to ensure purity, safety, and quality for B2B and wholesale supply.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Do you support private labeling or bulk packaging?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes, we offer bulk packaging and private labeling support for eligible B2B partners.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How can I become a B2B partner with Gauswarn India?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "You can submit a partnership request using the B2B form on this page, and our team will contact you with pricing and onboarding details.",
-              },
-            },
-          ],
-        })}
-      </script>
 
       <div className="container b2b-aboutGrid">
         <div className="b2b-statsCardModern">

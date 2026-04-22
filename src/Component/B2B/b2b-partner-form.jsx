@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import "./b2b-styles/b2b-partner-form.css";
 import { environment } from "../../environment/environment";
-import Seo from "../SEO/Seo";
 
 const PartnerInquiryForm = forwardRef((props, ref) => {
   const {
@@ -53,76 +52,6 @@ const PartnerInquiryForm = forwardRef((props, ref) => {
 
   return (
     <>
-      <Seo
-        title="B2B & Wholesale A2 Gir Cow Ghee | Gauswarn India"
-        description="Partner with Gauswarn India for bulk and wholesale A2 Gir Cow Ghee. Ethical sourcing, bilona process and pan-India supply."
-        url="https://gauswarn.com/b2b"
-      >
-        {/* SERVICE SCHEMA */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            name: "Wholesale & Bulk A2 Gir Cow Ghee Supply",
-            description:
-              "Gauswarn India provides bulk and wholesale supply of A2 Gir Cow Ghee for retailers, distributors, wholesalers, and corporate buyers across India.",
-            provider: {
-              "@type": "Organization",
-              name: "Gauswarn India",
-              url: "https://gauswarn.com",
-            },
-            areaServed: {
-              "@type": "Country",
-              name: "India",
-            },
-            audience: {
-              "@type": "BusinessAudience",
-              audienceType: [
-                "Retailers",
-                "Distributors",
-                "Wholesalers",
-                "Corporate Buyers",
-                "Exporters",
-              ],
-            },
-            serviceType: "B2B Wholesale Supply",
-          })}
-        </script>
-
-        {/* FAQ SCHEMA */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Do you provide wholesale A2 Gir Cow Ghee?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes, Gauswarn India supplies bulk and wholesale A2 Gir Cow Ghee to retailers, distributors, and corporate partners across India.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What is the minimum order quantity for B2B partners?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Minimum order quantity depends on packaging format and delivery location. We offer flexible MOQ options for B2B partners.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Is your A2 Gir Cow Ghee lab tested and certified?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes, our A2 Gir Cow Ghee is lab tested and certified to ensure purity and quality for wholesale supply.",
-                },
-              },
-            ],
-          })}
-        </script>
-      </Seo>
       <div ref={ref} className="b2b-form-container">
         <div className="b2b-form-header">
           <h2>Get a Wholesale Quote</h2>

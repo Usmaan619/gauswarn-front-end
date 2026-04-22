@@ -22,7 +22,6 @@ const Contact = () => {
         data,
       );
 
-      console.log("response: ", response);
       toast.success("Form submitted successfully!", {
         position: "top-center",
         autoClose: 3000,

@@ -34,14 +34,12 @@ const BlogView = () => {
     try {
       setLoading(true);
       const res = await getData(`admin/blogs/single/${slug}`);
-      console.log("res: ", res);
       if (res?.success) {
         setBlog(res.blog);
       } else {
         toastError("Blog not found");
       }
     } catch (err) {
-      console.log(err);
       toastError("Failed to load blog");
     } finally {
       setLoading(false);

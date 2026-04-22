@@ -232,7 +232,6 @@ const FinalPaymentMainPage = () => {
         final_payable_amount: finalAmount,
       };
 
-      console.log(" Payment Payload:", payload); // Debug log
 
       // CREATE ORDER API
       const res = await axios.post(
@@ -273,7 +272,6 @@ const FinalPaymentMainPage = () => {
             );
 
             const result = validateRes.data;
-            console.log("Payment Validation Response:", result);
 
             if (result.success) {
               // ===== META PURCHASE EVENT =====

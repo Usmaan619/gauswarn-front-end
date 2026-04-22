@@ -3,7 +3,7 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
   <url>
-    <loc>https://gauswarn.com/</loc>
+    <loc>https://gauswarn.com</loc>
     <lastmod>2026-03-24</lastmod>
     <priority>1.0</priority>
   </url>
@@ -50,11 +50,6 @@
   <priority>0.5</priority>
 </url>
 
-  <url>
-    <loc>https://gauswarn.com/track-order</loc>
-    <lastmod>2026-01-25</lastmod>
-    <priority>0.5</priority>
-  </url>
 
   <url>
     <loc>https://gauswarn.com/cart</loc>

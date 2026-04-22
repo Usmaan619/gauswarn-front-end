@@ -29,7 +29,7 @@ const PaymentSuccess = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.removeItem("cart");
+    sessionStorage.removeItem("cart");
     setCart([]);
   }, [setCart]);
 
