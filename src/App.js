@@ -19,6 +19,7 @@ import { postData } from "./services/api.jsx";
 
 // Home sections
 const Home = lazy(() => import("./Component/Pages/Home.jsx"));
+const GauswarnHome = lazy(() => import("./Component/Pages/GauswarnHome.jsx"));
 const Certified = lazy(() => import("./Component/Pages/Certified.jsx"));
 const AboutUsHero = lazy(
   () => import("./Component/Common/Navbar/About/About-us-hero.jsx"),
@@ -129,10 +130,10 @@ const HomePage = () => {
         structuredData={[structuredData, websiteData]}
       />
 
-      <h1 className="sr-only">
-        Gauswarn India - Authentic A2 Gir Cow Ghee & Pure Bilona Ghee
-      </h1>
+      {/* GauswarnHome: full SEO homepage with all 9 sections */}
+      <GauswarnHome />
 
+      {/* Original hero carousel */}
       <Home />
       <Certified />
       <ProductShowcase />
