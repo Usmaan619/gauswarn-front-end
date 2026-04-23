@@ -2390,29 +2390,3 @@ body {
    LIGHTHOUSE FIXES: Accessibility & Performance
    ========================================== */
 
-/* Fix: Lists do not contain only <li> elements (carousel dots) */
-.carousel .control-dots {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Fix: Uses ARIA roles only on compatible elements (carousel dots) */
-.carousel .control-dots .dot {
-  /* Remove any incompatible ARIA role via CSS override */
-  display: inline-block;
-}
-
-/* Fix: Non-composited animations - use GPU-accelerated properties */
-.premium-product-card {
-  will-change: transform;
-}
-
-.product-card-badge.discount-mode {
-  will-change: transform;
-}
-
-/* Fix: Ensure good contrast on .description in showcase */
-.showcase-wrapper .description {
-  color: #4a4a4a;
-}

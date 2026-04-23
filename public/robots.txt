@@ -1,4 +1,31 @@
+# ==========================================
+# Gauswarn India - Robots.txt for SEO
+# ==========================================
+
 User-agent: *
 Allow: /
+# Prevent indexing of internal API and admin paths if they exist
+Disallow: /api/
+Disallow: /admin/
+# Prevent indexing of search results to avoid duplicate content issues
+Disallow: /products?q=*
 
+# ==========================================
+# AI Bots Support (SGE/Perplexity/ChatGPT)
+# ==========================================
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# ==========================================
+# Sitemap Link
+# ==========================================
 Sitemap: https://gauswarn.com/sitemap.xml

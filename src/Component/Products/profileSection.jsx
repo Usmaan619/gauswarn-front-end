@@ -70,7 +70,7 @@ export default function TabsSection() {
       {/* ANIMATED CONTENT */}
       <div className="content-wrapper fade-slide mx-4">
         <div className="image-box">
-          <img src={active.image} alt={active.label} />
+          <img src={active.image} alt={active.label} width="380" height="380" decoding="async" loading="lazy" />
         </div>
         <div className="text-content">{active.content}</div>
       </div>

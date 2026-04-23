@@ -5,7 +5,6 @@ import "./b2b-styles/b2b-contact-section.css";
 const ContactPage = () => {
   return (
     <>
-      <Seo
       <div className="b2b-contact-container">
         <div className="b2b-map-section">
           <iframe
@@ -14,7 +13,7 @@ const ContactPage = () => {
             height="100%"
             style={{ border: 0 }}
             allowFullScreen=""
-            loading="lazy"
+            loading="lazy" decoding="async"
             referrerPolicy="no-referrer-when-downgrade"
             title="Location Map"
           ></iframe>

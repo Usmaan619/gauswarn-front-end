@@ -20,17 +20,12 @@ export default function AboutUsHero() {
           <div className="aboutLeft">
             <img
               src={about1}
-              srcSet={`
-    ${about1} 300w,
-    ${about1} 600w,
-    ${about1} 1200w
-  `}
-              sizes="(max-width: 768px) 90vw, 412px"
               alt="Pure A2 Gir Cow Ghee jar by Gauswarn India"
               className="aboutMainImg"
               width="412"
               height="481"
               loading="eager"
+              decoding="async"
               fetchpriority="high"
             />
           </div>

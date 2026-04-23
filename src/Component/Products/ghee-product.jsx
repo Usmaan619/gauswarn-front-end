@@ -58,7 +58,7 @@ const GheeFeatureProductPage = () => {
               >
                 <img
                   src={feature.icon}
-                  className="ghee-feature-icon"
+                  className="ghee-feature-icon" width="64" height="64" decoding="async"
                   alt={feature.alt}
                   loading="lazy"
                 />

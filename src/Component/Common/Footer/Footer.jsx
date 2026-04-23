@@ -97,7 +97,13 @@ export default function NewFooter() {
                     href="/"
                     aria-label="Gauswarn A2 Gir Cow Ghee - Return to Homepage"
                   >
-                    <img src={logo} alt="Gauswarn A2 Gir Cow Ghee Logo" width="300" height="60" loading="lazy" />
+                    <img
+                      src={logo}
+                      alt="Gauswarn A2 Gir Cow Ghee Logo"
+                      width="300"
+                      height="60"
+                      loading="lazy"
+                    />
                   </a>
                 </div>
 
