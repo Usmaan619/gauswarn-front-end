@@ -44,9 +44,9 @@
 }
 
 .product-card-badge.discount-mode {
-  background: red;
-  color: white;
-  border: 1px solid red;
+  background: #9a0007;
+  color: #ffffff;
+  border: 1px solid #9a0007;
   animation: pulse-glow 2s infinite;
 }
 

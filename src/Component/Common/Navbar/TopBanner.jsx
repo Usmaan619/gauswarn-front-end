@@ -5,9 +5,10 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 
 export default function TopBanner() {
   const [offers, setOffers] = useState([
-    "Free shipping on orders above ₹999",
-    "Use code GAUS10 for 10% off",
-    "Pure A2 Desi Cow Ghee – Fresh batch available",
+    "Pure A2 Gir Cow Ghee – Traditional Vedic Bilona Method",
+    "Free shipping on Pure Desi Ghee orders above ₹999",
+    "Buy Best A2 Ghee in India – Lab Tested Purity",
+    "Use code GAUS10 for 10% off on all Bilona Ghee",
   ]);
   const [loading, setLoading] = useState(true);
 

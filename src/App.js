@@ -1,7 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
-import Aos from "aos";
+// import Aos from "aos"; // Moved to dynamic import in useEffect for performance
+import "aos/dist/aos.css"; // Keep CSS for layout stability
 import { ToastContainer } from "react-toastify";
 
 import ScrollToTop from "./Component/Common/Scroll-to-Top/scroll-to-top.jsx";
@@ -10,12 +11,12 @@ import NewFooter from "./Component/Common/Footer/Footer.jsx";
 
 import { useCartContext } from "./Component/Context/UserContext.jsx";
 import Seo from "./Component/SEO/Seo.jsx";
-import CareersPage from "./Component/Careers/careers-main-page.jsx";
 import { postData } from "./services/api.jsx";
 
 /* =======================
    LAZY LOAD COMPONENTS
 ======================= */
+const CareersPage = lazy(() => import("./Component/Careers/careers-main-page.jsx"));
 
 // Home sections
 const Home = lazy(() => import("./Component/Pages/Home.jsx"));
@@ -151,14 +152,22 @@ function App() {
 
   /* ---------- AOS ---------- */
   useEffect(() => {
-    Aos.init({
-      offset: 100,
-      duration: 1000,
-      easing: "ease-in-out",
-      once: false,
-      mirror: true,
-      anchorPlacement: "top-bottom",
-    });
+    const initAOS = async () => {
+      try {
+        const AOS = (await import("aos")).default;
+        AOS.init({
+          offset: 100,
+          duration: 1000,
+          easing: "ease-in-out",
+          once: false,
+          mirror: true,
+          anchorPlacement: "top-bottom",
+        });
+      } catch (error) {
+        console.error("AOS initialization failed", error);
+      }
+    };
+    initAOS();
   }, []);
 
   /* ---------- CART ---------- */
@@ -197,7 +206,11 @@ function App() {
         <Suspense
           fallback={
             <div
-              style={{ textAlign: "center", padding: "100px 0", height: "100vh" }}
+              style={{
+                textAlign: "center",
+                padding: "100px 0",
+                height: "100vh",
+              }}
             >
               Loading...
             </div>
@@ -236,7 +249,11 @@ function App() {
               path="*"
               element={
                 <h2
-                  style={{ textAlign: "center", marginTop: 50, height: "100vh" }}
+                  style={{
+                    textAlign: "center",
+                    marginTop: 50,
+                    height: "100vh",
+                  }}
                 >
                   Page Not Found
                 </h2>

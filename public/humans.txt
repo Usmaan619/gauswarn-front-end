@@ -1,0 +1,16 @@
+/* TEAM */
+    Brand: Gauswarn India
+    Founder: Rajendra
+    Contact: info@gauswarn.com
+    Location: India
+
+/* THANKS */
+    Our Customers: For trusting us with their health and wellness.
+    Gir Cows: The heart of our business.
+
+/* SITE */
+    Last update: 2026/04/26
+    Language: English, Hindi
+    Doctype: HTML5
+    Components: React, Axios, Bootstrap, Lucide-React
+    Design: Modern, Premium, SEO-Optimized

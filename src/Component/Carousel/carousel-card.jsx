@@ -44,7 +44,7 @@ const CarouselCard = ({ reelId, isVisible = true }) => {
           ref={iframeRef}
           src={`https://www.instagram.com/reel/${reelId}/embed`}
           title={`Instagram Reel ${reelId}`}
-          allow="autoplay; encrypted-media; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           loading="lazy"
           onLoad={() => setLoaded(true)}

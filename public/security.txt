@@ -1,0 +1,6 @@
+# Gauswarn India - Security Policy
+Contact: mailto:info@gauswarn.com
+Expires: 2027-04-26T12:00:00.000Z
+Preferred-Languages: en, hi
+Canonical: https://gauswarn.com/.well-known/security.txt
+Policy: https://gauswarn.com/privacy

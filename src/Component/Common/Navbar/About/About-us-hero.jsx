@@ -46,18 +46,14 @@ export default function AboutUsHero() {
             </p>
 
             <p className="aboutParagraph">
-              Prepared using the ancient Bilona method, our ghee delivers:
-            </p>
-
-            <p className="aboutParagraph">
-              Prepared using the ancient Bilona method, our ghee delivers:
+              Experience the wellness of <strong>Desi Gir Cow Ghee</strong>, handcrafted with love and ancient wisdom to provide you with steady energy and better digestion.
             </p>
 
             <ul className="aboutBenefits">
-              <li>Authentic traditional taste</li>
-              <li>Rich natural aroma</li>
-              <li>High-nutrition A2 goodness</li>
-              <li>100% chemical-free & preservative-free purity</li>
+              <li>Authentic A2 Desi Cow Ghee Taste</li>
+              <li>Rich Natural Aroma of Bilona Ghee</li>
+              <li>High-nutrition A2 Beta-casein Protein</li>
+              <li>100% Chemical-free & Lab-tested Purity</li>
             </ul>
 
             {/* Mission Section */}
@@ -99,8 +95,8 @@ export default function AboutUsHero() {
                 <span className="missionText">
                   Driven by Tradition. Guided by Purity.
                   <br />
-                  Experience nutrient-rich, easily digestible, immunity-boosting
-                  A2 Gir Cow Ghee — crafted with devotion and ancient wisdom.
+                  Experience nutrient-rich, easily digestible, and immunity-boosting
+                  <strong> A2 Gir Cow Ghee</strong> — crafted with devotion and ancient Vedic wisdom.
                 </span>
               </li>
               <li className="missionListItem">

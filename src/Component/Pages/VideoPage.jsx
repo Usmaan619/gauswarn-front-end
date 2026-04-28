@@ -47,7 +47,7 @@ const VideoPage = ({ isEmbedded = false }) => {
           <iframe
             className="bg-video-iframe"
             src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&enablejsapi=1&disablekb=1&fs=0`}
-            allow="autoplay; encrypted-media"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             frameBorder="0"
             title="Background Video"
           ></iframe>

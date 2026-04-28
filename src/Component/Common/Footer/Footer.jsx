@@ -100,17 +100,16 @@ export default function NewFooter() {
                     <img
                       src={logo}
                       alt="Gauswarn A2 Gir Cow Ghee Logo"
-                      width="300"
-                      height="60"
                       loading="lazy"
+                      style={{ width: "150px", height: "auto" }}
                     />
                   </a>
                 </div>
 
                 <div className="footer-text">
                   <p>
-                    From our Gaushala to your kitchen — purity you can taste,
-                    trust, and feel.
+                    Gauswarn India is dedicated to providing the purest <strong>A2 Gir Cow Ghee</strong> made using the traditional Vedic Bilona method. 
+                    From our Gaushala to your kitchen — experience the authentic taste, rich aroma, and health benefits of pure Desi Cow Ghee.
                   </p>
                 </div>
 

@@ -90,12 +90,13 @@ const ProductShowcaseComplete = () => {
       {/* PRODUCTS SECTION */}
       <section className="products-grid-section">
         <div className="section-header">
-          <span className="subtitle">Premium Quality</span>
+          <span className="subtitle">Authentic & Grass-Fed</span>
           <h2 className="main-title">A2 Gir Cow Bilona Ghee</h2>
           <div className="title-underline"></div>
           <p className="description">
-            Experience the purity of traditional Bilona method ghee, available
-            in various sizes to suit your family's needs.
+            100% Pure A2 Desi Cow Ghee made from the A2 milk of indigenous Gir cows.
+            Experience the purity of traditional curd-based Bilona method ghee, 
+            rich in nutrients and perfect for your family's health.
           </p>
         </div>
 

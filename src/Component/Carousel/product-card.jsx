@@ -185,7 +185,7 @@ const ProductCard = ({ product }) => {
 
       <div className="product-details">
         <h3 className="product-title">
-          A2 Gir Cow Ghee {product?.product_weight || "Weight Not Specified"}
+          Pure A2 Gir Cow Bilona Ghee - {product?.product_weight || "Weight Not Specified"}
         </h3>
 
         <div className="rating-row">

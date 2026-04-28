@@ -12,42 +12,42 @@ import gheeBottleImg from "../../asset/new-img/about-main/bottle-about.webp";
 const leftFeatures = [
   {
     icon: ghee1Img,
-    title: "Certified for 100% Purity",
+    title: "100% Pure A2 Desi Cow Ghee",
     description:
-      "Every batch is tested to ensure it's free from adulteration, chemicals, and preservatives.",
+      "Every batch of our Bilona Ghee is tested to ensure it's free from adulteration, chemicals, and preservatives.",
   },
   {
     icon: ghee2Img,
-    title: "Milk Sourced from Happy Desi Cows",
+    title: "Milk Sourced from Gir Cows",
     description:
-      "We use only A2 milk from ethically raised cows to maintain natural richness and quality.",
+      "We use only A2 milk from grass-fed, ethically raised Gir cows to maintain high A2 beta-casein protein levels.",
   },
   {
     icon: ghee3Img,
-    title: "No Chemicals, No Additives",
+    title: "Traditional Bilona Method",
     description:
-      "Our ghee is completely natural — free from artificial flavors, colors, or enhancers.",
+      "Our ghee is made using the ancient curd-churning method, ensuring it's 100% natural and nutrient-rich.",
   },
 ];
 
 const rightFeatures = [
   {
     icon: ghee4Img,
-    title: "Multi-Stage Quality Checks",
+    title: "Vedic Ayurvedic Process",
     description:
-      "Every batch of our ghee is carefully tested for nutrition, safety, and purity before it reaches you.",
+      "Our ghee follows the multi-stage Vedic process for maximum safety, aroma, and therapeutic benefits.",
   },
   {
     icon: ghee3Img,
-    title: "Eco-Friendly & Ethical Farming",
+    title: "Eco-Friendly & Cruelty-Free",
     description:
-      "We follow clean, sustainable, and cruelty-free practices at our farms.",
+      "We follow sustainable, ethical farming practices, ensuring our A2 Gir cows are happy and healthy.",
   },
   {
     icon: ghee5Img,
-    title: "Trusted by Thousands of Families",
+    title: "Trusted A2 Ghee Brand",
     description:
-      "Our lab-verified ghee is relied upon by households for daily health & nutrition.",
+      "Our lab-verified pure bilona ghee is trusted by thousands of Indian families for daily nutrition.",
   },
 ];
 

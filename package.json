@@ -22,6 +22,7 @@
     "react-simple-star-rating": "^5.1.7",
     "react-slick": "^0.30.2",
     "react-toastify": "^10.0.5",
+    "rss": "^1.2.2",
     "slick-carousel": "^1.8.1",
     "uuid": "^9.0.1",
     "web-vitals": "^2.1.4",
@@ -29,7 +30,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run generate-rss && react-scripts build",
+    "generate-rss": "node scripts/generate-rss.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
