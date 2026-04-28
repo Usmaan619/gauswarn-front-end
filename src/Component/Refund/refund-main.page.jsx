@@ -1,11 +1,18 @@
 import "./refund-main-page.css";
+import Seo from "../SEO/Seo";
 
 const RefundMainPage = () => {
   return (
-    <div className="refund-container">
-      <div className="refund-header">
-        <h4 className="refund-title">Refund Policy</h4>
-      </div>
+    <>
+      <Seo
+        title="Refund Policy | Gauswarn India"
+        description="Read the refund, return, and replacement policy of Gauswarn India for our pure A2 Gir Cow Ghee products."
+        url="https://gauswarn.com/refund"
+      />
+      <div className="refund-container">
+        <div className="refund-header">
+          <h1 className="refund-title">Refund Policy</h1>
+        </div>
 
       <div className="refund-content">
         <div className="refund-intro">
@@ -151,6 +158,7 @@ const RefundMainPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,11 +1,18 @@
 import React from "react";
 import "./term-and-condition.css";
+import Seo from "../SEO/Seo";
 
 const TermsConditions = () => {
   return (
-    <div className="terms-container">
-      <div className="terms-header">
-        <h4 className="terms-title">Terms & Conditions</h4>
+    <>
+      <Seo
+        title="Terms & Conditions | Gauswarn India"
+        description="Read the terms and conditions for using the Gauswarn India website and purchasing our A2 Gir Cow Ghee."
+        url="https://gauswarn.com/terms"
+      />
+      <div className="terms-container">
+        <div className="terms-header">
+          <h1 className="terms-title">Terms & Conditions</h1>
       </div>
 
       <div className="terms-content">
@@ -87,6 +94,7 @@ const TermsConditions = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

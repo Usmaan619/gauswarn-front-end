@@ -14,7 +14,7 @@ Disallow: /products?q=*
 # Security Support
 # ==========================================
 # Security contact for researchers
-Security: https://gauswarn.com/.well-known/security.txt
+# Security: https://gauswarn.com/.well-known/security.txt
 
 # ==========================================
 # AI Bots Support (SGE/Perplexity/ChatGPT)

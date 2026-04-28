@@ -14,7 +14,7 @@ export default function DiscoverHeroSection() {
   return (
     <section className="discover-hero-section">
       <p className="sr-only">
-        Learn how Gauswarn India produces pure A2 Gir Cow Ghee using traditional
+        Learn how Gauswarn India produces pure A2 Cow Ghee using traditional
         Bilona methods, ethical farming, and modern quality checks.
       </p>
 
@@ -94,7 +94,11 @@ No chemicals, no additives — only pure, trustworthy Desi ghee."
           </div>
 
           {/* CTA Button */}
-          <button aria-label="Contact Us" className="discover-contact-button" onClick={ContactUs}>
+          <button
+            aria-label="Contact Us"
+            className="discover-contact-button"
+            onClick={ContactUs}
+          >
             Contact Us
             <img
               src={image2}

@@ -35,25 +35,25 @@ const GheeShowcase = () => {
     {
       id: 3,
       src: gallery3,
-      alt: "Pure A2 Gir Cow Ghee jar placed on a wooden surface",
+      alt: "Pure A2 Cow Ghee jar placed on a wooden surface",
       size: "small",
     },
     {
       id: 4,
       src: gallery4,
-      alt: "A2 Gir Cow Ghee product jar by Gauswarn India",
+      alt: "A2 Cow Ghee product jar by Gauswarn India",
       size: "small",
     },
     {
       id: 5,
       src: gallery5,
-      alt: "Customer holding pure A2 Gir Cow Ghee jar",
+      alt: "Customer holding pure A2 Cow Ghee jar",
       size: "medium",
     },
     {
       id: 6,
       src: gallery8,
-      alt: "Traditional Indian cooking using A2 Gir Cow Ghee",
+      alt: "Traditional Indian cooking using A2 Cow Ghee",
       size: "large",
     },
     {
@@ -65,13 +65,13 @@ const GheeShowcase = () => {
     {
       id: 8,
       src: gallery7,
-      alt: "Rustic presentation of pure A2 Gir Cow Ghee jar",
+      alt: "Rustic presentation of pure A2 Cow Ghee jar",
       size: "small",
     },
     {
       id: 9,
       src: gallery9,
-      alt: "Home cooking with pure A2 Gir Cow Ghee in Indian kitchen",
+      alt: "Home cooking with pure A2 Cow Ghee in Indian kitchen",
       size: "medium",
     },
     {
@@ -83,7 +83,7 @@ const GheeShowcase = () => {
     {
       id: 11,
       src: gallery11,
-      alt: "Using A2 Gir Cow Ghee for healthy everyday cooking",
+      alt: "Using A2 Cow Ghee for healthy everyday cooking",
       size: "medium",
     },
   ];
@@ -91,7 +91,7 @@ const GheeShowcase = () => {
   return (
     <>
       <Seo
-        title="Gallery | Gauswarn India – A2 Gir Cow Ghee Journey"
+        title="Gallery | Gauswarn India – A2 Cow Ghee Journey"
         description="Explore Gauswarn India's gallery showcasing our Gaushala, Gir cows, traditional bilona ghee making process, and farm-to-home purity."
         url="https://gauswarn.com/gallery"
       />

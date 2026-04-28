@@ -33,9 +33,8 @@ const PartnerSection = () => {
     <section className="b2b-how-partner-section">
       <p className="sr-only">
         Step-by-step process to partner with Gauswarn India for wholesale and
-        bulk A2 Gir Cow Ghee supply.
+        bulk A2 Cow Ghee supply.
       </p>
-
 
       <div className="b2b-how-partner-container">
         {/* Section Heading */}

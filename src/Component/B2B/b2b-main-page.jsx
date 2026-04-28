@@ -25,9 +25,9 @@ const B2BLandingPage = () => {
     "@graph": [
       {
         "@type": "Service",
-        name: "Wholesale & Bulk A2 Gir Cow Ghee Supply",
+        name: "Wholesale & Bulk A2 Cow Ghee Supply",
         description:
-          "Gauswarn India provides bulk and wholesale supply of A2 Gir Cow Ghee for retailers, distributors, wholesalers, and corporate buyers across India.",
+          "Gauswarn India provides bulk and wholesale supply of A2 Cow Ghee for retailers, distributors, wholesalers, and corporate buyers across India.",
         provider: {
           "@type": "Organization",
           name: "Gauswarn India",
@@ -53,10 +53,10 @@ const B2BLandingPage = () => {
         mainEntity: [
           {
             "@type": "Question",
-            name: "Do you provide wholesale A2 Gir Cow Ghee?",
+            name: "Do you provide wholesale A2 Cow Ghee?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes, Gauswarn India supplies bulk and wholesale A2 Gir Cow Ghee to retailers, distributors, and corporate partners across India.",
+              text: "Yes, Gauswarn India supplies bulk and wholesale A2 Cow Ghee to retailers, distributors, and corporate partners across India.",
             },
           },
           {
@@ -72,7 +72,7 @@ const B2BLandingPage = () => {
             name: "Is your ghee certified and lab tested?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes, our A2 Gir Cow Ghee is lab-tested and certified to ensure purity, safety, and quality for B2B and wholesale supply.",
+              text: "Yes, our A2 Cow Ghee is lab-tested and certified to ensure purity, safety, and quality for B2B and wholesale supply.",
             },
           },
           {
@@ -99,8 +99,8 @@ const B2BLandingPage = () => {
   return (
     <div className="landingPage">
       <Seo
-        title="B2B & Wholesale A2 Gir Cow Ghee | Gauswarn India"
-        description="Partner with Gauswarn India for bulk and wholesale A2 Gir Cow Ghee. Ethical sourcing, bilona process, and pan-India supply."
+        title="B2B & Wholesale A2 Cow Ghee | Gauswarn India"
+        description="Partner with Gauswarn India for bulk and wholesale A2 Cow Ghee. Ethical sourcing, bilona process, and pan-India supply."
         url="https://gauswarn.com/b2b"
         structuredData={b2bSchema}
       />

@@ -62,11 +62,11 @@ export default function Header() {
             to="/"
             className="logo-wrapper"
             onClick={() => handleNavClick("/")}
-            aria-label="Gauswarn A2 Gir Cow Ghee - Return to Homepage"
+            aria-label="Gauswarn A2 Cow Ghee - Return to Homepage"
           >
             <img
               src={mainLogo}
-              alt="Gauswarn A2 Gir Cow Ghee Logo"
+              alt="Gauswarn A2 Cow Ghee Logo"
               className="logo-image"
               // loading="lazy"
               fetchpriority="high"
@@ -79,7 +79,7 @@ export default function Header() {
               to="/"
               className="nav-link"
               onClick={() => setIsMenuOpen(false)}
-              aria-label="Go to Gauswarn A2 Gir Cow Ghee Home"
+              aria-label="Go to Gauswarn A2 Cow Ghee Home"
             >
               Home
             </NavLink>
@@ -189,7 +189,7 @@ export default function Header() {
           onClick={() => handleNavClick("/")}
           role="button"
           tabIndex="0"
-          aria-label="Gauswarn A2 Gir Cow Ghee Homepage"
+          aria-label="Gauswarn A2 Cow Ghee Homepage"
           onKeyPress={(e) => {
             if (e.key === "Enter") handleNavClick("/");
           }}

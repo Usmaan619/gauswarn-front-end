@@ -1,12 +1,19 @@
 import React from "react";
 import "./shipping-policy-main-page.css";
+import Seo from "../SEO/Seo";
 
 const ShippingPolicy = () => {
   return (
-    <div className="shipping-container">
-      <div className="shipping-header">
-        <h4 className="shipping-title">Shipping & Delivery Policy</h4>
-      </div>
+    <>
+      <Seo
+        title="Shipping & Delivery Policy | Gauswarn India"
+        description="Learn about our shipping and delivery processes, processing times, and policies for Gauswarn India."
+        url="https://gauswarn.com/shipping"
+      />
+      <div className="shipping-container">
+        <div className="shipping-header">
+          <h1 className="shipping-title">Shipping & Delivery Policy</h1>
+        </div>
       
       <div className="shipping-content">
         <div className="shipping-sections">
@@ -81,6 +88,7 @@ const ShippingPolicy = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -20,7 +20,7 @@ export default function AboutUsHero() {
           <div className="aboutLeft">
             <img
               src={about1}
-              alt="Pure A2 Gir Cow Ghee jar by Gauswarn India"
+              alt="Pure A2 Cow Ghee jar by Gauswarn India"
               className="aboutMainImg"
               width="412"
               height="481"
@@ -34,83 +34,48 @@ export default function AboutUsHero() {
           <div className="aboutContentSection">
             {/* Main Heading */}
             <h2 className="aboutMainHeading">
-              Pure A2 Desi Gir Cow Ghee in India – From Our Gaushala to Your
-              Home
+              Pure A2 Cow Ghee by Gauswarn
             </h2>
 
             {/* Description Paragraphs */}
             <p className="aboutParagraph">
-              At GAUSWARN, purity isn't just a promise — it's our tradition. Our
-              A2 Desi Ghee is made from the milk of our own grass-fed Gir cows,
-              nurtured with care and ethical farming practices.
+              At <strong>GAUSWARN</strong>, purity isn't just a promise — it's our tradition. Our premium 
+              <strong> A2 Cow Ghee</strong> is crafted using the ancient <strong>Ayurvedic Bilona method</strong>, 
+              churning curd (bilona) made from the fresh A2 milk of our free-grazing, grass-fed cows.
             </p>
 
             <p className="aboutParagraph">
-              Experience the wellness of <strong>Desi Gir Cow Ghee</strong>, handcrafted with love and ancient wisdom to provide you with steady energy and better digestion.
+              Recognized as a powerful Indian superfood, our authentic <strong>Desi Cow Ghee</strong> is 
+              rich in <strong>A2 Beta-casein protein</strong>, essential vitamins (A, D, E, K), and Omega-3 fatty acids. 
+              It provides steady energy, supports better digestion, and serves as an excellent 
+              immunity-boosting, gut-friendly cooking fat for your family.
             </p>
 
             <ul className="aboutBenefits">
-              <li>Authentic A2 Desi Cow Ghee Taste</li>
-              <li>Rich Natural Aroma of Bilona Ghee</li>
-              <li>High-nutrition A2 Beta-casein Protein</li>
-              <li>100% Chemical-free & Lab-tested Purity</li>
+              <li>Authentic Ayurvedic Bilona Ghee Process</li>
+              <li>Rich Natural Aroma & Granular (Danedar) Texture</li>
+              <li>100% Chemical-Free, Preservative-Free & Lab-Tested</li>
+              <li>Lactose-Intolerant Friendly & Great for Keto Diets</li>
             </ul>
 
             {/* Mission Section */}
-            <h3 className="aboutSubtitle">Our Mission</h3>
+            <h3 className="aboutSubtitle">Why Buy Gauswarn A2 Ghee Online?</h3>
 
             <ul className="missionList">
-              <li className="missionListItem">
-                <svg
-                  className="checkSvg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <polyline
-                    points="20 6 9 17 4 12"
-                    strokeWidth="2.5"
-                  ></polyline>
-                </svg>
-                <span className="missionText">
-                  Why Choose Gauswarn Desi Gir Cow Ghee?
-                  <ul className="aboutBenefits small">
-                    <li>Made from A2 milk of indigenous Gir cows</li>
-                    <li>Prepared using the traditional Bilona method</li>
-                    <li>Small-batch, Gaushala-crafted purity</li>
-                    <li>Natural, ethical & chemical-free</li>
-                  </ul>
-                </span>
-              </li>
-            </ul>
-
-            {/* Divider */}
-            <hr className="aboutDivider" />
-
-            {/* Additional Points */}
-            <ul className="missionList">
-              <li className="missionListItem">
-                <div className="iconPlaceholder">🏆</div>
-                <span className="missionText">
-                  Driven by Tradition. Guided by Purity.
-                  <br />
-                  Experience nutrient-rich, easily digestible, and immunity-boosting
-                  <strong> A2 Gir Cow Ghee</strong> — crafted with devotion and ancient Vedic wisdom.
-                </span>
-              </li>
               <li className="missionListItem">
                 <div className="iconPlaceholder">🌿</div>
                 <span className="missionText">
-                  Why Choose Gauswarn Desi Gir Cow Ghee?
+                  <strong>Ethical & Farm-Fresh Purity</strong>
                   <br />
-                  • Made from A2 milk of indigenous Gir cows
+                  Handcrafted in small batches directly at our Gaushala. We ensure zero adulteration, bringing you farm-to-table freshness.
+                </span>
+              </li>
+              <li className="missionListItem">
+                <div className="iconPlaceholder">🏆</div>
+                <span className="missionText">
+                  <strong>Holistic Health & Wellness</strong>
                   <br />
-                  • Prepared using the traditional Bilona method with modern
-                  efficiency
-                  <br />
-                  • Small-batch, Gaushala-crafted purity
-                  <br />• Natural, ethical & chemical-free
+                  Enhances memory, deeply nourishes the body, balances doshas, and acts as a natural antioxidant to keep your family healthy.
                 </span>
               </li>
             </ul>

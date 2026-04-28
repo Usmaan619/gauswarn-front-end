@@ -41,7 +41,7 @@ const rightFeatures = [
     icon: ghee3Img,
     title: "Eco-Friendly & Cruelty-Free",
     description:
-      "We follow sustainable, ethical farming practices, ensuring our A2 Gir cows are happy and healthy.",
+      "We follow sustainable, ethical farming practices, ensuring our A2 Cows are happy and healthy.",
   },
   {
     icon: ghee5Img,
@@ -55,7 +55,7 @@ const FeatureItem = ({ icon, title, description }) => (
   <div className="new-ghee-feature-item">
     <img
       src={icon}
-      alt={`${title} – Gauswarn A2 Gir Cow Ghee`}
+      alt={`${title} – Gauswarn A2 Cow Ghee`}
       className="new-ghee-feature-icon"
       width="48"
       height="48"
@@ -73,7 +73,7 @@ const GheePurity = () => {
     <section className="new-ghee-purity">
       <p className="sr-only">
         Discover how Gauswarn India ensures lab-tested purity, ethical sourcing,
-        and chemical-free A2 Gir Cow Ghee using traditional methods.
+        and chemical-free A2 Cow Ghee using traditional methods.
       </p>
 
       <h2 className="new-ghee-purity-title">Lab-tested purity you can trust</h2>
@@ -88,7 +88,7 @@ const GheePurity = () => {
         <div className="new-ghee-bottle-wrapper">
           <img
             src={gheeBottleImg}
-            alt="Pure A2 Gir Cow Ghee bottle by Gauswarn India"
+            alt="Pure A2 Cow Ghee bottle by Gauswarn India"
             className="new-ghee-bottle"
             loading="lazy"
             width="300"

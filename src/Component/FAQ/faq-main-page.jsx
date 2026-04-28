@@ -44,12 +44,12 @@ const FAQMainPage = () => {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqData.map((faq) => ({
+    mainEntity: faqData.map((faq) => ({
       "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
+      name: faq.question,
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": faq.answer,
+        text: faq.answer,
       },
     })),
   };
@@ -62,7 +62,7 @@ const FAQMainPage = () => {
     <>
       <Seo
         title="Pure A2 Ghee FAQ | Storage, Benefits & Shipping - Gauswarn India"
-        description="Find answers to common questions about Pure A2 Gir Cow Ghee storage, health benefits, lactose content, and order tracking."
+        description="Find answers to common questions about Pure A2 Cow Ghee storage, health benefits, lactose content, and order tracking."
         url="https://gauswarn.com/faq"
         structuredData={faqSchema}
       />

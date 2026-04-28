@@ -10,9 +10,9 @@ const VideoPage = ({ isEmbedded = false }) => {
   const videoSchema = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    name: "Experience the Purity of Gauswarn A2 Gir Cow Ghee",
+    name: "Experience the Purity of Gauswarn A2 Cow Ghee",
     description:
-      "Discover the traditional Bilona process of making pure A2 Gir Cow Ghee at Gauswarn India. Watch our journey from farm to your kitchen and learn why our ghee is truly special.",
+      "Discover the traditional Bilona process of making pure A2 Cow Ghee at Gauswarn India. Watch our journey from farm to your kitchen and learn why our ghee is truly special.",
     thumbnailUrl: [
       `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
       `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
@@ -35,8 +35,8 @@ const VideoPage = ({ isEmbedded = false }) => {
     <div className="video-page-container">
       {!isEmbedded && (
         <Seo
-          title="Our Story in Motion | Pure A2 Gir Cow Ghee - Gauswarn India"
-          description="Watch the journey of Gauswarn's A2 Gir Cow Ghee. Traditional Bilona method, pure Vedic process, and farm-fresh goodness in every drop."
+          title="Our Story in Motion | Pure A2 Cow Ghee - Gauswarn India"
+          description="Watch the journey of Gauswarn's A2 Cow Ghee. Traditional Bilona method, pure Vedic process, and farm-fresh goodness in every drop."
           url="https://gauswarn.com/video"
           structuredData={videoSchema}
         />

@@ -57,7 +57,7 @@ const BlogView = () => {
         <h2>{blog?.title}</h2>
 
         <p>
-          This article by Gauswarn India explains insights related to A2 Gir Cow
+          This article by Gauswarn India explains insights related to A2 Cow
           Ghee, Ayurveda, natural nutrition, digestion, immunity, and healthy
           living. The blog focuses on traditional Indian practices including the
           Bilona method and the benefits of pure desi cow ghee.
@@ -75,7 +75,7 @@ const BlogView = () => {
         description={
           blog.meta_description ||
           blog.excerpt ||
-          "Read this informative blog from Gauswarn India on A2 Gir cow ghee, health and ayurveda."
+          "Read this informative blog from Gauswarn India on A2 Cow ghee, health and ayurveda."
         }
         url={`https://gauswarn.com/blog/${slug}`}
         image={blog.image_url}
@@ -90,7 +90,7 @@ const BlogView = () => {
           description:
             blog?.meta_description ||
             blog?.excerpt ||
-            "Informative article on A2 Gir Cow Ghee, Ayurveda and natural wellness by Gauswarn India.",
+            "Informative article on A2 Cow Ghee, Ayurveda and natural wellness by Gauswarn India.",
           image: blog?.image_url,
           author: {
             "@type": "Organization",

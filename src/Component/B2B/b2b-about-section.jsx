@@ -7,9 +7,8 @@ const B2bAboutSection = ({ onQuoteClick }) => {
     <section className="b2b-aboutSection">
       <p className="sr-only">
         Learn about Gauswarn India’s B2B and wholesale partnership program for
-        bulk A2 Gir Cow Ghee supply across India.
+        bulk A2 Cow Ghee supply across India.
       </p>
-
 
       <div className="container b2b-aboutGrid">
         <div className="b2b-statsCardModern">
@@ -75,7 +74,7 @@ const B2bAboutSection = ({ onQuoteClick }) => {
 
           <button
             className="b2b-ctaButtonModern"
-            aria-label="Get a free wholesale quote for A2 Gir Cow Ghee"
+            aria-label="Get a free wholesale quote for A2 Cow Ghee"
             onClick={onQuoteClick}
           >
             Get a Free Quote

@@ -2,9 +2,16 @@
    Gauswarn PWA Service Worker
    =============================== */
 
-const CACHE_NAME = "gauswarn-v12";
+const CACHE_NAME = "gauswarn-v14";
 
-const urlsToCache = ["/", "/index.html", "/manifest.json", "/favicon.ico"];
+const urlsToCache = [
+  "/",
+  "/index.html",
+  "/manifest.json",
+  "/favicon.ico",
+  "/robots.txt",
+  "/security.txt",
+];
 
 /* ================= INSTALL ================= */
 self.addEventListener("install", (event) => {
@@ -32,11 +39,11 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
-  // 🚫 NEVER handle sitemap, robots, xml files
+  // 🚫 NEVER handle sitemap, robots, xml, txt files
   if (
-    url.pathname === "/sitemap.xml" ||
-    url.pathname === "/robots.txt" ||
-    url.pathname.endsWith(".xml")
+    url.pathname.endsWith(".xml") ||
+    url.pathname.endsWith(".txt") ||
+    url.pathname === "/.well-known/security.txt"
   ) {
     return;
   }

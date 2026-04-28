@@ -16,7 +16,9 @@ import { postData } from "./services/api.jsx";
 /* =======================
    LAZY LOAD COMPONENTS
 ======================= */
-const CareersPage = lazy(() => import("./Component/Careers/careers-main-page.jsx"));
+const CareersPage = lazy(
+  () => import("./Component/Careers/careers-main-page.jsx"),
+);
 
 // Home sections
 const Home = lazy(() => import("./Component/Pages/Home.jsx"));
@@ -124,8 +126,8 @@ const HomePage = () => {
   return (
     <>
       <Seo
-        title="Buy Pure A2 Gir Cow Ghee in India – Gauswarn India"
-        description="Buy 100% pure, bilona-made A2 Gir cow ghee from Gauswarn India. Farm fresh, lab tested, rich in nutrients and delivered across India."
+        title="A2 Cow Ghee By Gauswarn"
+        description="Buy 100% pure, bilona-made A2 Cow ghee from Gauswarn. Farm fresh, lab tested, rich in nutrients and delivered across India."
         url="https://gauswarn.com"
         structuredData={[structuredData, websiteData]}
       />

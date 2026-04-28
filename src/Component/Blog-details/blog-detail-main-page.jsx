@@ -7,7 +7,7 @@ export default function BlogDetailPage() {
       <div className="blog-hero">
         <img
           src="https://images.unsplash.com/photo-1628863353691-0071c8c1874c?w=1200&h=600&fit=crop"
-          alt="A2 Gir Cow Ghee"
+          alt="A2 Cow Ghee"
           className="hero-image"
         />
       </div>
@@ -38,7 +38,7 @@ export default function BlogDetailPage() {
           {/* Article Content */}
           <div className="article-content">
             <p className="lead-paragraph">
-              Learn how A2 Gir cow ghee boosts digestion, energy, immunity, and
+              Learn how A2 Cow ghee boosts digestion, energy, immunity, and
               overall wellness — backed by ancient Ayurvedic wisdom and modern
               science.
             </p>
@@ -69,7 +69,7 @@ export default function BlogDetailPage() {
               anti-inflammatory properties.
             </p>
 
-            <h2>Key Health Benefits of A2 Gir Cow Ghee</h2>
+            <h2>Key Health Benefits of A2 Cow Ghee</h2>
 
             <div className="benefits-grid">
               <div className="benefit-card">
@@ -174,7 +174,7 @@ export default function BlogDetailPage() {
               </p>
             </div>
 
-            <h2>Why Choose Gauswarn A2 Gir Cow Ghee?</h2>
+            <h2>Why Choose Gauswarn A2 Cow Ghee?</h2>
             <p>
               At Gauswarn, we're committed to preserving the purity and
               authenticity of traditional ghee-making methods. Our A2 ghee is
@@ -192,10 +192,12 @@ export default function BlogDetailPage() {
             <div className="cta-section">
               <h2>Experience the Gauswarn Difference</h2>
               <p>
-                Ready to transform your health with the purest A2 Gir cow ghee?
+                Ready to transform your health with the purest A2 Cow ghee?
                 Order your jar today and taste the tradition.
               </p>
-              <button aria-label="Shop A2 Ghee Now" className="cta-button">Shop A2 Ghee Now</button>
+              <button aria-label="Shop A2 Ghee Now" className="cta-button">
+                Shop A2 Ghee Now
+              </button>
             </div>
           </div>
 
@@ -213,10 +215,30 @@ export default function BlogDetailPage() {
           <div className="share-section">
             <h3>Share this article</h3>
             <div className="share-buttons">
-              <button aria-label="Share on Facebook" className="share-btn facebook">Facebook</button>
-              <button aria-label="Share on Twitter" className="share-btn twitter">Twitter</button>
-              <button aria-label="Share on LinkedIn" className="share-btn linkedin">LinkedIn</button>
-              <button aria-label="Share on WhatsApp" className="share-btn whatsapp">WhatsApp</button>
+              <button
+                aria-label="Share on Facebook"
+                className="share-btn facebook"
+              >
+                Facebook
+              </button>
+              <button
+                aria-label="Share on Twitter"
+                className="share-btn twitter"
+              >
+                Twitter
+              </button>
+              <button
+                aria-label="Share on LinkedIn"
+                className="share-btn linkedin"
+              >
+                LinkedIn
+              </button>
+              <button
+                aria-label="Share on WhatsApp"
+                className="share-btn whatsapp"
+              >
+                WhatsApp
+              </button>
             </div>
           </div>
         </article>
@@ -268,7 +290,12 @@ export default function BlogDetailPage() {
               placeholder="Your email address"
               className="newsletter-input"
             />
-            <button aria-label="Subscribe to newsletter" className="newsletter-btn">Subscribe</button>
+            <button
+              aria-label="Subscribe to newsletter"
+              className="newsletter-btn"
+            >
+              Subscribe
+            </button>
           </div>
         </aside>
       </div>

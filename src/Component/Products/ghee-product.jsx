@@ -11,7 +11,7 @@ const features = [
     icon: gheeFeture1,
     title: "Crafted with Tradition",
     description:
-      "Made using the ancient Bilona method to preserve the purity and rich aroma of A2 Gir Cow Ghee.",
+      "Made using the ancient Bilona method to preserve the purity and rich aroma of A2 Cow Ghee.",
     alt: "Traditional Bilona Method Churning Ghee",
   },
   {
@@ -58,7 +58,10 @@ const GheeFeatureProductPage = () => {
               >
                 <img
                   src={feature.icon}
-                  className="ghee-feature-icon" width="64" height="64" decoding="async"
+                  className="ghee-feature-icon"
+                  width="64"
+                  height="64"
+                  decoding="async"
                   alt={feature.alt}
                   loading="lazy"
                 />

@@ -1,11 +1,18 @@
 import React from "react";
 import "./privacy-policy-main.css";
+import Seo from "../SEO/Seo";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="privacy-container">
-      <div className="privacy-header">
-        <h4 className="privacy-title">Privacy Policy</h4>
+    <>
+      <Seo
+        title="Privacy Policy | Gauswarn India"
+        description="Privacy policy and data protection guidelines for Gauswarn India."
+        url="https://gauswarn.com/privacy"
+      />
+      <div className="privacy-container">
+        <div className="privacy-header">
+          <h1 className="privacy-title">Privacy Policy</h1>
         <div className="last-updated">
           <strong>Last Updated</strong>
         </div>
@@ -118,6 +125,7 @@ const PrivacyPolicy = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

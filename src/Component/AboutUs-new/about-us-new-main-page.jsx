@@ -13,10 +13,13 @@ export default function AboutUsHeroMain() {
   return (
     <>
       <Seo
-        title="About Gauswarn India | Pure A2 Gir Cow Ghee Journey & Process"
-        description="Discover how Gauswarn India prepares 100% pure A2 Gir Cow Ghee using the traditional Bilona method. Learn about our Gaushala, values, and commitment to quality."
+        title="About Gauswarn India | Pure A2 Cow Ghee Journey & Process"
+        description="Discover how Gauswarn India prepares 100% pure A2 Cow Ghee using the traditional Bilona method. Learn about our Gaushala, values, and commitment to quality."
         url="https://gauswarn.com/about"
       />
+      <h1 className="sr-only">
+        About Gauswarn India - Our Journey and Bilona Method
+      </h1>
       <ProductHeroSection />
       <Certified />
       {/* <AboutUsHero /> */}

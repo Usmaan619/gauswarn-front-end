@@ -39,7 +39,7 @@ const Contact = () => {
   return (
     <>
       <Seo
-        title="Contact Gauswarn India | A2 Gir Cow Ghee"
+        title="Contact Gauswarn India | A2 Cow Ghee"
         description="Get in touch with Gauswarn India for orders, support and wholesale inquiries."
         url="https://gauswarn.com/contact"
       />
@@ -199,7 +199,11 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <button   aria-label="Submit contact form" type="submit" className="ghee-new-btn-cta">
+                  <button
+                    aria-label="Submit contact form"
+                    type="submit"
+                    className="ghee-new-btn-cta"
+                  >
                     Submit
                   </button>
                 </form>

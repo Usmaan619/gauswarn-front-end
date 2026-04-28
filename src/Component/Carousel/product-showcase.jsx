@@ -91,12 +91,12 @@ const ProductShowcaseComplete = () => {
       <section className="products-grid-section">
         <div className="section-header">
           <span className="subtitle">Authentic & Grass-Fed</span>
-          <h2 className="main-title">A2 Gir Cow Bilona Ghee</h2>
+          <h2 className="main-title">Pure A2 Cow Ghee</h2>
           <div className="title-underline"></div>
           <p className="description">
-            100% Pure A2 Desi Cow Ghee made from the A2 milk of indigenous Gir cows.
-            Experience the purity of traditional curd-based Bilona method ghee, 
-            rich in nutrients and perfect for your family's health.
+            100% Pure A2 Desi Cow Ghee made from the A2 milk of indigenous Gir
+            cows. Experience the purity of traditional curd-based Bilona method
+            ghee, rich in nutrients and perfect for your family's health.
           </p>
         </div>
 

@@ -178,7 +178,8 @@ const FinalPaymentMainPage = () => {
       (acc, item) => acc + item.product_price * item.product_quantity,
       0,
     );
-    const discountRate = currentSubtotal > 0 ? (discountValue / currentSubtotal) * 100 : 0;
+    const discountRate =
+      currentSubtotal > 0 ? (discountValue / currentSubtotal) * 100 : 0;
     setAppliedCoupon({ code: couponCode, discountRate });
   };
 
@@ -220,7 +221,7 @@ const FinalPaymentMainPage = () => {
       const payload = {
         ...formData,
         user_total_amount: finalAmount, // Amount to be charged
-        subtotal_amount: subtotal,     // Original amount for record
+        subtotal_amount: subtotal, // Original amount for record
         purchase_price: cart[0]?.product_price || 0,
         product_quantity: cart.reduce(
           (acc, item) => acc + item.product_quantity,
@@ -231,7 +232,6 @@ const FinalPaymentMainPage = () => {
         discount_amount: discount,
         final_payable_amount: finalAmount,
       };
-
 
       // CREATE ORDER API
       const res = await axios.post(
@@ -363,7 +363,6 @@ const FinalPaymentMainPage = () => {
   // UI
   return (
     <>
-
       <LoadingOverlay active={isLoading || showLoader}>
         <div className="new-paymentContainer">
           <div className="new-paymentWrapper">
@@ -454,7 +453,7 @@ const FinalPaymentMainPage = () => {
               <div className="new-summaryCard">
                 <div className="new-logoContainer">
                   <img src={mainLogo} alt="Logo" className="new-logo" />
-                  <p className="new-logoSubtext">Premium A2 Gir Cow Ghee</p>
+                  <p className="new-logoSubtext">Premium A2 Cow Ghee</p>
                 </div>
 
                 <div className="new-summaryTitle">Order Summary</div>

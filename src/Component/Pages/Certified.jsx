@@ -18,11 +18,11 @@ const Certified = () => {
               {[
                 {
                   src: FssaiLogo,
-                  alt: "FSSAI certified A2 Gir cow ghee by Gauswarn India",
+                  alt: "FSSAI certified A2 Cow ghee by Gauswarn India",
                 },
                 {
                   src: IndiaOrganicLogo,
-                  alt: "India Organic certified A2 Gir cow ghee",
+                  alt: "India Organic certified A2 Cow ghee",
                 },
                 {
                   src: Usda,

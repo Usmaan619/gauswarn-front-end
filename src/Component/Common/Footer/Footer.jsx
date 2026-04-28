@@ -95,11 +95,11 @@ export default function NewFooter() {
                 <div className="footer-logo">
                   <a
                     href="/"
-                    aria-label="Gauswarn A2 Gir Cow Ghee - Return to Homepage"
+                    aria-label="Gauswarn A2 Cow Ghee - Return to Homepage"
                   >
                     <img
                       src={logo}
-                      alt="Gauswarn A2 Gir Cow Ghee Logo"
+                      alt="Gauswarn A2 Cow Ghee Logo"
                       loading="lazy"
                       style={{ width: "150px", height: "auto" }}
                     />
@@ -108,8 +108,11 @@ export default function NewFooter() {
 
                 <div className="footer-text">
                   <p>
-                    Gauswarn India is dedicated to providing the purest <strong>A2 Gir Cow Ghee</strong> made using the traditional Vedic Bilona method. 
-                    From our Gaushala to your kitchen — experience the authentic taste, rich aroma, and health benefits of pure Desi Cow Ghee.
+                    Gauswarn India is dedicated to providing the purest{" "}
+                    <strong>A2 Cow Ghee</strong> made using the traditional
+                    Vedic Bilona method. From our Gaushala to your kitchen —
+                    experience the authentic taste, rich aroma, and health
+                    benefits of pure Desi Cow Ghee.
                   </p>
                 </div>
 
@@ -117,7 +120,7 @@ export default function NewFooter() {
                   <span>Also available on</span>
 
                   <a
-                    aria-label="Buy Gauswarn A2 Gir Cow Ghee on Amazon"
+                    aria-label="Buy Gauswarn A2 Cow Ghee on Amazon"
                     href="https://amzn.in/d/h5EBdP1"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -133,7 +136,7 @@ export default function NewFooter() {
                   </a>
 
                   <a
-                    aria-label="Buy Gauswarn A2 Gir Cow Ghee on Flipkart"
+                    aria-label="Buy Gauswarn A2 Cow Ghee on Flipkart"
                     target="_blank"
                     rel="noopener noreferrer"
                     href="https://www.flipkart.com/gau-swarn-a2-gir-cow-ghee-glass-bottle/p/itm48ba9c417cecd"
@@ -163,7 +166,7 @@ export default function NewFooter() {
                     <Link
                       to="/"
                       onClick={scrollToTop}
-                      aria-label="A2 Gir Cow Ghee Home"
+                      aria-label="A2 Cow Ghee Home"
                     >
                       Home
                     </Link>

@@ -5,7 +5,7 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 
 export default function TopBanner() {
   const [offers, setOffers] = useState([
-    "Pure A2 Gir Cow Ghee – Traditional Vedic Bilona Method",
+    "Pure A2 Cow Ghee – Traditional Vedic Bilona Method",
     "Free shipping on Pure Desi Ghee orders above ₹999",
     "Buy Best A2 Ghee in India – Lab Tested Purity",
     "Use code GAUS10 for 10% off on all Bilona Ghee",

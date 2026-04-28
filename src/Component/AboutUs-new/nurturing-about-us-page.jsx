@@ -20,7 +20,7 @@ const NurituringAboutUs = () => {
           url: "https://gauswarn.com",
           logo: "https://gauswarn.com/favicon-512x512.png",
           description:
-            "Gauswarn India produces pure A2 Gir Cow Ghee using the traditional Bilona method, promoting ethical cow rearing, sustainability, and rural community upliftment.",
+            "Gauswarn India produces pure A2 Cow Ghee using the traditional Bilona method, promoting ethical cow rearing, sustainability, and rural community upliftment.",
           foundingLocation: {
             "@type": "Place",
             address: {
@@ -29,7 +29,7 @@ const NurituringAboutUs = () => {
             },
           },
           knowsAbout: [
-            "A2 Gir Cow Ghee",
+            "A2 Cow Ghee",
             "Bilona Method",
             "Ethical Cow Farming",
             "Sustainable Dairy Practices",
@@ -48,7 +48,7 @@ const NurituringAboutUs = () => {
           {/* LEFT SECTION */}
           <div className="nurtring-left-section">
             <h2 className="nurtring-main-heading">
-              Pure A2 Gir Cow Ghee, Crafted with Care & Tradition
+              Pure A2 Cow Ghee, Crafted with Care & Tradition
             </h2>
 
             {/* MISSION */}
@@ -59,10 +59,10 @@ const NurituringAboutUs = () => {
               <div className="nurtring-card-content">
                 <h3 className="nurtring-card-title">Our Mission</h3>
                 <p className="nurtring-card-text">
-                  At GAUSWARN, our mission is to deliver 100% pure A2 Gir Cow
-                  Ghee made using the traditional Bilona method, ensuring
-                  natural nutrition, rich aroma, and authentic taste for
-                  everyday wellness.
+                  At GAUSWARN, our mission is to deliver 100% pure A2 Cow Ghee
+                  made using the traditional Bilona method, ensuring natural
+                  nutrition, rich aroma, and authentic taste for everyday
+                  wellness.
                 </p>
               </div>
             </div>

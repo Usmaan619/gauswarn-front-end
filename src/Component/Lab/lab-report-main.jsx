@@ -1,5 +1,6 @@
 import React from "react";
 import "./lab-report-main.css";
+import Seo from "../SEO/Seo";
 
 // NDDB CALF – Ghee Purity
 import GheeReport1 from "../../asset/new-img/lap-report/ghee-report-1.webp";
@@ -16,12 +17,17 @@ import Texture2 from "../../asset/new-img/lap-report/texture-2.webp";
 const LabReportMain = () => {
   return (
     <>
-    <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: `
-{
-  "@context": "https://schema.org",
+      <Seo
+        title="Lab Test Reports | Pure A2 Gir Cow Ghee - Gauswarn India"
+        description="View official lab test reports verifying the purity, safety, and A2 beta-casein content of Gauswarn India's A2 Gir Cow Ghee."
+        url="https://gauswarn.com/lab-report"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: `
+{A2 Cow
+  "@context": "https://schema.org",A2 Cow
   "@type": "CreativeWork",
   "additionalType": "https://schema.org/Report",
   "@id": "https://gauswarn.com/lab-report#report",
@@ -34,7 +40,7 @@ const LabReportMain = () => {
     "https://gauswarn.com/asset/new-img/lap-report/labreport.webp"
   ],
 
-  "inLanguage": "en-IN",
+  "inLanguageA2 Cow,
   "datePublished": "2024-01-01",
 
   "about": {
@@ -57,10 +63,9 @@ const LabReportMain = () => {
     }
   }
 }
-`
-  }}
-/>
-
+`,
+        }}
+      />
 
       <div className="lab-page">
         <h1>Laboratory Test Reports</h1>

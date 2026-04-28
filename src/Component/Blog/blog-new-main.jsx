@@ -136,20 +136,21 @@ const BlogMainPageNew = () => {
     return {
       "@context": "https://schema.org",
       "@type": "Blog",
-      "name": "Gauswarn India - A2 Ghee & Wellness Blog",
-      "description": "Read expert articles on A2 ghee benefits, ayurveda, digestion, and healthy living.",
-      "url": "https://gauswarn.com/blog",
-      "blogPost": sortedBlogs.slice(0, 10).map((post) => ({
+      name: "Gauswarn India - A2 Ghee & Wellness Blog",
+      description:
+        "Read expert articles on A2 ghee benefits, ayurveda, digestion, and healthy living.",
+      url: "https://gauswarn.com/blog",
+      blogPost: sortedBlogs.slice(0, 10).map((post) => ({
         "@type": "BlogPosting",
-        "headline": post?.title,
-        "description": truncateText(post?.content || post?.description, 160),
-        "image": post?.image_url || post?.image,
-        "datePublished": post?.created_at || post?.date,
-        "author": {
+        headline: post?.title,
+        description: truncateText(post?.content || post?.description, 160),
+        image: post?.image_url || post?.image,
+        datePublished: post?.created_at || post?.date,
+        author: {
           "@type": "Organization",
-          "name": "Gauswarn India"
-        }
-      }))
+          name: "Gauswarn India",
+        },
+      })),
     };
   };
 
@@ -176,11 +177,13 @@ const BlogMainPageNew = () => {
     <>
       {/* SEO SUPPORTING CONTENT (Google-safe) */}
       <section className="sr-only">
-        <h1>A2 Ghee Benefits, Ayurveda & Healthy Living Blog | Gauswarn India</h1>
+        <h1>
+          A2 Ghee Benefits, Ayurveda & Healthy Living Blog | Gauswarn India
+        </h1>
 
         <p>
           Welcome to the Gauswarn India blog where we share expert knowledge on
-          Pure A2 Gir Cow Ghee, traditional Bilona method, Ayurveda principles,
+          Pure A2 Cow Ghee, traditional Bilona method, Ayurveda principles,
           digestion, immunity, and natural wellness. Our articles focus on the
           health benefits of A2 desi cow ghee made from indigenous Gir cows.
         </p>
@@ -188,7 +191,7 @@ const BlogMainPageNew = () => {
 
       <Seo
         title="A2 Ghee Benefits & Ayurveda Blog | Gauswarn Pure Bilona Ghee"
-        description="Read expert articles on Pure A2 Gir Cow Ghee benefits, traditional bilona method, ayurveda, and healthy living by Gauswarn India."
+        description="Read expert articles on Pure A2 Cow Ghee benefits, traditional bilona method, ayurveda, and healthy living by Gauswarn India."
         url="https://gauswarn.com/blog"
         structuredData={generateBlogSchema()}
       />
@@ -201,16 +204,20 @@ const BlogMainPageNew = () => {
               Array.from({ length: 6 }).map((_, i) => <BlogSkeleton key={i} />)
             ) : sortedBlogs.length > 0 ? (
               sortedBlogs.map((post) => (
-                <Link 
-                  key={post?.id || post?._id} 
-                  to={`/blog/${formatSlug(post?.slug || post?.id)}`} 
+                <Link
+                  key={post?.id || post?._id}
+                  to={`/blog/${formatSlug(post?.slug || post?.id)}`}
                   className="blog-card-link"
                   aria-label={`Read full article: ${post?.title}`}
                 >
                   <div className="blog-card">
                     <div className="blog-image">
                       <img
-                        src={post?.image_url || post?.image || "/default-blog-image.jpg"}
+                        src={
+                          post?.image_url ||
+                          post?.image ||
+                          "/default-blog-image.jpg"
+                        }
                         alt={`Blog: ${post?.title}`}
                         loading="lazy"
                       />
@@ -218,13 +225,21 @@ const BlogMainPageNew = () => {
 
                     <div className="blog-content">
                       <div className="blog-meta">
-                        <span className="tag">{post?.category?.name || post?.category || "Blog"}</span>
-                        <span className="blog-date">{formatDate(post?.created_at || post?.date)}</span>
+                        <span className="tag">
+                          {post?.category?.name || post?.category || "Blog"}
+                        </span>
+                        <span className="blog-date">
+                          {formatDate(post?.created_at || post?.date)}
+                        </span>
                       </div>
 
-                      <h3 className="blog-title">{post?.title || "Untitled"}</h3>
+                      <h3 className="blog-title">
+                        {post?.title || "Untitled"}
+                      </h3>
 
-                      <p className="blog-description">{truncateText(post?.content || post?.description)}</p>
+                      <p className="blog-description">
+                        {truncateText(post?.content || post?.description)}
+                      </p>
 
                       <span className="read-more-btn">Read Full Article →</span>
                     </div>

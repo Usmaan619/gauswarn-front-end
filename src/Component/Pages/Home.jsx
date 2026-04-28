@@ -83,7 +83,7 @@ const Home = () => {
       bannerUrls.map((url, index) => ({
         desktop: optimizeImage(url, 1400),
         mobile: optimizeImage(url, 768),
-        alt: `Gauswarn A2 Gir Cow Ghee - Pure Bilona Ghee Banner ${index + 1}`,
+        alt: `Gauswarn A2 Cow Ghee - Pure Bilona Ghee Banner ${index + 1}`,
       })),
     [bannerUrls],
   );
