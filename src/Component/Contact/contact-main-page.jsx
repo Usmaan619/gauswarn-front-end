@@ -77,7 +77,7 @@ const Contact = () => {
       <div className="ghee-new-contact-section">
         <div className="container py-4">
           <div className="row">
-            <h2 className="ghee-new-contact-title">Contact Us</h2>
+            <h1 className="ghee-new-contact-title">Contact Us</h1>
 
             {/* FORM LEFT */}
             <div className="col-lg-8 col-md-12 mb-5">

@@ -104,10 +104,9 @@ const B2BLandingPage = () => {
         url="https://gauswarn.com/b2b"
         structuredData={b2bSchema}
       />
-      <p className="sr-only">
-        Our certifications ensure consistent quality and compliance for B2B and
-        wholesale partners across India.
-      </p>
+      <h1 className="sr-only">
+        Wholesale & Bulk A2 Cow Ghee Supply - Gauswarn India
+      </h1>
 
       <ProductHeroSection />
       <Certified />

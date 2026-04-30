@@ -8,6 +8,8 @@ import { ToastContainer } from "react-toastify";
 import ScrollToTop from "./Component/Common/Scroll-to-Top/scroll-to-top.jsx";
 import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
 import NewFooter from "./Component/Common/Footer/Footer.jsx";
+import ErrorBoundary from "./Component/Common/ErrorBoundary.jsx";
+
 
 import { useCartContext } from "./Component/Context/UserContext.jsx";
 import Seo from "./Component/SEO/Seo.jsx";
@@ -132,9 +134,7 @@ const HomePage = () => {
         structuredData={[structuredData, websiteData]}
       />
 
-      <h1 className="sr-only">
-        Gauswarn India - Authentic A2 Gir Cow Ghee & Pure Bilona Ghee
-      </h1>
+      <h1 className="sr-only">Gauswarn A2 Cow Ghee</h1>
 
       <Home />
       <Certified />
@@ -205,65 +205,68 @@ function App() {
 
       {/*  Suspense Wrapper */}
       <main>
-        <Suspense
-          fallback={
-            <div
-              style={{
-                textAlign: "center",
-                padding: "100px 0",
-                height: "100vh",
-              }}
-            >
-              Loading...
-            </div>
-          }
-        >
-          <Routes>
-            <Route path="/" element={<HomePage />} />
+        <ErrorBoundary>
+          <Suspense
+            fallback={
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "100px 0",
+                  height: "100vh",
+                }}
+              >
+                Loading...
+              </div>
+            }
+          >
+            <Routes>
+              <Route path="/" element={<HomePage />} />
 
-            <Route path="/about" element={<AboutUsHeroMain />} />
-            <Route path="/blog" element={<BlogMainPageNew />} />
-            <Route path="/blog/:slug" element={<BlogView />} />
+              <Route path="/about" element={<AboutUsHeroMain />} />
+              <Route path="/blog" element={<BlogMainPageNew />} />
+              <Route path="/blog/:slug" element={<BlogView />} />
 
-            <Route path="/gallery" element={<GheeGallery />} />
-            <Route path="/contact" element={<ContactMainPage />} />
+              <Route path="/gallery" element={<GheeGallery />} />
+              <Route path="/contact" element={<ContactMainPage />} />
 
-            {/* <Route path="/track-order" element={<OrderTracking />} /> */}
-            <Route path="/b2b" element={<B2BLandingPage />} />
+              {/* <Route path="/track-order" element={<OrderTracking />} /> */}
+              <Route path="/b2b" element={<B2BLandingPage />} />
 
-            <Route path="/products" element={<ProductPageMain />} />
-            <Route path="/cart" element={<FinalPaymentMainPage />} />
+              <Route path="/products" element={<ProductPageMain />} />
+              <Route path="/cart" element={<FinalPaymentMainPage />} />
 
-            <Route path="/payment-success" element={<PaymentSuccess />} />
-            <Route path="/payment-failed" element={<PaymentFailed />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
+              <Route path="/payment-failed" element={<PaymentFailed />} />
 
-            <Route path="/refund" element={<RefundMainPage />} />
-            <Route path="/shipping" element={<ShippingPolicy />} />
+              <Route path="/refund" element={<RefundMainPage />} />
+              <Route path="/shipping" element={<ShippingPolicy />} />
 
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/terms" element={<TermsConditions />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsConditions />} />
 
-            <Route path="/faq" element={<FAQMainPage />} />
-            <Route path="/lab-report" element={<LabReportMain />} />
-            <Route path="/video" element={<VideoPage />} />
-            <Route path="/careers" element={<CareersPage />} />
-            <Route
-              path="*"
-              element={
-                <h2
-                  style={{
-                    textAlign: "center",
-                    marginTop: 50,
-                    height: "100vh",
-                  }}
-                >
-                  Page Not Found
-                </h2>
-              }
-            />
-          </Routes>
-        </Suspense>
+              <Route path="/faq" element={<FAQMainPage />} />
+              <Route path="/lab-report" element={<LabReportMain />} />
+              <Route path="/video" element={<VideoPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route
+                path="*"
+                element={
+                  <h2
+                    style={{
+                      textAlign: "center",
+                      marginTop: 50,
+                      height: "100vh",
+                    }}
+                  >
+                    Page Not Found
+                  </h2>
+                }
+              />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </main>
+
 
       <NewFooter />
     </>

@@ -69,7 +69,7 @@ const FAQMainPage = () => {
 
       <div className="faq-container">
         <div className="faq-header">
-          <h4 className="faq-title">FAQ's</h4>
+          <h1 className="faq-title">FAQ's</h1>
         </div>
 
         <div className="faq-content">

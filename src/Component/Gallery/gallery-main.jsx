@@ -95,6 +95,7 @@ const GheeShowcase = () => {
         description="Explore Gauswarn India's gallery showcasing our Gaushala, Gir cows, traditional bilona ghee making process, and farm-to-home purity."
         url="https://gauswarn.com/gallery"
       />
+      <h1 className="sr-only">Gauswarn India - A2 Cow Ghee Gallery</h1>
 
       <ProductHeroSection />
       <div className="gallery-showcase-container">

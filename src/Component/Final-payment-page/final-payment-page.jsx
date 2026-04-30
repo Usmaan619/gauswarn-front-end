@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../Context/UserContext";
 import { z } from "zod";
 import CouponBox from "../Common/CouponBox";
+import Seo from "../SEO/Seo";
 
 /* Custom loading overlay — replaces broken react-loading-overlay (React 18 incompatible) */
 const LoadingOverlay = ({ active, children }) => (
@@ -363,7 +364,13 @@ const FinalPaymentMainPage = () => {
   // UI
   return (
     <>
+      <Seo
+        title="Secure Checkout | Gauswarn India"
+        description="Complete your order for pure A2 Cow Ghee securely."
+        url="https://gauswarn.com/cart"
+      />
       <LoadingOverlay active={isLoading || showLoader}>
+        <h1 className="sr-only">Secure Checkout - Gauswarn A2 Cow Ghee</h1>
         <div className="new-paymentContainer">
           <div className="new-paymentWrapper">
             {/* LEFT SIDE FORM */}
