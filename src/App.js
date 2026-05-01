@@ -35,9 +35,7 @@ const ProductShowcase = lazy(
 const GheePurity = lazy(
   () => import("./Component/AboutUs-new/ghee-purity.jsx"),
 );
-const HealthProductShowcase = lazy(
-  () => import("./Component/Banefit/health-product-showcase.jsx"),
-);
+
 const HealthBenefitsGrid = lazy(
   () => import("./Component/HealthBenefits/HealthBenefitsGrid.jsx"),
 );

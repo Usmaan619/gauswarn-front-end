@@ -143,10 +143,8 @@ const ProductCard = ({ product }) => {
 
   const handleViewDetails = (e) => {
     e.stopPropagation();
-    if (product?.product_id) {
-      sessionStorage.setItem("selected_variant_id", product.product_id);
-    }
-    navigate("/products");
+    // Use query param for deep-linkable, shareable URLs
+    navigate(`/products?v=${product?.product_id || ""}`);
   };
 
   const calculateDiscount = (original, current) => {

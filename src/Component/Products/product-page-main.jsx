@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from "uuid";
 import { environment } from "../../environment/environment";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCartContext } from "../Context/UserContext";
 
 // Assets
@@ -173,6 +173,8 @@ const triggerCrossPageToast = (type, message) => {
 ========================= */
 const ProductPageMain = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const variantParam = searchParams.get("v"); // e.g. /products?v=1
   const { setCart } = useCartContext();
 
   // Loading states
@@ -244,25 +246,9 @@ const ProductPageMain = () => {
         );
 
       setProducts(normalizedProducts);
-
-      if (normalizedProducts.length > 0) {
-        const storedVariantId = sessionStorage.getItem("selected_variant_id");
-
-        if (storedVariantId) {
-          const index = normalizedProducts.findIndex(
-            (p) => p.product_id === storedVariantId,
-          );
-          if (index !== -1) {
-            setSelectedVariantIndex(index);
-          } else {
-            setSelectedVariantIndex(0);
-          }
-          // Clear it after using it so refreshes don't keep it stuck if they navigate elsewhere
-          sessionStorage.removeItem("selected_variant_id");
-        } else {
-          setSelectedVariantIndex(0);
-        }
-      }
+      // Default to first variant; the variantParam useEffect will
+      // override this if ?v= is present in the URL
+      setSelectedVariantIndex(0);
     } catch (error) {
       if (attempt < API_CONFIG.RETRY_ATTEMPTS) {
         await delay(API_CONFIG.RETRY_DELAY);
@@ -449,7 +435,12 @@ const ProductPageMain = () => {
     setSelectedVariantIndex(index);
     setSelectedImage(0);
     setQuantity(1);
-  }, []);
+    // Update URL so it's shareable and browser-history-friendly
+    const selectedPid = products[index]?.product_id;
+    if (selectedPid) {
+      setSearchParams({ v: selectedPid }, { replace: true });
+    }
+  }, [products, setSearchParams]);
 
   const handlePrevImage = useCallback(() => {
     setSelectedImage((prev) =>
@@ -502,6 +493,19 @@ const ProductPageMain = () => {
     }
   }, [productImages.length, selectedImage]);
 
+  // Sync variant selection when URL query param (?v=) changes
+  useEffect(() => {
+    if (!variantParam || products.length === 0) return;
+    const index = products.findIndex(
+      (p) => String(p.product_id) === String(variantParam)
+    );
+    if (index !== -1) {
+      setSelectedVariantIndex(index);
+      setSelectedImage(0);
+      setQuantity(1);
+    }
+  }, [variantParam, products]);
+
   /* ========================= 
      RENDER 
   ========================= */
@@ -520,20 +524,18 @@ const ProductPageMain = () => {
         name: "Gauswarn",
       },
       offers: {
-        "@type": "AggregateOffer",
-        url: "https://gauswarn.com/products",
+        "@type": "Offer",
+        url: variantParam ? `https://gauswarn.com/products?v=${variantParam}` : `https://gauswarn.com/products`,
         priceCurrency: "INR",
-        lowPrice:
-          products.length > 0
-            ? Math.min(...products.map((p) => p.product_price))
-            : 0,
-        highPrice:
-          products.length > 0
-            ? Math.max(...products.map((p) => p.product_price))
-            : 0,
-        offerCount: products.length,
+        price: selectedProduct.product_price,
+        itemCondition: "https://schema.org/NewCondition",
         availability: "https://schema.org/InStock",
+        seller: {
+          "@type": "Organization",
+          name: "Gauswarn India"
+        }
       },
+      sku: `GSW-${selectedProduct.product_weight.replace(/\s+/g, '')}`,
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: averageRating || 5,
@@ -545,9 +547,9 @@ const ProductPageMain = () => {
   return (
     <>
       <Seo
-        title="Pure A2 Gir Cow Ghee - Lab Tested Bilona Method | Gauswarn Shop"
+        title={selectedProduct ? `${selectedProduct.product_weight} Pure A2 Gir Cow Ghee - Lab Tested | Gauswarn` : "Pure A2 Gir Cow Ghee - Lab Tested Bilona Method | Gauswarn Shop"}
         description="Shop Gauswarn's lab-verified A2 Cow Ghee. Handcrafted using the traditional wooden Bilona method for maximum nutrition. Fast pan-India delivery."
-        url="https://gauswarn.com/products"
+        url={variantParam ? `https://gauswarn.com/products?v=${variantParam}` : "https://gauswarn.com/products"}
         structuredData={generateProductSchema()}
       />
 
