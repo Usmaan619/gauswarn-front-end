@@ -6,6 +6,8 @@ import { environment } from "../../environment/environment";
 import "./contact-main-page.css";
 import ProductHeroSection from "../Products/product-hero-section";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
 
 const Contact = () => {
   const {
@@ -72,12 +74,12 @@ const Contact = () => {
         })}
       </script>
 
-      <ProductHeroSection />
+      <ProductHeroSection title="Contact Gauswarn India - Support & Inquiries" isH1={true} />
 
       <div className="ghee-new-contact-section">
         <div className="container py-4">
           <div className="row">
-            <h1 className="ghee-new-contact-title">Contact Us</h1>
+            <h2 className="ghee-new-contact-title">Contact Us</h2>
 
             {/* FORM LEFT */}
             <div className="col-lg-8 col-md-12 mb-5">
@@ -264,6 +266,7 @@ const Contact = () => {
           style={{ width: "100%", border: "0" }}
         ></iframe>
       </div>
+      <SeoContent heading={SEO_CONTENT.contact.heading} sections={SEO_CONTENT.contact.sections} />
     </>
   );
 };

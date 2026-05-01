@@ -1,6 +1,8 @@
 import React from "react";
 import "./privacy-policy-main.css";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
 
 const PrivacyPolicy = () => {
   return (
@@ -125,6 +127,7 @@ const PrivacyPolicy = () => {
         </div>
       </div>
     </div>
+    <SeoContent heading={SEO_CONTENT.privacy.heading} sections={SEO_CONTENT.privacy.sections} />
     </>
   );
 };

@@ -1,5 +1,5 @@
-import React from "react";
 import { Building2, Globe, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 import "./b2b-styles/b2b-about-section.css";
 
 const B2bAboutSection = ({ onQuoteClick }) => {
@@ -33,12 +33,14 @@ const B2bAboutSection = ({ onQuoteClick }) => {
           <p className="b2b-aboutDescriptionModern">
             Our B2B partnership program empowers retailers, wholesalers,
             distributors, and corporate clients with premium products and
-            flexible pricing.
+            flexible pricing. We maintain high standards of purity, which you can verify 
+            through our <Link to="/lab-report">Official Lab Reports</Link>.
           </p>
 
           <p className="b2b-aboutDescriptionModern">
             We serve supermarkets, gyms, spas, Ayurvedic stores, online sellers,
-            and export partners across India.
+            and export partners across India. Learn more about our ethical sourcing 
+            on our <Link to="/about">About Us</Link> page.
           </p>
 
           <hr className="b2b-dividerModern" />

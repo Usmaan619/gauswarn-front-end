@@ -1,4 +1,5 @@
 import { Award, Package, TrendingUp, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 import "./b2b-styles/b2b-why-partner.css";
 
 const PartnerSection = () => {
@@ -6,8 +7,11 @@ const PartnerSection = () => {
     {
       icon: <Award size={28} strokeWidth={1.5} aria-hidden="true" />,
       title: "Consistent Quality",
-      description:
-        "Premium, lab-tested, high-demand products that your customers trust and love.",
+      description: (
+        <>
+          Premium, <Link to="/lab-report">lab-tested</Link>, high-demand products that your customers trust and love.
+        </>
+      ),
     },
     {
       icon: <Package size={28} strokeWidth={1.5} aria-hidden="true" />,
@@ -24,8 +28,11 @@ const PartnerSection = () => {
     {
       icon: <Shield size={28} strokeWidth={1.5} aria-hidden="true" />,
       title: "Trusted Brand",
-      description:
-        "Strong customer loyalty and repeat sales backed by Gauswarn India’s reputation.",
+      description: (
+        <>
+          Strong customer loyalty and repeat sales backed by Gauswarn India’s <Link to="/about">reputation</Link>.
+        </>
+      ),
     },
   ];
 

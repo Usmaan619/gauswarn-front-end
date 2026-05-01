@@ -44,8 +44,9 @@ const SustainableFeaturesAboutus = () => {
               src={feature.icon}
               alt={`${feature.title} at Gauswarn India`}
               loading="lazy"
-              style={feature.id === 5 ? { padding: "20px" } : {}}
-              className="sustainable-icon-wrapper"
+              className={`sustainable-icon-wrapper ${
+                feature.id === 5 ? "padded-icon" : ""
+              }`}
             />
             <h3 className="sustainable-feature-title">{feature.title}</h3>
           </li>

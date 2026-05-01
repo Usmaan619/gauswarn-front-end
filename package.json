@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run generate-rss && react-scripts build",
+    "build": "npm run generate-rss && react-scripts build && node scripts/post-build-seo.js",
     "generate-rss": "node scripts/generate-rss.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

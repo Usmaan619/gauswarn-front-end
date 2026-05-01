@@ -17,6 +17,8 @@ import gallery9 from "../../asset/new-img/gallery/gallery9.webp";
 import gallery10 from "../../asset/new-img/gallery/gallery10.webp";
 import gallery11 from "../../asset/new-img/gallery/gallery11.webp";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
 
 const GheeShowcase = () => {
   const images = [
@@ -95,9 +97,7 @@ const GheeShowcase = () => {
         description="Explore Gauswarn India's gallery showcasing our Gaushala, Gir cows, traditional bilona ghee making process, and farm-to-home purity."
         url="https://gauswarn.com/gallery"
       />
-      <h1 className="sr-only">Gauswarn India - A2 Cow Ghee Gallery</h1>
-
-      <ProductHeroSection />
+      <ProductHeroSection title="Gauswarn India - A2 Cow Ghee Gallery" isH1={true} />
       <div className="gallery-showcase-container">
         <div className="gallery-grid-container">
           {images?.map((image) => (
@@ -109,6 +109,7 @@ const GheeShowcase = () => {
           ))}
         </div>
       </div>
+      <SeoContent heading={SEO_CONTENT.gallery.heading} sections={SEO_CONTENT.gallery.sections} />
     </>
   );
 };

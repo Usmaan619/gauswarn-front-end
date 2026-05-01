@@ -33,22 +33,19 @@ export default function AboutUsHero() {
           {/* Right - Content Section */}
           <div className="aboutContentSection">
             {/* Main Heading */}
-            <h2 className="aboutMainHeading">
-              Pure A2 Cow Ghee by Gauswarn
-            </h2>
+            <h1 className="aboutMainHeading">
+              Pure A2 Gir Cow Ghee – Bilona Method Desi Ghee
+            </h1>
 
             {/* Description Paragraphs */}
             <p className="aboutParagraph">
-              At <strong>GAUSWARN</strong>, purity isn't just a promise — it's our tradition. Our premium 
-              <strong> A2 Cow Ghee</strong> is crafted using the ancient <strong>Ayurvedic Bilona method</strong>, 
-              churning curd (bilona) made from the fresh A2 milk of our free-grazing, grass-fed cows.
+              At <strong>GAUSWARN</strong>, purity isn't just a promise — it's a legacy rooted in ancient Indian wisdom. Our premium 
+              <strong> A2 Gir Cow Ghee</strong> is meticulously crafted using the time-honored <strong>Ayurvedic Bilona method</strong>. This authentic process involves curdling fresh, whole A2 milk from our indigenous, free-grazing Gir cows, and then hand-churning that curd into pure butter (makhan). This traditional approach ensures that every spoonful of Gauswarn Ghee is packed with the essence of nature and the wisdom of our ancestors.
             </p>
 
             <p className="aboutParagraph">
-              Recognized as a powerful Indian superfood, our authentic <strong>Desi Cow Ghee</strong> is 
-              rich in <strong>A2 Beta-casein protein</strong>, essential vitamins (A, D, E, K), and Omega-3 fatty acids. 
-              It provides steady energy, supports better digestion, and serves as an excellent 
-              immunity-boosting, gut-friendly cooking fat for your family.
+              Widely recognized as a superior Indian superfood, our authentic <strong>Desi Gir Cow Ghee</strong> is 
+              a powerhouse of nutrition, rich in <strong>A2 Beta-casein protein</strong>, essential fat-soluble vitamins (A, D, E, K), and vital Omega-3 and Omega-6 fatty acids. Unlike industrially processed alternatives, our Bilona Ghee provides sustained energy, supports robust digestion, and acts as a natural catalyst for nutrient absorption. It is the perfect, gut-friendly, and immunity-boosting cooking fat for families who prioritize holistic health and authentic flavor.
             </p>
 
             <ul className="aboutBenefits">
@@ -59,7 +56,7 @@ export default function AboutUsHero() {
             </ul>
 
             {/* Mission Section */}
-            <h3 className="aboutSubtitle">Why Buy Gauswarn A2 Ghee Online?</h3>
+            <h2 className="aboutSubtitle">Why Choose Gauswarn A2 Ghee?</h2>
 
             <ul className="missionList">
               <li className="missionListItem">

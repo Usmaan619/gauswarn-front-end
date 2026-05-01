@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Seo from "../../Component/SEO/Seo";
+import SeoContent from "../../Component/SEO/SeoContent";
+import { SEO_CONTENT } from "../../Component/SEO/seo-content-data";
 import "./video-page.css";
 
 const VideoPage = ({ isEmbedded = false }) => {
@@ -55,9 +57,9 @@ const VideoPage = ({ isEmbedded = false }) => {
         </div>
 
         <div className="video-content" data-aos="fade-up">
-          <h1 className="video-title">
+          <h2 className="video-title">
             The Essence of <span className="highlight">Pure Bilona</span> Ghee
-          </h1>
+          </h2>
           <p className="video-subtitle">
             Watch how we preserve tradition in every drop of Gauswarn A2 Ghee.
           </p>
@@ -99,6 +101,7 @@ const VideoPage = ({ isEmbedded = false }) => {
           </div>
         </div>
       )}
+      {!isEmbedded && <SeoContent heading={SEO_CONTENT.video.heading} sections={SEO_CONTENT.video.sections} />}
     </div>
   );
 };

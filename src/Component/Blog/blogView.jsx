@@ -4,6 +4,8 @@ import { ArrowLeft } from "lucide-react";
 import { getData } from "../../services/api";
 import { toastError } from "../../services/toaster.service";
 import Seo from "../SEO/Seo";
+import "./blog-view.css";
+
 
 /* ---------- SKELETON ---------- */
 const BlogViewSkeleton = () => (
@@ -218,12 +220,10 @@ const BlogView = () => {
             }}
           >
             <div
-              style={{
-                fontSize: "16px",
-                lineHeight: 1.8,
-              }}
+              className="blog-content-container"
               dangerouslySetInnerHTML={{ __html: blog?.content }}
             />
+
           </div>
         </div>
       </div>

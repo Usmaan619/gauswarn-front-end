@@ -4,6 +4,8 @@ import Certified from "../Pages/Certified";
 import VideoPage from "../Pages/VideoPage";
 import ProductHeroSection from "../Products/product-hero-section";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
 import BilonaAboutUsSection from "./bilona-aboutus";
 import GheePurity from "./ghee-purity";
 import NurituringAboutUs from "./nurturing-about-us-page";
@@ -17,10 +19,10 @@ export default function AboutUsHeroMain() {
         description="Discover how Gauswarn India prepares 100% pure A2 Cow Ghee using the traditional Bilona method. Learn about our Gaushala, values, and commitment to quality."
         url="https://gauswarn.com/about"
       />
-      <h1 className="sr-only">
-        About Gauswarn India - Our Journey and Bilona Method
-      </h1>
-      <ProductHeroSection />
+      <ProductHeroSection
+        title="About Gauswarn India - Our Journey and Bilona Method"
+        isH1={true}
+      />
       <Certified />
       {/* <AboutUsHero /> */}
       <DiscoverHeroSection />
@@ -29,6 +31,8 @@ export default function AboutUsHeroMain() {
       <BilonaAboutUsSection />
       <VideoPage />
       <SustainableFeaturesAboutus />
+      <SeoContent heading={SEO_CONTENT.about.heading} sections={SEO_CONTENT.about.sections} />
     </>
   );
 }
+

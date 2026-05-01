@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
 import "./faq-main-page.css";
 
 const FAQMainPage = () => {
@@ -96,6 +98,7 @@ const FAQMainPage = () => {
           </div>
         </div>
       </div>
+      <SeoContent heading={SEO_CONTENT.faq.heading} sections={SEO_CONTENT.faq.sections} />
     </>
   );
 };

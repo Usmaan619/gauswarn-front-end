@@ -7,17 +7,12 @@ import "./discover-hero-section.css";
 import { useNavigate } from "react-router-dom";
 
 export default function DiscoverHeroSection() {
-  const naigate = useNavigate();
+  const navigate = useNavigate();
 
-  const ContactUs = () => naigate("/contact");
+  const ContactUs = () => navigate("/contact");
 
   return (
     <section className="discover-hero-section">
-      <p className="sr-only">
-        Learn how Gauswarn India produces pure A2 Cow Ghee using traditional
-        Bilona methods, ethical farming, and modern quality checks.
-      </p>
-
       <div className="discover-hero-container">
         {/* Left Section - Image */}
         <div className="discover-hero-left">
@@ -36,17 +31,17 @@ export default function DiscoverHeroSection() {
         {/* Right Section - Content */}
         <div className="discover-hero-right">
           {/* Heading */}
-          <h2 className="discover-hero-heading">
-            Discover the Purity Behind Every Drop of Gauswarn Ghee
-          </h2>
+          <h2 className="discover-hero-heading">What is A2 Gir Cow Ghee?</h2>
 
           {/* Subheading */}
           <p className="discover-hero-subheading">
-            At Gauswarn, ghee isn’t just a product — it’s a legacy of Indian
-            tradition. From carefully prepared Bilona butter to rich, golden
-            ghee, every step blends Vedic craftsmanship with modern efficiency.
-            We follow time-tested methods enhanced by advanced processes to
-            deliver authentic Desi Gir Cow Ghee your family can trust.
+            Gauswarn pure A2 Gir cow ghee is prepared using the traditional
+            bilona method, which ensures its absolute purity and maintains its
+            high nutritional value. At Gauswarn, ghee isn’t just a product —
+            it’s a living legacy of Indian heritage and rural craftsmanship.
+            From carefully preparing artisanal Bilona butter to the slow-cooking
+            process that produces our rich, golden-grained ghee, every step in
+            our journey blends Vedic wisdom with modern hygiene standards.
           </p>
 
           {/* Divider */}

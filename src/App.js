@@ -10,9 +10,10 @@ import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
 import NewFooter from "./Component/Common/Footer/Footer.jsx";
 import ErrorBoundary from "./Component/Common/ErrorBoundary.jsx";
 
-
 import { useCartContext } from "./Component/Context/UserContext.jsx";
 import Seo from "./Component/SEO/Seo.jsx";
+import SeoContent from "./Component/SEO/SeoContent.jsx";
+import { SEO_CONTENT } from "./Component/SEO/seo-content-data.js";
 import { postData } from "./services/api.jsx";
 
 /* =======================
@@ -37,9 +38,16 @@ const GheePurity = lazy(
 const HealthProductShowcase = lazy(
   () => import("./Component/Banefit/health-product-showcase.jsx"),
 );
+const HealthBenefitsGrid = lazy(
+  () => import("./Component/HealthBenefits/HealthBenefitsGrid.jsx"),
+);
+const HealthBenefitDetail = lazy(
+  () => import("./Component/HealthBenefits/HealthBenefitDetail.jsx"),
+);
 const DiscoverHeroSection = lazy(
   () => import("./Component/Discover/discover-hero-section.jsx"),
 );
+const HomeFaq = lazy(() => import("./Component/FAQ/HomeFaq.jsx"));
 
 // Pages
 const AboutUsHeroMain = lazy(
@@ -97,7 +105,7 @@ const HomePage = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Gauswarn India",
-    url: "https://gauswarn.com/",
+    url: "https://gauswarn.com",
     logo: "https://gauswarn.com/favicon-512x512.png",
     contactPoint: {
       "@type": "ContactPoint",
@@ -117,7 +125,7 @@ const HomePage = () => {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Gauswarn",
-    url: "https://gauswarn.com/",
+    url: "https://gauswarn.com",
     potentialAction: {
       "@type": "SearchAction",
       target: "https://gauswarn.com/products?q={search_term_string}",
@@ -128,13 +136,11 @@ const HomePage = () => {
   return (
     <>
       <Seo
-        title="A2 Cow Ghee By Gauswarn"
-        description="Buy 100% pure, bilona-made A2 Cow ghee from Gauswarn. Farm fresh, lab tested, rich in nutrients and delivered across India."
+        title="Gauswarn India | Buy Pure A2 Gir Cow Bilona Ghee Online"
+        description="Experience the purity of traditional A2 Gir Cow Ghee made using the Vedic Bilona method. 100% natural, lab-tested, and chemical-free wellness for your family."
         url="https://gauswarn.com"
         structuredData={[structuredData, websiteData]}
       />
-
-      <h1 className="sr-only">Gauswarn A2 Cow Ghee</h1>
 
       <Home />
       <Certified />
@@ -143,8 +149,13 @@ const HomePage = () => {
       <AboutUsHero />
       <VideoPage isEmbedded />
       <GheePurity />
-      <HealthProductShowcase />
+      <HealthBenefitsGrid />
       <DiscoverHeroSection />
+      <HomeFaq />
+      <SeoContent
+        heading={SEO_CONTENT.home.heading}
+        sections={SEO_CONTENT.home.sections}
+      />
     </>
   );
 };
@@ -248,6 +259,7 @@ function App() {
               <Route path="/lab-report" element={<LabReportMain />} />
               <Route path="/video" element={<VideoPage />} />
               <Route path="/careers" element={<CareersPage />} />
+              <Route path="/health-benefits/:slug" element={<HealthBenefitDetail />} />
               <Route
                 path="*"
                 element={
@@ -266,7 +278,6 @@ function App() {
           </Suspense>
         </ErrorBoundary>
       </main>
-
 
       <NewFooter />
     </>

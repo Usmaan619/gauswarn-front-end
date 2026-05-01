@@ -1,5 +1,7 @@
 import "./refund-main-page.css";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
 
 const RefundMainPage = () => {
   return (
@@ -158,6 +160,7 @@ const RefundMainPage = () => {
         </div>
       </div>
     </div>
+    <SeoContent heading={SEO_CONTENT.refund.heading} sections={SEO_CONTENT.refund.sections} />
     </>
   );
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import "./term-and-condition.css";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
 
 const TermsConditions = () => {
   return (
@@ -94,6 +96,7 @@ const TermsConditions = () => {
         </div>
       </div>
     </div>
+    <SeoContent heading={SEO_CONTENT.terms.heading} sections={SEO_CONTENT.terms.sections} />
     </>
   );
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import "./shipping-policy-main-page.css";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
 
 const ShippingPolicy = () => {
   return (
@@ -88,6 +90,7 @@ const ShippingPolicy = () => {
         </div>
       </div>
     </div>
+    <SeoContent heading={SEO_CONTENT.shipping.heading} sections={SEO_CONTENT.shipping.sections} />
     </>
   );
 };

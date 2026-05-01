@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./careers-main-page.css";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
 
 const Internship = () => {
   const {
@@ -375,6 +377,7 @@ Benefits:
           </div>
         </div>
       </section>
+      <SeoContent heading={SEO_CONTENT.careers.heading} sections={SEO_CONTENT.careers.sections} />
     </>
   );
 };

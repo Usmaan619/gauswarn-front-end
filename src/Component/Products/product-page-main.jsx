@@ -28,6 +28,9 @@ import ProductHeroSection from "./product-hero-section";
 import GheeFeatureProductPage from "./ghee-product";
 import "../../Component/Carousel/carousel-card-wrapper.css";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
+import ProductFaq from "../FAQ/ProductFaq";
 
 /* ========================= 
    CONSTANTS 
@@ -542,8 +545,8 @@ const ProductPageMain = () => {
   return (
     <>
       <Seo
-        title="Buy Pure A2 Cow Ghee Online | Gauswarn Authentic Bilona Ghee"
-        description="Order authentic A2 Cow ghee made using the traditional bilona method. Lab tested, pure, and delivered fresh across India."
+        title="Pure A2 Gir Cow Ghee - Lab Tested Bilona Method | Gauswarn Shop"
+        description="Shop Gauswarn's lab-verified A2 Cow Ghee. Handcrafted using the traditional wooden Bilona method for maximum nutrition. Fast pan-India delivery."
         url="https://gauswarn.com/products"
         structuredData={generateProductSchema()}
       />
@@ -989,7 +992,12 @@ const ProductPageMain = () => {
       </div>
 
       <ProductHeroSection />
+      <ProductFaq />
       <GheeFeatureProductPage />
+      <SeoContent
+        heading={SEO_CONTENT.products.heading}
+        sections={SEO_CONTENT.products.sections}
+      />
     </>
   );
 };

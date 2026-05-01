@@ -6,6 +6,8 @@ import FilterNewsletterCard from "./blog-filter";
 import ProductHeroSection from "../Products/product-hero-section";
 import { getData } from "../../services/api";
 import Seo from "../SEO/Seo";
+import SeoContent from "../SEO/SeoContent";
+import { SEO_CONTENT } from "../SEO/seo-content-data";
 
 /* ======================
    UTILITIES
@@ -175,27 +177,16 @@ const BlogMainPageNew = () => {
   /* ===== RENDER ===== */
   return (
     <>
-      {/* SEO SUPPORTING CONTENT (Google-safe) */}
-      <section className="sr-only">
-        <h1>
-          A2 Ghee Benefits, Ayurveda & Healthy Living Blog | Gauswarn India
-        </h1>
-
-        <p>
-          Welcome to the Gauswarn India blog where we share expert knowledge on
-          Pure A2 Cow Ghee, traditional Bilona method, Ayurveda principles,
-          digestion, immunity, and natural wellness. Our articles focus on the
-          health benefits of A2 desi cow ghee made from indigenous Gir cows.
-        </p>
-      </section>
-
       <Seo
         title="A2 Ghee Benefits & Ayurveda Blog | Gauswarn Pure Bilona Ghee"
         description="Read expert articles on Pure A2 Cow Ghee benefits, traditional bilona method, ayurveda, and healthy living by Gauswarn India."
         url="https://gauswarn.com/blog"
         structuredData={generateBlogSchema()}
       />
-      <ProductHeroSection />
+      <ProductHeroSection
+        title="A2 Ghee Benefits, Ayurveda & Healthy Living Blog | Gauswarn India"
+        isH1={true}
+      />
 
       <div className="app">
         <div className="main-content">
@@ -263,6 +254,7 @@ const BlogMainPageNew = () => {
           />
         </div>
       </div>
+      <SeoContent heading={SEO_CONTENT.blog.heading} sections={SEO_CONTENT.blog.sections} />
     </>
   );
 };
