@@ -136,8 +136,8 @@ const HomePage = () => {
   return (
     <>
       <Seo
-        title="Gauswarn India | Buy Pure A2 Gir Cow Bilona Ghee Online"
-        description="Experience the purity of traditional A2 Gir Cow Ghee made using the Vedic Bilona method. 100% natural, lab-tested, and chemical-free wellness for your family."
+        title="Buy Pure A2 Gir Cow Ghee Online | Bilona Method Ghee India – Gauswarn"
+        description="Buy pure A2 Gir cow ghee made using traditional bilona method. 100% natural desi ghee with rich taste and health benefits. Order online in India."
         url="https://gauswarn.com"
         structuredData={[structuredData, websiteData]}
       />
@@ -259,7 +259,10 @@ function App() {
               <Route path="/lab-report" element={<LabReportMain />} />
               <Route path="/video" element={<VideoPage />} />
               <Route path="/careers" element={<CareersPage />} />
-              <Route path="/health-benefits/:slug" element={<HealthBenefitDetail />} />
+              <Route
+                path="/health-benefits/:slug"
+                element={<HealthBenefitDetail />}
+              />
               <Route
                 path="*"
                 element={
