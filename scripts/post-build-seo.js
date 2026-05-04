@@ -110,6 +110,12 @@ const ROUTES = {
     h1: "Gauswarn India Video Story – Traditional A2 Cow Ghee Making Process",
     content: `Experience the journey of Gauswarn A2 Gir Cow Ghee through our video documentary. Watch how we preserve the ancient tradition of Bilona ghee-making — from our Gaushala where indigenous Gir cows are lovingly cared for, through the traditional hand-churning of curd to extract pure butter, to the slow-heating process that produces golden granular ghee. Our video showcases the authentic Vedic process, ethical animal care, and the quality standards that make Gauswarn India's A2 ghee the purest choice for your family. See the real people, real cows, and real process behind every jar of Gauswarn ghee.`,
   },
+  "/cart": {
+    title: "Your Shopping Cart | Pure A2 Gir Cow Ghee – Gauswarn India",
+    description: "Review your selected A2 Cow Ghee products in the Gauswarn cart. Secure checkout for traditional Bilona ghee delivered to your home.",
+    h1: "Your Gauswarn Shopping Cart",
+    content: `Review the A2 Gir Cow Ghee products in your shopping cart before proceeding to checkout. Gauswarn offers premium Bilona ghee in 250ml, 500ml, 1L, 5kg and 15kg packs. All our products are 100% pure, lab-tested, and made using traditional Vedic methods. Complete your order to enjoy the health benefits of authentic A2 cow ghee with free shipping across India.`,
+  },
 };
 
 /* ═══════════════════════════════════
@@ -125,7 +131,7 @@ function run() {
   let modified = 0;
 
   for (const [route, seo] of Object.entries(ROUTES)) {
-    const html = injectSeo(template, seo);
+    const html = injectSeo(template, seo, route);
 
     if (route === "/") {
       // Overwrite the root index.html directly
@@ -148,8 +154,10 @@ function run() {
  * Replace <title>, <meta description>, and inject an <h1> + content
  * into the <div id="root"> before React hydrates.
  */
-function injectSeo(template, seo) {
+function injectSeo(template, seo, route) {
   let html = template;
+  const baseUrl = "https://gauswarn.com";
+  const canonicalUrl = route === "/" ? baseUrl : `${baseUrl}${route}`;
 
   // 1. Replace <title>
   html = html.replace(
@@ -187,9 +195,24 @@ function injectSeo(template, seo) {
     `<meta data-rh="true" name="twitter:description" content="${seo.description}" />`
   );
 
-  // 7. Inject H1 + SEO content inside <div id="root">
-  // The content is visible briefly before React hydrates, then React takes over.
-  // We use a style that works with both scenarios.
+  // 7. Replace/Inject og:url
+  if (/<meta[^>]*property=["']og:url["'][^>]*\/?>/i.test(html)) {
+    html = html.replace(
+      /<meta[^>]*property=["']og:url["'][^>]*\/?>/i,
+      `<meta data-rh="true" property="og:url" content="${canonicalUrl}" />`
+    );
+  } else {
+    html = html.replace("</head>", `  <meta data-rh="true" property="og:url" content="${canonicalUrl}" />\n</head>`);
+  }
+
+  // 8. Replace/Inject Canonical Link
+  // First, remove any existing canonical links to avoid duplicates
+  html = html.replace(/<link[^>]*rel=["']canonical["'][^>]*\/?>/gi, "");
+  
+  // Inject the fresh canonical link into the head
+  html = html.replace("</head>", `  <link data-rh="true" rel="canonical" href="${canonicalUrl}" />\n</head>`);
+
+  // 9. Inject H1 + SEO content inside <div id="root">
   const seoBlock = `
     <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">${seo.h1}</h1>
     <div style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0" role="article">
