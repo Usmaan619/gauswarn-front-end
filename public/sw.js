@@ -2,7 +2,7 @@
    Gauswarn PWA Service Worker
    =============================== */
 
-const CACHE_NAME = "gauswarn-v14";
+const CACHE_NAME = "gauswarn-v15";
 
 const urlsToCache = [
   "/",
@@ -52,6 +52,31 @@ self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   if (!event.request.url.startsWith("http")) return;
 
+  // ⭐ NETWORK-FIRST for Navigation (index.html)
+  // This ensures that when you upload a new build, the browser gets the fresh index.html
+  // and doesn't get stuck with an old cached version pointing to missing JS files.
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          // Cache the fresh index.html
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
+          });
+          return networkResponse;
+        })
+        .catch(() => {
+          // If network fails, try to serve from cache
+          return caches.match(event.request).then((cachedResponse) => {
+            return cachedResponse || caches.match("/index.html");
+          });
+        }),
+    );
+    return;
+  }
+
+  // ⭐ CACHE-FIRST for other assets (images, hashed JS/CSS)
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) return cachedResponse;
@@ -71,11 +96,7 @@ self.addEventListener("fetch", (event) => {
           return networkResponse;
         })
         .catch(() => {
-          // ✅ SPA fallback ONLY for real page navigation
-          if (event.request.mode === "navigate") {
-            return caches.match("/index.html");
-          }
-          // Fix: return a generic response or let it fail naturally for non-navigate requests
+          // Return a generic response or let it fail naturally
           return new Response("", { status: 404, statusText: "Not Found" });
         });
     }),
