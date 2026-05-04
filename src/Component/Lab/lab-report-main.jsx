@@ -47,6 +47,17 @@ const LabReportMain = () => {
               "brand": {
                 "@type": "Brand",
                 "name": "Gauswarn India"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "269"
+              },
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "INR",
+                "price": "549",
+                "availability": "https://schema.org/InStock"
               }
             },
             "publisher": {
