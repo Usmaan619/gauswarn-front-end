@@ -122,19 +122,43 @@ const B2BLandingPage = () => {
         <div className="b2b-faq-grid">
           <div className="b2b-faq-item">
             <h4>Do you offer White Labeling or Private Labeling services?</h4>
-            <p>Yes, Gauswarn India provides comprehensive White Labeling support. We supply our premium, lab-tested A2 Gir Cow Ghee, which you can sell under your own brand identity. Our team assists with custom packaging and labeling solutions to ensure your brand stands out in the market.</p>
+            <p>
+              Yes, Gauswarn India provides comprehensive White Labeling support.
+              We supply our premium, lab-tested A2 Gir Cow Ghee, which you can
+              sell under your own brand identity. Our team assists with custom
+              packaging and labeling solutions to ensure your brand stands out
+              in the market.
+            </p>
           </div>
           <div className="b2b-faq-item">
-            <h4>How do you support the growth of small businesses and startups?</h4>
-            <p>We empower entrepreneurs by offering low Minimum Order Quantities (MOQ) and consistent, high-quality supply. This allows startups to enter the healthy food market with minimal upfront investment and scale their operations as their customer base grows.</p>
+            <h4>
+              How do you support the growth of small businesses and startups?
+            </h4>
+            <p>
+              We empower entrepreneurs by offering low Minimum Order Quantities
+              (MOQ) and consistent, high-quality supply. This allows startups to
+              enter the healthy food market with minimal upfront investment and
+              scale their operations as their customer base grows.
+            </p>
           </div>
           <div className="b2b-faq-item">
             <h4>Why should I choose Gauswarn as my official B2B partner?</h4>
-            <p>Gauswarn is synonymous with purity and transparency. By partnering with us, you gain access to 100% authentic Bilona Ghee, supported by verifiable lab reports and a robust supply chain that guarantees quality consistency for your retail or export business.</p>
+            <p>
+              Gauswarn is synonymous with purity and transparency. By partnering
+              with us, you gain access to 100% authentic Bilona Ghee, supported
+              by verifiable lab reports and a robust supply chain that
+              guarantees quality consistency for your retail or export business.
+            </p>
           </div>
           <div className="b2b-faq-item">
             <h4>What are your delivery and logistics terms for bulk orders?</h4>
-            <p>We have established partnerships with specialized logistics providers to ensure safe and timely Pan-India delivery. While shipping costs depend on volume and location, we strive to offer the most competitive rates for our B2B partners. Please submit the form below for a detailed quote.</p>
+            <p>
+              We have established partnerships with specialized logistics
+              providers to ensure safe and timely Pan-India delivery. While
+              shipping costs depend on volume and location, we strive to offer
+              the most competitive rates for our B2B partners. Please submit the
+              form below for a detailed quote.
+            </p>
           </div>
         </div>
       </section>
@@ -144,7 +168,10 @@ const B2BLandingPage = () => {
 
       <B2bContactSection />
       <SustainableFeaturesAboutus />
-      <SeoContent heading={SEO_CONTENT.b2b.heading} sections={SEO_CONTENT.b2b.sections} />
+      <SeoContent
+        heading={SEO_CONTENT.b2b.heading}
+        sections={SEO_CONTENT.b2b.sections}
+      />
     </div>
   );
 };
