@@ -9,6 +9,8 @@ import Seo from "../SEO/Seo";
 import SeoContent from "../SEO/SeoContent";
 import { SEO_CONTENT } from "../SEO/seo-content-data";
 
+import blogImg from "../../asset/new-img/banner.webp";
+
 /* ======================
    UTILITIES
 ====================== */
@@ -47,11 +49,7 @@ const BlogCard = ({ image, title, description, date, category, slug }) => (
   <Link to={`/blog/${formatSlug(slug)}`} className="blog-card-link">
     <div className="blog-card">
       <div className="blog-image">
-        <img
-          src={image || "/default-blog-image.jpg"}
-          alt={title || "Blog post"}
-          loading="lazy"
-        />
+        <img src={blogImg} alt={title || "Blog post"} loading="lazy" />
       </div>
 
       <div className="blog-content">
@@ -204,11 +202,7 @@ const BlogMainPageNew = () => {
                   <div className="blog-card">
                     <div className="blog-image">
                       <img
-                        src={
-                          post?.image_url ||
-                          post?.image ||
-                          "/default-blog-image.jpg"
-                        }
+                        src={blogImg}
                         alt={`Blog: ${post?.title}`}
                         loading="lazy"
                       />
@@ -254,7 +248,10 @@ const BlogMainPageNew = () => {
           />
         </div>
       </div>
-      <SeoContent heading={SEO_CONTENT.blog.heading} sections={SEO_CONTENT.blog.sections} />
+      <SeoContent
+        heading={SEO_CONTENT.blog.heading}
+        sections={SEO_CONTENT.blog.sections}
+      />
     </>
   );
 };

@@ -3,9 +3,11 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { getData } from "../../services/api";
 import { toastError } from "../../services/toaster.service";
+
+import blogImg from "../../asset/new-img/banner.webp";
+
 import Seo from "../SEO/Seo";
 import "./blog-view.css";
-
 
 /* ---------- SKELETON ---------- */
 const BlogViewSkeleton = () => (
@@ -80,7 +82,7 @@ const BlogView = () => {
           "Read this informative blog from Gauswarn India on A2 Cow ghee, health and ayurveda."
         }
         url={`https://gauswarn.com/blog/${slug}`}
-        image={blog.image_url}
+        image={blogImg}
       />
 
       {/*  ARTICLE STRUCTURED DATA (ADD HERE ) */}
@@ -93,7 +95,7 @@ const BlogView = () => {
             blog?.meta_description ||
             blog?.excerpt ||
             "Informative article on A2 Cow Ghee, Ayurveda and natural wellness by Gauswarn India.",
-          image: blog?.image_url,
+          image: blogImg,
           author: {
             "@type": "Organization",
             name: "Gauswarn India",
@@ -150,7 +152,7 @@ const BlogView = () => {
             minHeight: 320,
             height: "60vh", // responsive height
             maxHeight: 800,
-            background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.35)), url(${blog?.image_url}) center/cover`,
+            background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.35)), url(${blogImg}) center/cover`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -223,7 +225,6 @@ const BlogView = () => {
               className="blog-content-container"
               dangerouslySetInnerHTML={{ __html: blog?.content }}
             />
-
           </div>
         </div>
       </div>
