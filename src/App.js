@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 // import Aos from "aos"; // Moved to dynamic import in useEffect for performance
 import "aos/dist/aos.css"; // Keep CSS for layout stability
@@ -160,6 +160,17 @@ const HomePage = () => {
 
 function App() {
   const { setCart } = useCartContext();
+  const location = useLocation();
+
+  /* ---------- GOOGLE ANALYTICS PAGE TRACKING ---------- */
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag("config", "G-DX7H5SRPP4", {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location]);
+
 
   /* ---------- AOS ---------- */
   useEffect(() => {
