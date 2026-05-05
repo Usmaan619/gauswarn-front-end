@@ -30,8 +30,9 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "npm run generate-rss && craco build && node scripts/post-build-seo.js",
+    "build": "npm run generate-sitemap && npm run generate-rss && craco build && node scripts/post-build-seo.js",
     "generate-rss": "node scripts/generate-rss.js",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
