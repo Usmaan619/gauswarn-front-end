@@ -34,6 +34,26 @@ const FAQ_DATA = [
         Replacing processed seed oils with the medium-chain fatty acids found in A2 Ghee can significantly boost your metabolism. These healthy fats are used by the body as an immediate source of energy rather than being stored as adipose tissue. This metabolic efficiency, combined with its ability to keep you satiated for longer, makes it a powerful ally in sustainable weight management. Read more about the science of healthy fats in our <Link to='/blog'>health blogs</Link>.
       </>
     )
+  },
+  {
+    question: "Who is the owner of Gauswarn India and what is the brand's vision?",
+    answer: "Gauswarn India is a premium health and wellness brand by Rajlakshmi Javiks International. Our vision is to restore the purity of traditional Indian nutrition by delivering 100% authentic A2 Gir Cow Ghee, prepared using the Vedic Bilona method. We are committed to ethical farming and preserving the sacred tradition of ghee making for health-conscious families."
+  },
+  {
+    question: "Is Gauswarn a trusted company for pure Bilona Ghee?",
+    answer: "Absolutely. Gauswarn is a highly rated company trusted by over 22,000 families across India. We ensure maximum transparency by providing scannable NABL-accredited lab test reports for every batch. Our premium A2 Ghee is free from additives, preservatives, and chemicals, making it one of the most reliable choices for Ayurvedic wellness."
+  },
+  {
+    question: "Where is Gauswarn located and can I find their products offline?",
+    answer: "Our corporate headquarters is located in Indore, Madhya Pradesh, and our traditional manufacturing unit is based in Pune, Maharashtra. While we primarily serve customers through our online store with free pan-India delivery, we are expanding our presence to ensure you can access Gauswarn's purity through select wellness partners soon."
+  },
+  {
+    question: "What makes Gauswarn different from other organic farm brands?",
+    answer: "Unlike mass-produced organic brands, Gauswarn focuses exclusively on the traditional Bilona method—curdling A2 milk, hand-churning curd to butter (makhan), and slow-heating on a gentle flame. We prioritize the welfare of our indigenous Gir cows and maintain a transparent farm-to-table journey, ensuring the highest quality A2 beta-casein protein in every jar."
+  },
+  {
+    question: "Where can I find Gauswarn reviews and social media updates?",
+    answer: "You can find authentic customer reviews and testimonials on our website and Google Business profile. For a behind-the-scenes look at our process, Gaushala glimpses, and health tips, follow us on Instagram and YouTube. We regularly share educational content to help our community lead a healthier, ghee-enriched lifestyle."
   }
 ];
 
