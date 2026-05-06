@@ -43,7 +43,7 @@ const Seo = ({
 
       {/* Twitter Card Tags */}
       <meta data-rh="true" name="twitter:card" content="summary_large_image" />
-      <meta data-rh="true" name="twitter:site" content="@gauswarnindia" />
+      <meta data-rh="true" name="twitter:site" content="@gauswarn" />
       <meta data-rh="true" name="twitter:title" content={title} />
       <meta data-rh="true" name="twitter:description" content={description} />
       <meta data-rh="true" name="twitter:image" content={image} />

@@ -232,8 +232,18 @@
 
 .footer-bottom-right .social-icon {
   font-size: 14px;
-  /* color: #ffffff; */
+  color: #fff;
+  transition: transform 0.2s ease;
 }
+
+.footer-bottom-right .social-icon:hover {
+  transform: translateY(-2px);
+}
+
+.social-icon.facebook:hover { color: #1877f2; }
+.social-icon.instagram:hover { color: #e4405f; }
+.social-icon.youtube:hover { color: #ff0000; }
+.social-icon.twitter:hover { color: #1da1f2; }
 
 .newsletter-spin {
   animation: spin 1s linear infinite;

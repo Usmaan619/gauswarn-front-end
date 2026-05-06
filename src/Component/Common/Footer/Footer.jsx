@@ -6,7 +6,7 @@ import flipkartlogo from "../../../asset/new-img/ecommerce/flipkart.webp";
 import { Link } from "react-router-dom";
 import { postData } from "../../../services/api";
 import { toastError, toastSuccess } from "../../../services/toaster.service";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube, Twitter } from "lucide-react";
 import { Send, Loader2 } from "lucide-react";
 
 export default function NewFooter() {
@@ -379,6 +379,16 @@ export default function NewFooter() {
                 aria-label="Subscribe to Gauswarn on YouTube"
               >
                 <Youtube size={16} />
+              </a>
+
+              <a
+                href="https://x.com/gauswarn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-icon twitter"
+                aria-label="Follow Gauswarn on X (Twitter)"
+              >
+                <Twitter size={16} />
               </a>
             </div>
 
