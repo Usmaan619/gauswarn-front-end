@@ -165,7 +165,7 @@ function App() {
   /* ---------- GOOGLE ANALYTICS PAGE TRACKING ---------- */
   useEffect(() => {
     if (window.gtag) {
-      window.gtag("config", "G-DX7H5SRPP4", {
+      window.gtag("config", "G-P7C7LPB0NG", {
         page_path: location.pathname + location.search,
       });
     }

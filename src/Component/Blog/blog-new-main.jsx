@@ -46,7 +46,7 @@ const formatDate = (dateString) => {
    BLOG CARD
 ====================== */
 const BlogCard = ({ image, title, description, date, category, slug }) => (
-  <Link to={`/blog/${formatSlug(slug)}`} className="blog-card-link">
+  <Link to={`/blog/${formatSlug(slug)}/`} className="blog-card-link">
     <div className="blog-card">
       <div className="blog-image">
         <img src={blogImg} alt={title || "Blog post"} loading="lazy" />
@@ -139,7 +139,7 @@ const BlogMainPageNew = () => {
       name: "Gauswarn India - A2 Ghee & Wellness Blog",
       description:
         "Read expert articles on A2 ghee benefits, ayurveda, digestion, and healthy living.",
-      url: "https://gauswarn.com/blog",
+      url: "https://gauswarn.com/blog/",
       blogPost: sortedBlogs.slice(0, 10).map((post) => ({
         "@type": "BlogPosting",
         headline: post?.title,
@@ -178,7 +178,7 @@ const BlogMainPageNew = () => {
       <Seo
         title="A2 Ghee Benefits & Ayurveda Blog | Gauswarn Pure Bilona Ghee"
         description="Read expert articles on Pure A2 Cow Ghee benefits, traditional bilona method, ayurveda, and healthy living by Gauswarn India."
-        url="https://gauswarn.com/blog"
+        url="https://gauswarn.com/blog/"
         structuredData={generateBlogSchema()}
       />
       <ProductHeroSection
@@ -195,7 +195,7 @@ const BlogMainPageNew = () => {
               sortedBlogs.map((post) => (
                 <Link
                   key={post?.id || post?._id}
-                  to={`/blog/${formatSlug(post?.slug || post?.id)}`}
+                  to={`/blog/${formatSlug(post?.slug || post?.id)}/`}
                   className="blog-card-link"
                   aria-label={`Read full article: ${post?.title}`}
                 >

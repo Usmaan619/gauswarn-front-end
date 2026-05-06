@@ -2,9 +2,9 @@
  * post-build-seo.js
  * -----------------
  * Generates per-route HTML files from the CRA build/index.html.
- * Each route gets unique <title>, <meta description>, <h1>, and
- * keyword-rich content so that non-JS crawlers (Googlebot, Semrush,
- * Ahrefs) see unique, word-count-rich pages instead of the default SPA shell.
+ * This version dynamically fetches blogs and products from the API
+ * to generate static pages for blog posts and ensures all pages are 
+ * internally linked to avoid "orphan page" issues.
  *
  * Run after `react-scripts build`:
  *   node scripts/post-build-seo.js
@@ -12,14 +12,19 @@
 
 const fs = require("fs");
 const path = require("path");
+const axios = require("axios");
 
 const BUILD_DIR = path.resolve(__dirname, "..", "build");
 const INDEX_PATH = path.join(BUILD_DIR, "index.html");
+const BASE_URL = "https://gauswarn.com";
+
+const BLOG_API_URL = "https://api.gauswarn.com/admin/blogs";
+const PRODUCT_API_URL = "https://api.gauswarn.com/users/getAllProduct";
 
 /* ═══════════════════════════════════
-   PER-ROUTE SEO DATA
+   STATIC SEO DATA
    ═══════════════════════════════════ */
-const ROUTES = {
+const STATIC_ROUTES = {
   "/": {
     title: "Buy Pure A2 Gir Cow Ghee Online | Bilona Method Ghee India – Gauswarn",
     description: "Buy pure A2 Gir cow ghee made using traditional bilona method. 100% natural desi ghee with rich taste and health benefits. Order online in India.",
@@ -110,119 +115,128 @@ const ROUTES = {
     h1: "Gauswarn India Video Story – Traditional A2 Cow Ghee Making Process",
     content: `Experience the journey of Gauswarn A2 Gir Cow Ghee through our video documentary. Watch how we preserve the ancient tradition of Bilona ghee-making — from our Gaushala where indigenous Gir cows are lovingly cared for, through the traditional hand-churning of curd to extract pure butter, to the slow-heating process that produces golden granular ghee. Our video showcases the authentic Vedic process, ethical animal care, and the quality standards that make Gauswarn India's A2 ghee the purest choice for your family. See the real people, real cows, and real process behind every jar of Gauswarn ghee.`,
   },
-  "/cart": {
-    title: "Your Shopping Cart | Pure A2 Gir Cow Ghee – Gauswarn India",
-    description: "Review your selected A2 Cow Ghee products in the Gauswarn cart. Secure checkout for traditional Bilona ghee delivered to your home.",
-    h1: "Your Gauswarn Shopping Cart",
-    content: `Review the A2 Gir Cow Ghee products in your shopping cart before proceeding to checkout. Gauswarn offers premium Bilona ghee in 250ml, 500ml, 1L, 5kg and 15kg packs. All our products are 100% pure, lab-tested, and made using traditional Vedic methods. Complete your order to enjoy the health benefits of authentic A2 cow ghee with free shipping across India.`,
-  },
 };
 
 /* ═══════════════════════════════════
-   BUILD LOGIC
+   UTILITIES
    ═══════════════════════════════════ */
-function run() {
+const formatSlug = (slug) =>
+  slug ? slug.toLowerCase().replace(/[^a-z0-9]+/g, "-") : "blog";
+
+async function run() {
   if (!fs.existsSync(INDEX_PATH)) {
     console.error("❌ build/index.html not found. Run `npm run build` first.");
     process.exit(1);
   }
 
   const template = fs.readFileSync(INDEX_PATH, "utf-8");
-  let modified = 0;
+  let totalGenerated = 0;
 
-  for (const [route, seo] of Object.entries(ROUTES)) {
-    const html = injectSeo(template, seo, route);
+  console.log("🚀 Starting Dynamic SEO Injection...");
+
+  // 1. Fetch Dynamic Data
+  let blogs = [];
+  let products = [];
+  try {
+    const blogRes = await axios.get(BLOG_API_URL, { headers: { "ngrok-skip-browser-warning": "true" } });
+    blogs = blogRes.data.blogs || [];
+    console.log(`✅ Fetched ${blogs.length} blogs.`);
+
+    const prodRes = await axios.get(PRODUCT_API_URL, { headers: { "ngrok-skip-browser-warning": "true" } });
+    products = prodRes.data.products || [];
+    console.log(`✅ Fetched ${products.length} products.`);
+  } catch (err) {
+    console.warn("⚠️ Warning: Could not fetch dynamic data for SEO. Proceeding with static routes only.");
+  }
+
+  // 2. Prepare dynamic internal links for parent pages to avoid "Orphan Pages"
+  const blogLinksHtml = blogs.map(b => {
+    const slug = formatSlug(b.slug || b.id);
+    return `<a href="/blog/${slug}/">${b.title}</a>`;
+  }).join(", ");
+
+  const productLinksHtml = products.map(p => {
+    return `<a href="/products/?v=${p.product_id}">${p.product_weight} A2 Ghee</a>`;
+  }).join(", ");
+
+  // 3. Process Static Routes
+  for (const [route, seo] of Object.entries(STATIC_ROUTES)) {
+    let finalContent = seo.content;
+    
+    // Inject internal links into parent pages to prevent orphan pages
+    if (route === "/blog") finalContent += `\n\nLatest articles: ${blogLinksHtml}`;
+    if (route === "/products") finalContent += `\n\nAvailable sizes: ${productLinksHtml}`;
+
+    const html = injectSeo(template, { ...seo, content: finalContent }, route);
 
     if (route === "/") {
-      // Overwrite the root index.html directly
       fs.writeFileSync(INDEX_PATH, html);
-      modified++;
       console.log(`  ✅ / (root index.html)`);
     } else {
       const dir = path.join(BUILD_DIR, route);
       fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(path.join(dir, "index.html"), html);
-      modified++;
       console.log(`  ✅ ${route}/index.html`);
     }
+    totalGenerated++;
   }
 
-  console.log(`\n🎉 SEO injection complete — ${modified} pages generated.\n`);
+  // 4. Generate Dynamic Blog Pages
+  console.log("📝 Generating static pages for blog posts...");
+  for (const blog of blogs) {
+    const slug = formatSlug(blog.slug || blog.id);
+    const route = `/blog/${slug}`;
+    const cleanContent = (blog.content || "").replace(/<[^>]*>?/gm, "").substring(0, 500) + "...";
+    
+    const blogSeo = {
+      title: `${blog.title} | Gauswarn A2 Ghee Blog`,
+      description: cleanContent.substring(0, 160),
+      h1: blog.title,
+      content: `${blog.title}. Read this full article about A2 Gir Cow Ghee and wellness on Gauswarn India. ${cleanContent}`
+    };
+
+    const html = injectSeo(template, blogSeo, route);
+    const dir = path.join(BUILD_DIR, "blog", slug);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "index.html"), html);
+    totalGenerated++;
+  }
+
+  console.log(`\n🎉 SEO injection complete — ${totalGenerated} pages generated.\n`);
 }
 
-/**
- * Replace <title>, <meta description>, and inject an <h1> + content
- * into the <div id="root"> before React hydrates.
- */
 function injectSeo(template, seo, route) {
   let html = template;
-  const baseUrl = "https://gauswarn.com";
-  const canonicalUrl = route === "/" ? baseUrl : `${baseUrl}${route}`;
+  const canonicalUrl = `${BASE_URL}${route.replace(/\/$/, "")}/`;
 
-  // 1. Replace <title>
-  html = html.replace(
-    /<title[^>]*>.*?<\/title>/i,
-    `<title data-rh="true">${seo.title}</title>`
-  );
+  // Standard SEO replacements
+  html = html.replace(/<title[^>]*>.*?<\/title>/i, `<title data-rh="true">${seo.title}</title>`);
+  html = html.replace(/<meta[^>]*name=["']description["'][^>]*\/?>/i, `<meta data-rh="true" name="description" content="${seo.description}" />`);
+  html = html.replace(/<meta[^>]*property=["']og:title["'][^>]*\/?>/i, `<meta data-rh="true" property="og:title" content="${seo.title}" />`);
+  html = html.replace(/<meta[^>]*property=["']og:description["'][^>]*\/?>/i, `<meta data-rh="true" property="og:description" content="${seo.description}" />`);
+  html = html.replace(/<meta[^>]*name=["']twitter:title["'][^>]*\/?>/i, `<meta data-rh="true" name="twitter:title" content="${seo.title}" />`);
+  html = html.replace(/<meta[^>]*name=["']twitter:description["'][^>]*\/?>/i, `<meta data-rh="true" name="twitter:description" content="${seo.description}" />`);
 
-  // 2. Replace <meta name="description">
-  html = html.replace(
-    /<meta[^>]*name=["']description["'][^>]*\/?>/i,
-    `<meta data-rh="true" name="description" content="${seo.description}" />`
-  );
-
-  // 3. Replace og:title
-  html = html.replace(
-    /<meta[^>]*property=["']og:title["'][^>]*\/?>/i,
-    `<meta data-rh="true" property="og:title" content="${seo.title}" />`
-  );
-
-  // 4. Replace og:description
-  html = html.replace(
-    /<meta[^>]*property=["']og:description["'][^>]*\/?>/i,
-    `<meta data-rh="true" property="og:description" content="${seo.description}" />`
-  );
-
-  // 5. Replace twitter:title
-  html = html.replace(
-    /<meta[^>]*name=["']twitter:title["'][^>]*\/?>/i,
-    `<meta data-rh="true" name="twitter:title" content="${seo.title}" />`
-  );
-
-  // 6. Replace twitter:description
-  html = html.replace(
-    /<meta[^>]*name=["']twitter:description["'][^>]*\/?>/i,
-    `<meta data-rh="true" name="twitter:description" content="${seo.description}" />`
-  );
-
-  // 7. Replace/Inject og:url
+  // og:url
   if (/<meta[^>]*property=["']og:url["'][^>]*\/?>/i.test(html)) {
-    html = html.replace(
-      /<meta[^>]*property=["']og:url["'][^>]*\/?>/i,
-      `<meta data-rh="true" property="og:url" content="${canonicalUrl}" />`
-    );
+    html = html.replace(/<meta[^>]*property=["']og:url["'][^>]*\/?>/i, `<meta data-rh="true" property="og:url" content="${canonicalUrl}" />`);
   } else {
     html = html.replace("</head>", `  <meta data-rh="true" property="og:url" content="${canonicalUrl}" />\n</head>`);
   }
 
-  // 8. Replace/Inject Canonical Link
-  // First, remove any existing canonical links to avoid duplicates
+  // Canonical Link
   html = html.replace(/<link[^>]*rel=["']canonical["'][^>]*\/?>/gi, "");
-  
-  // Inject the fresh canonical link into the head
   html = html.replace("</head>", `  <link data-rh="true" rel="canonical" href="${canonicalUrl}" />\n</head>`);
 
-  // 9. Inject H1 + SEO content inside <div id="root">
+  // H1 + content inside root
   const seoBlock = `
     <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">${seo.h1}</h1>
     <div style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0" role="article">
       <p>${seo.content}</p>
+      <p>Internal links: <a href="/">Home</a>, <a href="/about/">About Us</a>, <a href="/blog/">Blog</a>, <a href="/products/">Our Products</a></p>
     </div>`;
 
-  html = html.replace(
-    '<div id="root"></div>',
-    `<div id="root">${seoBlock}</div>`
-  );
+  html = html.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${seoBlock}</div>`);
 
   return html;
 }

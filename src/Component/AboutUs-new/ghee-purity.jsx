@@ -56,27 +56,27 @@ const rightFeatures = [
 const BLOG_LINKS = [
   {
     label: "A2 Ghee Benefits & Uses",
-    to: "/blog/what-is-a2-gir-cow-ghee-benefits-uses-why-it-matters",
+    to: "/blog/what-is-a2-gir-cow-ghee-benefits-uses-why-it-matters/",
   },
   {
     label: "A2 Ghee vs Regular Ghee",
-    to: "/blog/a2-ghee-vs-regular-ghee-which-one-is-better-for-your-health",
+    to: "/blog/a2-ghee-vs-regular-ghee-which-one-is-better-for-your-health/",
   },
   {
     label: "Our Traditional Bilona Process",
-    to: "/blog/what-is-the-bilona-method-why-it-matters-for-pure-a2-ghee",
+    to: "/blog/what-is-the-bilona-method-why-it-matters-for-pure-a2-ghee/",
   },
   {
     label: "A2 Ghee & Heart Health",
-    to: "/blog/a2-ghee-and-heart-health-separating-myth-from-science",
+    to: "/blog/a2-ghee-and-heart-health-separating-myth-from-science/",
   },
   {
     label: "A2 Ghee for Kids & Babies",
-    to: "/blog/a2-ghee-for-babies-and-children-a-complete-parent-s-guide",
+    to: "/blog/a2-ghee-for-babies-and-children-a-complete-parent-s-guide/",
   },
   {
     label: "Why Gauswarn is #1 A2 Ghee",
-    to: "/blog/why-gau-swarn-is-considered-the-best-a2-ghee-in-the-world",
+    to: "/blog/why-gau-swarn-is-considered-the-best-a2-ghee-in-the-world/",
   },
 ];
 
@@ -107,7 +107,7 @@ const GheePurity = () => {
         if (res?.success && res?.blogs?.length > 0) {
           const formattedLinks = res.blogs.slice(0, 6).map((blog) => ({
             label: blog.title,
-            to: `/blog/${blog.slug}`,
+            to: `/blog/${blog.slug}/`,
           }));
           setDynamicLinks(formattedLinks);
         } else {

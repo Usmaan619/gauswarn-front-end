@@ -7,7 +7,7 @@ const FAQ_DATA = [
     question: "How does A2 Ghee support a healthy lifestyle for my family?",
     answer: (
       <>
-        A2 Ghee is a holistic superfood that provides a balanced source of healthy fats. Unlike commercial fats, it is packed with fat-soluble vitamins (A, D, E, K) and antioxidants that support overall vitality, heart health, and sustained energy levels for everyone from growing children to active adults. It acts as a natural carrier for nutrients, ensuring your family gets the most out of every meal. You can explore our full range of sizes in the <Link to='/products'>Gauswarn Shop</Link>.
+        A2 Ghee is a holistic superfood that provides a balanced source of healthy fats. Unlike commercial fats, it is packed with fat-soluble vitamins (A, D, E, K) and antioxidants that support overall vitality, heart health, and sustained energy levels for everyone from growing children to active adults. It acts as a natural carrier for nutrients, ensuring your family gets the most out of every meal. You can explore our full range of sizes in the <Link to='/products/'>Gauswarn Shop</Link>.
       </>
     )
   },
@@ -31,7 +31,7 @@ const FAQ_DATA = [
     question: "Will A2 Ghee help me maintain a healthy weight and metabolism?",
     answer: (
       <>
-        Replacing processed seed oils with the medium-chain fatty acids found in A2 Ghee can significantly boost your metabolism. These healthy fats are used by the body as an immediate source of energy rather than being stored as adipose tissue. This metabolic efficiency, combined with its ability to keep you satiated for longer, makes it a powerful ally in sustainable weight management. Read more about the science of healthy fats in our <Link to='/blog'>health blogs</Link>.
+        Replacing processed seed oils with the medium-chain fatty acids found in A2 Ghee can significantly boost your metabolism. These healthy fats are used by the body as an immediate source of energy rather than being stored as adipose tissue. This metabolic efficiency, combined with its ability to keep you satiated for longer, makes it a powerful ally in sustainable weight management. Read more about the science of healthy fats in our <Link to='/blog/'>health blogs</Link>.
       </>
     )
   },
@@ -119,7 +119,7 @@ const HomeFaq = () => {
               <h3>Authentic Wellness for the Modern Home</h3>
               <p>
                 At Gauswarn, we are committed to reviving the purity of ancient Indian nutrition. 
-                Our <Link to="/products">A2 Gir Cow Ghee</Link> is handcrafted using the Vedic Bilona process, 
+                Our <Link to="/products/">A2 Gir Cow Ghee</Link> is handcrafted using the Vedic Bilona process, 
                 ensuring that every jar delivered to your doorstep is as close to nature as possible. 
                 We prioritize ethical sourcing and transparency, so you can feel confident in the 
                 quality of what you feed your loved ones.
@@ -127,10 +127,10 @@ const HomeFaq = () => {
               
               <h4>The Gauswarn Commitment to Excellence</h4>
               <ul className="seo-benefits-list">
-                <li><strong>Ethical & Compassionate:</strong> Our cows are raised in a stress-free environment. Learn more <Link to="/about">About Us</Link>.</li>
+                <li><strong>Ethical & Compassionate:</strong> Our cows are raised in a stress-free environment. Learn more <Link to="/about/">About Us</Link>.</li>
                 <li><strong>Laboratory Verified:</strong> Every batch is tested for zero adulteration and peak purity.</li>
                 <li><strong>Traditional Artistry:</strong> Hand-churned in small batches to preserve natural granular texture.</li>
-                <li><strong>National Trust:</strong> A brand built on the pillars of transparency and authenticity. View our <Link to="/lab-report">Lab Reports</Link>.</li>
+                <li><strong>National Trust:</strong> A brand built on the pillars of transparency and authenticity. View our <Link to="/lab-report/">Lab Reports</Link>.</li>
               </ul>
 
               <div className="geo-location-tag">

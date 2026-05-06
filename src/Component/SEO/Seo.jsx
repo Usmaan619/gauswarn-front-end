@@ -9,10 +9,19 @@ const Seo = ({
   type = "website",
   keywords = "A2 Cow Ghee, Bilona Ghee, Pure Ghee, Gir Cow Ghee, Gauswarn India, Desi Cow Ghee, Traditional Ghee",
 }) => {
-  // Ensure the canonical URL is consistent (no trailing slash for home, consistent for others)
   const baseUrl = "https://gauswarn.com";
   const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
-  const canonicalUrl = (url || (baseUrl + currentPath)).replace(/\/$/, "");
+  // Ensure consistent canonical URL with trailing slash (e.g., /about/ or /products/?v=1)
+  const getCanonical = (val) => {
+    const raw = val || (baseUrl + currentPath);
+    if (raw.includes("?")) {
+      const [path, query] = raw.split("?");
+      return path.replace(/\/$/, "") + "/?" + query;
+    }
+    return raw.replace(/\/$/, "") + "/";
+  };
+  const canonicalUrl = getCanonical(url);
+
 
   return (
     <Helmet>

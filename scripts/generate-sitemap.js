@@ -43,8 +43,9 @@ async function generateSitemap() {
 
     // 1. Add Static Routes
     STATIC_ROUTES.forEach((route) => {
+      const url = route.url === "/" ? SITE_URL + "/" : `${SITE_URL}${route.url}/`;
       let entry = `  <url>
-    <loc>${SITE_URL}${route.url}</loc>
+    <loc>${url}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>`;
@@ -72,7 +73,7 @@ async function generateSitemap() {
       });
       const blogs = blogResponse.data.blogs || [];
       blogs.forEach((blog) => {
-        const blogUrl = `${SITE_URL}/blog/${blog.slug || blog.id}`;
+        const blogUrl = `${SITE_URL}/blog/${blog.slug || blog.id}/`;
         const lastMod = (blog.updated_at || blog.created_at || today).split("T")[0];
         urlEntries.push(`  <url>
     <loc>${blogUrl}</loc>
@@ -94,7 +95,7 @@ async function generateSitemap() {
       });
       const products = productResponse.data.products || [];
       products.forEach((product) => {
-        const productUrl = `${SITE_URL}/products?v=${product.product_id}`;
+        const productUrl = `${SITE_URL}/products/?v=${product.product_id}`;
         urlEntries.push(`  <url>
     <loc>${productUrl}</loc>
     <lastmod>${today}</lastmod>
@@ -102,6 +103,7 @@ async function generateSitemap() {
     <priority>0.8</priority>
   </url>`);
       });
+
       console.log(`✅ Added ${products.length} product variants to sitemap.`);
     } catch (e) {
       console.warn("⚠️ Could not fetch products for sitemap:", e.message);
