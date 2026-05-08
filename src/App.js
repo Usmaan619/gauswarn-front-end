@@ -113,10 +113,20 @@ const HomePage = () => {
       availableLanguage: ["en", "Hindi"],
     },
     sameAs: [
-      "https://www.facebook.com/profile.php?id=61577996747357",
-      "https://www.instagram.com/gauswarn/",
+      "https://x.com/gauswarn",
       "https://www.youtube.com/@gauswarngircowghee-2",
     ],
+    // Primary FAQ for homepage visibility
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does A2 Ghee support a healthy lifestyle for my family?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A2 Ghee is a holistic superfood that provides a balanced source of healthy fats. Unlike commercial fats, it is packed with fat-soluble vitamins (A, D, E, K) and antioxidants that support overall vitality, heart health, and sustained energy levels for everyone."
+        }
+      }
+    ]
   };
 
   const websiteData = {

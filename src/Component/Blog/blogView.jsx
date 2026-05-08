@@ -83,11 +83,7 @@ const BlogView = () => {
         }
         url={`https://gauswarn.com/blog/${slug}`}
         image={blogImg}
-      />
-
-      {/*  ARTICLE STRUCTURED DATA (ADD HERE ) */}
-      <script type="application/ld+json">
-        {JSON.stringify({
+        structuredData={{
           "@context": "https://schema.org",
           "@type": "Article",
           headline: blog?.title,
@@ -115,8 +111,8 @@ const BlogView = () => {
             "@type": "WebPage",
             "@id": `https://gauswarn.com/blog/${slug}`,
           },
-        })}
-      </script>
+        }}
+      />
 
       <div style={{ overflow: "hidden", background: "#f8f8f8" }}>
         {/* BACK BUTTON */}

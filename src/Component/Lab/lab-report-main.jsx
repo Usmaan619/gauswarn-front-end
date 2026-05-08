@@ -17,60 +17,51 @@ import Texture1 from "../../asset/new-img/lap-report/texture-1.webp";
 import Texture2 from "../../asset/new-img/lap-report/texture-2.webp";
 
 const LabReportMain = () => {
+  const labSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "additionalType": "https://schema.org/Report",
+    "@id": "https://gauswarn.com/lab-report#report",
+    "name": "Lab Tested Purity Report – A2 Gir Cow Ghee",
+    "description": "Official laboratory test reports verifying the purity, safety and quality of Gauswarn India A2 Gir Cow Ghee including FSSAI and genetic analysis.",
+    "url": "https://gauswarn.com/lab-report",
+    "image": [
+      "https://gauswarn.com/asset/new-img/lap-report/labreport.webp"
+    ],
+    "inLanguage": "en",
+    "datePublished": "2024-01-01",
+    "about": {
+      "@type": "Product",
+      "@id": "https://gauswarn.com/products/a2-gir-cow-ghee",
+      "name": "A2 Gir Cow Ghee",
+      "brand": {
+        "@type": "Brand",
+        "name": "Gauswarn India"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "269"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Gauswarn India",
+      "url": "https://gauswarn.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://gauswarn.com/favicon-512x512.png"
+      }
+    }
+  };
+
   return (
     <>
       <Seo
         title="Lab Test Reports | Pure A2 Gir Cow Ghee - Gauswarn India"
         description="View official lab test reports verifying the purity, safety, and A2 beta-casein content of Gauswarn India's A2 Gir Cow Ghee."
         url="https://gauswarn.com/lab-report"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CreativeWork",
-            "additionalType": "https://schema.org/Report",
-            "@id": "https://gauswarn.com/lab-report#report",
-            "name": "Lab Tested Purity Report – A2 Gir Cow Ghee",
-            "description": "Official laboratory test reports verifying the purity, safety and quality of Gauswarn India A2 Gir Cow Ghee including FSSAI and genetic analysis.",
-            "url": "https://gauswarn.com/lab-report",
-            "image": [
-              "https://gauswarn.com/asset/new-img/lap-report/labreport.webp"
-            ],
-            "inLanguage": "en",
-            "datePublished": "2024-01-01",
-            "about": {
-              "@type": "Product",
-              "@id": "https://gauswarn.com/products/a2-gir-cow-ghee",
-              "name": "A2 Gir Cow Ghee",
-              "brand": {
-                "@type": "Brand",
-                "name": "Gauswarn India"
-              },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "reviewCount": "269"
-              },
-              "offers": {
-                "@type": "Offer",
-                "priceCurrency": "INR",
-                "price": "549",
-                "availability": "https://schema.org/InStock"
-              }
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Gauswarn India",
-              "url": "https://gauswarn.com",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://gauswarn.com/favicon-512x512.png"
-              }
-            }
-          })
-        }}
+        structuredData={labSchema}
       />
 
       <div className="lab-page">

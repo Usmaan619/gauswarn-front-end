@@ -203,9 +203,6 @@ const ProductFaq = () => {
 
   return (
     <section className="product-faq-section">
-      <script type="application/ld+json">
-        {JSON.stringify(productFaqSchema)}
-      </script>
 
       <div className="product-faq-container">
         <div className="product-faq-grid">

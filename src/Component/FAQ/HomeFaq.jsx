@@ -119,9 +119,6 @@ const HomeFaq = () => {
 
   return (
     <section className="home-faq-section" id="faq">
-      <script type="application/ld+json">
-        {JSON.stringify(faqSchema)}
-      </script>
 
       <div className="home-faq-container">
         <div className="home-faq-header" data-aos="fade-up">
