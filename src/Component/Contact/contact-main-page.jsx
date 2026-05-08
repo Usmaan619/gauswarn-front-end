@@ -1,3 +1,4 @@
+import { Map, Clock, Phone, Mail } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -217,7 +218,7 @@ const Contact = () => {
               <div className="ghee-new-contact-details-box">
                 <div className="ghee-new-details-item">
                   <h4>
-                    <i className="fas fa-map"></i> Manufacturing Unit
+                    <Map size={20} className="me-2" /> Manufacturing Unit
                   </h4>
                   <p className="text-capitalize">
                     s no 174, near gaytri mandir, behind kanchan stone dtc,
@@ -227,14 +228,14 @@ const Contact = () => {
 
                 <div className="ghee-new-details-item">
                   <h4>
-                    <i className="fas fa-map"></i> Corporate Office
+                    <Map size={20} className="me-2" /> Corporate Office
                   </h4>
                   <p>11 Manish Baag, Sapna Sangeeta Road, Indore, MP 452001</p>
                 </div>
 
                 <div className="ghee-new-details-item">
                   <h4>
-                    <i className="far fa-clock"></i> Office Hours
+                    <Clock size={20} className="me-2" /> Office Hours
                   </h4>
                   <p>
                     Mon - Sat: 10 AM to 8 PM <br /> Sun: Closed
@@ -243,7 +244,7 @@ const Contact = () => {
 
                 <div className="ghee-new-details-item">
                   <h4>
-                    <i className="fas fa-address-book"></i> Contact
+                    <Phone size={20} className="me-2" /> Contact
                   </h4>
                   <p>
                     Phone: +91-74709-15905,+91-9685715905 <br />

@@ -31,6 +31,7 @@ import Seo from "../SEO/Seo";
 import SeoContent from "../SEO/SeoContent";
 import { SEO_CONTENT } from "../SEO/seo-content-data";
 import ProductFaq from "../FAQ/ProductFaq";
+import NutritionFaqSection from "./NutritionFaqSection";
 
 /* ========================= 
    CONSTANTS 
@@ -994,6 +995,7 @@ const ProductPageMain = () => {
       </div>
 
       <ProductHeroSection />
+      <NutritionFaqSection />
       <ProductFaq />
       <GheeFeatureProductPage />
       <SeoContent

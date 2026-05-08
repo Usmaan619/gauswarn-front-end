@@ -1,7 +1,6 @@
-import { FiMail, FiPhoneCall } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { getData } from "../../../services/api";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube, Mail, Phone } from "lucide-react";
 
 export default function TopBanner() {
   const [offers, setOffers] = useState([
@@ -41,7 +40,7 @@ export default function TopBanner() {
             <div className="contact-section">
               <div className="contact-item">
                 <span className="phone-icon">
-                  <FiPhoneCall />
+                  <Phone size={16} />
                 </span>
                 <a
                   aria-label="Call Gauswarn customer support"
@@ -53,7 +52,7 @@ export default function TopBanner() {
               <div className="divider d-none d-md-block"></div>
               <div className="contact-item">
                 <span className="email-icon">
-                  <FiMail />
+                  <Mail size={16} />
                 </span>
                 <a
                   aria-label="Send an email to Gauswarn"
@@ -78,7 +77,7 @@ export default function TopBanner() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i className="fab fa-facebook-f"></i>
+                <Facebook size={16} />
               </a>
               <a
                 href="https://www.instagram.com/gauswarn/"
@@ -87,7 +86,7 @@ export default function TopBanner() {
                 aria-label="Follow Gauswarn on Instagram"
                 rel="noopener noreferrer"
               >
-                <i className="fab fa-instagram"></i>
+                <Instagram size={16} />
               </a>
               <a
                 href="https://www.youtube.com/@gauswarngircowghee-2"
@@ -96,7 +95,7 @@ export default function TopBanner() {
                 aria-label="Subscribe to Gauswarn on YouTube"
                 rel="noopener noreferrer"
               >
-                <i className="fab fa-youtube"></i>
+                <Youtube size={16} />
               </a>
             </div>
           </div>
@@ -113,7 +112,7 @@ export default function TopBanner() {
           <div className="contact-section">
             <div className="contact-item">
               <span className="phone-icon">
-                <FiPhoneCall />
+                <Phone size={16} />
               </span>
               <a
                 aria-label="Call Gauswarn customer support"
@@ -125,7 +124,7 @@ export default function TopBanner() {
             <div className="divider d-none d-md-block"></div>
             <div className="contact-item">
               <span className="email-icon">
-                <FiMail />
+                <Mail size={16} />
               </span>
               <a
                 aria-label="Send an email to Gauswarn"

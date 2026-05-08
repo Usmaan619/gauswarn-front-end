@@ -40,4 +40,49 @@ module.exports = {
           : [],
     },
   },
+  webpack: {
+    configure: (webpackConfig) => {
+      // Find the rule that handles images
+      const imageRule = webpackConfig.module.rules.find(
+        (rule) => rule.oneOf
+      ).oneOf.find(
+        (rule) =>
+          rule.test &&
+          rule.test.toString().includes("bmp|gif|jpe?g|png")
+      );
+
+      // If found, push image-webpack-loader so it compresses images before file-loader/url-loader processes them
+      if (imageRule && process.env.NODE_ENV === "production") {
+        if (!Array.isArray(imageRule.use)) {
+          imageRule.use = [{ loader: imageRule.loader, options: imageRule.options }];
+          delete imageRule.loader;
+          delete imageRule.options;
+        }
+        imageRule.use.push({
+          loader: "image-webpack-loader",
+          options: {
+            mozjpeg: { progressive: true, quality: 65 },
+            optipng: { enabled: false },
+            pngquant: { quality: [0.65, 0.9], speed: 4 },
+            gifsicle: { interlaced: false },
+            webp: { quality: 75 },
+          },
+        });
+      }
+      return webpackConfig;
+    },
+    plugins: {
+      add: [
+        ...(process.env.ANALYZE === "true"
+          ? [
+              new (require("webpack-bundle-analyzer").BundleAnalyzerPlugin)({
+                analyzerMode: "static",
+                reportFilename: "report.html",
+                openAnalyzer: false,
+              }),
+            ]
+          : []),
+      ],
+    },
+  },
 };

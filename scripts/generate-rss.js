@@ -40,7 +40,7 @@ async function generateRSS() {
         .replace(/\r\n|\n|\r/gm, " ")
         .trim();
 
-      const blogUrl = `${SITE_URL}/blog/${blog.slug || blog.id}`;
+      const blogUrl = `${SITE_URL}/blog/${blog.slug || blog.id}/`;
 
       feed.item({
         title: blog.title,

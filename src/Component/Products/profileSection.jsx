@@ -91,6 +91,30 @@ const data = [
     ],
     image: tab1,
   },
+  {
+    key: "nutrition",
+    label: "NUTRITION",
+    heading: "Nutritional Profile of Gauswarn A2 Bilona Ghee",
+    content: [
+      {
+        title: "Pure Energy & Healthy Fats",
+        text: "Gauswarn A2 Gir Cow Ghee is a powerhouse of energy, providing 898.29 Kcal per 100g. Made using the traditional Bilona method, it is rich in short-chain and medium-chain fatty acids that are easily metabolized by the body. This pure desi ghee is free from trans-fats and added sugars, making it a perfect addition to a Keto or Paleo diet.",
+      },
+      {
+        title: "Nutrition Facts (Per 100g Serving)",
+        text: "Energy: 898.29 Kcal | Total Fat: 99.81g | Protein: 0g | Carbohydrate: 0g | Saturated Fat: 62.11g | Poly-unsaturated Fat: 3.58g | Mono-unsaturated Fat: 28.6g | Trans Fatty Acid: Nil | Cholesterol: 227mg | Added Sugar: 0mg | Sodium: 0mg",
+      },
+      {
+        title: "Per 10g Serving (Typical Daily Intake)",
+        text: "Energy: 89.8 Kcal | Total Fat: 9.98g | Saturated Fat: 6.21g | Poly-unsaturated Fat: 0.36g | Mono-unsaturated Fat: 2.86g | Cholesterol: 22.7mg. This balanced fat profile supports brain health, hormonal balance, and joint lubrication.",
+      },
+      {
+        title: "Why Gauswarn Nutrition Stands Out",
+        text: "Our A2 Ghee is lab-tested to ensure the highest quality. It contains zero trans-fat and is naturally rich in Vitamin A, D, E, and K2. The Bilona process ensures that the nutrition of Gir Cow milk is preserved, unlike industrial ghee. It's a gold standard for health-conscious consumers looking for authentic, nutrient-dense superfoods.",
+      },
+    ],
+    image: tab1,
+  },
 ];
 
 export default function TabsSection() {

@@ -1,3 +1,4 @@
+import { CheckCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -189,28 +190,28 @@ Benefits:
               <h2 className="section-title">What You'll Do</h2>
               <div className="job-responsibilities">
                 <div className="responsibility-item">
-                  <i className="fas fa-check-circle success-icon"></i>
+                  <CheckCircle size={24} className="success-icon" />
                   <div>
                     <h5>Social Media Management</h5>
                     <p>Instagram Reels, WhatsApp marketing, content creation</p>
                   </div>
                 </div>
                 <div className="responsibility-item">
-                  <i className="fas fa-check-circle success-icon"></i>
+                  <CheckCircle size={24} className="success-icon" />
                   <div>
                     <h5>Sales Support</h5>
                     <p>Customer calls, order follow-ups, dealer coordination</p>
                   </div>
                 </div>
                 <div className="responsibility-item">
-                  <i className="fas fa-check-circle success-icon"></i>
+                  <CheckCircle size={24} className="success-icon" />
                   <div>
                     <h5>Market Research</h5>
                     <p>Competitor analysis, customer feedback collection</p>
                   </div>
                 </div>
                 <div className="responsibility-item">
-                  <i className="fas fa-check-circle success-icon"></i>
+                  <CheckCircle size={24} className="success-icon" />
                   <div>
                     <h5>Field Work</h5>
                     <p>Local market visits, shop branding, promotions</p>

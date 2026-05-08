@@ -87,27 +87,13 @@ async function generateSitemap() {
       console.warn("⚠️ Could not fetch blogs for sitemap:", e.message);
     }
 
-    // 3. Fetch and Add Product Variants
-    console.log("🛍️ Fetching products for sitemap...");
-    try {
-      const productResponse = await axios.get(PRODUCT_API_URL, {
-        headers: { "ngrok-skip-browser-warning": "true" },
-      });
-      const products = productResponse.data.products || [];
-      products.forEach((product) => {
-        const productUrl = `${SITE_URL}/products/?v=${product.product_id}`;
-        urlEntries.push(`  <url>
-    <loc>${productUrl}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>`);
-      });
-
-      console.log(`✅ Added ${products.length} product variants to sitemap.`);
-    } catch (e) {
-      console.warn("⚠️ Could not fetch products for sitemap:", e.message);
-    }
+    // 3. (Optional) Fetch and Add Product Variants
+    // NOTE: We are excluding these from the sitemap because they are canonicalized 
+    // to the main /products/ page in the static HTML. Including them in the sitemap
+    // while they are non-canonical causes "Crawled - currently not indexed" errors
+    // and sitemap validation failures in Google Search Console.
+    // They remain crawlable via internal links on the /products/ page.
+    console.log("🛍️ Skipping product variants in sitemap to prevent canonical mismatch...");
 
     // Compose final XML
     const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>

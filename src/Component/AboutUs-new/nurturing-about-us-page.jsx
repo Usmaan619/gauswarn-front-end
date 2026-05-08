@@ -2,8 +2,7 @@ import "./nurturing-about-us-page.css";
 import { useNavigate } from "react-router-dom";
 import cowGif from "../../asset/new-img/about-new-logo/cow.webp";
 
-import { FaEye, FaHandsHelping } from "react-icons/fa";
-import { GiArrowScope } from "react-icons/gi";
+import { Eye, HelpingHand, Target } from "lucide-react";
 
 const NurituringAboutUs = () => {
   const navigate = useNavigate();
@@ -54,7 +53,7 @@ const NurituringAboutUs = () => {
             {/* MISSION */}
             <div className="nurtring-card nurtring-mission-card">
               <div className="nurtring-icon-wrapper">
-                <GiArrowScope className="nurtring-react-icon" />
+                <Target className="nurtring-react-icon" />
               </div>
               <div className="nurtring-card-content">
                 <h3 className="nurtring-card-title">Our Mission</h3>
@@ -72,7 +71,7 @@ const NurituringAboutUs = () => {
               {/* VISION */}
               <div className="nurtring-card nurtring-small-card">
                 <div className="nurtring-icon-wrapper">
-                  <FaEye className="nurtring-react-icon" />
+                  <Eye className="nurtring-react-icon" />
                 </div>
                 <div className="nurtring-card-content">
                   <h3 className="nurtring-card-title">Our Vision</h3>
@@ -87,7 +86,7 @@ const NurituringAboutUs = () => {
               {/* VALUES */}
               <div className="nurtring-card nurtring-small-card">
                 <div className="nurtring-icon-wrapper">
-                  <FaHandsHelping className="nurtring-react-icon" />
+                  <HelpingHand className="nurtring-react-icon" />
                 </div>
                 <div className="nurtring-card-content">
                   <h3 className="nurtring-card-title">Our Values</h3>

@@ -50,6 +50,134 @@ const FAQ_DATA = [
         Transparency is a core value at Gauswarn. Every single batch of our A2 Ghee undergoes rigorous testing at NABL-certified laboratories. We test for essential parameters including fat content, moisture levels, and the absence of any adulterants or preservatives. We believe you have the right to know exactly what is in your food. View our <Link to='/lab-report/'>latest certifications here</Link>.
       </>
     )
+  },
+  {
+    question: "What exactly is the difference between A1 and A2 cow breeds?",
+    answer: (
+      <>
+        The difference lies in a single amino acid in the beta-casein protein. Indigenous Indian breeds like the Gir cow produce A2 protein, which is structurally similar to human breast milk and easier to digest. Foreign or cross-bred cows often produce A1 protein, which can release a peptide called BCM-7 during digestion, leading to inflammation and discomfort for many people.
+      </>
+    )
+  },
+  {
+    question: "Do you follow ethical 'Ahimsa' milking practices at your Gaushala?",
+    answer: (
+      <>
+        Yes, compassion is at the heart of Gauswarn. We follow 'Dohan' or ethical milking, where the calf is allowed to drink its full share of milk from two teats before we collect the remaining for ghee production. Our cows are never injected with growth hormones (oxytocin) and are treated as family members in a stress-free environment.
+      </>
+    )
+  },
+  {
+    question: "Why does the color and texture of Gauswarn Ghee vary occasionally?",
+    answer: (
+      <>
+        Since our ghee is 100% natural and handcrafted, slight variations in color and graininess are normal. These are influenced by the seasonal fodder our grass-fed cows eat. For instance, ghee may look more golden in the monsoon when cows eat fresh green grass rich in beta-carotene. This variation is a hallmark of an authentic, non-industrial product.
+      </>
+    )
+  },
+  {
+    question: "Can Gauswarn A2 Ghee be used for Ayurvedic treatments like Nasya or massage?",
+    answer: (
+      <>
+        Absolutely. Our Bilona ghee is of 'Sattvic' quality, making it ideal for Ayurvedic rituals. It is pure enough for 'Nasya' (nasal drops for mental clarity), 'Abhyanga' (body massage for joint health), and even for lighting diyas. Its high purity ensures that it is absorbed deeply into the tissues to provide holistic healing.
+      </>
+    )
+  },
+  {
+    question: "Is Gauswarn Ghee suitable for babies and pregnant women?",
+    answer: (
+      <>
+        Yes, it is highly recommended. For babies, it supports brain development and bone strength. For pregnant women, it provides essential healthy fats and fat-soluble vitamins that aid in the baby's growth and help the mother maintain energy levels. It is a natural superfood for all stages of life.
+      </>
+    )
+  },
+  {
+    question: "Is your packaging safe for long-term storage?",
+    answer: (
+      <>
+        We use only premium, food-grade glass jars and high-quality seals for our ghee. Glass is non-reactive and preserves the aroma, taste, and nutritional integrity of the ghee without the risk of chemical leaching associated with plastic. Our packaging is designed to keep your ghee fresh from our farm to your kitchen.
+      </>
+    )
+  },
+  {
+    question: "Why do you use a wooden Bilona instead of modern steel churners?",
+    answer: (
+      <>
+        Wooden churners (Bilona) are used to maintain a low temperature during the churning process, which is essential to preserve the heat-sensitive vitamins and enzymes in the curd. Steel churners can generate friction-led heat that may alter the nutritional structure and the delicate aroma of the ghee.
+      </>
+    )
+  },
+  {
+    question: "Is it normal for the ghee to be in a liquid state during the summer?",
+    answer: (
+      <>
+        Yes, pure ghee has a melting point of approximately 32°C to 35°C. In warmer climates or during summer, it is completely natural for it to turn liquid. This change in state does not affect its quality or nutritional value. You can simply place it in a cooler area if you prefer a more solid texture.
+      </>
+    )
+  },
+  {
+    question: "Can I use Gauswarn A2 Ghee for skin and hair care?",
+    answer: (
+      <>
+        Definitely. A2 Ghee is an excellent natural moisturizer. Applying it to the skin helps in healing dry patches and provides a natural glow. For hair, it acts as a deep conditioner that nourishes the scalp and helps reduce frizz. Its anti-inflammatory properties also make it great for healing minor burns or rashes.
+      </>
+    )
+  },
+  {
+    question: "Is Gauswarn Ghee safe for people with high blood pressure?",
+    answer: (
+      <>
+        Yes, our A2 Ghee is naturally low in sodium (0mg per 100g). Since it contains no added salt or preservatives, it is a much safer fat choice for individuals monitoring their blood pressure compared to salted butter or processed oils.
+      </>
+    )
+  },
+  {
+    question: "Can I use this ghee for the Ayurvedic practice of Oil Pulling?",
+    answer: (
+      <>
+        While oil pulling is traditionally done with sesame or coconut oil, many Ayurvedic practitioners recommend 'Ghee Kavala' (holding ghee in the mouth). It helps in strengthening the gums, whitening teeth, and removing toxins from the mouth while providing a soothing effect on the oral mucosa.
+      </>
+    )
+  },
+  {
+    question: "Does Gauswarn ensure that the cows are hormone and antibiotic-free?",
+    answer: (
+      <>
+        Yes, we have a strict policy against the use of growth hormones (like Oxytocin) or routine antibiotics. Our cows are raised naturally, and if a cow requires medical treatment, her milk is excluded from production until she is fully recovered and the medication is completely out of her system.
+      </>
+    )
+  },
+  {
+    question: "How is 'Bilona Ghee' different from 'Direct Cream Ghee'?",
+    answer: (
+      <>
+        Direct cream ghee is made by boiling milk cream at high speeds, which is faster but less nutritious. Bilona ghee involves turning milk into curd and then churning it. This curd-based process introduces beneficial probiotics and ensures a much higher concentration of vitamins and healthy fatty acids.
+      </>
+    )
+  },
+  {
+    question: "Can I add Gauswarn Ghee to my morning coffee or tea?",
+    answer: (
+      <>
+        Yes, it is a popular choice for 'Bulletproof Coffee' enthusiasts. Adding a teaspoon of A2 Ghee to your morning beverage provides healthy fats that help in slow caffeine absorption, preventing energy crashes and keeping you satiated for longer durations.
+      </>
+    )
+  },
+  {
+    question: "Is your ghee free from artificial fragrances or colors?",
+    answer: (
+      <>
+        Absolutely. The rich golden color and nutty aroma of Gauswarn Ghee are 100% natural, derived solely from the A2 Gir Cow milk and our slow-cooking process. We never add any artificial coloring agents, aromatic chemicals, or 'ghee essence' to our products.
+      </>
+    )
+  },
+  {
+    question: "Is there an age limit for children to start consuming A2 Ghee?",
+    answer: (
+      <>
+        A2 Ghee can be introduced to a child's diet as soon as they start semi-solid foods (usually around 6 months). Starting early helps in their brain development, improves digestion, and provides the necessary energy for their active growth phases.
+      </>
+    )
   }
 ];
 

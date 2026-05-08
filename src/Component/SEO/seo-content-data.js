@@ -129,6 +129,10 @@ export const SEO_CONTENT = {
       {
         title: "How to Order Gauswarn A2 Ghee Online",
         text: "Select your preferred pack size, add to cart, and checkout with secure payment options including Visa, Mastercard, RuPay, UPI (BHIM), and Razorpay. All orders are dispatched within 24 hours and delivered within 5-10 working days across India. We offer free shipping on all orders. Track your order in real-time with the tracking link sent to your email and phone. For any questions, contact us at +91-74709-15905 or email info@gauswarn.com."
+      },
+      {
+        title: "Detailed Nutritional Profile and Healthy Fats",
+        text: "Gauswarn A2 Ghee is optimized for health enthusiasts seeking the best nutritional fats. Per 100g, it provides 898.29 Kcal of pure energy, 99.81g of total fat, and zero carbohydrates or protein. It is rich in Saturated Fats (62.11g), Mono-unsaturated Fats (28.6g), and Poly-unsaturated Fats (3.58g). With 'Nil' trans-fat and added sugar, it is a superior choice for heart health and weight management. Our ghee is lab-tested to ensure 227mg of cholesterol per 100g, which is essential for hormone production. This detailed profile makes Gauswarn the gold standard for anyone searching for the purest and most nutritious A2 Gir Cow Bilona Ghee in India."
       }
     ]
   },

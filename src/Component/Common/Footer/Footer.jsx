@@ -6,7 +6,15 @@ import flipkartlogo from "../../../asset/new-img/ecommerce/flipkart.webp";
 import { Link } from "react-router-dom";
 import { postData } from "../../../services/api";
 import { toastError, toastSuccess } from "../../../services/toaster.service";
-import { Facebook, Instagram, Youtube, Twitter } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Youtube,
+  Twitter,
+  MapPin,
+  Phone,
+  Mail,
+} from "lucide-react";
 import { Send, Loader2 } from "lucide-react";
 
 export default function NewFooter() {
@@ -53,7 +61,11 @@ export default function NewFooter() {
           <div className="row">
             <div className="col-xl-4 col-md-4 mb-30">
               <div className="footer-single-cta">
-                <i className="fas fa-map-marker-alt"></i>
+                <MapPin
+                  size={24}
+                  className="footer-icon-gold mb-3"
+                  color="white"
+                />
                 <div className="footer-cta-text">
                   <span className="footer-cta-heading">Find us</span>
                   <span>
@@ -66,7 +78,11 @@ export default function NewFooter() {
 
             <div className="col-xl-4 col-md-4 mb-30">
               <div className="footer-single-cta">
-                <i className="fas fa-phone"></i>
+                <Phone
+                  size={24}
+                  className="footer-icon-gold mb-3"
+                  color="white"
+                />
                 <div className="footer-cta-text">
                   <span className="footer-cta-heading">Call us</span>
                   <span>+91-74709 15905</span>
@@ -76,7 +92,11 @@ export default function NewFooter() {
 
             <div className="col-xl-4 col-md-4 mb-30">
               <div className="footer-single-cta">
-                <i className="far fa-envelope-open"></i>
+                <Mail
+                  size={24}
+                  className="footer-icon-gold mb-3"
+                  color="white"
+                />
                 <div className="footer-cta-text">
                   <span className="footer-cta-heading">Mail us</span>
                   <span>info@gauswarn.com</span>
@@ -358,7 +378,7 @@ export default function NewFooter() {
                 className="social-icon facebook"
                 aria-label="Follow Gauswarn on Facebook"
               >
-                <Facebook size={16} />
+                <Facebook size={16} color="#000" />
               </a>
 
               <a
@@ -368,7 +388,7 @@ export default function NewFooter() {
                 className="social-icon instagram"
                 aria-label="Follow Gauswarn on Instagram"
               >
-                <Instagram size={16} />
+                <Instagram size={16} color="#000" />
               </a>
 
               <a
@@ -378,7 +398,7 @@ export default function NewFooter() {
                 className="social-icon youtube"
                 aria-label="Subscribe to Gauswarn on YouTube"
               >
-                <Youtube size={16} />
+                <Youtube size={16} color="#000" />
               </a>
 
               <a
@@ -388,7 +408,7 @@ export default function NewFooter() {
                 className="social-icon twitter"
                 aria-label="Follow Gauswarn on X (Twitter)"
               >
-                <Twitter size={16} />
+                <Twitter size={16} color="#000" />
               </a>
             </div>
 

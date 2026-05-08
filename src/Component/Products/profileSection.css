@@ -70,7 +70,7 @@
   flex: 1;
   font-size: 14px;
   line-height: 1.7;
-  color: #333;
+  color: #000;
 }
 
 .tab-section-heading {
@@ -95,7 +95,7 @@
 .tab-content-text {
   font-size: 0.9rem;
   line-height: 1.65;
-  color: #444;
+  color: #000;
   margin: 0;
 }
 

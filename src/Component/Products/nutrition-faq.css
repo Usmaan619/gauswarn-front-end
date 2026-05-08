@@ -1,0 +1,155 @@
+.nutrition-section {
+  padding: 80px 0;
+  background-color: #fffbf5;
+}
+
+.nutrition-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.premium-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0e6d2;
+}
+
+.premium-card h3 {
+  color: #2c1a0a;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #d4af37;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.nutrition-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.nutrition-table th, 
+.nutrition-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.nutrition-table th {
+  background-color: #fcf8ef;
+  color: #8a7121;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.nutrition-table td {
+  color: #000;
+  font-size: 0.95rem;
+}
+
+.nutrition-table tr:last-child td {
+  border-bottom: none;
+}
+
+.nutrition-table tr:hover {
+  background-color: #fffdf9;
+}
+
+/* Accordion */
+.n-faq-item {
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.n-faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+}
+
+.n-faq-question h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.n-faq-icon {
+  font-size: 1.2rem;
+  color: #d4af37;
+  font-weight: bold;
+}
+
+.n-faq-answer {
+  padding: 0 0 18px 0;
+  animation: fadeInDown 0.4s ease;
+}
+
+.n-faq-answer p {
+  margin: 0;
+  color: #000;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.n-faq-item.active h4 {
+  color: #8a7121;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aeo-highlight {
+  margin-top: 30px;
+  background: linear-gradient(135deg, #fdf8e6 0%, #fff 100%);
+  padding: 20px;
+  border-left: 4px solid #d4af37;
+  border-radius: 4px;
+}
+
+.description {
+  color: #000 !important;
+}
+
+@media (max-width: 992px) {
+  .nutrition-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .premium-card {
+    padding: 20px;
+  }
+  .nutrition-section {
+    padding: 50px 0;
+  }
+}
