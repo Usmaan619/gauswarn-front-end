@@ -510,106 +510,12 @@ const ProductPageMain = () => {
   /* ========================= 
      RENDER 
   ========================= */
-  const generateProductSchema = () => {
-    if (!selectedProduct) return null;
-
-    const productSchema = {
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      "@id": "https://gauswarn.com/products/#product",
-      name: "GAUSWARN Authentic A2 Bilona Gir Cow Ghee",
-      image: productImages,
-      description:
-        "Traditionally made A2 Cow Ghee using the Bilona method. 100% natural, lab-tested, and rich in nutrition.",
-      brand: {
-        "@type": "Brand",
-        name: "Gauswarn",
-      },
-      offers: {
-        "@type": "Offer",
-        url: "https://gauswarn.com/products/",
-        priceValidUntil: "2026-12-31",
-        priceCurrency: "INR",
-        price: selectedProduct.product_price,
-        itemCondition: "https://schema.org/NewCondition",
-        availability: "https://schema.org/InStock",
-        seller: {
-          "@type": "Organization",
-          name: "Gauswarn India"
-        },
-        shippingDetails: {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": 0,
-            "currency": "INR"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "IN"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 0,
-              "maxValue": 1,
-              "unitCode": "DAY"
-            },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 2,
-              "maxValue": 5,
-              "unitCode": "DAY"
-            }
-          }
-        },
-        hasMerchantReturnPolicy: {
-          "@type": "MerchantReturnPolicy",
-          "applicableCountry": "IN",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
-          "merchantReturnDays": 2,
-          "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/FreeReturn",
-          "merchantReturnLink": "https://gauswarn.com/refund/"
-        }
-      },
-      sku: `GSW-${selectedProduct.product_weight.replace(/\s+/g, '')}`,
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: averageRating || 5,
-        reviewCount: totalReviews || 1,
-      },
-    };
-
-    // Include FAQPage schema as well to avoid duplication scripts
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "@id": "https://gauswarn.com/products/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Why is Gauswarn A2 Ghee different from normal ghee?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our ghee is made using the traditional Bilona method from pure A2 Gir cow milk. It is 100% natural, lab-tested, and free from any preservatives or additives."
-          }
-        }
-        // Additional FAQs are indexed by search engines from the page content
-      ]
-    };
-
-    return [productSchema, faqSchema];
-  };
-
   return (
     <>
       <Seo
         title={selectedProduct ? `${selectedProduct.product_weight} Pure A2 Gir Cow Ghee - Lab Tested | Gauswarn` : "Pure A2 Gir Cow Ghee - Lab Tested Bilona Method | Gauswarn Shop"}
         description="Shop Gauswarn's lab-verified A2 Cow Ghee. Handcrafted using the traditional wooden Bilona method for maximum nutrition. Fast pan-India delivery."
         url="https://gauswarn.com/products/"
-        structuredData={generateProductSchema()}
       />
 
       <div className="product-page">

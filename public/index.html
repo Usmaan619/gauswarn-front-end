@@ -259,15 +259,7 @@
                 "priceValidUntil": "2026-12-31",
                 "availability": "https://schema.org/InStock",
                 "itemCondition": "https://schema.org/NewCondition",
-                "hasMerchantReturnPolicy": {
-                  "@type": "MerchantReturnPolicy",
-                  "applicableCountry": "IN",
-                  "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
-                  "merchantReturnDays": 2,
-                  "returnMethod": "https://schema.org/ReturnByMail",
-                  "returnFees": "https://schema.org/FreeReturn",
-                  "merchantReturnLink": "https://gauswarn.com/refund"
-                },
+                "hasMerchantReturnPolicy": { "@id": "https://gauswarn.com/#merchant-return-policy" },
                 "shippingDetails": {
                   "@type": "OfferShippingDetails",
                   "shippingRate": {
@@ -364,15 +356,7 @@
               "priceValidUntil": "2026-12-31",
               "availability": "https://schema.org/InStock",
               "itemCondition": "https://schema.org/NewCondition",
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "IN",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
-                "merchantReturnDays": 2,
-                  "returnMethod": "https://schema.org/ReturnByMail",
-                  "returnFees": "https://schema.org/FreeReturn",
-                  "merchantReturnLink": "https://gauswarn.com/refund"
-              },
+              "hasMerchantReturnPolicy": { "@id": "https://gauswarn.com/#merchant-return-policy" },
               "shippingDetails": {
                 "@type": "OfferShippingDetails",
                 "shippingRate": {
@@ -423,15 +407,7 @@
               "priceValidUntil": "2026-12-31",
               "availability": "https://schema.org/InStock",
               "itemCondition": "https://schema.org/NewCondition",
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "IN",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
-                "merchantReturnDays": 2,
-                  "returnMethod": "https://schema.org/ReturnByMail",
-                  "returnFees": "https://schema.org/FreeReturn",
-                  "merchantReturnLink": "https://gauswarn.com/refund"
-              },
+              "hasMerchantReturnPolicy": { "@id": "https://gauswarn.com/#merchant-return-policy" },
               "shippingDetails": {
                 "@type": "OfferShippingDetails",
                 "shippingRate": {
@@ -482,15 +458,7 @@
               "priceValidUntil": "2026-12-31",
               "availability": "https://schema.org/InStock",
               "itemCondition": "https://schema.org/NewCondition",
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "IN",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
-                "merchantReturnDays": 2,
-                  "returnMethod": "https://schema.org/ReturnByMail",
-                  "returnFees": "https://schema.org/FreeReturn",
-                  "merchantReturnLink": "https://gauswarn.com/refund"
-              },
+              "hasMerchantReturnPolicy": { "@id": "https://gauswarn.com/#merchant-return-policy" },
               "shippingDetails": {
                 "@type": "OfferShippingDetails",
                 "shippingRate": {
@@ -542,15 +510,7 @@
               "priceValidUntil": "2026-12-31",
               "availability": "https://schema.org/InStock",
               "itemCondition": "https://schema.org/NewCondition",
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "IN",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
-                "merchantReturnDays": 2,
-                  "returnMethod": "https://schema.org/ReturnByMail",
-                  "returnFees": "https://schema.org/FreeReturn",
-                  "merchantReturnLink": "https://gauswarn.com/refund"
-              },
+              "hasMerchantReturnPolicy": { "@id": "https://gauswarn.com/#merchant-return-policy" },
               "shippingDetails": {
                 "@type": "OfferShippingDetails",
                 "shippingRate": {
@@ -602,15 +562,7 @@
               "priceValidUntil": "2026-12-31",
               "availability": "https://schema.org/InStock",
               "itemCondition": "https://schema.org/NewCondition",
-              "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "IN",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
-                "merchantReturnDays": 2,
-                  "returnMethod": "https://schema.org/ReturnByMail",
-                  "returnFees": "https://schema.org/FreeReturn",
-                  "merchantReturnLink": "https://gauswarn.com/refund"
-              },
+              "hasMerchantReturnPolicy": { "@id": "https://gauswarn.com/#merchant-return-policy" },
               "shippingDetails": {
                 "@type": "OfferShippingDetails",
                 "shippingRate": {
@@ -722,6 +674,21 @@
     </script>
 
     <!-- ================= END META PIXEL ================= -->
+
+    <!-- ================= STRUCTURED DATA : MERCHANT RETURN POLICY ================= -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MerchantReturnPolicy",
+        "@id": "https://gauswarn.com/#merchant-return-policy",
+        "applicableCountry": "IN",
+        "returnPolicyCategory": "MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 2,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn",
+        "merchantReturnLink": "https://gauswarn.com/refund/"
+      }
+    </script>
 
     <!-- <script src="https://checkout.razorpay.com/v1/checkout.js" async></script> -->
   </head>
