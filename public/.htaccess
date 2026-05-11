@@ -1,0 +1,69 @@
+# ==========================================
+# Gauswarn India - Apache Configuration
+# ==========================================
+
+Options -MultiViews
+RewriteEngine On
+
+# ==========================================
+# 1. Redirect www to non-www (PRIMARY FIX)
+# Resolves: "Page with redirect" GSC issue
+# ==========================================
+RewriteCond %{HTTP_HOST} ^www\.gauswarn\.com [NC]
+RewriteRule ^(.*)$ https://gauswarn.com/$1 [R=301,L]
+
+# ==========================================
+# 2. Force HTTPS
+# ==========================================
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# ==========================================
+# 3. Add trailing slash to all routes (PRIMARY FIX)
+# Resolves: "Alternate page with proper canonical tag" GSC issue
+# Skips: files with extensions, /api/, already ending in /
+# ==========================================
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
+RewriteCond %{REQUEST_URI} !^/api/
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+# ==========================================
+# 4. Block query-param pages from being served as separate pages
+# Products with ?v= param should all serve canonical /products/
+# ==========================================
+RewriteCond %{QUERY_STRING} ^v=
+RewriteRule ^products/?$ /products/ [R=301,L,QSD]
+
+# ==========================================
+# 5. React SPA Fallback (must be last)
+# Serves index.html for all routes that don't match files/dirs
+# ==========================================
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.html [L]
+
+# ==========================================
+# 6. Security Headers
+# ==========================================
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ==========================================
+# 7. Cache Control
+# ==========================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType application/json "access plus 0 seconds"
+</IfModule>

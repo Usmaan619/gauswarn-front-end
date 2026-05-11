@@ -1,0 +1,18 @@
+# ==========================================
+# Gauswarn India - Netlify Redirects
+# ==========================================
+
+# 1. Redirect www to non-www (PRIMARY FIX)
+# Resolves: "Page with redirect" GSC issue
+https://www.gauswarn.com/* https://gauswarn.com/:splat 301!
+
+# 2. Redirect product query-params to canonical product page
+# Resolves: "Crawled - currently not indexed" for products?v=*
+/products?v=*  /products/  301
+
+# 3. Redirect non-existent pages that Google crawled
+/track  /  301
+/singleproduct  /products/  301
+
+# 4. React SPA fallback (must be last)
+/*  /index.html  200

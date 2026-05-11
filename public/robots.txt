@@ -4,11 +4,31 @@
 
 User-agent: *
 Allow: /
-# Prevent indexing of internal API and admin paths if they exist
+
+# Prevent indexing of internal API and admin paths
 Disallow: /api/
 Disallow: /admin/
-# Prevent indexing of search results to avoid duplicate content issues
+
+# Prevent indexing of product variant query params to avoid duplicate content
+# The canonical /products/ page covers all variants
+Disallow: /products?v=*
+Disallow: /products/?v=*
+
+# Prevent indexing of search/filter query params
 Disallow: /products?q=*
+Disallow: /products/?q=*
+
+# Prevent indexing of transactional pages (cart, payment, tracking)
+Disallow: /cart
+Disallow: /cart/
+Disallow: /payment-success
+Disallow: /payment-success/
+Disallow: /payment-failed
+Disallow: /payment-failed/
+Disallow: /track
+Disallow: /track/
+Disallow: /singleproduct
+Disallow: /singleproduct/
 
 # ==========================================
 # Security Support
@@ -31,10 +51,8 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-
 User-agent: ClaudeBot
 Allow: /
-
 
 User-agent: CCBot
 Allow: /

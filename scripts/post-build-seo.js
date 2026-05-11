@@ -202,6 +202,32 @@ async function run() {
     totalGenerated++;
   }
 
+  // 5. Copy server config files to build
+  console.log("📁 Copying server config files to build...");
+  const filesToCopy = [".htaccess", "_redirects", "robots.txt"];
+  filesToCopy.forEach((file) => {
+    const src = path.join(BUILD_DIR, "..", "public", file);
+    const dest = path.join(BUILD_DIR, file);
+    if (fs.existsSync(src)) {
+      fs.copyFileSync(src, dest);
+      console.log(`  ✅ Copied ${file} to build/`);
+    }
+  });
+
+  // 6. Generate redirect stubs for crawled-but-missing pages
+  // These ensure Google gets a proper canonical signal when crawling /track, /singleproduct
+  const REDIRECT_STUBS = [
+    { from: "track", to: "/" },
+    { from: "singleproduct", to: "/products/" },
+  ];
+  REDIRECT_STUBS.forEach(({ from, to }) => {
+    const dir = path.join(BUILD_DIR, from);
+    fs.mkdirSync(dir, { recursive: true });
+    const redirectHtml = `<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=${BASE_URL}${to}"><link rel="canonical" href="${BASE_URL}${to}"><meta name="robots" content="noindex, nofollow"></head><body><a href="${BASE_URL}${to}">Redirecting...</a></body></html>`;
+    fs.writeFileSync(path.join(dir, "index.html"), redirectHtml);
+    console.log(`  ✅ Created redirect stub: /${from}/ → ${to}`);
+  });
+
   console.log(`\n🎉 SEO injection complete — ${totalGenerated} pages generated.\n`);
 }
 

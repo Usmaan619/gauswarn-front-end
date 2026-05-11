@@ -368,6 +368,7 @@ const FinalPaymentMainPage = () => {
         title="Secure Checkout | Gauswarn India"
         description="Complete your order for pure A2 Cow Ghee securely."
         url="https://gauswarn.com/cart"
+        noindex={true}
       />
       <LoadingOverlay active={isLoading || showLoader}>
         <h1 className="sr-only">Secure Checkout - Gauswarn A2 Cow Ghee</h1>

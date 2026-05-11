@@ -516,7 +516,7 @@ const ProductPageMain = () => {
     const productSchema = {
       "@context": "https://schema.org/",
       "@type": "Product",
-      "@id": `https://gauswarn.com/products/?v=${variantParam || '1'}#product`,
+      "@id": "https://gauswarn.com/products/#product",
       name: "GAUSWARN Authentic A2 Bilona Gir Cow Ghee",
       image: productImages,
       description:
@@ -527,7 +527,8 @@ const ProductPageMain = () => {
       },
       offers: {
         "@type": "Offer",
-        url: variantParam ? `https://gauswarn.com/products/?v=${variantParam}` : `https://gauswarn.com/products/`,
+        url: "https://gauswarn.com/products/",
+        priceValidUntil: "2026-12-31",
         priceCurrency: "INR",
         price: selectedProduct.product_price,
         itemCondition: "https://schema.org/NewCondition",
@@ -569,7 +570,8 @@ const ProductPageMain = () => {
           "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
           "merchantReturnDays": 2,
           "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/FreeReturn"
+          "returnFees": "https://schema.org/FreeReturn",
+          "merchantReturnLink": "https://gauswarn.com/refund/"
         }
       },
       sku: `GSW-${selectedProduct.product_weight.replace(/\s+/g, '')}`,
@@ -606,7 +608,7 @@ const ProductPageMain = () => {
       <Seo
         title={selectedProduct ? `${selectedProduct.product_weight} Pure A2 Gir Cow Ghee - Lab Tested | Gauswarn` : "Pure A2 Gir Cow Ghee - Lab Tested Bilona Method | Gauswarn Shop"}
         description="Shop Gauswarn's lab-verified A2 Cow Ghee. Handcrafted using the traditional wooden Bilona method for maximum nutrition. Fast pan-India delivery."
-        url={variantParam ? `https://gauswarn.com/products/?v=${variantParam}` : "https://gauswarn.com/products/"}
+        url="https://gauswarn.com/products/"
         structuredData={generateProductSchema()}
       />
 

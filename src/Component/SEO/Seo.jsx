@@ -8,17 +8,17 @@ const Seo = ({
   structuredData,
   type = "website",
   keywords = "A2 Cow Ghee, Bilona Ghee, Pure Ghee, Gir Cow Ghee, Gauswarn India, Desi Cow Ghee, Traditional Ghee",
+  noindex = false,
 }) => {
   const baseUrl = "https://gauswarn.com";
   const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
-  // Ensure consistent canonical URL with trailing slash (e.g., /about/ or /products/?v=1)
+  // Ensure consistent canonical URL with trailing slash (e.g., /about/ or /products/)
+  // NOTE: We do NOT include query strings in canonical to prevent variant pages from being indexed separately
   const getCanonical = (val) => {
     const raw = val || (baseUrl + currentPath);
-    if (raw.includes("?")) {
-      const [path, query] = raw.split("?");
-      return path.replace(/\/$/, "") + "/?" + query;
-    }
-    return raw.replace(/\/$/, "") + "/";
+    // Always strip query strings from canonical — prevents ?v= variants being treated as separate URLs
+    const cleanUrl = raw.split("?")[0];
+    return cleanUrl.replace(/\/$/, "") + "/";
   };
   const canonicalUrl = getCanonical(url);
 
@@ -29,7 +29,7 @@ const Seo = ({
       <title data-rh="true">{title}</title>
       <meta data-rh="true" name="description" content={description} />
       <meta data-rh="true" name="keywords" content={keywords} />
-      <meta data-rh="true" name="robots" content="index, follow" />
+      <meta data-rh="true" name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
       <meta data-rh="true" name="author" content="Gauswarn India" />
       <link data-rh="true" rel="canonical" href={canonicalUrl} />
 
@@ -48,11 +48,19 @@ const Seo = ({
       <meta data-rh="true" name="twitter:description" content={description} />
       <meta data-rh="true" name="twitter:image" content={image} />
 
-      {/* Structured Data (JSON-LD) */}
+      {/* Structured Data (JSON-LD) — supports single object or array */}
       {structuredData && (
-        <script data-rh="true" type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
+        Array.isArray(structuredData)
+          ? structuredData.map((schema, idx) => (
+              <script data-rh="true" key={idx} type="application/ld+json">
+                {JSON.stringify(schema)}
+              </script>
+            ))
+          : (
+            <script data-rh="true" type="application/ld+json">
+              {JSON.stringify(structuredData)}
+            </script>
+          )
       )}
     </Helmet>
   );
