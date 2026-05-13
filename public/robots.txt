@@ -1,24 +1,20 @@
 # ==========================================
-# Gauswarn India - Robots.txt for SEO
+# Gauswarn India — Production robots.txt
+# Last updated: 2026-05-13
 # ==========================================
 
+# Default rule: allow all crawlers
 User-agent: *
 Allow: /
 
-# Prevent indexing of internal API and admin paths
+# ── Allow Product Pages (CRITICAL for Google Merchant Center) ──
+# Individual product pages MUST be crawlable for Merchant Center approval.
+# Do NOT add any Disallow rules for /products/ paths.
+Allow: /products/
+
+# ── Block internal/transactional pages ──
 Disallow: /api/
 Disallow: /admin/
-
-# Prevent indexing of product variant query params to avoid duplicate content
-# The canonical /products/ page covers all variants
-Disallow: /products?v=*
-Disallow: /products/?v=*
-
-# Prevent indexing of search/filter query params
-Disallow: /products?q=*
-Disallow: /products/?q=*
-
-# Prevent indexing of transactional pages (cart, payment, tracking)
 Disallow: /cart
 Disallow: /cart/
 Disallow: /payment-success
@@ -30,14 +26,12 @@ Disallow: /track/
 Disallow: /singleproduct
 Disallow: /singleproduct/
 
-# ==========================================
-# Security Support
-# ==========================================
-# Security contact for researchers
-# Security: https://gauswarn.com/.well-known/security.txt
+# ── Block CRA internal assets from indexing ──
+Disallow: /static/js/*.map$
+Disallow: /static/css/*.map$
 
 # ==========================================
-# AI Bots Support (SGE/Perplexity/ChatGPT)
+# AI Bots — Explicit Allow
 # ==========================================
 User-agent: GPTBot
 Allow: /
@@ -60,7 +54,10 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+
 # ==========================================
-# Sitemap Link
+# Sitemap
 # ==========================================
 Sitemap: https://gauswarn.com/sitemap.xml

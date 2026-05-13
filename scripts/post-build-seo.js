@@ -13,6 +13,7 @@
 const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
+const { getProductSlug } = require("./seo-utils.cjs");
 
 const BUILD_DIR = path.resolve(__dirname, "..", "build");
 const INDEX_PATH = path.join(BUILD_DIR, "index.html");
@@ -156,7 +157,8 @@ async function run() {
   }).join(", ");
 
   const productLinksHtml = products.map(p => {
-    return `<a href="/products/?v=${p.product_id}">${p.product_weight} A2 Ghee</a>`;
+    const slug = getProductSlug(p);
+    return `<a href="/products/${slug}/">${p.product_weight} A2 Ghee</a>`;
   }).join(", ");
 
   // 3. Process Static Routes
@@ -181,7 +183,29 @@ async function run() {
     totalGenerated++;
   }
 
-  // 4. Generate Dynamic Blog Pages
+  // 4. Generate Static Pages for Product Slug URLs
+  // CRITICAL: These static pages are what Merchant Center and Googlebot will crawl.
+  console.log("🛍️ Generating static pages for product slug URLs...");
+  for (const product of products) {
+    const slug = getProductSlug(product);
+    const route = `/products/${slug}`;
+    const price = product.product_price || "549";
+    const weight = product.product_weight || "A2 Ghee";
+    
+    const productSeo = {
+      title: `Buy ${weight} Pure A2 Gir Cow Ghee Online - Lab Tested Bilona Ghee | Gauswarn`,
+      description: `Order ${weight} pure A2 Gir Cow Ghee at ₹${price}. Made using traditional Bilona method. Lab tested, chemical-free. Free delivery across India.`,
+      h1: `Buy Pure A2 Bilona Ghee - ${weight} | Gauswarn India`,
+      content: `Buy Gauswarn's ${weight} pure A2 Gir Cow Ghee at ₹${price}. Handcrafted using the traditional Bilona method from grass-fed indigenous Gir cows. Every batch is NABL lab-tested for purity. Free shipping across India. Available sizes: 250ml, 500ml, 1 Litre, 5 Kg, 15 Kg. Our A2 ghee is rich in vitamins A, D, E, K and Omega-3 fatty acids. Chemical-free, preservative-free, 100% natural desi ghee.`
+    };
+
+    const html = injectSeo(template, productSeo, route);
+    const dir = path.join(BUILD_DIR, "products", slug);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "index.html"), html);
+    totalGenerated++;
+  }
+  console.log(`✅ Generated ${products.length} product slug pages.`);
   console.log("📝 Generating static pages for blog posts...");
   for (const blog of blogs) {
     const slug = formatSlug(blog.slug || blog.id);

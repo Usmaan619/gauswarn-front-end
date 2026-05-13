@@ -91,22 +91,38 @@ const BlogMainPageNew = () => {
   const [loading, setLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState("new");
   const [error, setError] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pagination, setPagination] = useState({
+    totalPages: 1,
+    hasNext: false,
+    hasPrev: false,
+  });
 
   /* ===== FETCH BLOGS ===== */
-  const fetchBlogs = useCallback(async () => {
+  const fetchBlogs = useCallback(async (page = 1) => {
     setLoading(true);
     setError("");
 
     try {
-      const res = await getData("admin/blogs");
+      const res = await getData(`admin/blogs?page=${page}&limit=10`);
 
-      const blogList = res?.data?.blogs || res?.blogs || [];
+      const blogList = res?.blogs || res?.data?.blogs || [];
+      const paginData = res?.pagination || {};
 
       if (!Array.isArray(blogList)) {
         throw new Error("Invalid blog response");
       }
 
       setBlogs(blogList);
+      setPagination({
+        totalPages: paginData.totalPages || 1,
+        hasNext: paginData.hasNext || false,
+        hasPrev: paginData.hasPrev || false,
+      });
+      setCurrentPage(page);
+      
+      // Scroll to top on page change
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       console.error("Blog fetch failed:", err);
       setBlogs([]);
@@ -117,8 +133,8 @@ const BlogMainPageNew = () => {
   }, []);
 
   useEffect(() => {
-    fetchBlogs();
-  }, [fetchBlogs]);
+    fetchBlogs(currentPage);
+  }, [fetchBlogs, currentPage]);
 
   /* ===== SORTING ===== */
   const sortedBlogs = useMemo(() => {
@@ -238,6 +254,49 @@ const BlogMainPageNew = () => {
               </div>
             )}
           </div>
+
+          {/* ===== PAGINATION ===== */}
+          {!loading && blogs.length > 0 && pagination.totalPages > 1 && (
+            <div className="pagination-container">
+              <button
+                className="pagination-btn"
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={!pagination.hasPrev}
+                aria-label="Previous page"
+              >
+                &larr; Prev
+              </button>
+
+              <div className="pagination-numbers">
+                {Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map(
+                  (num) => (
+                    <button
+                      key={num}
+                      className={`pagination-number ${
+                        currentPage === num ? "active" : ""
+                      }`}
+                      onClick={() => setCurrentPage(num)}
+                    >
+                      {num}
+                    </button>
+                  )
+                )}
+              </div>
+
+              <button
+                className="pagination-btn"
+                onClick={() =>
+                  setCurrentPage((prev) =>
+                    Math.min(prev + 1, pagination.totalPages)
+                  )
+                }
+                disabled={!pagination.hasNext}
+                aria-label="Next page"
+              >
+                Next &rarr;
+              </button>
+            </div>
+          )}
         </div>
 
         {/* FILTER / SORT */}

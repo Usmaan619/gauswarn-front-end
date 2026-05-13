@@ -263,6 +263,7 @@ function App() {
               <Route path="/b2b" element={<B2BLandingPage />} />
 
               <Route path="/products" element={<ProductPageMain />} />
+              <Route path="/products/:slug" element={<ProductPageMain />} />
               <Route path="/cart" element={<FinalPaymentMainPage />} />
 
               <Route path="/payment-success" element={<PaymentSuccess />} />

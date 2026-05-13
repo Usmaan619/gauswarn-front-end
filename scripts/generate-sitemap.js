@@ -2,7 +2,7 @@
  * generate-sitemap.js
  * -------------------
  * Automatically generates public/sitemap.xml by combining static routes,
- * dynamic blog posts, and dynamic product variants from the API.
+ * dynamic blog posts, and SEO-friendly product slug pages from the API.
  * 
  * Run: node scripts/generate-sitemap.js
  */
@@ -10,6 +10,7 @@
 const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
+const { getProductSlug } = require("./seo-utils.cjs");
 
 const SITE_URL = "https://gauswarn.com";
 const BLOG_API_URL = "https://api.gauswarn.com/admin/blogs";
@@ -87,18 +88,54 @@ async function generateSitemap() {
       console.warn("⚠️ Could not fetch blogs for sitemap:", e.message);
     }
 
-    // 3. (Optional) Fetch and Add Product Variants
-    // NOTE: We are excluding these from the sitemap because they are canonicalized 
-    // to the main /products/ page in the static HTML. Including them in the sitemap
-    // while they are non-canonical causes "Crawled - currently not indexed" errors
-    // and sitemap validation failures in Google Search Console.
-    // They remain crawlable via internal links on the /products/ page.
-    console.log("🛍️ Skipping product variants in sitemap to prevent canonical mismatch...");
+    // 3. Fetch and Add Product Pages with SEO-friendly slug URLs
+    // These are now proper product landing pages with unique slugs.
+    // Each product gets its own URL in the sitemap for Merchant Center indexing.
+    console.log("🛍️ Fetching products for sitemap...");
+    try {
+      const prodResponse = await axios.get(PRODUCT_API_URL, {
+        headers: { "ngrok-skip-browser-warning": "true" },
+      });
+      const products = prodResponse.data.products || [];
+      products.forEach((product) => {
+        const slug = getProductSlug(product);
+        const productUrl = `${SITE_URL}/products/${slug}/`;
+        
+        // Parse product images for image sitemap
+        let imageTag = "";
+        try {
+          const images = JSON.parse(product.product_images || "[]");
+          if (images.length > 0) {
+            const imgUrl = typeof images[0] === "string" ? images[0] : images[0]?.url || "";
+            if (imgUrl) {
+              imageTag = `
+    <image:image>
+      <image:loc>${imgUrl}</image:loc>
+      <image:title>Gauswarn Pure A2 Bilona Ghee - ${product.product_weight}</image:title>
+    </image:image>`;
+            }
+          }
+        } catch (e) {
+          // ignore image parse errors
+        }
+
+        urlEntries.push(`  <url>
+    <loc>${productUrl}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>${imageTag}
+  </url>`);
+      });
+      console.log(`✅ Added ${products.length} product pages to sitemap.`);
+    } catch (e) {
+      console.warn("⚠️ Could not fetch products for sitemap:", e.message);
+    }
 
     // Compose final XML
     const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urlEntries.join("\n")}
 </urlset>`;
 

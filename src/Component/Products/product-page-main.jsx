@@ -7,7 +7,14 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from "uuid";
 import { environment } from "../../environment/environment";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams, useParams } from "react-router-dom";
+import {
+  getProductSlug,
+  getProductCanonicalUrl,
+  findProductIndexBySlug,
+  buildProductSchema,
+  buildProductBreadcrumbSchema,
+} from "../../utils/seo-utils";
 import { useCartContext } from "../Context/UserContext";
 
 // Assets
@@ -174,8 +181,9 @@ const triggerCrossPageToast = (type, message) => {
 ========================= */
 const ProductPageMain = () => {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const variantParam = searchParams.get("v"); // e.g. /products?v=1
+  const [searchParams] = useSearchParams();
+  const { slug: urlSlug } = useParams(); // e.g. /products/a2-bilona-ghee-500ml
+  const variantParam = searchParams.get("v"); // legacy e.g. /products?v=1
   const { setCart } = useCartContext();
 
   // Loading states
@@ -436,12 +444,13 @@ const ProductPageMain = () => {
     setSelectedVariantIndex(index);
     setSelectedImage(0);
     setQuantity(1);
-    // Update URL so it's shareable and browser-history-friendly
-    const selectedPid = products[index]?.product_id;
-    if (selectedPid) {
-      setSearchParams({ v: selectedPid }, { replace: true });
+    // Navigate to SEO-friendly slug URL
+    const product = products[index];
+    if (product) {
+      const slug = getProductSlug(product);
+      navigate(`/products/${slug}`, { replace: true });
     }
-  }, [products, setSearchParams]);
+  }, [products, navigate]);
 
   const handlePrevImage = useCallback(() => {
     setSelectedImage((prev) =>
@@ -494,18 +503,33 @@ const ProductPageMain = () => {
     }
   }, [productImages.length, selectedImage]);
 
-  // Sync variant selection when URL query param (?v=) changes
+  // Sync variant selection from slug URL (primary) or legacy ?v= param (redirect)
   useEffect(() => {
-    if (!variantParam || products.length === 0) return;
-    const index = products.findIndex(
-      (p) => String(p.product_id) === String(variantParam)
-    );
-    if (index !== -1) {
-      setSelectedVariantIndex(index);
-      setSelectedImage(0);
-      setQuantity(1);
+    if (products.length === 0) return;
+
+    // Primary: resolve from slug URL
+    if (urlSlug) {
+      const index = findProductIndexBySlug(products, urlSlug);
+      if (index !== -1) {
+        setSelectedVariantIndex(index);
+        setSelectedImage(0);
+        setQuantity(1);
+      }
+      return;
     }
-  }, [variantParam, products]);
+
+    // Legacy: redirect old ?v= param to slug URL
+    if (variantParam) {
+      const index = products.findIndex(
+        (p) => String(p.product_id) === String(variantParam)
+      );
+      if (index !== -1) {
+        const slug = getProductSlug(products[index]);
+        navigate(`/products/${slug}`, { replace: true });
+      }
+      return;
+    }
+  }, [urlSlug, variantParam, products, navigate]);
 
   /* ========================= 
      RENDER 
@@ -513,9 +537,19 @@ const ProductPageMain = () => {
   return (
     <>
       <Seo
-        title={selectedProduct ? `${selectedProduct.product_weight} Pure A2 Gir Cow Ghee - Lab Tested | Gauswarn` : "Pure A2 Gir Cow Ghee - Lab Tested Bilona Method | Gauswarn Shop"}
-        description="Shop Gauswarn's lab-verified A2 Cow Ghee. Handcrafted using the traditional wooden Bilona method for maximum nutrition. Fast pan-India delivery."
-        url="https://gauswarn.com/products/"
+        title={selectedProduct
+          ? `Buy ${selectedProduct.product_weight} Pure A2 Gir Cow Ghee Online - Lab Tested Bilona Ghee | Gauswarn`
+          : "Pure A2 Gir Cow Ghee - Lab Tested Bilona Method | Gauswarn Shop"}
+        description={selectedProduct
+          ? `Order ${selectedProduct.product_weight} pure A2 Gir Cow Ghee at ₹${selectedProduct.product_price}. Made using traditional Bilona method. Lab tested, chemical-free. Free delivery across India.`
+          : "Shop Gauswarn's lab-verified A2 Cow Ghee. Handcrafted using the traditional wooden Bilona method for maximum nutrition. Fast pan-India delivery."}
+        url={selectedProduct ? getProductCanonicalUrl(selectedProduct) : "https://gauswarn.com/products/"}
+        type="product"
+        image={selectedProduct?.images?.[0] || "https://gauswarn.com/favicon-512x512.png"}
+        structuredData={selectedProduct ? [
+          buildProductSchema(selectedProduct, averageRating, totalReviews),
+          buildProductBreadcrumbSchema(selectedProduct),
+        ] : undefined}
       />
 
       <div className="product-page">
@@ -529,9 +563,12 @@ const ProductPageMain = () => {
                 ) : (
                   <img
                     src={productImages[selectedImage]}
-                    alt={`Gauswarn A2 Bilona Ghee - Product View ${selectedImage + 1}`}
+                    alt={`Gauswarn Pure A2 Bilona Ghee ${selectedProduct?.product_weight || ''} - Product View ${selectedImage + 1}`}
                     className="responsive-product-img"
-                    loading="lazy"
+                    loading="eager"
+                    fetchpriority="high"
+                    width="600"
+                    height="600"
                   />
                 )}
               </div>

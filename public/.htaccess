@@ -1,5 +1,6 @@
 # ==========================================
-# Gauswarn India - Apache Configuration
+# Gauswarn India — Apache Configuration
+# Last updated: 2026-05-13
 # ==========================================
 
 Options -MultiViews
@@ -30,11 +31,27 @@ RewriteCond %{REQUEST_URI} !^/api/
 RewriteRule ^(.*)$ /$1/ [R=301,L]
 
 # ==========================================
-# 4. Block query-param pages from being served as separate pages
-# Products with ?v= param should all serve canonical /products/
+# 4. 301 redirect old query-param product URLs → SEO slug URLs
+# Resolves: Merchant Center "cannot crawl product landing page"
 # ==========================================
+RewriteCond %{QUERY_STRING} ^v=5$
+RewriteRule ^products/?$ /products/a2-bilona-ghee-250ml/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^v=1$
+RewriteRule ^products/?$ /products/a2-bilona-ghee-500ml/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^v=2$
+RewriteRule ^products/?$ /products/a2-bilona-ghee-1000ml/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^v=3$
+RewriteRule ^products/?$ /products/a2-bilona-ghee-5kg/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^v=4$
+RewriteRule ^products/?$ /products/a2-bilona-ghee-15kg/? [R=301,L]
+
+# Catch-all: any other ?v= param redirects to /products/
 RewriteCond %{QUERY_STRING} ^v=
-RewriteRule ^products/?$ /products/ [R=301,L,QSD]
+RewriteRule ^products/?$ /products/? [R=301,L]
 
 # ==========================================
 # 5. React SPA Fallback (must be last)
@@ -52,6 +69,7 @@ RewriteRule ^ /index.html [L]
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-XSS-Protection "1; mode=block"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
 
 # ==========================================
@@ -66,4 +84,16 @@ RewriteRule ^ /index.html [L]
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ==========================================
+# 8. Compression
+# ==========================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+  AddOutputFilterByType DEFLATE font/woff2
 </IfModule>

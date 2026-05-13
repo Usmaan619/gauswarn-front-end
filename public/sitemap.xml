@@ -1,69 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://gauswarn.com/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/about/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/products/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/blog/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/gallery/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/b2b/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/contact/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/careers/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/faq/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/lab-report/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/video/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <video:video>
@@ -75,27 +76,33 @@
   </url>
   <url>
     <loc>https://gauswarn.com/refund/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/shipping/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/privacy/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/terms/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://gauswarn.com/blog/gauswarn-authentic-a2-bilona-ghee-made-from-indigenous-gir-cow-milk/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gauswarn.com/blog/a2-gir-cow-ghee-nutrition-facts-complete-guide-to-calories-vitamins-fatty-acids-health-benefits-gauswarn-india/</loc>
@@ -152,9 +159,53 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/what-is-a2-gir-cow-ghee-benefits-uses-why-it-matters/</loc>
-    <lastmod>2026-01-31</lastmod>
+    <loc>https://gauswarn.com/products/a2-bilona-ghee-500ml/</loc>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ddibytttc/image/upload/v1775196373/products/1/bbn6gr42yydswmijtmct.webp</image:loc>
+      <image:title>Gauswarn Pure A2 Bilona Ghee - 500 ml</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://gauswarn.com/products/a2-bilona-ghee-1000ml/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ddibytttc/image/upload/v1775196387/products/2/ovt8f3s0lgxjxrw1jezy.webp</image:loc>
+      <image:title>Gauswarn Pure A2 Bilona Ghee - 1000 ml</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://gauswarn.com/products/a2-bilona-ghee-5kg/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ddibytttc/image/upload/v1770032573/products/3/yfahs1rflul7es1hxv3y.png</image:loc>
+      <image:title>Gauswarn Pure A2 Bilona Ghee - 5 kg</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://gauswarn.com/products/a2-bilona-ghee-15kg/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ddibytttc/image/upload/v1770032862/products/4/ccuy1bluq4awqmzehrlm.png</image:loc>
+      <image:title>Gauswarn Pure A2 Bilona Ghee - 15 kg</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://gauswarn.com/products/a2-bilona-ghee-250ml/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/ddibytttc/image/upload/v1771249371/250ml_Gauswarn_lt4zxm.webp</image:loc>
+      <image:title>Gauswarn Pure A2 Bilona Ghee - 250 ml</image:title>
+    </image:image>
   </url>
 </urlset>
