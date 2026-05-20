@@ -14,6 +14,7 @@ const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 const { getProductSlug } = require("./seo-utils.cjs");
+const HEALTH_BENEFITS = require("./health-benefits-data.cjs");
 
 const BUILD_DIR = path.resolve(__dirname, "..", "build");
 const INDEX_PATH = path.join(BUILD_DIR, "index.html");
@@ -226,6 +227,25 @@ async function run() {
     totalGenerated++;
   }
 
+  // 4.5 Generate Static Pages for Health Benefits
+  console.log("💚 Generating static pages for health benefit pages...");
+  for (const benefit of HEALTH_BENEFITS) {
+    const route = `/health-benefits/${benefit.slug}`;
+    const benefitSeo = {
+      title: benefit.metaTitle,
+      description: benefit.metaDescription,
+      h1: benefit.title,
+      content: `${benefit.description} ${benefit.sections.map((s) => `${s.heading}: ${s.content}`).join(" ")}`
+    };
+
+    const html = injectSeo(template, benefitSeo, route);
+    const dir = path.join(BUILD_DIR, "health-benefits", benefit.slug);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "index.html"), html);
+    totalGenerated++;
+  }
+  console.log(`✅ Generated ${HEALTH_BENEFITS.length} health benefit pages.`);
+
   // 5. Copy server config files to build
   console.log("📁 Copying server config files to build...");
   const filesToCopy = [".htaccess", "_redirects", "robots.txt"];
@@ -236,20 +256,6 @@ async function run() {
       fs.copyFileSync(src, dest);
       console.log(`  ✅ Copied ${file} to build/`);
     }
-  });
-
-  // 6. Generate redirect stubs for crawled-but-missing pages
-  // These ensure Google gets a proper canonical signal when crawling /track, /singleproduct
-  const REDIRECT_STUBS = [
-    { from: "track", to: "/" },
-    { from: "singleproduct", to: "/products/" },
-  ];
-  REDIRECT_STUBS.forEach(({ from, to }) => {
-    const dir = path.join(BUILD_DIR, from);
-    fs.mkdirSync(dir, { recursive: true });
-    const redirectHtml = `<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=${BASE_URL}${to}"><link rel="canonical" href="${BASE_URL}${to}"><meta name="robots" content="noindex, nofollow"></head><body><a href="${BASE_URL}${to}">Redirecting...</a></body></html>`;
-    fs.writeFileSync(path.join(dir, "index.html"), redirectHtml);
-    console.log(`  ✅ Created redirect stub: /${from}/ → ${to}`);
   });
 
   console.log(`\n🎉 SEO injection complete — ${totalGenerated} pages generated.\n`);

@@ -21,10 +21,7 @@ Disallow: /payment-success
 Disallow: /payment-success/
 Disallow: /payment-failed
 Disallow: /payment-failed/
-Disallow: /track
-Disallow: /track/
-Disallow: /singleproduct
-Disallow: /singleproduct/
+
 
 # ── Block CRA internal assets from indexing ──
 Disallow: /static/js/*.map$

@@ -20,7 +20,13 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
 # ==========================================
-# 3. Add trailing slash to all routes (PRIMARY FIX)
+# 3. Redirect old/thin pages to prevent "Crawled - currently not indexed"
+# ==========================================
+RewriteRule ^track/?$ https://gauswarn.com/ [R=301,L]
+RewriteRule ^singleproduct/?$ https://gauswarn.com/products/ [R=301,L]
+
+# ==========================================
+# 4. Add trailing slash to all routes (PRIMARY FIX)
 # Resolves: "Alternate page with proper canonical tag" GSC issue
 # Skips: files with extensions, /api/, already ending in /
 # ==========================================
@@ -31,7 +37,7 @@ RewriteCond %{REQUEST_URI} !^/api/
 RewriteRule ^(.*)$ /$1/ [R=301,L]
 
 # ==========================================
-# 4. 301 redirect old query-param product URLs → SEO slug URLs
+# 5. 301 redirect old query-param product URLs → SEO slug URLs
 # Resolves: Merchant Center "cannot crawl product landing page"
 # ==========================================
 RewriteCond %{QUERY_STRING} ^v=5$
@@ -54,7 +60,7 @@ RewriteCond %{QUERY_STRING} ^v=
 RewriteRule ^products/?$ /products/? [R=301,L]
 
 # ==========================================
-# 5. React SPA Fallback (must be last)
+# 6. React SPA Fallback (must be last)
 # Serves index.html for all routes that don't match files/dirs
 # ==========================================
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -62,7 +68,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ /index.html [L]
 
 # ==========================================
-# 6. Security Headers
+# 7. Security Headers
 # ==========================================
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
@@ -73,7 +79,7 @@ RewriteRule ^ /index.html [L]
 </IfModule>
 
 # ==========================================
-# 7. Cache Control
+# 8. Cache Control
 # ==========================================
 <IfModule mod_expires.c>
   ExpiresActive On
@@ -89,7 +95,7 @@ RewriteRule ^ /index.html [L]
 </IfModule>
 
 # ==========================================
-# 8. Compression
+# 9. Compression
 # ==========================================
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/css

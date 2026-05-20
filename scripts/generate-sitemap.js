@@ -11,6 +11,7 @@ const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 const { getProductSlug } = require("./seo-utils.cjs");
+const HEALTH_BENEFITS = require("./health-benefits-data.cjs");
 
 const SITE_URL = "https://gauswarn.com";
 const BLOG_API_URL = "https://api.gauswarn.com/admin/blogs";
@@ -65,6 +66,19 @@ async function generateSitemap() {
   </url>`;
       urlEntries.push(entry);
     });
+
+    // 1.5 Add Health Benefits Routes
+    console.log("💚 Adding Health Benefits to sitemap...");
+    HEALTH_BENEFITS.forEach((benefit) => {
+      const url = `${SITE_URL}/health-benefits/${benefit.slug}/`;
+      urlEntries.push(`  <url>
+    <loc>${url}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`);
+    });
+    console.log(`✅ Added ${HEALTH_BENEFITS.length} health benefit pages to sitemap.`);
 
     // 2. Fetch and Add Blog Posts
     console.log("🌐 Fetching blogs for sitemap...");
