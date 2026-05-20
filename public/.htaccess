@@ -1,66 +1,76 @@
 # ==========================================
 # Gauswarn India — Apache Configuration
-# Last updated: 2026-05-13
+# Last updated: 2026-05-20
 # ==========================================
 
 Options -MultiViews
 RewriteEngine On
 
 # ==========================================
-# 1. Redirect www to non-www (PRIMARY FIX)
-# Resolves: "Page with redirect" GSC issue
-# ==========================================
-RewriteCond %{HTTP_HOST} ^www\.gauswarn\.com [NC]
-RewriteRule ^(.*)$ https://gauswarn.com/$1 [R=301,L]
-
-# ==========================================
-# 2. Force HTTPS
-# ==========================================
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-
-# ==========================================
-# 3. Redirect old/thin pages to prevent "Crawled - currently not indexed"
+# 1. Redirect old/thin pages to prevent "Crawled - currently not indexed"
+# Placed first to ensure single-hop redirection to canonical targets.
 # ==========================================
 RewriteRule ^track/?$ https://gauswarn.com/ [R=301,L]
 RewriteRule ^singleproduct/?$ https://gauswarn.com/products/ [R=301,L]
 
 # ==========================================
-# 4. Add trailing slash to all routes (PRIMARY FIX)
-# Resolves: "Alternate page with proper canonical tag" GSC issue
-# Skips: files with extensions, /api/, already ending in /
+# 2. 301 redirect old query-param product URLs → SEO slug URLs
+# Resolves: Merchant Center "cannot crawl product landing page"
+# Placed high to ensure single-hop redirection to canonical products.
 # ==========================================
+RewriteCond %{QUERY_STRING} ^v=5$
+RewriteRule ^products/?$ https://gauswarn.com/products/a2-bilona-ghee-250ml/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^v=1$
+RewriteRule ^products/?$ https://gauswarn.com/products/a2-bilona-ghee-500ml/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^v=2$
+RewriteRule ^products/?$ https://gauswarn.com/products/a2-bilona-ghee-1000ml/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^v=3$
+RewriteRule ^products/?$ https://gauswarn.com/products/a2-bilona-ghee-5kg/? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^v=4$
+RewriteRule ^products/?$ https://gauswarn.com/products/a2-bilona-ghee-15kg/? [R=301,L]
+
+# Catch-all: any other ?v= param redirects to /products/
+RewriteCond %{QUERY_STRING} ^v=
+RewriteRule ^products/?$ https://gauswarn.com/products/? [R=301,L]
+
+# ==========================================
+# 3. Unified Domain, SSL & Trailing Slash Redirects
+# Normalizes HTTP/HTTPS, WWW/non-WWW, and Trailing Slashes in a single hop.
+# Resolves redirect chains for GSC "Page with redirect" issues.
+# ==========================================
+
+# Rule 3.1: HTTP or WWW -> HTTPS non-WWW (for files or paths ending in slash)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteCond %{REQUEST_URI} /$ [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_URI} \.[a-zA-Z0-9]+$
+RewriteRule ^(.*)$ https://gauswarn.com/$1 [R=301,L]
+
+# Rule 3.2: HTTP or WWW -> HTTPS non-WWW + append trailing slash (for routes missing slash)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !/$
 RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
 RewriteCond %{REQUEST_URI} !^/api/
-RewriteRule ^(.*)$ /$1/ [R=301,L]
+RewriteRule ^(.*)$ https://gauswarn.com/$1/ [R=301,L]
+
+# Rule 3.3: HTTPS non-WWW -> append trailing slash (for routes missing slash)
+RewriteCond %{HTTPS} on
+RewriteCond %{HTTP_HOST} ^gauswarn\.com$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
+RewriteCond %{REQUEST_URI} !^/api/
+RewriteRule ^(.*)$ https://gauswarn.com/$1/ [R=301,L]
 
 # ==========================================
-# 5. 301 redirect old query-param product URLs → SEO slug URLs
-# Resolves: Merchant Center "cannot crawl product landing page"
-# ==========================================
-RewriteCond %{QUERY_STRING} ^v=5$
-RewriteRule ^products/?$ /products/a2-bilona-ghee-250ml/? [R=301,L]
-
-RewriteCond %{QUERY_STRING} ^v=1$
-RewriteRule ^products/?$ /products/a2-bilona-ghee-500ml/? [R=301,L]
-
-RewriteCond %{QUERY_STRING} ^v=2$
-RewriteRule ^products/?$ /products/a2-bilona-ghee-1000ml/? [R=301,L]
-
-RewriteCond %{QUERY_STRING} ^v=3$
-RewriteRule ^products/?$ /products/a2-bilona-ghee-5kg/? [R=301,L]
-
-RewriteCond %{QUERY_STRING} ^v=4$
-RewriteRule ^products/?$ /products/a2-bilona-ghee-15kg/? [R=301,L]
-
-# Catch-all: any other ?v= param redirects to /products/
-RewriteCond %{QUERY_STRING} ^v=
-RewriteRule ^products/?$ /products/? [R=301,L]
-
-# ==========================================
-# 6. React SPA Fallback (must be last)
+# 4. React SPA Fallback (must be last)
 # Serves index.html for all routes that don't match files/dirs
 # ==========================================
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -68,7 +78,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ /index.html [L]
 
 # ==========================================
-# 7. Security Headers
+# 5. Security Headers
 # ==========================================
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
@@ -79,7 +89,7 @@ RewriteRule ^ /index.html [L]
 </IfModule>
 
 # ==========================================
-# 8. Cache Control
+# 6. Cache Control
 # ==========================================
 <IfModule mod_expires.c>
   ExpiresActive On
@@ -95,7 +105,7 @@ RewriteRule ^ /index.html [L]
 </IfModule>
 
 # ==========================================
-# 9. Compression
+# 7. Compression
 # ==========================================
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/css
