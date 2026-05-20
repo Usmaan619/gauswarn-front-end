@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./product-faq.css";
 
-const FAQ_DATA = [
+export const FAQ_DATA = [
   {
     question: "Why is Gauswarn Bilona Ghee considered a superior choice compared to others?",
     answer: (

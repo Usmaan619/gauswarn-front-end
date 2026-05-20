@@ -168,6 +168,31 @@ const HomePage = () => {
   );
 };
 
+/* =======================
+   SEO THIN PAGES FIX
+======================= */
+const TrackPage = () => (
+  <>
+    <Seo title="Track Your Order | Gauswarn" noindex="noindex, follow" />
+    <div style={{ padding: "120px 20px", textAlign: "center", minHeight: "60vh", background: "#fffaf0" }}>
+      <h2 style={{ fontSize: "2rem", color: "#854d0e", marginBottom: "1rem" }}>Track Your Order</h2>
+      <p style={{ fontSize: "1.1rem", color: "#451a03", maxWidth: "600px", margin: "0 auto" }}>
+        To track your Gauswarn order, please contact our support team at <br/>
+        <strong style={{ fontSize: "1.3rem" }}>+91-74709-15905</strong> or email us at <br/>
+        <strong>contact@gauswarn.com</strong>
+      </p>
+    </div>
+  </>
+);
+
+const SingleProductThinPage = () => (
+  <>
+    <Seo title="Gauswarn Products" noindex={true} />
+    <ProductPageMain />
+  </>
+);
+
+
 function App() {
   const { setCart } = useCartContext();
   const location = useLocation();
@@ -258,6 +283,8 @@ function App() {
 
               <Route path="/gallery" element={<GheeGallery />} />
               <Route path="/contact" element={<ContactMainPage />} />
+              <Route path="/track" element={<TrackPage />} />
+              <Route path="/singleproduct" element={<SingleProductThinPage />} />
 
               {/* <Route path="/track-order" element={<OrderTracking />} /> */}
               <Route path="/b2b" element={<B2BLandingPage />} />

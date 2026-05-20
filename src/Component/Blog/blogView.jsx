@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { getData } from "../../services/api";
 import { toastError } from "../../services/toaster.service";
+import { buildArticleSchema } from "../../utils/seo-utils";
 
 import blogImg from "../../asset/new-img/banner.webp";
 
@@ -83,35 +84,7 @@ const BlogView = () => {
         }
         url={`https://gauswarn.com/blog/${slug}`}
         image={blogImg}
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: blog?.title,
-          description:
-            blog?.meta_description ||
-            blog?.excerpt ||
-            "Informative article on A2 Cow Ghee, Ayurveda and natural wellness by Gauswarn India.",
-          image: blogImg,
-          author: {
-            "@type": "Organization",
-            name: "Gauswarn India",
-            url: "https://gauswarn.com",
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "Gauswarn India",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://gauswarn.com/favicon-512x512.png",
-            },
-          },
-          datePublished: blog?.created_at,
-          dateModified: blog?.updated_at || blog?.created_at,
-          mainEntityOfPage: {
-            "@type": "WebPage",
-            "@id": `https://gauswarn.com/blog/${slug}`,
-          },
-        }}
+        structuredData={buildArticleSchema(blog)}
       />
 
       <div style={{ overflow: "hidden", background: "#f8f8f8" }}>

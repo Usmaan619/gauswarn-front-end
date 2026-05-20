@@ -13,8 +13,10 @@ import {
   getProductCanonicalUrl,
   findProductIndexBySlug,
   buildProductSchema,
+  buildFAQSchema,
   buildProductBreadcrumbSchema,
 } from "../../utils/seo-utils";
+import { FAQ_DATA } from "../FAQ/ProductFaq";
 import { useCartContext } from "../Context/UserContext";
 
 // Assets
@@ -547,8 +549,9 @@ const ProductPageMain = () => {
         type="product"
         image={selectedProduct?.images?.[0] || "https://gauswarn.com/favicon-512x512.png"}
         structuredData={selectedProduct ? [
-          buildProductSchema(selectedProduct, averageRating, totalReviews),
+          buildProductSchema(selectedProduct, averageRating, totalReviews, reviews),
           buildProductBreadcrumbSchema(selectedProduct),
+          buildFAQSchema(FAQ_DATA),
         ] : undefined}
       />
 

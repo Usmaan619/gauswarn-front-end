@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { buildGlobalSchema } from "../../utils/seo-utils";
 
 const Seo = ({
   title = "Pure A2 Gir Cow Ghee - Traditional Bilona Method | Gauswarn India",
@@ -48,11 +49,15 @@ const Seo = ({
       <meta data-rh="true" name="twitter:description" content={description} />
       <meta data-rh="true" name="twitter:image" content={image} />
 
-      {/* Structured Data (JSON-LD) — supports single object or array */}
+      {/* Structured Data (JSON-LD) */}
+      <script data-rh="true" type="application/ld+json">
+        {JSON.stringify(buildGlobalSchema())}
+      </script>
+
       {structuredData && (
         Array.isArray(structuredData)
           ? structuredData.map((schema, idx) => (
-              <script data-rh="true" key={idx} type="application/ld+json">
+              <script data-rh="true" key={`extra-schema-${idx}`} type="application/ld+json">
                 {JSON.stringify(schema)}
               </script>
             ))

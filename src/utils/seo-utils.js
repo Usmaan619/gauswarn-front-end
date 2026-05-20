@@ -132,14 +132,17 @@ function findProductIndexBySlug(products, slug) {
  * @param {Object} product - Product object from API
  * @param {number} averageRating - Average review rating
  * @param {number} totalReviews - Total review count
+ * @param {Array} reviews - Array of review objects {name, feedback, rating, date}
  * @returns {Object} JSON-LD schema object
  */
-function buildProductSchema(product, averageRating = 4.8, totalReviews = 269) {
+function buildProductSchema(product, averageRating = 4.8, totalReviews = 269, reviews = []) {
   if (!product) return null;
 
   const slug = getProductSlug(product);
   const canonicalUrl = `${SITE_URL}/products/${slug}/`;
-  const price = parseFloat(product.product_price) || 0;
+  const currentPrice = parseFloat(product.product_price) || 0;
+  const originalPrice = parseFloat(product.product_del_price) || 0;
+  
   const images = (() => {
     try {
       const parsed = JSON.parse(product.product_images || "[]");
@@ -149,62 +152,48 @@ function buildProductSchema(product, averageRating = 4.8, totalReviews = 269) {
     }
   })();
 
-  return {
+  const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "@id": `${SITE_URL}/products#${slug}`,
+    "@id": `${SITE_URL}/products/${slug}/#product`,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/products/${slug}/`
+    },
     name: `Pure A2 Bilona Ghee - ${product.product_weight}`,
-    description: `${product.product_weight} of 100% pure A2 Gir Cow Ghee made using traditional Bilona method. Lab-tested, chemical-free, from grass-fed indigenous cows. Free delivery across India.`,
+    description: `${product.product_weight} of 100% pure A2 Gir Cow Ghee made using traditional Vedic Bilona method. Lab-tested, chemical-free, from grass-fed indigenous cows. Rich in Omega-3, CLA, and Vitamins A, D, E, K.`,
     image: images.length > 0 ? images : [`${SITE_URL}/favicon-512x512.png`],
     brand: {
       "@type": "Brand",
       name: "Gauswarn",
+      logo: `${SITE_URL}/favicon-512x512.png`
     },
-    sku: `GAUSWARN-A2-GHEE-${slug.toUpperCase()}`,
-    mpn: `GAUSWARN-${slug.toUpperCase()}`,
+    sku: product.sku || `GAUSWARN-A2-GHEE-${slug.toUpperCase()}`,
+    mpn: product.mpn || `GAUSWARN-${slug.toUpperCase()}`,
     category: "Food > Dairy > Ghee",
+    material: "Pure A2 Gir Cow Milk",
+    keywords: "A2 Cow Ghee, Bilona Ghee, Gir Cow Ghee, Desi Ghee, Vedic Bilona, Gauswarn",
     offers: {
       "@type": "Offer",
       url: canonicalUrl,
       priceCurrency: "INR",
-      price: String(price),
+      price: String(currentPrice),
       priceValidUntil: "2027-12-31",
-      availability: "https://schema.org/InStock",
+      availability: product.stock_status === "out_of_stock" 
+        ? "https://schema.org/OutOfStock" 
+        : "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       seller: {
         "@type": "Organization",
         name: "Gauswarn India",
+        url: SITE_URL
       },
       hasMerchantReturnPolicy: {
-        "@id": "https://gauswarn.com/#merchant-return-policy",
+        "@id": `${SITE_URL}/#merchant-return-policy`,
       },
       shippingDetails: {
-        "@type": "OfferShippingDetails",
-        shippingRate: {
-          "@type": "MonetaryAmount",
-          value: "0",
-          currency: "INR",
-        },
-        shippingDestination: {
-          "@type": "DefinedRegion",
-          addressCountry: "IN",
-        },
-        deliveryTime: {
-          "@type": "ShippingDeliveryTime",
-          handlingTime: {
-            "@type": "QuantitativeValue",
-            minValue: 0,
-            maxValue: 1,
-            unitCode: "DAY",
-          },
-          transitTime: {
-            "@type": "QuantitativeValue",
-            minValue: 2,
-            maxValue: 5,
-            unitCode: "DAY",
-          },
-        },
-      },
+        "@id": `${SITE_URL}/#shipping-details`
+      }
     },
     aggregateRating: {
       "@type": "AggregateRating",
@@ -213,6 +202,82 @@ function buildProductSchema(product, averageRating = 4.8, totalReviews = 269) {
       bestRating: "5",
       worstRating: "1",
     },
+    // Nutrition Information
+    nutrition: {
+      "@type": "NutritionInformation",
+      servingSize: "10g",
+      calories: "89.8 Kcal",
+      fatContent: "9.98 g",
+      saturatedFatContent: "6.21 g",
+      cholesterolContent: "22.7 mg",
+      proteinContent: "0 g",
+      carbohydrateContent: "0 g",
+      sodiumContent: "0 mg"
+    }
+  };
+
+  // Add Sale Price Specification if discount exists
+  if (originalPrice > currentPrice) {
+    schema.offers.priceSpecification = [
+      {
+        "@type": "PriceSpecification",
+        "price": String(originalPrice),
+        "priceCurrency": "INR",
+        "valueAddedTaxIncluded": true,
+        "priceType": "https://schema.org/ListPrice"
+      },
+      {
+        "@type": "PriceSpecification",
+        "price": String(currentPrice),
+        "priceCurrency": "INR",
+        "valueAddedTaxIncluded": true,
+        "priceType": "https://schema.org/SalePrice"
+      }
+    ];
+  }
+
+  // Add individual reviews if provided
+  if (reviews && reviews.length > 0) {
+    schema.review = reviews.slice(0, 5).map(r => ({
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": r.name || "Happy Customer"
+      },
+      "datePublished": r.date || new Date().toISOString().split('T')[0],
+      "reviewBody": r.feedback || r.comment || "Excellent quality pure A2 ghee.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": String(r.rating || 5),
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }));
+  }
+
+  return schema;
+}
+
+/**
+ * Build JSON-LD FAQ schema.
+ * 
+ * @param {Array} faqData - Array of {question, answer}
+ * @returns {Object} JSON-LD FAQPage schema
+ */
+function buildFAQSchema(faqData) {
+  if (!faqData || faqData.length === 0) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": typeof item.answer === 'string' ? item.answer : "Gauswarn A2 Ghee is a premium, lab-tested product made using traditional methods."
+      }
+    }))
   };
 }
 
@@ -250,6 +315,186 @@ function buildProductBreadcrumbSchema(product) {
   };
 }
 
+/**
+ * Build WebSite and Organization Schema
+ */
+function buildGlobalSchema() {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Gauswarn India",
+      "url": SITE_URL,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${SITE_URL}/products?search={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      "name": "Gauswarn India",
+      "url": SITE_URL,
+      "logo": `${SITE_URL}/favicon-512x512.png`,
+      "sameAs": [
+        "https://www.facebook.com/gauswarn",
+        "https://www.instagram.com/gauswarn",
+        "https://www.youtube.com/@gauswarn",
+        "https://twitter.com/gauswarn"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-74709-15905",
+          "contactType": "customer service",
+          "areaServed": "IN",
+          "availableLanguage": ["en", "hi"]
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": `${SITE_URL}/#localbusiness`,
+      "name": "Gauswarn India",
+      "image": [
+        `${SITE_URL}/favicon-512x512.png`
+      ],
+      "priceRange": "₹449 - ₹17999",
+      "telephone": "+91-74709-15905",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "11 Manish Baag, Sapna Sangeeta Road",
+        "addressLocality": "Indore",
+        "addressRegion": "MP",
+        "postalCode": "452001",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 22.7001,
+        "longitude": 75.8681
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MerchantReturnPolicy",
+      "@id": `${SITE_URL}/#merchant-return-policy`,
+      "applicableCountry": "IN",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 7,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "merchantReturnLink": `${SITE_URL}/refund/`
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "OfferShippingDetails",
+      "@id": `${SITE_URL}/#shipping-details`,
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "INR"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "IN"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 5,
+          "unitCode": "DAY"
+        }
+      }
+    }
+  ];
+}
+
+/**
+ * Build JSON-LD Article/BlogPosting schema.
+ * 
+ * @param {Object} post - Blog post object
+ * @returns {Object} JSON-LD Article schema
+ */
+function buildArticleSchema(post) {
+  if (!post) return null;
+
+  const url = `${SITE_URL}/blog/${post.slug || post.id}/`;
+  const image = post.image || post.image_url || `${SITE_URL}/favicon-512x512.png`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url
+    },
+    "headline": post.title,
+    "description": post.meta_description || post.excerpt || post.description || `Read about ${post.title} on Gauswarn India.`,
+    "image": image,
+    "author": {
+      "@type": "Organization",
+      "name": "Gauswarn India",
+      "url": SITE_URL
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Gauswarn India",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE_URL}/favicon-512x512.png`
+      }
+    },
+    "datePublished": post.created_at || new Date().toISOString(),
+    "dateModified": post.updated_at || post.created_at || new Date().toISOString()
+  };
+}
+
+/**
+ * Build JSON-LD VideoObject schema.
+ * 
+ * @param {Object} video - Video object {name, description, thumbnailUrl, uploadDate, contentUrl, embedUrl}
+ * @returns {Object} JSON-LD VideoObject schema
+ */
+function buildVideoSchema(video) {
+  if (!video) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": video.name || "Gauswarn A2 Ghee Process",
+    "description": video.description || "Watch how Gauswarn makes pure A2 Gir Cow Bilona Ghee traditionally.",
+    "thumbnailUrl": [
+      video.thumbnailUrl || video.thumbnail || "https://gauswarn.com/favicon-512x512.png"
+    ],
+    "uploadDate": video.uploadDate || "2024-01-01T08:00:00+08:00",
+    "duration": video.duration || "PT1M30S",
+    "contentUrl": video.contentUrl,
+    "embedUrl": video.embedUrl || `https://www.youtube.com/embed/${video.youtubeId}`,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Gauswarn India",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE_URL}/favicon-512x512.png`,
+        "width": "512",
+        "height": "512"
+      }
+    }
+  };
+}
+
 export {
   SITE_URL,
   PRODUCT_SLUG_MAP,
@@ -259,5 +504,9 @@ export {
   findProductBySlug,
   findProductIndexBySlug,
   buildProductSchema,
+  buildFAQSchema,
+  buildArticleSchema,
+  buildVideoSchema,
   buildProductBreadcrumbSchema,
+  buildGlobalSchema,
 };
