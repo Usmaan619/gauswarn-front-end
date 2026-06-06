@@ -15,8 +15,6 @@ Allow: /products/
 # ── Block internal/transactional pages ──
 Disallow: /api/
 Disallow: /admin/
-Disallow: /cart
-Disallow: /cart/
 Disallow: /payment-success
 Disallow: /payment-success/
 Disallow: /payment-failed
