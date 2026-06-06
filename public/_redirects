@@ -1,31 +1,4 @@
-# ==========================================
-# Gauswarn India — Netlify Redirects
-# Last updated: 2026-05-13
-# ==========================================
+# Enforce non-trailing slash URLs with 301 redirects
+# This redirects /products/ -> /products
 
-# 1. Redirect www to non-www (PRIMARY FIX)
-# Resolves: "Page with redirect" GSC issue
-https://www.gauswarn.com/* https://gauswarn.com/:splat 301!
-
-# 2. 301 Redirect: Old query-param product URLs → new slug URLs
-# These are the URLs that Google Merchant Center has been trying to crawl.
-# The slug URLs serve the actual product detail page.
-/products?v=5  /products/a2-bilona-ghee-250ml/  301
-/products?v=1  /products/a2-bilona-ghee-500ml/  301
-/products?v=2  /products/a2-bilona-ghee-1000ml/  301
-/products?v=3  /products/a2-bilona-ghee-5kg/  301
-/products?v=4  /products/a2-bilona-ghee-15kg/  301
-
-# Also handle with trailing slash on /products/
-/products/?v=5  /products/a2-bilona-ghee-250ml/  301
-/products/?v=1  /products/a2-bilona-ghee-500ml/  301
-/products/?v=2  /products/a2-bilona-ghee-1000ml/  301
-/products/?v=3  /products/a2-bilona-ghee-5kg/  301
-/products/?v=4  /products/a2-bilona-ghee-15kg/  301
-
-# 3. Redirect non-existent pages that Google crawled
-/track  /  301
-/singleproduct  /products/  301
-
-# 4. React SPA fallback (must be last)
-/*  /index.html  200
+/* /index.html 200

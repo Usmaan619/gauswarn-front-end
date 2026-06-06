@@ -158,12 +158,12 @@ async function run() {
   // 2. Prepare dynamic internal links for parent pages to avoid "Orphan Pages"
   const blogLinksHtml = blogs.map(b => {
     const slug = formatSlug(b.slug || b.id);
-    return `<a href="/blog/${slug}/">${b.title}</a>`;
+    return `<a href="/blog/${slug}">${b.title}</a>`;
   }).join(", ");
 
   const productLinksHtml = products.map(p => {
     const slug = getProductSlug(p);
-    return `<a href="/products/${slug}/">${p.product_weight} A2 Ghee</a>`;
+    return `<a href="/products/${slug}">${p.product_weight} A2 Ghee</a>`;
   }).join(", ");
 
   // 3. Process Static Routes
@@ -267,7 +267,7 @@ async function run() {
 
 function injectSeo(template, seo, route) {
   let html = template;
-  const canonicalUrl = `${BASE_URL}${route.replace(/\/$/, "")}/`;
+  const canonicalUrl = route === "/" ? BASE_URL : `${BASE_URL}${route.replace(/\/$/, "")}`;
 
   // Standard SEO replacements
   html = html.replace(/<title[^>]*>.*?<\/title>/i, `<title data-rh="true">${seo.title}</title>`);

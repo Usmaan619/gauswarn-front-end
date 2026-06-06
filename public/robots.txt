@@ -12,6 +12,9 @@ Allow: /
 # Do NOT add any Disallow rules for /products/ paths.
 Allow: /products/
 
+# ── Block parameter URLs from crawling ──
+Disallow: /*?*
+
 # ── Block internal/transactional pages ──
 Disallow: /api/
 Disallow: /admin/

@@ -3,68 +3,68 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://gauswarn.com/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/about/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/about</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/products/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/products</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/blog</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/gallery/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/gallery</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/b2b/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/b2b</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/contact/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/contact</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/careers/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/careers</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/faq/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/faq</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/lab-report/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/lab-report</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/video/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/video</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <video:video>
@@ -75,128 +75,128 @@
     </video:video>
   </url>
   <url>
-    <loc>https://gauswarn.com/refund/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/refund</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/shipping/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/shipping</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/privacy/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/privacy</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/terms/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/terms</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/health-benefits/strong-bones-joint-health/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/health-benefits/strong-bones-joint-health</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/health-benefits/brain-power-memory-boost/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/health-benefits/brain-power-memory-boost</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/health-benefits/boost-immunity-naturally/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/health-benefits/boost-immunity-naturally</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/health-benefits/heart-health/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/health-benefits/heart-health</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/health-benefits/healthy-fats/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/health-benefits/healthy-fats</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/health-benefits/eye-health-vision-support/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/health-benefits/eye-health-vision-support</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/pure-a2-cow-ghee-what-it-is-why-it-matters-why-gauswarn-is-india-s-most-trusted-choice/</loc>
+    <loc>https://gauswarn.com/blog/a2-ghee-for-skin-hair-complete-guide-to-vitamins-topical-use-diy-recipes-ayurvedic-beauty-gauswarn-india</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gauswarn.com/blog/ghee-calories-per-100g-complete-nutritional-value-protein-fat-guide-gauswarn-india</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gauswarn.com/blog/pure-a2-cow-ghee-what-it-is-why-it-matters-why-gauswarn-is-india-s-most-trusted-choice</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/what-is-a2-gir-cow-ghee-the-answer-india-has-been-looking-for/</loc>
+    <loc>https://gauswarn.com/blog/what-is-a2-gir-cow-ghee-the-answer-india-has-been-looking-for</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/gauswarn-authentic-a2-bilona-ghee-made-from-indigenous-gir-cow-milk/</loc>
+    <loc>https://gauswarn.com/blog/gauswarn-authentic-a2-bilona-ghee-made-from-indigenous-gir-cow-milk</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/a2-gir-cow-ghee-nutrition-facts-complete-guide-to-calories-vitamins-fatty-acids-health-benefits-gauswarn-india/</loc>
+    <loc>https://gauswarn.com/blog/a2-gir-cow-ghee-nutrition-facts-complete-guide-to-calories-vitamins-fatty-acids-health-benefits-gauswarn-india</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/gauswarn-india-a2-cow-ghee-gallery-har-tasveer-mein-dikhti-hai-shuddhi-prakriti-aur-vishwas-ki-kahani/</loc>
+    <loc>https://gauswarn.com/blog/gauswarn-india-a2-cow-ghee-gallery-har-tasveer-mein-dikhti-hai-shuddhi-prakriti-aur-vishwas-ki-kahani</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/how-our-b2b-process-works-gauswarn-a2-gir-cow-ghee-ke-saath-bulk-partnership-shuru-karein-sirf-4-steps-mein/</loc>
+    <loc>https://gauswarn.com/blog/how-our-b2b-process-works-gauswarn-a2-gir-cow-ghee-ke-saath-bulk-partnership-shuru-karein-sirf-4-steps-mein</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/benefits-of-pure-a2-ghee/</loc>
+    <loc>https://gauswarn.com/blog/benefits-of-pure-a2-ghee</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/a2-ghee-for-weight-loss-does-it-really-work-the-complete-guide/</loc>
+    <loc>https://gauswarn.com/blog/a2-ghee-for-weight-loss-does-it-really-work-the-complete-guide</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gauswarn.com/blog/a2-ghee-for-babies-and-children-a-complete-parent-s-guide/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gauswarn.com/blog/a2-ghee-and-heart-health-separating-myth-from-science/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gauswarn.com/products/a2-bilona-ghee-500ml/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/products/a2-bilona-ghee-500ml</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <image:image>
@@ -205,8 +205,8 @@
     </image:image>
   </url>
   <url>
-    <loc>https://gauswarn.com/products/a2-bilona-ghee-1000ml/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/products/a2-bilona-ghee-1000ml</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <image:image>
@@ -215,8 +215,8 @@
     </image:image>
   </url>
   <url>
-    <loc>https://gauswarn.com/products/a2-bilona-ghee-5kg/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/products/a2-bilona-ghee-5kg</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <image:image>
@@ -225,8 +225,8 @@
     </image:image>
   </url>
   <url>
-    <loc>https://gauswarn.com/products/a2-bilona-ghee-15kg/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/products/a2-bilona-ghee-15kg</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <image:image>
@@ -235,8 +235,8 @@
     </image:image>
   </url>
   <url>
-    <loc>https://gauswarn.com/products/a2-bilona-ghee-250ml/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://gauswarn.com/products/a2-bilona-ghee-250ml</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <image:image>

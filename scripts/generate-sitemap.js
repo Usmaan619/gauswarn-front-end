@@ -45,7 +45,7 @@ async function generateSitemap() {
 
     // 1. Add Static Routes
     STATIC_ROUTES.forEach((route) => {
-      const url = route.url === "/" ? SITE_URL + "/" : `${SITE_URL}${route.url}/`;
+      const url = route.url === "/" ? SITE_URL : `${SITE_URL}${route.url}`;
       let entry = `  <url>
     <loc>${url}</loc>
     <lastmod>${today}</lastmod>
@@ -70,7 +70,7 @@ async function generateSitemap() {
     // 1.5 Add Health Benefits Routes
     console.log("💚 Adding Health Benefits to sitemap...");
     HEALTH_BENEFITS.forEach((benefit) => {
-      const url = `${SITE_URL}/health-benefits/${benefit.slug}/`;
+      const url = `${SITE_URL}/health-benefits/${benefit.slug}`;
       urlEntries.push(`  <url>
     <loc>${url}</loc>
     <lastmod>${today}</lastmod>
@@ -88,7 +88,7 @@ async function generateSitemap() {
       });
       const blogs = blogResponse.data.blogs || [];
       blogs.forEach((blog) => {
-        const blogUrl = `${SITE_URL}/blog/${blog.slug || blog.id}/`;
+        const blogUrl = `${SITE_URL}/blog/${blog.slug || blog.id}`;
         const lastMod = (blog.updated_at || blog.created_at || today).split("T")[0];
         urlEntries.push(`  <url>
     <loc>${blogUrl}</loc>
@@ -113,7 +113,7 @@ async function generateSitemap() {
       const products = prodResponse.data.products || [];
       products.forEach((product) => {
         const slug = getProductSlug(product);
-        const productUrl = `${SITE_URL}/products/${slug}/`;
+        const productUrl = `${SITE_URL}/products/${slug}`;
         
         // Parse product images for image sitemap
         let imageTag = "";
