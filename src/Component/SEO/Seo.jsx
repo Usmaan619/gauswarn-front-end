@@ -19,9 +19,17 @@ const Seo = ({
     const raw = val || (baseUrl + currentPath);
     // Always strip query strings from canonical — prevents ?v= variants being treated as separate URLs
     const cleanUrl = raw.split("?")[0];
-    return cleanUrl.replace(/\/$/, "") + "/";
+    return cleanUrl.replace(/\/$/, "");
   };
   const canonicalUrl = getCanonical(url);
+
+  // Automatically apply noindex, follow to URLs with search parameters
+  const hasQueryParams = typeof window !== "undefined" && window.location.search.length > 0;
+  let robotsContent = noindex ? "noindex, nofollow" : "index, follow";
+  
+  if (!noindex && hasQueryParams) {
+    robotsContent = "noindex, follow";
+  }
 
 
   return (
@@ -30,7 +38,7 @@ const Seo = ({
       <title data-rh="true">{title}</title>
       <meta data-rh="true" name="description" content={description} />
       <meta data-rh="true" name="keywords" content={keywords} />
-      <meta data-rh="true" name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+      <meta data-rh="true" name="robots" content={robotsContent} />
       <meta data-rh="true" name="author" content="Gauswarn India" />
       <link data-rh="true" rel="canonical" href={canonicalUrl} />
 

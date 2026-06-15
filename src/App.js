@@ -173,7 +173,7 @@ const HomePage = () => {
 ======================= */
 const TrackPage = () => (
   <>
-    <Seo title="Track Your Order | Gauswarn" noindex="noindex, follow" />
+    <Seo title="Track Your Order | Gauswarn" noindex={true} />
     <div style={{ padding: "120px 20px", textAlign: "center", minHeight: "60vh", background: "#fffaf0" }}>
       <h2 style={{ fontSize: "2rem", color: "#854d0e", marginBottom: "1rem" }}>Track Your Order</h2>
       <p style={{ fontSize: "1.1rem", color: "#451a03", maxWidth: "600px", margin: "0 auto" }}>
@@ -192,6 +192,16 @@ const SingleProductThinPage = () => (
   </>
 );
 
+const NotFoundPage = () => (
+  <>
+    <Seo title="404 Page Not Found | Gauswarn" noindex={true} />
+    <div style={{ textAlign: "center", padding: "100px 20px", height: "60vh", background: "#fffaf0" }}>
+      <h2 style={{ fontSize: "2.5rem", color: "#854d0e", marginBottom: "1rem" }}>404 - Page Not Found</h2>
+      <p style={{ fontSize: "1.2rem", color: "#451a03" }}>The page you are looking for does not exist.</p>
+      <a href="/" style={{ display: "inline-block", marginTop: "20px", padding: "10px 20px", background: "#854d0e", color: "white", textDecoration: "none", borderRadius: "5px" }}>Return to Home</a>
+    </div>
+  </>
+);
 
 function App() {
   const { setCart } = useCartContext();
@@ -310,20 +320,7 @@ function App() {
                 path="/health-benefits/:slug"
                 element={<HealthBenefitDetail />}
               />
-              <Route
-                path="*"
-                element={
-                  <h2
-                    style={{
-                      textAlign: "center",
-                      marginTop: 50,
-                      height: "100vh",
-                    }}
-                  >
-                    Page Not Found
-                  </h2>
-                }
-              />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
         </ErrorBoundary>

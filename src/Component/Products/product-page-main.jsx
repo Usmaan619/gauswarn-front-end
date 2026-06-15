@@ -516,6 +516,9 @@ const ProductPageMain = () => {
         setSelectedVariantIndex(index);
         setSelectedImage(0);
         setQuantity(1);
+      } else {
+        // Invalid slug: redirect to clean /products page
+        navigate("/products", { replace: true });
       }
       return;
     }

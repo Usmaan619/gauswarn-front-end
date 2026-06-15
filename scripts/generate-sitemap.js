@@ -28,12 +28,7 @@ const STATIC_ROUTES = [
   { url: "/contact", priority: "0.6", changefreq: "monthly" },
   { url: "/careers", priority: "0.5", changefreq: "monthly" },
   { url: "/faq", priority: "0.4", changefreq: "monthly" },
-  { url: "/lab-report", priority: "0.4", changefreq: "monthly" },
   { url: "/video", priority: "0.8", changefreq: "monthly", hasVideo: true },
-  { url: "/refund", priority: "0.3", changefreq: "yearly" },
-  { url: "/shipping", priority: "0.3", changefreq: "yearly" },
-  { url: "/privacy", priority: "0.3", changefreq: "yearly" },
-  { url: "/terms", priority: "0.3", changefreq: "yearly" },
 ];
 
 async function generateSitemap() {

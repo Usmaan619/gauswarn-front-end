@@ -7,26 +7,7 @@
 User-agent: *
 Allow: /
 
-# ── Allow Product Pages (CRITICAL for Google Merchant Center) ──
-# Individual product pages MUST be crawlable for Merchant Center approval.
-# Do NOT add any Disallow rules for /products/ paths.
-Allow: /products/
 
-# ── Block parameter URLs from crawling ──
-Disallow: /*?*
-
-# ── Block internal/transactional pages ──
-Disallow: /api/
-Disallow: /admin/
-Disallow: /payment-success
-Disallow: /payment-success/
-Disallow: /payment-failed
-Disallow: /payment-failed/
-
-
-# ── Block CRA internal assets from indexing ──
-Disallow: /static/js/*.map$
-Disallow: /static/css/*.map$
 
 # ==========================================
 # AI Bots — Explicit Allow

@@ -10,6 +10,7 @@ const RefundMainPage = () => {
         title="Refund Policy | Gauswarn India"
         description="Read the refund, return, and replacement policy of Gauswarn India for our pure A2 Gir Cow Ghee products."
         url="https://gauswarn.com/refund"
+        noindex={true}
       />
       <div className="refund-container">
         <div className="refund-header">
