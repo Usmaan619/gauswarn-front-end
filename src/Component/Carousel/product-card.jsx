@@ -1,7 +1,7 @@
 import React from "react";
 import { ShoppingCart, Star } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { environment } from "../../environment/environment";
@@ -141,11 +141,14 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  const handleViewDetails = (e) => {
-    e.stopPropagation();
-    // Use query param for deep-linkable, shareable URLs
-    navigate(`/products?v=${product?.product_id || ""}`);
+  const getProductSlug = () => {
+    if (!product?.product_weight) return "";
+    let weight = product.product_weight.toLowerCase().replace(/\s/g, '');
+    if (weight === '1kg') weight = '1000ml'; // Ensure map is correct if they use 1kg
+    return `a2-bilona-ghee-${weight}`;
   };
+
+  const productLink = `/products/${getProductSlug()}`;
 
   const calculateDiscount = (original, current) => {
     const orig = parseFloat(original) || 0;
@@ -160,7 +163,7 @@ const ProductCard = ({ product }) => {
   );
 
   return (
-    <div className="premium-product-card" onClick={handleViewDetails}>
+    <div className="premium-product-card">
       {discount ? (
         <div className="product-card-badge discount-mode">OFF {discount}%</div>
       ) : (
@@ -168,22 +171,28 @@ const ProductCard = ({ product }) => {
       )}
 
       <div className="product-image-box">
-        <img
-          src={images[0] || productPlaceholder}
-          alt={product?.product_name}
-          className="product-img-main"
-          width="300"
-          height="300"
-          loading="lazy"
-        />
+        <Link to={productLink} className="product-img-main-link" aria-label={`View ${product?.product_weight} Pure A2 Cow Ghee`}>
+          <img
+            src={images[0] || productPlaceholder}
+            alt={product?.product_name || `Pure A2 Cow Ghee ${product?.product_weight}`}
+            className="product-img-main"
+            width="300"
+            height="300"
+            loading="lazy"
+          />
+        </Link>
         <div className="image-overlay">
-          <button className="quick-view-btn">View Details</button>
+          <Link to={productLink} className="quick-view-btn" style={{textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            View Details
+          </Link>
         </div>
       </div>
 
       <div className="product-details">
         <h3 className="product-title">
-          Pure A2 Cow Ghee - {product?.product_weight || "Weight Not Specified"}
+          <Link to={productLink} style={{ color: "inherit", textDecoration: "none" }}>
+            Pure A2 Cow Ghee - {product?.product_weight || "Weight Not Specified"}
+          </Link>
         </h3>
 
         <div className="rating-row">

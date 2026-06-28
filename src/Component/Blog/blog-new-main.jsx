@@ -42,31 +42,7 @@ const formatDate = (dateString) => {
   }
 };
 
-/* ======================
-   BLOG CARD
-====================== */
-const BlogCard = ({ image, title, description, date, category, slug }) => (
-  <Link to={`/blog/${formatSlug(slug)}/`} className="blog-card-link">
-    <div className="blog-card">
-      <div className="blog-image">
-        <img src={blogImg} alt={title || "Blog post"} loading="lazy" />
-      </div>
 
-      <div className="blog-content">
-        <div className="blog-meta">
-          <span className="tag">{category || "Blog"}</span>
-          <span className="blog-date">{date}</span>
-        </div>
-
-        <h3 className="blog-title">{title || "Untitled"}</h3>
-
-        <p className="blog-description">{truncateText(description)}</p>
-
-        <span className="read-more-btn">More →</span>
-      </div>
-    </div>
-  </Link>
-);
 
 /* ======================
    SKELETON
@@ -211,7 +187,7 @@ const BlogMainPageNew = () => {
               sortedBlogs.map((post) => (
                 <Link
                   key={post?.id || post?._id}
-                  to={`/blog/${formatSlug(post?.slug || post?.id)}/`}
+                  to={`/blog/${formatSlug(post?.slug || post?.id)}`}
                   className="blog-card-link"
                   aria-label={`Read full article: ${post?.title}`}
                 >

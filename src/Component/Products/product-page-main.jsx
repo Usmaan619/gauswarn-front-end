@@ -35,6 +35,7 @@ import productPlaceholder from "../../asset/new-img/product-imgs/product1.webp";
 import ProfileSection from "./profileSection";
 import ProductHeroSection from "./product-hero-section";
 import GheeFeatureProductPage from "./ghee-product";
+import ProductShowcaseComplete from "../Carousel/product-showcase";
 import "../../Component/Carousel/carousel-card-wrapper.css";
 import Seo from "../SEO/Seo";
 import SeoContent from "../SEO/SeoContent";
@@ -1005,6 +1006,7 @@ const ProductPageMain = () => {
       <NutritionFaqSection />
       <ProductFaq />
       <GheeFeatureProductPage />
+      <ProductShowcaseComplete />
       <SeoContent
         heading={SEO_CONTENT.products.heading}
         sections={SEO_CONTENT.products.sections}

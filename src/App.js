@@ -9,6 +9,7 @@ import ScrollToTop from "./Component/Common/Scroll-to-Top/scroll-to-top.jsx";
 import NavbarWrapper from "./Component/Common/Navbar/NavbarWrapper.jsx";
 import NewFooter from "./Component/Common/Footer/Footer.jsx";
 import ErrorBoundary from "./Component/Common/ErrorBoundary.jsx";
+import Breadcrumb from "./Component/Common/Breadcrumb.jsx";
 
 import { useCartContext } from "./Component/Context/UserContext.jsx";
 import Seo from "./Component/SEO/Seo.jsx";
@@ -267,6 +268,7 @@ function App() {
       <ToastContainer />
       <ScrollToTop />
       <NavbarWrapper />
+      <Breadcrumb />
 
       {/*  Suspense Wrapper */}
       <main>
@@ -316,6 +318,7 @@ function App() {
               <Route path="/lab-report" element={<LabReportMain />} />
               <Route path="/video" element={<VideoPage />} />
               <Route path="/careers" element={<CareersPage />} />
+              <Route path="/health-benefits" element={<HealthBenefitsGrid />} />
               <Route
                 path="/health-benefits/:slug"
                 element={<HealthBenefitDetail />}

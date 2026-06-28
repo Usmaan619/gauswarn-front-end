@@ -293,7 +293,7 @@ function injectSeo(template, seo, route) {
     <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">${seo.h1}</h1>
     <div style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0" role="article">
       <p>${seo.content}</p>
-      <p>Internal links: <a href="/">Home</a>, <a href="/about/">About Us</a>, <a href="/blog/">Blog</a>, <a href="/products/">Our Products</a></p>
+      <p>Internal links: <a href="/">Home</a>, <a href="/about">About Us</a>, <a href="/blog">Blog</a>, <a href="/products">Our Products</a></p>
     </div>`;
 
   html = html.replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${seoBlock}</div>`);

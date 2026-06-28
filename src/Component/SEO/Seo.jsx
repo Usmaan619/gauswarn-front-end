@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 import { buildGlobalSchema } from "../../utils/seo-utils";
 
 const Seo = ({
@@ -11,9 +12,10 @@ const Seo = ({
   keywords = "A2 Cow Ghee, Bilona Ghee, Pure Ghee, Gir Cow Ghee, Gauswarn India, Desi Cow Ghee, Traditional Ghee",
   noindex = false,
 }) => {
+  const location = useLocation();
   const baseUrl = "https://gauswarn.com";
-  const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
-  // Ensure consistent canonical URL with trailing slash (e.g., /about/ or /products/)
+  const currentPath = location.pathname || "";
+  // Ensure consistent canonical URL without trailing slash (e.g., /about or /products)
   // NOTE: We do NOT include query strings in canonical to prevent variant pages from being indexed separately
   const getCanonical = (val) => {
     const raw = val || (baseUrl + currentPath);

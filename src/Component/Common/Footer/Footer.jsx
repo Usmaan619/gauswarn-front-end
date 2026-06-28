@@ -342,34 +342,178 @@ export default function NewFooter() {
       </div>
 
       {/* SEO ORPHAN LINKS */}
-      <div className="seo-orphan-links py-3" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+      <div
+        className="seo-orphan-links py-3"
+        style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+      >
         <div className="container-fluid px-3 px-md-4">
           <div className="row">
             <div className="col-12">
-               <p style={{ color: "#f8b600", fontSize: "14px", marginBottom: "10px", fontWeight: "600" }}>Popular Searches & Categories:</p>
-               <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", fontSize: "13px" }}>
-                 <Link to="/blog/a2-gir-cow-ghee-nutrition-facts-complete-guide-to-calories-vitamins-fatty-acids-health-benefits-gauswarn-india" style={{color:"#ccc", textDecoration:"none"}}>A2 Ghee Nutrition Facts</Link> |
-                 <Link to="/blog/a2-ghee-for-skin-hair-complete-guide-to-vitamins-topical-use-diy-recipes-ayurvedic-beauty-gauswarn-india" style={{color:"#ccc", textDecoration:"none"}}>A2 Ghee For Skin & Hair</Link> |
-                 <Link to="/blog/gauswarn-authentic-a2-bilona-ghee-made-from-indigenous-gir-cow-milk" style={{color:"#ccc", textDecoration:"none"}}>Authentic A2 Bilona Ghee</Link> |
-                 <Link to="/blog/a2-ghee-for-weight-loss-does-it-really-work-the-complete-guide" style={{color:"#ccc", textDecoration:"none"}}>A2 Ghee For Weight Loss</Link> |
-                 <Link to="/blog/gauswarn-india-a2-cow-ghee-gallery-har-tasveer-mein-dikhti-hai-shuddhi-prakriti-aur-vishwas-ki-kahani" style={{color:"#ccc", textDecoration:"none"}}>Gauswarn Ghee Gallery</Link> |
-                 <Link to="/blog/pure-a2-cow-ghee-what-it-is-why-it-matters-why-gauswarn-is-india-s-most-trusted-choice" style={{color:"#ccc", textDecoration:"none"}}>Why Pure A2 Cow Ghee Matters</Link> |
-                 <Link to="/blog/benefits-of-pure-a2-ghee" style={{color:"#ccc", textDecoration:"none"}}>Benefits of Pure A2 Ghee</Link> |
-                 <Link to="/blog/how-our-b2b-process-works-gauswarn-a2-gir-cow-ghee-ke-saath-bulk-partnership-shuru-karein-sirf-4-steps-mein" style={{color:"#ccc", textDecoration:"none"}}>How Our B2B Process Works</Link> |
-                 <Link to="/blog/ghee-calories-per-100g-complete-nutritional-value-protein-fat-guide-gauswarn-india" style={{color:"#ccc", textDecoration:"none"}}>Ghee Calories per 100g</Link> |
-                 <Link to="/blog/what-is-a2-gir-cow-ghee-the-answer-india-has-been-looking-for" style={{color:"#ccc", textDecoration:"none"}}>What is A2 Gir Cow Ghee</Link> |
-                 <Link to="/products/a2-bilona-ghee-1000ml" style={{color:"#ccc", textDecoration:"none"}}>A2 Bilona Ghee 1000ml</Link> |
-                 <Link to="/products/a2-bilona-ghee-500ml" style={{color:"#ccc", textDecoration:"none"}}>A2 Bilona Ghee 500ml</Link> |
-                 <Link to="/products/a2-bilona-ghee-15kg" style={{color:"#ccc", textDecoration:"none"}}>A2 Bilona Ghee 15kg</Link> |
-                 <Link to="/products/a2-bilona-ghee-250ml" style={{color:"#ccc", textDecoration:"none"}}>A2 Bilona Ghee 250ml</Link> |
-                 <Link to="/products/a2-bilona-ghee-5kg" style={{color:"#ccc", textDecoration:"none"}}>A2 Bilona Ghee 5kg</Link> |
-                 <Link to="/health-benefits/heart-health" style={{color:"#ccc", textDecoration:"none"}}>Heart Health</Link> |
-                 <Link to="/health-benefits/strong-bones-joint-health" style={{color:"#ccc", textDecoration:"none"}}>Strong Bones & Joint Health</Link> |
-                 <Link to="/health-benefits/brain-power-memory-boost" style={{color:"#ccc", textDecoration:"none"}}>Brain Power & Memory Boost</Link> |
-                 <Link to="/health-benefits/eye-health-vision-support" style={{color:"#ccc", textDecoration:"none"}}>Eye Health & Vision Support</Link> |
-                 <Link to="/health-benefits/healthy-fats" style={{color:"#ccc", textDecoration:"none"}}>Healthy Fats</Link> |
-                 <Link to="/health-benefits/boost-immunity-naturally" style={{color:"#ccc", textDecoration:"none"}}>Boost Immunity Naturally</Link>
-               </div>
+              <p
+                style={{
+                  color: "#f8b600",
+                  fontSize: "14px",
+                  marginBottom: "10px",
+                  fontWeight: "600",
+                }}
+              >
+                Popular Searches & Categories:
+              </p>
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                  fontSize: "13px",
+                }}
+              >
+                <Link
+                  to="/blog/a2-gir-cow-ghee-nutrition-facts-complete-guide-to-calories-vitamins-fatty-acids-health-benefits-gauswarn-india"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  A2 Ghee Nutrition Facts
+                </Link>{" "}
+                |
+                <Link
+                  to="/blog/a2-ghee-for-skin-hair-complete-guide-to-vitamins-topical-use-diy-recipes-ayurvedic-beauty-gauswarn-india"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  A2 Ghee For Skin & Hair
+                </Link>{" "}
+                |
+                <Link
+                  to="/blog/gauswarn-authentic-a2-bilona-ghee-made-from-indigenous-gir-cow-milk"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Authentic A2 Bilona Ghee
+                </Link>{" "}
+                |
+                <Link
+                  to="/blog/a2-ghee-for-weight-loss-does-it-really-work-the-complete-guide"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  A2 Ghee For Weight Loss
+                </Link>{" "}
+                |
+                <Link
+                  to="/blog/gauswarn-india-a2-cow-ghee-gallery-har-tasveer-mein-dikhti-hai-shuddhi-prakriti-aur-vishwas-ki-kahani"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Gauswarn Ghee Gallery
+                </Link>{" "}
+                |
+                <Link
+                  to="/blog/pure-a2-cow-ghee-what-it-is-why-it-matters-why-gauswarn-is-india-s-most-trusted-choice"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Why Pure A2 Cow Ghee Matters
+                </Link>{" "}
+                |
+                <Link
+                  to="/blog/benefits-of-pure-a2-ghee"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Benefits of Pure A2 Ghee
+                </Link>{" "}
+                |
+                <Link
+                  to="/blog/how-our-b2b-process-works-gauswarn-a2-gir-cow-ghee-ke-saath-bulk-partnership-shuru-karein-sirf-4-steps-mein"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  How Our B2B Process Works
+                </Link>{" "}
+                |
+                <Link
+                  to="/blog/ghee-calories-per-100g-complete-nutritional-value-protein-fat-guide-gauswarn-india"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Ghee Calories per 100g
+                </Link>{" "}
+                |
+                <Link
+                  to="/blog/what-is-a2-gir-cow-ghee-the-answer-india-has-been-looking-for"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  What is A2 Gir Cow Ghee
+                </Link>{" "}
+                |
+                <Link
+                  to="/products/a2-bilona-ghee-1000ml"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  A2 Bilona Ghee 1000ml
+                </Link>{" "}
+                |
+                <Link
+                  to="/products/a2-bilona-ghee-500ml"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  A2 Bilona Ghee 500ml
+                </Link>{" "}
+                |
+                <Link
+                  to="/products/a2-bilona-ghee-15kg"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  A2 Bilona Ghee 15kg
+                </Link>{" "}
+                |
+                <Link
+                  to="/products/a2-bilona-ghee-250ml"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  A2 Bilona Ghee 250ml
+                </Link>{" "}
+                |
+                <Link
+                  to="/products/a2-bilona-ghee-5kg"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  A2 Bilona Ghee 5kg
+                </Link>{" "}
+                |
+                <Link
+                  to="/health-benefits/heart-health"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Heart Health
+                </Link>{" "}
+                |
+                <Link
+                  to="/health-benefits/strong-bones-joint-health"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Strong Bones & Joint Health
+                </Link>{" "}
+                |
+                <Link
+                  to="/health-benefits/brain-power-memory-boost"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Brain Power & Memory Boost
+                </Link>{" "}
+                |
+                <Link
+                  to="/health-benefits/eye-health-vision-support"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Eye Health & Vision Support
+                </Link>{" "}
+                |
+                <Link
+                  to="/health-benefits/healthy-fats"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Healthy Fats
+                </Link>{" "}
+                |
+                <Link
+                  to="/health-benefits/boost-immunity-naturally"
+                  style={{ color: "#ccc", textDecoration: "none" }}
+                >
+                  Boost Immunity Naturally
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -385,19 +529,41 @@ export default function NewFooter() {
             </div>
 
             {/* Center - No Hover */}
-            <div className="footer-bottom-center">
-              Powered by
-              <b>
-                <a
-                  aria-label="Visit Rajlakshmi javiks International website"
-                  className="ms-1"
-                  href="https://rajlakshmijaviks.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {"  "} Rajlakshmi javiks International
-                </a>
-              </b>
+            <div className="footer-bottom-center d-flex flex-column align-items-center justify-content-center">
+              <div>
+                Powered by
+                <b>
+                  <a
+                    aria-label="Visit Rajlakshmi javiks International website"
+                    className="ms-1"
+                    href="https://rajlakshmijaviks.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {"  "} Rajlakshmi javiks International
+                  </a>
+                </b>
+              </div>
+              <div style={{ fontSize: "12px", marginTop: "4px", opacity: 0.9 }}>
+                Designed & Developed by
+                <b>
+                  <a
+                    aria-label="Visit Eleven Future Tech website"
+                    className="ms-1"
+                    href="https://elevenfuturetech.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "#000",
+                      textDecoration: "none",
+                      letterSpacing: "0.5px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Eleven Future Tech
+                  </a>
+                </b>
+              </div>
             </div>
 
             {/* Right */}
