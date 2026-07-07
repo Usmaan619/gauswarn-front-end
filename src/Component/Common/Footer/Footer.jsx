@@ -193,7 +193,7 @@ export default function NewFooter() {
                   </li>
                   <li>
                     <Link
-                      to="/about/"
+                      to="/about"
                       onClick={scrollToTop}
                       aria-label="About Gauswarn Ghee"
                     >
@@ -202,7 +202,7 @@ export default function NewFooter() {
                   </li>
                   <li>
                     <Link
-                      to="/lab-report/"
+                      to="/lab-report"
                       onClick={scrollToTop}
                       aria-label="Ghee Purity Lab Report"
                     >
@@ -211,7 +211,7 @@ export default function NewFooter() {
                   </li>
                   <li>
                     <Link
-                      to="/products/"
+                      to="/products"
                       onClick={scrollToTop}
                       aria-label="Buy A2 Cow Ghee Online"
                     >
@@ -220,7 +220,7 @@ export default function NewFooter() {
                   </li>
                   <li>
                     <Link
-                      to="/video/"
+                      to="/video"
                       onClick={scrollToTop}
                       aria-label="Watch Gauswarn Ghee Story"
                     >
@@ -242,7 +242,7 @@ export default function NewFooter() {
 
                   <li>
                     <Link
-                      to="/refund/"
+                      to="/refund"
                       onClick={scrollToTop}
                       aria-label="Gauswarn Refund Policy"
                     >
@@ -251,7 +251,7 @@ export default function NewFooter() {
                   </li>
                   <li>
                     <Link
-                      to="/privacy/"
+                      to="/privacy"
                       onClick={scrollToTop}
                       aria-label="Gauswarn Privacy Policy"
                     >
@@ -260,7 +260,7 @@ export default function NewFooter() {
                   </li>
                   <li>
                     <Link
-                      to="/shipping/"
+                      to="/shipping"
                       onClick={scrollToTop}
                       aria-label="Ghee Shipping and Delivery Policy"
                     >
@@ -269,7 +269,7 @@ export default function NewFooter() {
                   </li>
                   <li>
                     <Link
-                      to="/terms/"
+                      to="/terms"
                       onClick={scrollToTop}
                       aria-label="Gauswarn Terms and Conditions"
                     >
@@ -278,7 +278,7 @@ export default function NewFooter() {
                   </li>
                   <li>
                     <Link
-                      to="/faq/"
+                      to="/faq"
                       onClick={scrollToTop}
                       aria-label="Pure Ghee FAQs"
                     >
@@ -287,7 +287,7 @@ export default function NewFooter() {
                   </li>
                   <li>
                     <Link
-                      to="/careers/"
+                      to="/careers"
                       onClick={scrollToTop}
                       aria-label="Careers at Gauswarn"
                     >

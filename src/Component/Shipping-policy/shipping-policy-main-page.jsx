@@ -11,7 +11,6 @@ const ShippingPolicy = () => {
         title="Shipping & Delivery Policy | Gauswarn India"
         description="Learn about our shipping and delivery processes, processing times, and policies for Gauswarn India."
         url="https://gauswarn.com/shipping"
-        noindex={true}
       />
       <div className="shipping-container">
         <div className="shipping-header">

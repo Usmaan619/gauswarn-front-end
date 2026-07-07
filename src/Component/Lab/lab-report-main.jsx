@@ -61,7 +61,6 @@ const LabReportMain = () => {
         description="View official lab test reports verifying the purity, safety, and A2 beta-casein content of Gauswarn India's A2 Gir Cow Ghee."
         url="https://gauswarn.com/lab-report"
         structuredData={labSchema}
-        noindex={true}
       />
 
       <div className="lab-page">

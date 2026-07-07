@@ -1,12 +1,11 @@
 # ==========================================
 # Gauswarn India — Production robots.txt
-# Last updated: 2026-05-13
+# Last updated: 2026-07-07
 # ==========================================
 
 # Default rule: allow all crawlers
 User-agent: *
 Allow: /
-
 
 
 # ==========================================
@@ -34,6 +33,9 @@ User-agent: anthropic-ai
 Allow: /
 
 User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Googlebot-Image
 Allow: /
 
 # ==========================================

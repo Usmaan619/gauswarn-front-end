@@ -11,7 +11,6 @@ const TermsConditions = () => {
         title="Terms & Conditions | Gauswarn India"
         description="Read the terms and conditions for using the Gauswarn India website and purchasing our A2 Gir Cow Ghee."
         url="https://gauswarn.com/terms"
-        noindex={true}
       />
       <div className="terms-container">
         <div className="terms-header">

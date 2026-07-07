@@ -156,7 +156,7 @@ const HomeFaq = () => {
               <h3>Authentic Wellness for the Modern Home</h3>
               <p>
                 At Gauswarn, we are committed to reviving the purity of ancient Indian nutrition. 
-                Our <Link to="/products/">A2 Gir Cow Ghee</Link> is handcrafted using the Vedic Bilona process, 
+                Our <Link to="/products">A2 Gir Cow Ghee</Link> is handcrafted using the Vedic Bilona process, 
                 ensuring that every jar delivered to your doorstep is as close to nature as possible. 
                 We prioritize ethical sourcing and transparency, so you can feel confident in the 
                 quality of what you feed your loved ones.
@@ -164,10 +164,10 @@ const HomeFaq = () => {
               
               <h4>The Gauswarn Commitment to Excellence</h4>
               <ul className="seo-benefits-list">
-                <li><strong>Ethical & Compassionate:</strong> Our cows are raised in a stress-free environment. Learn more <Link to="/about/">About Us</Link>.</li>
+                <li><strong>Ethical & Compassionate:</strong> Our cows are raised in a stress-free environment. Learn more <Link to="/about">About Us</Link>.</li>
                 <li><strong>Laboratory Verified:</strong> Every batch is tested for zero adulteration and peak purity.</li>
                 <li><strong>Traditional Artistry:</strong> Hand-churned in small batches to preserve natural granular texture.</li>
-                <li><strong>National Trust:</strong> A brand built on the pillars of transparency and authenticity. View our <Link to="/lab-report/">Lab Reports</Link>.</li>
+                <li><strong>National Trust:</strong> A brand built on the pillars of transparency and authenticity. View our <Link to="/lab-report">Lab Reports</Link>.</li>
               </ul>
 
               <div className="geo-location-tag">

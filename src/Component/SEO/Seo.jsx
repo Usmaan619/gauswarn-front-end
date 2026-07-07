@@ -25,13 +25,7 @@ const Seo = ({
   };
   const canonicalUrl = getCanonical(url);
 
-  // Automatically apply noindex, follow to URLs with search parameters
-  const hasQueryParams = typeof window !== "undefined" && window.location.search.length > 0;
-  let robotsContent = noindex ? "noindex, nofollow" : "index, follow";
-  
-  if (!noindex && hasQueryParams) {
-    robotsContent = "noindex, follow";
-  }
+  const robotsContent = noindex ? "noindex, nofollow" : "index, follow";
 
 
   return (
