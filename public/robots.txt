@@ -7,12 +7,7 @@
 User-agent: *
 Allow: /
 
-# Block utility/private pages from crawling
-Disallow: /track
-Disallow: /singleproduct
-Disallow: /cart
-Disallow: /payment-success
-Disallow: /payment-failed
+#
 
 # ==========================================
 # AI Bots — Explicit Allow
@@ -42,7 +37,7 @@ User-agent: Applebot-Extended
 Allow: /
 
 User-agent: Googlebot-Image
-Allow: /
+
 
 # ==========================================
 # Sitemap
