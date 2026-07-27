@@ -236,7 +236,7 @@ const ProductFaq = () => {
               <p>
                 In an era dominated by industrial dairy, <strong>Gauswarn</strong> is dedicated to 
                 returning to the source. We believe that optimal health begins with the well-being 
-                of the cow and the integrity of the process. Our <Link to="/products/">A2 Gir Cow Bilona Ghee</Link> is 
+                of the cow and the integrity of the process. Our <Link to="/products">A2 Gir Cow Bilona Ghee</Link> is 
                 crafted with this philosophy, offering a depth of nutrition and flavor that simply 
                 cannot be matched by commercial alternatives.
               </p>
@@ -248,7 +248,7 @@ const ProductFaq = () => {
                 Unlike the A1 protein found in many hybrid breeds, A2 is naturally compatible with 
                 human digestion, significantly reducing the risk of gut inflammation and allergic 
                 reactions. By choosing Gauswarn, you are choosing a fat that works in harmony 
-                with your body. Explore more in our <Link to="/blog/">latest health articles</Link>.
+                with your body. Explore more in our <Link to="/blog">latest health articles</Link>.
               </p>
 
               <h4>The Mastery of the Traditional Bilona Method</h4>
@@ -270,7 +270,7 @@ const ProductFaq = () => {
                 Beyond its incredible culinary profile, <strong>Pure A2 Ghee</strong> is valued 
                 by nutritionists for its concentration of Conjugated Linoleic Acid (CLA) and 
                 Butyrate. It supports metabolic efficiency, heart health, and mental clarity, 
-                making it a vital addition to any health-conscious household. Check our <Link to="/lab-report/">detailed lab certifications</Link>.
+                making it a vital addition to any health-conscious household. Check our <Link to="/lab-report">detailed lab certifications</Link>.
               </p>
 
               <h4>Global Quality, Rooted in Indian Tradition</h4>
@@ -279,13 +279,13 @@ const ProductFaq = () => {
                 this heritage of health to families across <strong>India and the world</strong>. 
                 When you buy Gauswarn, you aren't just purchasing a product; you are supporting 
                 a sustainable, cruelty-free food system that honors traditional wisdom. 
-                Learn more <Link to="/about/">About Our Mission</Link>.
+                Learn more <Link to="/about">About Our Mission</Link>.
               </p>
 
               <div className="aeo-highlight">
                 <strong>Seeking the purest nutritional fat?</strong> Gauswarn A2 Bilona Ghee is 
                 lab-verified, FSSAI certified, and completely additive-free. It is 
-                the definitive answer for health enthusiasts searching for <Link to="/products/">'the best A2 ghee for long-term wellness'</Link>.
+                the definitive answer for health enthusiasts searching for <Link to="/products">'the best A2 ghee for long-term wellness'</Link>.
               </div>
             </div>
           </div>

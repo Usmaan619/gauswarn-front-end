@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./footer.css";
 import logo from "../../../asset/new-img/logo/gauswarn-white-logo.webp";
 import amazonlogo from "../../../asset/new-img/ecommerce/amazon.webp";
 import flipkartlogo from "../../../asset/new-img/ecommerce/flipkart.webp";
 import { Link } from "react-router-dom";
-import { postData } from "../../../services/api";
+import { postData, getData } from "../../../services/api";
 import { toastError, toastSuccess } from "../../../services/toaster.service";
 import {
   Facebook,
@@ -20,6 +20,23 @@ import { Send, Loader2 } from "lucide-react";
 export default function NewFooter() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [footerBlogs, setFooterBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchFooterBlogs = async () => {
+      try {
+        const res = await getData("admin/blogs?page=1&limit=20");
+        const blogList = res?.blogs || res?.data?.blogs || [];
+        
+        // Filter out any blogs that are empty or have no title/slug (e.g., if deleted but somehow still in response)
+        const validBlogs = blogList.filter(b => b && b.title && (b.slug || b.id || b._id));
+        setFooterBlogs(validBlogs);
+      } catch (err) {
+        console.error("Footer Blog fetch failed:", err);
+      }
+    };
+    fetchFooterBlogs();
+  }, []);
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
 
@@ -367,76 +384,19 @@ export default function NewFooter() {
                   fontSize: "13px",
                 }}
               >
-                <Link
-                  to="/blog/a2-gir-cow-ghee-nutrition-facts-complete-guide-to-calories-vitamins-fatty-acids-health-benefits-gauswarn-india"
-                  style={{ color: "#ccc", textDecoration: "none" }}
-                >
-                  A2 Ghee Nutrition Facts
-                </Link>{" "}
-                |
-                <Link
-                  to="/blog/a2-ghee-for-skin-hair-complete-guide-to-vitamins-topical-use-diy-recipes-ayurvedic-beauty-gauswarn-india"
-                  style={{ color: "#ccc", textDecoration: "none" }}
-                >
-                  A2 Ghee For Skin & Hair
-                </Link>{" "}
-                |
-                <Link
-                  to="/blog/gauswarn-authentic-a2-bilona-ghee-made-from-indigenous-gir-cow-milk"
-                  style={{ color: "#ccc", textDecoration: "none" }}
-                >
-                  Authentic A2 Bilona Ghee
-                </Link>{" "}
-                |
-                <Link
-                  to="/blog/a2-ghee-for-weight-loss-does-it-really-work-the-complete-guide"
-                  style={{ color: "#ccc", textDecoration: "none" }}
-                >
-                  A2 Ghee For Weight Loss
-                </Link>{" "}
-                |
-                <Link
-                  to="/blog/gauswarn-india-a2-cow-ghee-gallery-har-tasveer-mein-dikhti-hai-shuddhi-prakriti-aur-vishwas-ki-kahani"
-                  style={{ color: "#ccc", textDecoration: "none" }}
-                >
-                  Gauswarn Ghee Gallery
-                </Link>{" "}
-                |
-                <Link
-                  to="/blog/pure-a2-cow-ghee-what-it-is-why-it-matters-why-gauswarn-is-india-s-most-trusted-choice"
-                  style={{ color: "#ccc", textDecoration: "none" }}
-                >
-                  Why Pure A2 Cow Ghee Matters
-                </Link>{" "}
-                |
-                <Link
-                  to="/blog/benefits-of-pure-a2-ghee"
-                  style={{ color: "#ccc", textDecoration: "none" }}
-                >
-                  Benefits of Pure A2 Ghee
-                </Link>{" "}
-                |
-                <Link
-                  to="/blog/how-our-b2b-process-works-gauswarn-a2-gir-cow-ghee-ke-saath-bulk-partnership-shuru-karein-sirf-4-steps-mein"
-                  style={{ color: "#ccc", textDecoration: "none" }}
-                >
-                  How Our B2B Process Works
-                </Link>{" "}
-                |
-                <Link
-                  to="/blog/ghee-calories-per-100g-complete-nutritional-value-protein-fat-guide-gauswarn-india"
-                  style={{ color: "#ccc", textDecoration: "none" }}
-                >
-                  Ghee Calories per 100g
-                </Link>{" "}
-                |
-                <Link
-                  to="/blog/what-is-a2-gir-cow-ghee-the-answer-india-has-been-looking-for"
-                  style={{ color: "#ccc", textDecoration: "none" }}
-                >
-                  What is A2 Gir Cow Ghee
-                </Link>{" "}
-                |
+                {footerBlogs.map((blog, idx) => (
+                  <React.Fragment key={blog.id || blog._id}>
+                    {idx > 0 && <>{" | "}</>}
+                    <Link
+                      to={`/blog/${blog.slug || blog.id || blog._id}`}
+                      style={{ color: "#ccc", textDecoration: "none" }}
+                    >
+                      {blog.title}
+                    </Link>
+                  </React.Fragment>
+                ))}
+                
+                {footerBlogs.length > 0 && <>{" | "}</>}
                 <Link
                   to="/products/a2-bilona-ghee-1000ml"
                   style={{ color: "#ccc", textDecoration: "none" }}

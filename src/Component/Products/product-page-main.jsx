@@ -549,7 +549,7 @@ const ProductPageMain = () => {
         description={selectedProduct
           ? `Order ${selectedProduct.product_weight} pure A2 Gir Cow Ghee at ₹${selectedProduct.product_price}. Made using traditional Bilona method. Lab tested, chemical-free. Free delivery across India.`
           : "Shop Gauswarn's lab-verified A2 Cow Ghee. Handcrafted using the traditional wooden Bilona method for maximum nutrition. Fast pan-India delivery."}
-        url={selectedProduct ? getProductCanonicalUrl(selectedProduct) : "https://gauswarn.com/products/"}
+        url={selectedProduct ? getProductCanonicalUrl(selectedProduct) : "https://gauswarn.com/products"}
         type="product"
         image={selectedProduct?.images?.[0] || "https://gauswarn.com/favicon-512x512.png"}
         structuredData={selectedProduct ? [

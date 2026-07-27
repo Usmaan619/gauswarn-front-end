@@ -11,7 +11,6 @@ const PrivacyPolicy = () => {
         title="Privacy Policy | Gauswarn India"
         description="Privacy policy and data protection guidelines for Gauswarn India."
         url="https://gauswarn.com/privacy"
-        noindex={true}
       />
       <div className="privacy-container">
         <div className="privacy-header">
