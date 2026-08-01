@@ -4,10 +4,28 @@ import Seo from "../SEO/Seo";
 import SeoContent from "../SEO/SeoContent";
 import { SEO_CONTENT } from "../SEO/seo-content-data";
 
-// NDDB CALF – Ghee Purity
+// NDDB CALF – Ghee Purity (Original)
 import GheeReport1 from "../../asset/new-img/lap-report/ghee-report-1.webp";
 import GheeReport2 from "../../asset/new-img/lap-report/ghee-report-2.webp";
 import GheeReport3 from "../../asset/new-img/lap-report/ghee-report-3.webp";
+
+// New Ghee Report
+import NewGheeReport1 from "../../asset/new-img/lap-report/BID-036012_AD030670_Ghee/cb05d994-81a7-43a0-942a-b9a36b1ab2c5-0000.webp";
+import NewGheeReport2 from "../../asset/new-img/lap-report/BID-036012_AD030670_Ghee/cb05d994-81a7-43a0-942a-b9a36b1ab2c5-0001.webp";
+import NewGheeReport3 from "../../asset/new-img/lap-report/BID-036012_AD030670_Ghee/cb05d994-81a7-43a0-942a-b9a36b1ab2c5-0002.webp";
+
+// Amendment A
+import AmendAPage1 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0000.webp";
+import AmendAPage2 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0001.webp";
+import AmendAPage3 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0002.webp";
+import AmendAPage4 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0003.webp";
+import AmendAPage5 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0004.webp";
+import AmendAPage6 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0005.webp";
+import AmendAPage7 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0006.webp";
+
+// Amendment B
+import AmendBPage1 from "../../asset/new-img/lap-report/BID-034917_AD022610_B_Amendment/d7171282-3814-4093-a07b-bd9a57bfa27a-0000.webp";
+import AmendBPage2 from "../../asset/new-img/lap-report/BID-034917_AD022610_B_Amendment/d7171282-3814-4093-a07b-bd9a57bfa27a-0001.webp";
 
 // GeneOmbio – A2 Test
 import LabReport from "../../asset/new-img/lap-report/labreport.webp";
@@ -178,6 +196,54 @@ const LabReportMain = () => {
               alt="Texture Report Page 2 - Granularity Analysis"
               loading="lazy"
             />
+          </div>
+        </section>
+
+        {/* ================= NEW GHEE REPORT ================= */}
+        <section className="report-section" data-aos="fade-up">
+          <div className="section-content">
+            <h2>Additional Ghee Purity Report</h2>
+            <p>
+              Detailed analytical report verifying the authenticity and nutritional profile of our ghee.
+            </p>
+          </div>
+          <div className="report-pages">
+            <img src={NewGheeReport1} alt="Ghee Report Page 1" loading="lazy" />
+            <img src={NewGheeReport2} alt="Ghee Report Page 2" loading="lazy" />
+            <img src={NewGheeReport3} alt="Ghee Report Page 3" loading="lazy" />
+          </div>
+        </section>
+
+        {/* ================= AMENDMENT A ================= */}
+        <section className="report-section" data-aos="fade-up">
+          <div className="section-content">
+            <h2>Lab Report Amendment A</h2>
+            <p>
+              Official amendment documentation detailing additional test parameters and verifications.
+            </p>
+          </div>
+          <div className="report-pages">
+            <img src={AmendAPage1} alt="Amendment A Page 1" loading="lazy" />
+            <img src={AmendAPage2} alt="Amendment A Page 2" loading="lazy" />
+            <img src={AmendAPage3} alt="Amendment A Page 3" loading="lazy" />
+            <img src={AmendAPage4} alt="Amendment A Page 4" loading="lazy" />
+            <img src={AmendAPage5} alt="Amendment A Page 5" loading="lazy" />
+            <img src={AmendAPage6} alt="Amendment A Page 6" loading="lazy" />
+            <img src={AmendAPage7} alt="Amendment A Page 7" loading="lazy" />
+          </div>
+        </section>
+
+        {/* ================= AMENDMENT B ================= */}
+        <section className="report-section" data-aos="fade-up">
+          <div className="section-content">
+            <h2>Lab Report Amendment B</h2>
+            <p>
+              Further official verifications extending the scope of our quality assurance testing.
+            </p>
+          </div>
+          <div className="report-pages">
+            <img src={AmendBPage1} alt="Amendment B Page 1" loading="lazy" />
+            <img src={AmendBPage2} alt="Amendment B Page 2" loading="lazy" />
           </div>
         </section>
       </div>
