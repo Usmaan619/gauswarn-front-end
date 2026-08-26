@@ -10,22 +10,22 @@ import GheeReport2 from "../../asset/new-img/lap-report/ghee-report-2.webp";
 import GheeReport3 from "../../asset/new-img/lap-report/ghee-report-3.webp";
 
 // New Ghee Report
-import NewGheeReport1 from "../../asset/new-img/lap-report/BID-036012_AD030670_Ghee/cb05d994-81a7-43a0-942a-b9a36b1ab2c5-0000.webp";
-import NewGheeReport2 from "../../asset/new-img/lap-report/BID-036012_AD030670_Ghee/cb05d994-81a7-43a0-942a-b9a36b1ab2c5-0001.webp";
-import NewGheeReport3 from "../../asset/new-img/lap-report/BID-036012_AD030670_Ghee/cb05d994-81a7-43a0-942a-b9a36b1ab2c5-0002.webp";
+import NewGheeReport1 from "../../asset/new-img/lap-report/BID-036012_AD030670_Ghee-1,BID-036012_AD030670_Ghee-2,BID-036012_AD030670_Ghee-3/BID-036012_AD030670_Ghee-1.webp";
+import NewGheeReport2 from "../../asset/new-img/lap-report/BID-036012_AD030670_Ghee-1,BID-036012_AD030670_Ghee-2,BID-036012_AD030670_Ghee-3/BID-036012_AD030670_Ghee-2.webp";
+import NewGheeReport3 from "../../asset/new-img/lap-report/BID-036012_AD030670_Ghee-1,BID-036012_AD030670_Ghee-2,BID-036012_AD030670_Ghee-3/BID-036012_AD030670_Ghee-3.webp";
 
 // Amendment A
-import AmendAPage1 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0000.webp";
-import AmendAPage2 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0001.webp";
-import AmendAPage3 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0002.webp";
-import AmendAPage4 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0003.webp";
-import AmendAPage5 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0004.webp";
-import AmendAPage6 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0005.webp";
-import AmendAPage7 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment/b093e637-b9a0-498d-a827-ae982124bef6-0006.webp";
+import AmendAPage1 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment-1,BID-034917_AD022610_A_Amendment-2,BID-034917_AD022610_A_Amend[...] (1)/BID-034917_AD022610_A_Amendment-1.webp";
+import AmendAPage2 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment-1,BID-034917_AD022610_A_Amendment-2,BID-034917_AD022610_A_Amend[...] (1)/BID-034917_AD022610_A_Amendment-2.webp";
+import AmendAPage3 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment-1,BID-034917_AD022610_A_Amendment-2,BID-034917_AD022610_A_Amend[...] (1)/BID-034917_AD022610_A_Amendment-3.webp";
+import AmendAPage4 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment-1,BID-034917_AD022610_A_Amendment-2,BID-034917_AD022610_A_Amend[...] (1)/BID-034917_AD022610_A_Amendment-4.webp";
+import AmendAPage5 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment-1,BID-034917_AD022610_A_Amendment-2,BID-034917_AD022610_A_Amend[...] (1)/BID-034917_AD022610_A_Amendment-5.webp";
+import AmendAPage6 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment-1,BID-034917_AD022610_A_Amendment-2,BID-034917_AD022610_A_Amend[...] (1)/BID-034917_AD022610_A_Amendment-6.webp";
+import AmendAPage7 from "../../asset/new-img/lap-report/BID-034917_AD022610_A_Amendment-1,BID-034917_AD022610_A_Amendment-2,BID-034917_AD022610_A_Amend[...] (1)/BID-034917_AD022610_A_Amendment-7.webp";
 
 // Amendment B
-import AmendBPage1 from "../../asset/new-img/lap-report/BID-034917_AD022610_B_Amendment/d7171282-3814-4093-a07b-bd9a57bfa27a-0000.webp";
-import AmendBPage2 from "../../asset/new-img/lap-report/BID-034917_AD022610_B_Amendment/d7171282-3814-4093-a07b-bd9a57bfa27a-0001.webp";
+import AmendBPage1 from "../../asset/new-img/lap-report/BID-034917_AD022610_B_Amendment-1,BID-034917_AD022610_B_Amendment-2/BID-034917_AD022610_B_Amendment-1.webp";
+import AmendBPage2 from "../../asset/new-img/lap-report/BID-034917_AD022610_B_Amendment-1,BID-034917_AD022610_B_Amendment-2/BID-034917_AD022610_B_Amendment-2.webp";
 
 // GeneOmbio – A2 Test
 import LabReport from "../../asset/new-img/lap-report/labreport.webp";
